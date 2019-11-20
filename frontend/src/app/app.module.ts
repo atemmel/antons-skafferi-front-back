@@ -10,6 +10,7 @@ import { EventsComponent } from './events/events.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {FormsModule} from '@angular/forms';
     HeaderComponent,
     LunchComponent,
     DinnerComponent,
-    EventsComponent
+    EventsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

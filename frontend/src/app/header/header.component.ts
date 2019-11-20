@@ -9,23 +9,23 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class HeaderComponent implements OnInit {
   image: any;
-  test:boolean = true;
+  test: boolean = true;
 
-  imageName: string = "restaurant_1280x853";
-  folderName: string = "website";
+  imageName: string = 'restaurant_1280x853';
+  folderName: string = 'website';
   constructor(private service: GetImageService, private sanitizer: DomSanitizer) { }
 
-  
+
   ngOnInit() {
     this.getHeaderImage();
   }
 
-  getHeaderImage(){
+  getHeaderImage() {
     this.service.getImage(this.folderName, this.imageName).subscribe(data => {
-      //Tells angular that the link and the data is safe.
+      // Tells angular that the link and the data is safe.
       this.image = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data);
-    
-    }, error=>{
+
+    }, error => {
     console.log(error);
     });
   }
