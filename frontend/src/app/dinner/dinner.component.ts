@@ -18,6 +18,7 @@ export class DinnerComponent implements OnInit {
   getMenu() {
     let menuObject: Object;
     menuObject = {
+      chefsChoice: ["Vildssvin", "Vild lax", "Ren"],
       starters: ["Skagen toast", "Vtilöksbröd", "Tatar", "Mozarella pinnar"],
       vilt: ["Renskav", "Älgstek", "Bäver"],
       aLaCarte: ["Lax", "oxfilè"]

@@ -1,40 +1,48 @@
-<div id="dinner" class="container">
+<section>
+    <div id="dinner" class="container">
+        <div class="row">
+            <div class="col container">
+              <div class="col">
+                <h3>Kockens Val</h3>
+                <ul *ngIf="menu" class="nopadding">
+                  <li *ngFor="let item of menu.chefsChoice" class="card card-body">{{item}}</li>
+                </ul>
+                <div id="dinnerBottom">
+                  <a href="#" id="bookButton" class="btn btn-success">Boka bord</a>
+                  <button id="menuButton" class="btn btn-secondary" data-toggle="collapse" data-target="#dinnerMenu" aria-expanded="false" aria-controls="dinnerMenu">Visa menyn</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-6"></div>
+        </div>
+    </div>
+
+
+    <div id="dinnerMenu" *ngIf="menu" class="container mx-auto collapse">
+    <div class="row">
+        <div class="col-6">
+        <h3 class="">Starters</h3>
+        <ul class="nopadding">
+            <li *ngFor="let item of menu.starters" class="card card-body"> {{item}}</li>
+        </ul>
+        </div>
+        <div class="col-6">
+        <h3>Vilt</h3>
+        <ul class="nopadding">
+            <li *ngFor="let item of menu.vilt" class="card card-body"> {{item}}</li>
+        </ul>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
-            <a href="#" id="bookButton" class="btn btn-success">Boka bord</a>
+        <h3>A La Carte</h3>
+        <ul class="nopadding">
+            <li *ngFor="let item of menu.aLaCarte" class="card card-body"> {{item}}</li>
+        </ul>
         </div>
-        <div id="dinnerRight" class="col-6">
-            <h3>Kvällsmeny</h3>
-            <button class="btn btn-secondary" data-toggle="collapse" data-target="#dinnerMenu" aria-expanded="false" aria-controls="dinnerMenu">Visa menyn</button>
+        <div class="col">
         </div>
     </div>
-</div>
-
-
-<div id="dinnerMenu" *ngIf="menu" class="container mx-auto collapse">
-  <div class="row">
-    <div class="col">
-      <h3 class="">Starters</h3>
-      <ul class="nopadding">
-        <li *ngFor="let item of menu.starters" class="card card-body"> {{item}}</li>
-      </ul>
     </div>
-    <div class="col">
-      <h3>Vilt</h3>
-      <ul class="nopadding">
-        <li *ngFor="let item of menu.vilt" class="card card-body"> {{item}}</li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <h3>A La Carte</h3>
-      <ul class="nopadding">
-        <li *ngFor="let item of menu.aLaCarte" class="card card-body"> {{item}}</li>
-      </ul>
-    </div>
-    <div class="col">
-    </div>
-  </div>
-</div>
+</section>
 
