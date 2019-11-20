@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   image: any;
   test: boolean = true;
 
-  imageName: string = 'restaurant_1280x853';
+  imageName: string = 'restaurant_1920x1280';
   folderName: string = 'website';
   constructor(private service: GetImageService, private sanitizer: DomSanitizer) { }
 
