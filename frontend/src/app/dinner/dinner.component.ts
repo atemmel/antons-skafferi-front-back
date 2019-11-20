@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DinnerComponent implements OnInit {
 
+  menu: any;
+
   constructor() { }
 
   ngOnInit() {
+    this.getMenu();
   }
 
-}
+  getMenu() {
+    let menuObject: Object;
+    menuObject = {
+      starters: ["Skagen toast", "Vtilöksbröd", "Tatar", "Mozarella pinnar"],
+      vilt: ["Renskav", "Älgstek", "Bäver"],
+      aLaCarte: ["Lax", "oxfilè"]
+
+    };
+
+    this.menu = menuObject;
+
+    console.log(menuObject);
+
+
+    }
+
+  }

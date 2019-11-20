@@ -1,0 +1,32 @@
+#dinner{
+  max-width: none;
+}
+
+#dinnerMenu{
+  max-width: none;
+  h3{
+    text-align: center;
+    text-decoration: underline;
+  }
+  ul{
+    list-style-type: none;
+    li{
+      text-align: center;
+    }
+  }
+}
+#dinnerRight{
+  display: flex;
+  justify-content: center;
+  h3{
+    margin-right: 1em;
+
+  }
+}
+
+#bookButton{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 10em;
+}
