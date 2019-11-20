@@ -1,0 +1,41 @@
+#lunch {
+    max-width: none;
+}
+
+#lunch-header {
+    text-align: center;
+    font-family: dealers;
+    color: white;
+    font-size: 35px;
+    font-size: 4.9vw;
+}
+
+.lunch-alternatives {
+    font-weight: bold;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style-type: none;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-size: 1.4vw;
+}
+
+.lunch-description {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style-type: none;
+    font-family: sans-serif;   
+    font-size: 10px;
+    font-size: 1.295vw; 
+}
+
+.dealer-font {
+    font-family: dealers;
+}
+
+.lunch-menu-day {
+    text-align: center;
+    font-size: 30px;
+    font-size: 3.5vw;
+}
