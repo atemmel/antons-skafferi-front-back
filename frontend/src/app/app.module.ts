@@ -7,6 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { LunchComponent } from './lunch/lunch.component';
 import { DinnerComponent } from './dinner/dinner.component';
 import { EventsComponent } from './events/events.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,11 @@ import { EventsComponent } from './events/events.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    CommonModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
