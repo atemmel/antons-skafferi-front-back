@@ -10,5 +10,6 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.constants;
  * @author ninhow
  */
 public class CONSTANTS {
-    public static String IMAGES_PATH = "/home/ninhow/Desktop/antons-skafferi-front-back/backend/src/main/resources/images/";
+    public static final String PROJECT_PATH= System.getProperty("user.dir");
+    public static final String IMAGES_PATH = "/src/main/resources/images";
 }
