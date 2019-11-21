@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     DinnerComponent,
     EventsComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
