@@ -23,7 +23,7 @@ public class Customer implements Serializable {
     @Column(name = "id", updatable = false, nullable = false)
     private int id;
     
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone="Europe/Berlin")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Europe/Berlin")
     private Timestamp bookingDateTime;
     
     private String name;
