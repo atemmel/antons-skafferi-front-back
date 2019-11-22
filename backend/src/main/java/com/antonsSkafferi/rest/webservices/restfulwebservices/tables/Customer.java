@@ -34,6 +34,16 @@ public class Customer implements Serializable {
     private DinnerTable dinnerTable;
     
     
+    public Customer(){
+        // required for Jackson
+    }
+    public Customer(int id, String name, String email, Timestamp bookingDateTime){
+    
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.bookingDateTime = bookingDateTime;
+    }
     
     /**
      * @return the id
@@ -63,7 +73,6 @@ public class Customer implements Serializable {
     public void setBookingDateTime(Timestamp bookingDateTime) {
         this.bookingDateTime = bookingDateTime;
     }
-    
     
     
     /**

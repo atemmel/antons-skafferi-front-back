@@ -2,9 +2,19 @@
     <h2>Stuff from database in Database Component</h2>
     <div *ngFor ="let item of items">Name: {{item.name}} @ {{item.bookingDateTime}}</div>
 </div>
+<div class ="card" style="width: 30rem;">
+<h1>TestComponent to booking send Json Whit Database</h1>
+<div class="form-group">
+    <div class="form-group col-md-6">
+        <label for="bookingDate">Bookingdate</label>
+        <angular2-date-picker class="form-control" id = "datetimepicker" [(ngModel)]="date" [settings] = "settings" style="padding: 0.2 rem 0.1 rem" ></angular2-date-picker>
+    </div>
+</div>
+
 <form>
-    <h1>TestComponent to send Json Whit Database</h1>
-    <div class="form-row">
+
+    
+    <div class="form-group">
         <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
             <input (input)="customerEmail=$event.target.value" type="text" class="form-control" id="customerEmail" name="customerEmail" [(ngModel)]="customerEmail"  placeholder={{customerEmail}}>
@@ -15,17 +25,13 @@
         </div>
     </div>
 </form>
-    
-<div class="form-row">
-    <div class="form-group col-md-6">
-        <label for="bookingDate">Bookingdate</label>
-        <angular2-date-picker class="form-control" id = "datetimepicker" [(ngModel)]="date" [settings] = "settings" style="padding: 0.2 rem 0.1 rem" ></angular2-date-picker>
-    </div>
-</div>
-{{date}}
-{{date | date   : 'yyyy-MM-dd hh:mm' }}
 
-<div>
+<div align="right">
     <button (click)="onClickMe()">Add reservation!</button>
     {{clickMessage}}
 </div>
+</div>
+
+<!--{{date}}
+{{date | date   : 'yyyy-MM-dd hh:mm' }}
+-->
