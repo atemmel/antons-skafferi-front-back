@@ -1,3 +1,4 @@
-<div>
-    <img *ngIf="image" [src]="image" class="img-fluid">
-</div>
+<!--Before-->
+<!--<img *ngIf="image" [src]="image" class="img-fluid" id="header-img">-->
+<!--After-->
+<div id="header-img" *ngIf="image" [style.backgroundImage]="image" id="header-img"></div>
