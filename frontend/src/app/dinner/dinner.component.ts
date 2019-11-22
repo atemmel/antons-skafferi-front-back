@@ -32,7 +32,7 @@ export class DinnerComponent implements OnInit {
   }
 
   getMenu() {
-    let menuObject: Object;
+    let menuObject: object;
     menuObject = {
       chefsChoice: ["Vildssvin", "Vild lax", "Ren"],
       starters: ["Skagen toast", "Vtilöksbröd", "Tatar", "Mozarella pinnar"],

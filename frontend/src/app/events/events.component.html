@@ -1,1 +1,37 @@
-<p>events works!</p>
+<section>
+  <div id="latest" class="container">
+    <div *ngIf="events === null"><p>Inga kommande event</p></div>
+    <div *ngIf="events != null && newestEvents.length == 1">
+      <div class="card col-6">
+        <div class="card-body">
+          <h5 class="card-title">{{newestEvents[0].title}}</h5>
+          <p class="card-text">{{newestEvents[0].date}}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="events != null && newestEvents.length == 2" class="row">
+      <div class="card col-6" *ngFor="let event of newestEvents">
+        <div class="card-body">
+          <h5 class="card-title">{{event.title}}</h5>
+          <p class="card-text">{{event.date}}</p>
+        </div>
+      </div>
+    </div>
+      <button *ngIf="events.length>2 " id="showEventsButton" class="btn btn-secondary" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
+    </div>
+  <div id="allEvents" class="collapse">
+
+    <div id="allEventsCarousel" class="carousel slide carousel-multi-item v-2">
+      <div class="controls-top">
+        <a class="btn-floating" href="#carousel-example-multi" data-slide="prev"><i
+          class="fas fa-chevron-left"></i></a>
+        <a class="btn-floating" href="#carousel-example-multi" data-slide="next"><i
+          class="fas fa-chevron-right"></i></a>
+      </div>
+      <div class="carousel-inner v-2" role="listbox">
+
+      </div>
+    </div>
+
+  </div>
+</section>
