@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {computeLineStartsMap} from '@angular/core/schematics/utils/line_mappings';
 
 @Component({
   selector: 'app-events',
