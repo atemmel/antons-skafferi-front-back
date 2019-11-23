@@ -40,14 +40,6 @@ export class EventsComponent implements OnInit {
     console.log(this.newestEvents);
     console.log(this.events);
 
-    /*if (eventLenght < 2) {
-      this.newestEvents = null;
-    } else {
-      this.newestEvents = {events: [ {title: this.events.events[0].title, date: this.events.events[0].date},
-          {title: this.events.events[1].title, date: this.events.events[1].date}]};
-    }
-    console.log(this.events);
-    console.log(this.newestEvents);*/
   }
 
 }
