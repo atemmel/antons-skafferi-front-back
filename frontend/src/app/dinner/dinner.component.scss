@@ -5,11 +5,12 @@
 
 #dinner{
   max-width: none;
+  //Tog bort underline
   h3{
     font-family: dealers;
     text-align: center;
-    text-decoration: underline;
   }
+  //På rät väg
   ul{
     list-style-type: none;
     li{
@@ -47,4 +48,19 @@
 #menuButton{
   display: block;
   align-self: flex-end;
+}
+
+#dinner-image{
+  background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+  min-height: 800px;
+  min-width: 800px;
+  background-image: url("src/assets/images/reindeerstew.jpg");
+}
+
+//La en font som ser najs för text
+.kockensVal{
+  font-family: 'Nunito', sans-serif;
 }

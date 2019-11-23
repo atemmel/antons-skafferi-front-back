@@ -14,22 +14,12 @@ export class DinnerComponent implements OnInit {
   imageName: string = "reindeerstew.jpg";
   folderName: string = "website";
 
-  constructor(private service: GetImageService, private sanitizer: DomSanitizer) { }
+  constructor() { }
 
   ngOnInit() {
     this.getMenu();
-    this.getImage();
   }
 
-  getImage() {
-    this.service.getImage(this.folderName, this.imageName).subscribe(data => {
-      // Tells angular that the link and the data is safe.
-      this.image = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data);
-
-    }, error => {
-      console.log(error);
-    });
-  }
 
   getMenu() {
     let menuObject: object;

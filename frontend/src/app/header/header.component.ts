@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GetImageService } from '../services/data/get-image.service';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-header',
@@ -12,22 +10,10 @@ export class HeaderComponent implements OnInit {
   test: boolean = true;
 
   imageName: string = 'restaurant_1920x1280.jpg';
-  folderName: string = 'website';
-  constructor(private service: GetImageService, private sanitizer: DomSanitizer) { }
+  constructor() { }
 
 
   ngOnInit() {
-    this.getHeaderImage();
-  }
-
-  getHeaderImage() {
-    this.service.getImage(this.folderName, this.imageName).subscribe(data => {
-      // Tells angular that the link and the data is safe.
-      this.image = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data);
-
-    }, error => {
-    console.log(error);
-    });
   }
 
 }

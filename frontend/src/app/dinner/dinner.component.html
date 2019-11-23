@@ -1,20 +1,21 @@
 <section>
     <div id="dinner" class="container">
         <div class="row">
-            <div class="col container">
-              <div class="col">
-                <h3>Kockens Val</h3>
+              <div class="col container mt-6">
+                <!-- Vi behöver ha mellanrum mellan "Kockens val" och det som är ovanför.
+                Det här är även inte responsive. om jag gör den mindre så spårar det.
+                Jag tror att vi ska bara skriva som text och gör på ett snyggt sätt om dukollar apa så blir det najs-->
+                <h3 class="text-center">Kockens Val</h3>
                 <ul *ngIf="menu" class="nopadding">
-                  <li *ngFor="let item of menu.chefsChoice" class="card card-body">{{item}}</li>
+                  <li *ngFor="let item of menu.chefsChoice" class="kockensVal">{{item}}</li>
                 </ul>
                 <div id="dinnerBottom">
                   <a href="#" id="bookButton" class="btn btn-success">Boka bord</a>
                   <button id="menuButton" class="btn btn-secondary" data-toggle="collapse" data-target="#dinnerMenu" aria-expanded="false" aria-controls="dinnerMenu">Visa menyn</button>
                 </div>
               </div>
-            </div>
-            <div class="col-6">
-              <img *ngIf="image" [src]="image" class="img-fluid">
+            <div id="dinner-image" class="container col-6">
+              
             </div>
         </div>
     </div>
