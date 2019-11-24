@@ -1,40 +1,39 @@
-<section>
-    <div id="dinner" class="container bg-dark">
-        <div class="row">
-              <div class="col-md-6 container mt-6">
-                <!-- Vi behöver ha mellanrum mellan "Kockens val" och det som är ovanför.
-                Det här är även inte responsive. om jag gör den mindre så spårar det.
-                Jag tror att vi ska bara skriva som text och gör på ett snyggt sätt om dukollar apa så blir det najs-->
-                <div id="chefsChoice" class="bg-white">
-                  <h3 class="text-center">{{menu[0].title}}</h3>
-                  <ul *ngIf="menu" class="nopadding">
-                    <li *ngFor="let item of menu[0].dishes" class="kockensVal">
-                      <h5>{{item.title}}</h5>
-                      <p>{{item.description}}</p>
-                    </li>
-                  </ul>
-                </div>
-                <div id="dinnerBottom" class="container">
-                  <div class="row">
-                    <div class="col-6">
-                      <button id="bookButton" class="btn btn-success">Boka bord</button>
-                    </div>
-                    <div class="col-6">
-                      <button id="menuButton" class="btn btn-secondary float-right" data-toggle="collapse" data-target="#dinnerMenu" aria-expanded="false" aria-controls="dinnerMenu">Visa menyn</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <div id="dinner-image" class="container col-md-6">
+<section class="nomargin nopadding bg-dark">
+  <div id="title" class="parchementBackground nopadding">
+    <h2 class="nomargin nopadding">Kvällsmeny</h2>
+  </div>
+    <div id="dinner" class="container-fluid nopadding nomargin">
+        <div class="row nomargin nopadding">
+          <div id="chefsChoice" class=" col nopadding nomargin parchementBackground">
+            <h3 class="text-center">{{menu[0].title}}</h3>
+            <ul *ngIf="menu" class="nopadding">
+              <li *ngFor="let item of menu[0].dishes" class="kockensVal">
+                <h5>{{item.title}}</h5>
+                <p>{{item.description}}</p>
+              </li>
+            </ul>
+          </div>
 
-            </div>
+          <div id="dinner-image" class="col-sm nopadding nomargin">
+          </div>
         </div>
+        <div id="dinnerBottom" class="row nopadding bg-dark">
+          <div class="col-6">
+            <button id="bookButton" class="btn btn-success">Boka bord</button>
+          </div>
+          <div class="col-6">
+            <button id="menuButton" class="btn btn-secondary float-right" data-toggle="collapse" data-target="#dinnerMenu" aria-expanded="false" aria-controls="dinnerMenu">Visa menyn</button>
+          </div>
+        </div>
+    </div>
+    <div  class="container nopadding nomargin">
+
     </div>
 
 
     <div id="dinnerMenu" *ngIf="menu" class="container mx-auto collapse bg-dark">
     <div class="row">
-        <div class="col bg-white margin1em">
+        <div class="col bg-white margin1em parchementBackground">
         <h3 class="">{{menu[1].title}}</h3>
         <ul class="nopadding">
             <li *ngFor="let item of menu[1].dishes">
@@ -43,7 +42,7 @@
             </li>
         </ul>
         </div>
-        <div class="col bg-white margin1em">
+        <div class="col bg-white margin1em parchementBackground">
           <h3 class="">{{menu[2].title}}</h3>
           <ul class="nopadding">
             <li *ngFor="let item of menu[2].dishes">
@@ -54,7 +53,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col bg-white margin1em">
+        <div class="col bg-white margin1em parchementBackground">
           <h3 class="">{{menu[3].title}}</h3>
           <ul class="nopadding">
             <li *ngFor="let item of menu[3].dishes">
@@ -63,7 +62,7 @@
             </li>
           </ul>
         </div>
-        <div class="col bg-white margin1em">
+        <div class="col bg-white margin1em parchementBackground">
           <h3 class="">{{menu[4].title}}</h3>
           <ul class="nopadding">
             <li *ngFor="let item of menu[4].dishes">
