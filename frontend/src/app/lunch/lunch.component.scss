@@ -1,32 +1,51 @@
 #lunch {
     max-width: none;
     width: 100%;
+    background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+    min-height: 850px; 
+    background-image: url("src/assets/images/restaurant_picture_2_1920x1080.jpg");
+
+}
+
+.card {
+    background-image: url("src/assets/images/paper_menu_1059x1317.jpg");
+	background-size: cover;
+}
+
+ul li {
+    list-style-type: none;
 }
 
 #lunch-header {
     text-align: center;
     font-family: dealers;
-    color: white;
-    font-size: 35px;
-    font-size: 4.9vw;
+    color: black;
+    font-size: 50px;
 }
 
-.lunch-alternatives {
+#lunch-header-div {
+    background-image: url("src/assets/images/lunch_header_bakgrund_708x146.jpg");
+    background-size: cover;
+    
+}
+
+.lunch-type {
     font-weight: bold;
     width: 100%;
     list-style-type: none;
     font-family: sans-serif;
-    font-size: 12px;
-    font-size: 1.4vw;
+    font-size: 20px;
 }
 
-.lunch-description {
+.lunch-name {
     margin: 0 !important;
     padding: 0 !important;
     list-style-type: none;
     font-family: sans-serif;   
-    font-size: 10px;
-    font-size: 1.295vw; 
+    font-size: 14px;
 }
 
 .dealer-font {
@@ -35,6 +54,5 @@
 
 .lunch-menu-day {
     text-align: center;
-    font-size: 30px;
-    font-size: 3.5vw;
+    font-size: 35px;
 }
