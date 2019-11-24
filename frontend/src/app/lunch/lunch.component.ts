@@ -66,15 +66,10 @@ export class LunchComponent implements OnInit {
         "type": "För köttälskare"
       },
       {
-<<<<<<< HEAD
         "mealName": "Clam Showder på 'Antons vis' med aioli",
         "day": 4,
         "type": "Fisk"
-=======
-        "mealName": "Clam Showder på 'Antons vis, med extra fis' med aioli",
-        "day": 4,
-        "type": "Mustig specialare *wink wink*"
->>>>>>> f4baa03b1d81fad086b26367676c7b22cbbe7e02
+
       },
       {
         "mealName": "Örtbakad torskfilé med gratinerad potatismos",
@@ -89,11 +84,7 @@ export class LunchComponent implements OnInit {
       {
         "mealName": "Ärtsoppa med pannkakor, grädde & sylt",
         "day": 0,
-<<<<<<< HEAD
         "type": "Klassiker"
-=======
-        "type": "Fis-ammunition"
->>>>>>> f4baa03b1d81fad086b26367676c7b22cbbe7e02
       },
       {
         "mealName": "Laxpudding med skirat smör och lingonsylt",
@@ -106,15 +97,9 @@ export class LunchComponent implements OnInit {
         "type": "Kötträtt"
       },
       {
-<<<<<<< HEAD
         "mealName": "Köttfärsås och spaghetti",
         "day": 2,
         "type": "Kött"
-=======
-        "mealName": "Antons Rövhål",
-        "day": 2,
-        "type": "För den våghalsiga"
->>>>>>> f4baa03b1d81fad086b26367676c7b22cbbe7e02
       },
       {
         "mealName": "Fish and chips med remouladsås",
