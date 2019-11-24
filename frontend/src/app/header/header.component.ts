@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   image: any;
-  test: boolean = true;
-
+  imageBase64: any;
+  newStyle = 'background-image: url("data:image/jpg;base64,' + this.image + '")';
   imageName: string = 'restaurant_1920x1280.jpg';
   constructor() { }
 
 
   ngOnInit() {
+
   }
 
 }

@@ -25,3 +25,8 @@ The website will be available at `localhost:4200`.
 
 To start the backend component, open the project in netbeans and select `run`. 
 Netbeans should solve most problems, but you may have to right-click the project and select `resolve-problems`.
+You can also start the backend via the command line:
+```sh
+cd backend
+./start-backend
+```
