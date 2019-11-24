@@ -1,0 +1,87 @@
+
+#footer {
+    max-width: none;
+    width: 100%;
+    overflow: hidden;
+}
+
+#footer-right-block {
+    border: 4px;
+    border-style: solid;
+    border-color: black;
+}
+
+#footer-middle-block {
+    background-image: url("src/assets/images/restaurant_frontside_4000x2667.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+    min-height: 375px; 
+
+
+    
+    border: 4px;
+    border-style: solid;
+    border-color: black;
+}
+
+#footer-left-block {
+    border: 4px;
+    border-style: solid;
+    border-color: black;
+}
+
+#opening-hours {
+    font-size: 60px;
+    color: black;
+    font-style: sans-serif;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#times-div ul li {
+    font-size: 25px;
+    color: black;
+    list-style-type: none;
+    font-style: sans-serif;
+    text-align: left;
+}
+
+#days-div ul li {
+    font-size: 25px;
+    color: black;
+    list-style-type: none;
+    font-style: sans-serif;
+    text-align: right;
+}
+
+#days-div {
+    width: 50%;
+    float: left;
+}
+
+#times-div {
+    width: 50%;
+    float: right;
+}
+
+#contact-header {
+    font-size: 60px;
+    color: black;
+    font-style: sans-serif;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+p, h3 {
+    font-size: 25px;
+    color: black;
+    font-style: sans-serif;
+    text-align: center;
+    margin: 0 !important;
+}
+
+#directions-button {
+    color: black;
+    float: right;
+}
