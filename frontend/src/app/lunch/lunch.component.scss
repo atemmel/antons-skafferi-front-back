@@ -22,8 +22,24 @@ ul li {
 #lunch-header {
     text-align: center;
     font-family: dealers;
+<<<<<<< HEAD
     color: black;
     font-size: 50px;
+=======
+    color: white;
+    font-size: 50px;
+    /*font-size: 4.9vw; Dynamic text size*/
+}
+
+img {
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;
+}
+
+ul {
+    list-style-type: none;
+>>>>>>> f4baa03b1d81fad086b26367676c7b22cbbe7e02
 }
 
 #lunch-header-div {
@@ -38,6 +54,10 @@ ul li {
     list-style-type: none;
     font-family: sans-serif;
     font-size: 20px;
+<<<<<<< HEAD
+=======
+    /*font-size: 1.4vw; Dynamic text size*/
+>>>>>>> f4baa03b1d81fad086b26367676c7b22cbbe7e02
 }
 
 .lunch-name {
@@ -45,7 +65,12 @@ ul li {
     padding: 0 !important;
     list-style-type: none;
     font-family: sans-serif;   
+<<<<<<< HEAD
     font-size: 14px;
+=======
+    font-size: 15px;
+    /*font-size: 1.295vw;  Dynamic text size*/
+>>>>>>> f4baa03b1d81fad086b26367676c7b22cbbe7e02
 }
 
 .dealer-font {
@@ -54,5 +79,11 @@ ul li {
 
 .lunch-menu-day {
     text-align: center;
+<<<<<<< HEAD
     font-size: 35px;
 }
+=======
+    font-size: 40px;
+    /*font-size: 3.5vw; Dynamic text size*/
+}
+>>>>>>> f4baa03b1d81fad086b26367676c7b22cbbe7e02

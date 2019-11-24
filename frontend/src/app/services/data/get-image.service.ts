@@ -12,6 +12,7 @@ export class GetImageService {
 
   // Sends Http request to backend for a specific image
   getImage(folderName: string, name: string) {
+    console.log(AppSettings.BACKEND_URL + AppSettings.IMAGES_PATH + 'folder=' + folderName + '&image=' + name)
     return this.http.get(AppSettings.BACKEND_URL + AppSettings.IMAGES_PATH + 'folder=' + folderName + '&image=' + name, {
       responseType: 'text'
    });
