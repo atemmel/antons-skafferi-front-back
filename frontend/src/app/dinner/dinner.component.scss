@@ -2,20 +2,62 @@
   font-family: sans-serif;
 }
 
+.margin1em{
+  margin: 1em;
+}
+
+#chefsChoice{
+  padding-top: 1em;
+  max-height: 90%;
+  height: 90%;
+}
+
+
 
 #dinner{
   max-width: none;
+  height: 100%;
+  //Tog bort underline
   h3{
     font-family: dealers;
     text-align: center;
-    text-decoration: underline;
   }
+  //På rät väg
   ul{
     list-style-type: none;
     li{
       text-align: center;
+      h5{
+        font-weight: bold;
+      }
     }
   }
+}
+
+#dinnerBottom{
+  //padding: 1em;
+  line-height: 100%;
+  width: 100%;
+  height: 10%;
+  margin-bottom: 20em;
+  div{
+    height: 100%;
+  }
+
+}
+
+#bookButton{
+  margin-top: 1em;
+  align-self: flex-start;
+  display: block;
+  margin-bottom: 1em;
+}
+
+
+#menuButton{
+  margin-top: 1em;
+  display: inline-block;
+  align-self: self-end;
 }
 
 #dinnerMenu{
@@ -23,28 +65,30 @@
   h3{
     font-family: dealers;
     text-align: center;
-    text-decoration: underline;
   }
   ul{
     list-style-type: none;
     li{
       text-align: center;
+      h5 {
+        font-weight: bold;
+      }
     }
   }
 }
-#dinnerBottom{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2em;
 
+
+#dinner-image{
+  background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+  min-height: 800px;
+  min-width: 800px;
+  background-image: url("src/assets/images/reindeerstew.jpg");
 }
 
-#bookButton{
-  width: 10em;
-  margin-right: 1em;
-}
-#menuButton{
-  display: block;
-  align-self: flex-end;
+//La en font som ser najs för text
+.kockensVal{
+  font-family: 'Nunito', sans-serif;
 }

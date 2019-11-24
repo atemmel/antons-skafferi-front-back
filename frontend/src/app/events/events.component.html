@@ -1,1 +1,54 @@
-<p>events works!</p>
+<section>
+  <div id="latest" class="container">
+    <div *ngIf="events === null"><p>Inga kommande event</p></div>
+    <div *ngIf="events != null && newestEvents.length == 1">
+      <div class="card col-6">
+        <div class="card-body">
+          <h5 class="card-title">{{newestEvents[0].title}}</h5>
+          <p class="card-text">{{newestEvents[0].date}}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="events != null && newestEvents.length == 2" class="row">
+      <div class="card col-6" *ngFor="let event of newestEvents">
+        <div class="card-body">
+          <h5 class="card-title">{{event.title}}</h5>
+          <p class="card-text">{{event.date}}</p>
+        </div>
+      </div>
+    </div>
+      <button *ngIf="events.length>2 " id="showEventsButton" class="btn btn-secondary" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
+    </div>
+
+
+
+    <div id="allEvents" class="collapse">
+      <div id="allEventCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let event of events let i = index" [ngClass]="{'active' : i == 0}">
+            <div class="container">
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="card col-6">
+                  <img class="card-img-top img-fluid" src="https://placehold.it/1920x1080/8e41f4/fff" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{event.title}}</h5>
+                    <p class="card-text">{{event.date}}</p>
+                  </div>
+                  <div class="col-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#allEventCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#allEventCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+</section>
