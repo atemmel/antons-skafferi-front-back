@@ -3,10 +3,25 @@
 
 .nopadding {
     padding: 0 !important;
-    margin: 0 !important;
+
  }
+
+.nomargin{
+  margin: 0 !important;
+}
+
+.parchementBackground{
+  background-image: url("src/assets/images/paper_menu_1059x1317.jpg");
+  background-size: cover;
+}
+
 
  @font-face {
     font-family: dealers;
     src: url(assets/Fonts/dealers.otf) format("opentype");
   }
+
+
+.dealers{
+  font-family: dealers;
+}

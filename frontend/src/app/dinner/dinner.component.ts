@@ -9,8 +9,6 @@ export class DinnerComponent implements OnInit {
 
   menu: Array<MenuItem> = [];
   image: any;
-  imageName: string = "reindeerstew.jpg";
-  folderName: string = "website";
 
   constructor() {
   }
@@ -32,7 +30,7 @@ export class DinnerComponent implements OnInit {
       "Vilt": [{"title": "Renskav", "description": "Renskav med potatismos"},
         {"title": "Älgfilè", "description": "Älgfilè med potatisgrattäng"},
         {"title": "Bäverstek", "description": "Bäverstek med potatis"}],
-      "A La Carté": [{"title": "Lax", "description": "Lax med potatismos"},
+      "À La Carte": [{"title": "Lax", "description": "Lax med potatismos"},
         {"title": "Oxfilè", "description": "Oxfilè med potatisgratäng"},
         {"title": "Kötbullar", "description": "Köttbullar med potatismos med lingonsylt"}],
       "Dryck": [{"title": "Cola", "description": "Burk(33cl)"},
@@ -72,7 +70,7 @@ class MenuItem {
   title: string;
   public dishes: Array<Dish> = [];
 
-  constructor(title: string){
+  constructor(title: string) {
     this.title = title;
   }
 
