@@ -62,7 +62,7 @@ public class CustomerService {
     
         customerRepository.deleteAll();
     }
-    
+    //Use this to TURKMEK stuff where you can tryout stuff.
     public void updateTable(int id, String email ,String Name, int dinnertable, String bookingdatetime) throws SQLException, ClassNotFoundException{
         try{
             Class.forName("org.h2.Driver");
@@ -81,6 +81,8 @@ public class CustomerService {
               
             }
     }
+    
+    //This is for listing the customers that visiting the resturang today, and make the resault to a JSON object. 
     public List customersForToday()
     {
         
@@ -104,11 +106,9 @@ public class CustomerService {
                     ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
   
 
-                    
+                    //Finding the Colomn name inside the database and the data inside, parse them to map, then everything to a list == JSON
                     while(resultSet.next()){
                         Map<String,Object> columnMap = new HashMap<String, Object>();
-                    //System.out.println(resultSetMetaData.getColumnLabel(2));
-                    //System.out.println(resultSet.getString(resultSetMetaData.getColumnName(2)));
                         
                         for(int columnIndex=1; columnIndex <= resultSetMetaData.getColumnCount(); columnIndex++){
                             if(resultSet.getString(resultSetMetaData.getColumnName(columnIndex)) != null)
@@ -128,14 +128,6 @@ public class CustomerService {
                 e.printStackTrace();
             }
         return null;
-    }
-
-    public void updateTable(String email, String name, Dinnertable dinnertable) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void updateTable(String email, String name, Dinnertable dinnertable, Timestamp bookingdatetime) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
     

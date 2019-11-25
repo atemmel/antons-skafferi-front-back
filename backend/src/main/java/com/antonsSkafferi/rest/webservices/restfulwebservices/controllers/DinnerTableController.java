@@ -53,16 +53,10 @@ public class DinnerTableController {
     }*/
     
    
-    @PostMapping("/dinnertables")
+    /*@PostMapping("/dinnertables")
     private int saveDinnerTable(@RequestBody Dinnertable dinnerTable){
         dinnerTableService.saveOrUpdate(dinnerTable);
         return dinnerTable.getDinnertableid();
-    }
-     /*   @PostMapping("/dinnertables/update")
-    private int updateCustomer(@RequestBody Dinnertable dinnerTable) throws SQLException, ClassNotFoundException{
-        
-        //dinnerTableService.updateTable(5, "NAME", dinnerTable.getName.toString());
-        //return customer.getId();
     }*/
     
     

@@ -2,38 +2,36 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Dinnertable implements Serializable {
     
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dinnertableid", updatable = false, nullable = false)
     private int dinnertableid;
+    //We dont want the dinnertables values to change when we are running, change them on init instead.
     @Column(name = "sizesoftable", updatable = false, nullable = false)
     private int sizesoftable;
     @Column(name = "description", updatable = false, nullable = false)
     private String description;
-    
+    //What the relation is mapped to customer <-- One to One --> dinnertables.
     @OneToOne(mappedBy="dinnertable")
     private Customer customer;
     
 
     public Dinnertable(){}
     
+    //We only wanna post what table the customer is going to be using at the resturang.
     public Dinnertable(int dinnertableid){
     
         this.dinnertableid = dinnertableid;
     
     }
-    
+    //maybe redudant dunno yet.
     public Dinnertable(int dinnertableid, String description, int sizeoftable){
         this.dinnertableid = dinnertableid;
         this.description = description;

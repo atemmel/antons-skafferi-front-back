@@ -8,11 +8,7 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.CustomerService;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,9 +53,10 @@ public class CustomerController {
     
     /*Request POST
     {
-	"bookingDateTime":"2017-07-16T22:54:01.000Z",
+	"bookingDateTime":"2017-07-16 22:54",
         "name":"Example",
         "email": "Example@example.com"
+        "dinnertable": 1
     }
     */
     @PostMapping("/customers")
