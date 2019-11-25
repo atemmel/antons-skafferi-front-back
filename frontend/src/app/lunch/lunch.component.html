@@ -1,6 +1,6 @@
 <section>
     <!--Lunchcontainer with cards for each day-->
-    <div *ngIf="lunchMeals" id="lunch" class="container nopadding bg-dark">
+    <div *ngIf="lunchMeals" id="lunch" class="container nopadding nomargin bg-dark">
         
         <div id="lunch-header-div" class="mx-auto">
             <h2 id="lunch-header" class="dealer-font">Veckans Lunch</h2>
@@ -14,10 +14,10 @@
                     <h5 *ngIf="i==2" class="card-title dealer-font lunch-menu-day">Onsdag</h5>
                     <h5 *ngIf="i==3" class="card-title dealer-font lunch-menu-day">Torsdag</h5>
                     <h5 *ngIf="i==4" class="card-title dealer-font lunch-menu-day">Fredag</h5>
-                    <ul class="align-items-stretch nopadding">    
-                        <li *ngFor="let lunchMeal of day; let j = index" class="nopadding text-center">
-                            <p class="lunch-type nopadding">{{lunchMeal.type}}</p>
-                            <p class="nopadding lunch-name">{{lunchMeal.mealName}}</p>
+                    <ul class="align-items-stretch nopadding nomargin">    
+                        <li *ngFor="let lunchMeal of day; let j = index" class="nopadding nomargin text-center">
+                            <p class="lunch-type nopadding nomargin">{{lunchMeal.type}}</p>
+                            <p class="nopadding nomargin lunch-name">{{lunchMeal.mealName}}</p>
                         </li>
                     </ul>
                 </div>

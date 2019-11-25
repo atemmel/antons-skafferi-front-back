@@ -1,5 +1,5 @@
-<section class="nomargin nopadding bg-dark">
-  <div id="title" class="parchementBackground nopadding">
+<section class="nomargin nopadding">
+  <div id="title" class="parchementBackground nopadding nomargin">
     <h2 class="nomargin nopadding">Kvällsmeny</h2>
   </div>
     <div id="dinner" class="container-fluid nopadding nomargin">
@@ -12,11 +12,15 @@
                 <p>{{item.description}}</p>
               </li>
             </ul>
+            
+            <button id="bookButton" class="btn btn-success">Boka bord</button>
           </div>
 
           <div id="dinner-image" class="col-sm nopadding nomargin">
+            <button id="menuButton" class="btn btn-secondary float-right" data-toggle="collapse" data-target="#dinnerMenu" aria-expanded="false" aria-controls="dinnerMenu">Visa menyn</button>
           </div>
         </div>
+<!--
         <div id="dinnerBottom" class="row nopadding bg-dark">
           <div class="col-6">
             <button id="bookButton" class="btn btn-success">Boka bord</button>
@@ -24,14 +28,14 @@
           <div class="col-6">
             <button id="menuButton" class="btn btn-secondary float-right" data-toggle="collapse" data-target="#dinnerMenu" aria-expanded="false" aria-controls="dinnerMenu">Visa menyn</button>
           </div>
-        </div>
+        </div>-->
     </div>
     <div  class="container nopadding nomargin">
 
     </div>
 
 
-    <div id="dinnerMenu" *ngIf="menu" class="container mx-auto collapse bg-dark">
+    <div id="dinnerMenu" *ngIf="menu" class="container mx-auto collapse">
     <div class="row">
         <div class="col bg-white margin1em parchementBackground">
         <h3 class="">{{menu[1].title}}</h3>

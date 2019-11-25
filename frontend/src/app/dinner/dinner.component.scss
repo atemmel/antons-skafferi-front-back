@@ -63,6 +63,13 @@ section{
 
 #dinnerMenu{
   max-width: none;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("src/assets/images/restaurant_1920x1280.jpg");
+
   h3{
     font-family: dealers;
     text-align: center;
@@ -93,4 +100,15 @@ section{
 //La en font som ser najs för text
 .kockensVal{
   font-family: 'Nunito', sans-serif;
+}
+
+#menuButton {
+  position: absolute;
+  right:    0;
+  bottom:   0;
+}
+
+#bookButton {
+  position: absolute; 
+  bottom: 0;  
 }
