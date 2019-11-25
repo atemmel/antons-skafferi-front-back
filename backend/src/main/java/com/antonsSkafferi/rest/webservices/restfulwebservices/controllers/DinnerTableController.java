@@ -5,7 +5,7 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.DinnerTable;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dinnertable;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.DinnerTableService;
 import java.sql.SQLException;
 import java.util.List;
@@ -31,13 +31,13 @@ public class DinnerTableController {
     
     @GetMapping("/dinnertables")
     //Request GET
-    private List<DinnerTable> getAllDinnerTables() throws SQLException, ClassNotFoundException {
+    private List<Dinnertable> getAllDinnerTables() throws SQLException, ClassNotFoundException {
         return dinnerTableService.getAllDinnerTables();
     }
     
     @GetMapping("/dinnertables/{id}")
     //Request GET
-    private DinnerTable getTable(@PathVariable("id") int id){
+    private Dinnertable getTable(@PathVariable("id") int id){
         return dinnerTableService.getDinnerTablesById(id);
     }
     
@@ -54,12 +54,12 @@ public class DinnerTableController {
     
    
     @PostMapping("/dinnertables")
-    private int saveDinnerTable(@RequestBody DinnerTable dinnerTable){
+    private int saveDinnerTable(@RequestBody Dinnertable dinnerTable){
         dinnerTableService.saveOrUpdate(dinnerTable);
-        return dinnerTable.getId();
+        return dinnerTable.getDinnertableid();
     }
      /*   @PostMapping("/dinnertables/update")
-    private int updateCustomer(@RequestBody DinnerTable dinnerTable) throws SQLException, ClassNotFoundException{
+    private int updateCustomer(@RequestBody Dinnertable dinnerTable) throws SQLException, ClassNotFoundException{
         
         //dinnerTableService.updateTable(5, "NAME", dinnerTable.getName.toString());
         //return customer.getId();

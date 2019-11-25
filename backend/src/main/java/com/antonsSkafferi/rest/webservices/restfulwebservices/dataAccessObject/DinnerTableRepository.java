@@ -5,13 +5,13 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.DinnerTable;
-import org.springframework.data.repository.CrudRepository;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dinnertable;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author fredriksellgren
  */
-public interface DinnerTableRepository extends CrudRepository<DinnerTable,Integer> { 
+public interface DinnerTableRepository extends JpaRepository<Dinnertable,Integer> { 
     
 }

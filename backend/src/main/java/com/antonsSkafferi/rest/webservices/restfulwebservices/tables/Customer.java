@@ -12,68 +12,67 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Customer implements Serializable {
 
 
-
+    
     @Id
+    //WE NEED TO FIX AUTO SHIT. DONT WORK WHEN POST CUSTOMER AT TALBE.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
-    private int id;
+    @Column(name = "customerid", updatable = false, nullable = false)
+    private int customerid;
     
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Europe/Berlin")
-    private Timestamp bookingDateTime;
+    private Timestamp bookingdatetime;
     
     private String name;
     private String email;
     
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name ="dinnerTable_id", referencedColumnName = "id")
-    private DinnerTable dinnerTable;
+    @JoinColumn(name ="dinnertableid")
+    private Dinnertable dinnertable;
     
     
-    public Customer(){
-        // required for Jackson
-    }
-    public Customer(int id, String name, String email, Timestamp bookingDateTime){
+    public Customer(){};
     
-        this.id = id;
+    public Customer(int customerid, String name, String email, Timestamp bookingdatetime){
+    
+        this.customerid = customerid;
         this.name = name;
         this.email = email;
-        this.bookingDateTime = bookingDateTime;
+        this.bookingdatetime = bookingdatetime;
     }
     
     /**
      * @return the id
      */
-    public int getId() {
-        return id;
+    public int getCustomerid() {
+        return customerid;
     }
 
     /**
      * @param id the id to set
      */
-    /*public void setId(int id) {
-        this.id = id;
-    }*/
-
+    public void setCustomerid(int customerid) {
+        this.customerid = customerid;
+    }
     
     /**
-     * @return the bookingDateTime
+     * @return the bookingdatetime
      */
-    public Timestamp getBookingDateTime() {
-        return bookingDateTime;
+    public Timestamp getBookingdatetime() {
+        return bookingdatetime;
     }
 
     /**
-     * @param bookingDateTime the bookingDateTime to set
+     * @param bookingdatetime the bookingdatetime to set
      */
-    public void setBookingDateTime(Timestamp bookingDateTime) {
-        this.bookingDateTime = bookingDateTime;
+    public void setBookingdatetime(Timestamp bookingdatetime) {
+        this.bookingdatetime = bookingdatetime;
     }
-    
     
     /**
      * @return the name
@@ -88,7 +87,7 @@ public class Customer implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
+    
     /**
      * @return the email
      */
@@ -103,9 +102,24 @@ public class Customer implements Serializable {
         this.email = email;
     }
     
+        /**
+     * @return the dinnertable
+     */
+    public Dinnertable getDinnertable() {
+        return dinnertable;
+    }
+
+    /**
+     * @param dinnertable the dinnertable to set
+     */
+    public void setDinnertable(Dinnertable dinnertable) {
+        this.dinnertable = dinnertable;
+    }
+    
+    
     @Override
     public String toString(){
-        return "Customer [id=" + getId() + ", name=" + getName() + ", email=" + getEmail() + ", bookingDateTime=" + getBookingDateTime()+"]";
+        return "Customer [customerid=" + getCustomerid() + ", name=" + getName() + ", bookingDateTime=" + getBookingdatetime()+", email=" + getEmail() + ", dinnertable = " + getDinnertable().getDinnertableid() + "]";
     }
     
 }

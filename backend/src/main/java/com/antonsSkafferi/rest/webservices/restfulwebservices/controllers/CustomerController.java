@@ -8,7 +8,11 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.CustomerService;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +30,6 @@ public class CustomerController {
     
     @Autowired
     CustomerService customerService;
-    
     
     @GetMapping("/customers")
     //Request GET
@@ -61,14 +64,20 @@ public class CustomerController {
     */
     @PostMapping("/customers")
     private int saveCustomer(@RequestBody Customer customer){
+        System.out.println(customer);
         customerService.saveOrUpdate(customer);
-        return customer.getId();
+        
+        return customer.getCustomerid();
     }
         @PostMapping("/customers/update")
     private int updateCustomer(@RequestBody Customer customer) throws SQLException, ClassNotFoundException{
         
-        customerService.updateTable(5, "NAME", customer.getName().toString());
-        return customer.getId();
+        customerService.updateTable(customer.getCustomerid(), customer.getEmail() ,customer.getName(), 2, customer.getBookingdatetime().toString());
+        return 2;
+    }
+    @GetMapping("/customers/today")
+    private List customersForToday(){
+         return customerService.customersForToday();
     }
     
 }
