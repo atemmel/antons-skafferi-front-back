@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetImageService } from '../services/data/get-image.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { getLocaleDayNames } from '@angular/common';
 
 @Component({
   selector: 'app-lunch',
@@ -10,6 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class LunchComponent implements OnInit {
 
   lunchMeals: any;
+  dailyLunch: any;
   days: any[] = [[], [], [], [], []];
   image: any;
   imageName: string = "restaurant_1920x1280.jpg";
@@ -20,6 +22,7 @@ export class LunchComponent implements OnInit {
   ngOnInit() {
     this.getLunchMenu();
     this.getImage();
+    this.getDailyLunch();
   }
 
   getImage() {
@@ -32,22 +35,29 @@ export class LunchComponent implements OnInit {
     });
   }
 
+  getDailyLunch() {
+    let date: number = (new Date().getDay());
+    this.dailyLunch = this.lunchMeals.filter(meal => meal.day == date)
+    console.log(this.dailyLunch);
+  }
+
   getLunchMenu() { 
 
+    // 0 is sunday, 1 is monday, 2 is tuesday, 3 is wednesday, 4 is thursday, 5 is friday, 6 is saturday
     this.lunchMeals = [
       {
         "mealName": "Grön Sparrissoppa",
-        "day": 0,
+        "day": 5,
         "type": "Vegetariskt"
       },
       {
         "mealName": "Panerad rödspetta med skagenröra",
-        "day": 0,
+        "day": 5,
         "type": "Fisk"
       },
       {
         "mealName": "Kycklingfilé med champinjonsås och stekt potatis",
-        "day": 0,
+        "day": 5,
         "type": "För Köttälskare"
       },
       {
@@ -83,7 +93,7 @@ export class LunchComponent implements OnInit {
       },
       {
         "mealName": "Ärtsoppa med pannkakor, grädde & sylt",
-        "day": 0,
+        "day": 5,
         "type": "Klassiker"
       },
       {
@@ -115,7 +125,7 @@ export class LunchComponent implements OnInit {
 
     /**Sorts every individual day so that they're all ordered after type alphabetically*/
     for(var i = 0; i < this.days.length; i++) {
-      this.days[i] = this.lunchMeals.filter(meal => meal.day == i);
+      this.days[i] = this.lunchMeals.filter(meal => meal.day == i + 1);
       this.days[i].sort((lhs, rhs) => {
         var lhsType = lhs.type.toUpperCase();
         var rhsType = rhs.type.toUpperCase();

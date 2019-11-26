@@ -1,8 +1,31 @@
 <section id="lunchSection">
-    <!--Lunchcontainer with cards for each day-->
+<!--Section for daily lunch-->
+        <div id="top-div">
+            <div id="daily-lunch-div">
+                <div id="daily-lunch-board">
+                    <div id="daily-lunch-text">
+        
+                        <h2>Dagens Lunch</h2>
+        
+                        <ul class="align-items-stretch nopadding nomargin">    
+                            <li *ngFor="let lunchMeal of dailyLunch; let j = index" class="nopadding nomargin text-center">
+                                <h3 class="nopadding nomargin">
+                                    {{lunchMeal.type}}
+                                </h3>
+                                <p class="nopadding nomargin">
+                                    {{lunchMeal.mealName}}
+                                </p>
+                            </li>
+                        </ul>    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--Lunchcontainer with cards for each day-->
     <div *ngIf="lunchMeals" id="lunch" class="container nopadding nomargin">
         
-        <div class="mx-auto parchementBackground">
+        <div class="header-background mx-auto nomargin nopadding">
             <h1>Veckans Lunch</h1>
         </div>
 
