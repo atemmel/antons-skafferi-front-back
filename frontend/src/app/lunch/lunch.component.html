@@ -1,23 +1,29 @@
 <section id="lunchSection">
     <!--Lunchcontainer with cards for each day-->
-    <div *ngIf="lunchMeals" id="lunch" class="container nopadding nomargin bg-dark">
+    <div *ngIf="lunchMeals" id="lunch" class="container nopadding nomargin">
         
-        <div id="lunch-header-div" class="mx-auto">
-            <h1 id="lunch-header" class="dealer-font">Veckans Lunch</h1>
+        <div class="mx-auto parchementBackground">
+            <h1>Veckans Lunch</h1>
         </div>
 
         <div class="card-columns">
-            <div class="card align-items-center" *ngFor="let day of days; let i = index">
+            <div class="card align-items-center parchementBackground" *ngFor="let day of days; let i = index">
                 <div class="card-body p-3">
-                    <h2 *ngIf="i==0" class="card-title dealer-font lunch-menu-day">Måndag</h2>
-                    <h2 *ngIf="i==1" class="card-title dealer-font lunch-menu-day">Tisdag</h2>
-                    <h2 *ngIf="i==2" class="card-title dealer-font lunch-menu-day">Onsdag</h2>
-                    <h2 *ngIf="i==3" class="card-title dealer-font lunch-menu-day">Torsdag</h2>
-                    <h2 *ngIf="i==4" class="card-title dealer-font lunch-menu-day">Fredag</h2>
+
+                    <h2 *ngIf="i==0" class="card-title">Måndag</h2>
+                    <h2 *ngIf="i==1" class="card-title">Tisdag</h2>
+                    <h2 *ngIf="i==2" class="card-title">Onsdag</h2>
+                    <h2 *ngIf="i==3" class="card-title">Torsdag</h2>
+                    <h2 *ngIf="i==4" class="card-title">Fredag</h2>
+
                     <ul class="align-items-stretch nopadding nomargin">    
                         <li *ngFor="let lunchMeal of day; let j = index" class="nopadding nomargin text-center">
-                            <p class="lunch-type nopadding nomargin">{{lunchMeal.type}}</p>
-                            <p class="nopadding nomargin lunch-name">{{lunchMeal.mealName}}</p>
+                            <h3 class="nopadding nomargin">
+                                {{lunchMeal.type}}
+                            </h3>
+                            <p class="nopadding nomargin">
+                                {{lunchMeal.mealName}}
+                            </p>
                         </li>
                     </ul>
                 </div>
