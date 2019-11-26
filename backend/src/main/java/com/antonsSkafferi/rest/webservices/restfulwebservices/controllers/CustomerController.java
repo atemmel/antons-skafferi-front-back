@@ -29,7 +29,7 @@ public class CustomerController {
     
     @GetMapping("/customers")
     //Request GET
-    private List<Customer> getAllCustomers() throws SQLException, ClassNotFoundException {
+    private List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
     }
     
@@ -61,15 +61,14 @@ public class CustomerController {
     */
     @PostMapping("/customers")
     private int saveCustomer(@RequestBody Customer customer){
-        System.out.println(customer);
-        customerService.saveOrUpdate(customer);
+        customerService.saveOrUpdateCustomer(customer);
         
         return customer.getCustomerid();
     }
         @PostMapping("/customers/update")
     private int updateCustomer(@RequestBody Customer customer) throws SQLException, ClassNotFoundException{
         
-        customerService.updateTable(customer.getCustomerid(), customer.getEmail() ,customer.getName(), 2, customer.getBookingdatetime().toString());
+        customerService.TEST(customer.getCustomerid(), customer.getEmail() ,customer.getName(), 2, customer.getBookingdatetime().toString());
         return 2;
     }
     @GetMapping("/customers/today")

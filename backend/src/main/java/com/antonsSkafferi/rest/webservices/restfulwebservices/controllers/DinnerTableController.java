@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -31,7 +29,7 @@ public class DinnerTableController {
     
     @GetMapping("/dinnertables")
     //Request GET
-    private List<Dinnertable> getAllDinnerTables() throws SQLException, ClassNotFoundException {
+    private List<Dinnertable> getAllDinnerTables(){
         return dinnerTableService.getAllDinnerTables();
     }
     
@@ -55,7 +53,7 @@ public class DinnerTableController {
    
     /*@PostMapping("/dinnertables")
     private int saveDinnerTable(@RequestBody Dinnertable dinnerTable){
-        dinnerTableService.saveOrUpdate(dinnerTable);
+        dinnerTableService.saveOrUpdateDinnerTable(dinnerTable);
         return dinnerTable.getDinnertableid();
     }*/
     

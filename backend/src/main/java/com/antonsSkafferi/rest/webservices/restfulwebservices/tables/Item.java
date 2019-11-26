@@ -1,16 +1,32 @@
-
+    
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Items {
+public class Item {
   
     //@Id Specifies the primary key of an entity
-    @Id private String title;
+    @Id
+    @Column(name = "title", updatable = false, nullable = false)
+    private String title;
+    @Column(name = "price", updatable = true, nullable = false)
     private int price;
+    @Column(name = "description", updatable = true, nullable = false)
     private String description;
+    
+    public Item(){}
+    
+    public Item(String title, int price, String description)
+    {
+        this.title = title;
+        this.price = price;
+        this.description = description;
+    }
+    
+    
     /**
      * @return the title
      */

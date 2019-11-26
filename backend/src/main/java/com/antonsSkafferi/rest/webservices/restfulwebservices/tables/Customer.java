@@ -27,8 +27,9 @@ public class Customer implements Serializable {
     
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Europe/Berlin")
     private Timestamp bookingdatetime;
-    
+    @Column(name = "name", updatable = true, nullable = false)
     private String name;
+    @Column(name = "email", updatable = true, nullable = false)
     private String email;
     
     @OneToOne(cascade = CascadeType.ALL)

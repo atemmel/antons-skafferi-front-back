@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class OrderToDinnerTable {
+public class Ordertodinnertable {
     
     @Id
     @Column(unique=true)

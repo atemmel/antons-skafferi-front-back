@@ -8,14 +8,11 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.controllers.ConnectionManager;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.CustomerRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
-import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dinnertable;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -47,7 +44,7 @@ public class CustomerService {
         return customerRepository.findById(id).get();
     }
     
-    public void saveOrUpdate(Customer customer){
+    public void saveOrUpdateCustomer(Customer customer){
         
         customerRepository.save(customer);
     }
@@ -63,7 +60,7 @@ public class CustomerService {
         customerRepository.deleteAll();
     }
     //Use this to TURKMEK stuff where you can tryout stuff.
-    public void updateTable(int id, String email ,String Name, int dinnertable, String bookingdatetime) throws SQLException, ClassNotFoundException{
+    public void TEST(int id, String email ,String Name, int dinnertable, String bookingdatetime) throws SQLException, ClassNotFoundException{
         try{
             Class.forName("org.h2.Driver");
         } catch (ClassNotFoundException e) {
