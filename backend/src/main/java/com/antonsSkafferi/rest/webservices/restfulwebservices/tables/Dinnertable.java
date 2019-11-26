@@ -2,14 +2,12 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -25,8 +23,6 @@ public class Dinnertable implements Serializable {
     @Column(name = "description", updatable = false, nullable = false)
     private String description;
     //What the relation is mapped to customer <-- One to One --> dinnertables.
-    
-    //@OneToOne(mappedBy="dinnertable")
     @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "dinnertable")
     private Customer customer;
     

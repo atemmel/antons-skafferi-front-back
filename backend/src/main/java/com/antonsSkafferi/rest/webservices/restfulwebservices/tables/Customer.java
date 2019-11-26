@@ -25,7 +25,6 @@ public class Customer implements Serializable {
 
     
     @Id
-    //WE NEED TO FIX AUTO SHIT. DONT WORK WHEN POST CUSTOMER AT TALBE.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerid", updatable = false, nullable = false)
     private int customerid;
@@ -38,8 +37,6 @@ public class Customer implements Serializable {
     private String email;
     
     
-    //@OneToOne(cascade = CascadeType.All)
-    //@JoinColumn(name ="dinnertable",referencedColumnName = "dinnertableid")
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dinnertableid", nullable = false)
     private Dinnertable dinnertable;
