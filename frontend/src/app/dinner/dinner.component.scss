@@ -2,13 +2,10 @@
   font-family: sans-serif;
 }
 
-section{
-}
-
 #title {
   width: 100%;
   margin-bottom: 1em;
-  h2 {
+  h1 {
     font-family: dealers;
     text-align: center;
     font-size: 50px;
@@ -16,26 +13,19 @@ section{
   }
 }
 
-
-.margin1em{
-  margin: 1em;
-}
-
 #chefsChoice{
   padding:1em;
-  h3{
+  h2{
     margin-top: 1em;
   }
 }
-
-
 
 #dinner{
   max-width: none;
   height: 100%;
   width: 100%;
   //Tog bort underline
-  h3{
+  h2{
     font-family: dealers;
     text-align: center;
   }
@@ -44,7 +34,7 @@ section{
     list-style-type: none;
     li{
       text-align: center;
-      h5{
+      h3{
         font-weight: bold;
       }
     }
@@ -70,7 +60,7 @@ section{
   background-size: cover;
   background-image: url("src/assets/images/restaurant_1920x1280.jpg");
 
-  h3{
+  h2{
     font-family: dealers;
     text-align: center;
   }
@@ -78,7 +68,7 @@ section{
     list-style-type: none;
     li{
       text-align: center;
-      h5 {
+      h3 {
         font-weight: bold;
       }
     }
@@ -87,7 +77,7 @@ section{
 
 
 #dinner-image{
-  background-image: url("src/assets/images/lax4.jpg");
+  background-image: url("src/assets/images/lax5.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -95,6 +85,18 @@ section{
   min-height: 500px;
   //min-width: 800px;
 
+}
+
+.menuItems{
+  min-height: 500px;
+}
+
+.menuImages{
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  //min-height: 200px;
 }
 
 //La en font som ser najs för text
@@ -109,6 +111,6 @@ section{
 }
 
 #bookButton {
-  position: absolute; 
-  bottom: 0;  
+  position: absolute;
+  bottom: 0;
 }
