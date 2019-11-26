@@ -2,11 +2,15 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +19,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer implements Serializable {
 
 
@@ -32,8 +37,11 @@ public class Customer implements Serializable {
     @Column(name = "email", updatable = true, nullable = false)
     private String email;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name ="dinnertableid")
+    
+    //@OneToOne(cascade = CascadeType.All)
+    //@JoinColumn(name ="dinnertable",referencedColumnName = "dinnertableid")
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "dinnertableid", nullable = false)
     private Dinnertable dinnertable;
     
     
@@ -120,7 +128,7 @@ public class Customer implements Serializable {
     
     @Override
     public String toString(){
-        return "Customer [customerid=" + getCustomerid() + ", name=" + getName() + ", bookingDateTime=" + getBookingdatetime()+", email=" + getEmail() + ", dinnertable = " + getDinnertable().getDinnertableid() + "]";
+        return "Customer [customerid=" + getCustomerid() + ", name=" + getName() + ", bookingDateTime=" + getBookingdatetime()+", email=" + getEmail() + ", dinnertable = " + dinnertable + "]";
     }
     
 }

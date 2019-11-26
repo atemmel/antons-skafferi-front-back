@@ -42,6 +42,9 @@ public class CustomerController {
     @DeleteMapping("/customers/{id}")
     //Request DELETE
     private void deleteCustomer(@PathVariable("id") int id){
+        //this is so we dont delete table
+        //Customer temp = customerService.getCustomerById(id);
+        //temp.setDinnertable(null);
         customerService.delete(id);
     }
     @DeleteMapping("/customers")
