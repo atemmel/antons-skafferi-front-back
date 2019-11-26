@@ -3,17 +3,17 @@
     <div *ngIf="lunchMeals" id="lunch" class="container nopadding nomargin bg-dark">
         
         <div id="lunch-header-div" class="mx-auto">
-            <h2 id="lunch-header" class="dealer-font">Veckans Lunch</h2>
+            <h1 id="lunch-header" class="dealer-font">Veckans Lunch</h1>
         </div>
 
         <div class="card-columns">
             <div class="card align-items-center" *ngFor="let day of days; let i = index">
                 <div class="card-body p-3">
-                    <h5 *ngIf="i==0" class="card-title dealer-font lunch-menu-day">Måndag</h5>
-                    <h5 *ngIf="i==1" class="card-title dealer-font lunch-menu-day">Tisdag</h5>
-                    <h5 *ngIf="i==2" class="card-title dealer-font lunch-menu-day">Onsdag</h5>
-                    <h5 *ngIf="i==3" class="card-title dealer-font lunch-menu-day">Torsdag</h5>
-                    <h5 *ngIf="i==4" class="card-title dealer-font lunch-menu-day">Fredag</h5>
+                    <h2 *ngIf="i==0" class="card-title dealer-font lunch-menu-day">Måndag</h2>
+                    <h2 *ngIf="i==1" class="card-title dealer-font lunch-menu-day">Tisdag</h2>
+                    <h2 *ngIf="i==2" class="card-title dealer-font lunch-menu-day">Onsdag</h2>
+                    <h2 *ngIf="i==3" class="card-title dealer-font lunch-menu-day">Torsdag</h2>
+                    <h2 *ngIf="i==4" class="card-title dealer-font lunch-menu-day">Fredag</h2>
                     <ul class="align-items-stretch nopadding nomargin">    
                         <li *ngFor="let lunchMeal of day; let j = index" class="nopadding nomargin text-center">
                             <p class="lunch-type nopadding nomargin">{{lunchMeal.type}}</p>

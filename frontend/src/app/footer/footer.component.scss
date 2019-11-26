@@ -1,3 +1,6 @@
+section {
+    background-color: black;
+}
 
 #footer {
     max-width: none;
@@ -33,7 +36,7 @@
 
 #opening-hours {
     font-size: 60px;
-    color: black;
+    color: white;
     font-style: sans-serif;
     text-align: center;
     padding-bottom: 30px;
@@ -41,7 +44,7 @@
 
 #times-div ul li {
     font-size: 25px;
-    color: black;
+    color: white;
     list-style-type: none;
     font-style: sans-serif;
     text-align: left;
@@ -49,7 +52,7 @@
 
 #days-div ul li {
     font-size: 25px;
-    color: black;
+    color: white;
     list-style-type: none;
     font-style: sans-serif;
     text-align: right;
@@ -67,21 +70,22 @@
 
 #contact-header {
     font-size: 60px;
-    color: black;
+    color: white;
     font-style: sans-serif;
     text-align: center;
     padding-bottom: 30px;
 }
 
-p, h3 {
-    font-size: 25px;
-    color: black;
-    font-style: sans-serif;
-    text-align: center;
+p, h2 {
+    font-size: 25px !important;
+    color: white !important;
+    font-style: sans-serif !important;
+    text-align: center !important;
     margin: 0 !important;
 }
 
 #directions-button {
-    color: black;
+    color: white;
+    background-color: darkslategray;
     float: right;
 }

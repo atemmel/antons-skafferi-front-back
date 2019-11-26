@@ -129,9 +129,5 @@ export class LunchComponent implements OnInit {
         return 0;
       });
     }
-
-
-    console.log(this.lunchMeals);
-    console.log(this.days);
   }
 }
