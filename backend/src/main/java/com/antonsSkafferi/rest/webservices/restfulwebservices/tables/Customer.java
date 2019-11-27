@@ -3,11 +3,8 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,18 +12,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="customer")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer implements Serializable {
-
-
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +31,6 @@ public class Customer implements Serializable {
     private String name;
     @Column(name = "email", updatable = true, nullable = false)
     private String email;
-    
     
     @ManyToOne(fetch = FetchType.LAZY /*,optional = false*/)
     @JoinColumn(name = "dinnertableid", nullable = true)

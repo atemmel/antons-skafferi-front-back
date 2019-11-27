@@ -3,25 +3,16 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="dish")
 public class Dish {
 
-    /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-  
     //@Id Specifies the primary key of an entity
     @Id
     @Column(name = "title", updatable = false, nullable = false)
@@ -35,6 +26,10 @@ public class Dish {
     
     @Column(name = "type", updatable = true, nullable = false)
     private String type;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="categoryid")
+    private Category category;
     
     public Dish(){}
     
@@ -88,6 +83,21 @@ public class Dish {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+      /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+  
     
 @Override
     public String toString(){

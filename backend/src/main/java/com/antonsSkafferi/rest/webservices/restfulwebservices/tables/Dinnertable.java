@@ -25,8 +25,8 @@ public class Dinnertable implements Serializable {
     @Column(name = "description", updatable = false, nullable = false)
     private String description;
     //What the relation is mapped to customer <-- One to One --> dinnertables.
-    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "dinnertable")
-    private Customer customer;
+    //@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "dinnertable")
+    //private Customer customer;
     
 
     public Dinnertable(){}

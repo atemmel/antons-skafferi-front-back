@@ -19,8 +19,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -87,10 +85,9 @@ public class DishService {
             // create a Statement
             try (Statement stmt = conn.createStatement()) {
                 //execute query
-                try (ResultSet resultSet = stmt.executeQuery("SELECT*From Dish where TYPE LIKE "+ type+"%'")) {
+                try (ResultSet resultSet = stmt.executeQuery("SELECT*From Dish where TYPE LIKE '"+ type+"%'")) {
                     //get the result from the executed query
                     ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
-  
 
                     //Finding the Colomn name inside the database and the data inside, parse them to map, then everything to a list == JSON
                     while(resultSet.next()){
