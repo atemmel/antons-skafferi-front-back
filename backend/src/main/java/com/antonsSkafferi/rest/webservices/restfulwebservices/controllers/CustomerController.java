@@ -7,7 +7,6 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.CustomerService;
-import java.sql.SQLException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,12 +38,15 @@ public class CustomerController {
         return customerService.getCustomerById(id);
     }
     
+    @GetMapping("/customers/name/{name}")
+    private List getCustomer(@PathVariable("name") String name){
+        return customerService.customersByName(name);
+    }
+    
     @DeleteMapping("/customers/{id}")
     //Request DELETE
     private void deleteCustomer(@PathVariable("id") int id){
-        //this is so we dont delete table
-        //Customer temp = customerService.getCustomerById(id);
-        //temp.setDinnertable(null);
+
         customerService.delete(id);
     }
     @DeleteMapping("/customers")
@@ -68,12 +70,7 @@ public class CustomerController {
         
         return customer.getCustomerid();
     }
-        @PostMapping("/customers/update")
-    private int updateCustomer(@RequestBody Customer customer) throws SQLException, ClassNotFoundException{
-        
-        customerService.TEST(customer.getCustomerid(), customer.getEmail() ,customer.getName(), 2, customer.getBookingdatetime().toString());
-        return 2;
-    }
+
     @GetMapping("/customers/today")
     private List customersForToday(){
          return customerService.customersForToday();

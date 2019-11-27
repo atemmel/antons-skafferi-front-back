@@ -1,6 +1,7 @@
     
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="dish")
-public class Dish {
+public class Dish implements Serializable {
 
     //@Id Specifies the primary key of an entity
     @Id
@@ -29,7 +30,7 @@ public class Dish {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="categoryid")
-    private Category category;
+    private DishCategory dishCategory;
     
     public Dish(){}
     
