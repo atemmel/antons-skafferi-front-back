@@ -27,10 +27,9 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
     
-    
     @GetMapping("/customers")
     //Request GET
-    private List<Customer> getAllCustomers() throws SQLException, ClassNotFoundException {
+    private List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
     }
     
@@ -43,6 +42,9 @@ public class CustomerController {
     @DeleteMapping("/customers/{id}")
     //Request DELETE
     private void deleteCustomer(@PathVariable("id") int id){
+        //this is so we dont delete table
+        //Customer temp = customerService.getCustomerById(id);
+        //temp.setDinnertable(null);
         customerService.delete(id);
     }
     @DeleteMapping("/customers")
@@ -54,21 +56,27 @@ public class CustomerController {
     
     /*Request POST
     {
-	"bookingDateTime":"2017-07-16T22:54:01.000Z",
+	"bookingDateTime":"2017-07-16 22:54",
         "name":"Example",
         "email": "Example@example.com"
+        "dinnertable": 1
     }
     */
     @PostMapping("/customers")
     private int saveCustomer(@RequestBody Customer customer){
-        customerService.saveOrUpdate(customer);
-        return customer.getId();
+        customerService.saveOrUpdateCustomer(customer);
+        
+        return customer.getCustomerid();
     }
         @PostMapping("/customers/update")
     private int updateCustomer(@RequestBody Customer customer) throws SQLException, ClassNotFoundException{
         
-        customerService.updateTable(5, "NAME", customer.getName().toString());
-        return customer.getId();
+        customerService.TEST(customer.getCustomerid(), customer.getEmail() ,customer.getName(), 2, customer.getBookingdatetime().toString());
+        return 2;
+    }
+    @GetMapping("/customers/today")
+    private List customersForToday(){
+         return customerService.customersForToday();
     }
     
 }
