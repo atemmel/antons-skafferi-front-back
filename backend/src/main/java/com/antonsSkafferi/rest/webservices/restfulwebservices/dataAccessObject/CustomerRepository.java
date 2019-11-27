@@ -6,12 +6,12 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author fredriksellgren
  */
-public interface CustomerRepository extends CrudRepository<Customer,Integer> {
+public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     
 }
