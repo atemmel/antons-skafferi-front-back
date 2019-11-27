@@ -8,7 +8,7 @@
   h1 {
     font-family: dealers;
     text-align: center;
-    font-size: 50px;
+    font-size: 5em;
 
   }
 }
@@ -28,6 +28,7 @@
   h2{
     font-family: dealers;
     text-align: center;
+    font-size: 3em;
   }
   //På rät väg
   ul{
@@ -36,6 +37,10 @@
       text-align: center;
       h3{
         font-weight: bold;
+        font-size: 2em;
+      }
+      p{
+        font-size: 1.5em !important;
       }
     }
   }
@@ -61,6 +66,7 @@
   background-image: url("src/assets/images/restaurant_1920x1280.jpg");
 
   h2{
+    font-size: 3em;
     font-family: dealers;
     text-align: center;
   }
@@ -70,6 +76,10 @@
       text-align: center;
       h3 {
         font-weight: bold;
+        font-size: 2em;
+      }
+      p{
+        font-size: 1.5em;
       }
     }
   }

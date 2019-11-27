@@ -5,7 +5,7 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-    min-height: 850px; 
+    min-height: 850px;
     background-image: url("src/assets/images/restaurant_1920x1280.jpg")
 }
 
@@ -37,14 +37,12 @@
     background-image: url("src/assets/images/restaurant_picture_2_1920x1080.jpg");
 }
 
-.header-background {
-    background-image: url("src/assets/images/woodbackground_2560x1600.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-ul li {
-    list-style-type: none;
+
+ul {
+    li {
+      list-style-type: none;
+    }
 }
 
 h1 {
