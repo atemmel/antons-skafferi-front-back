@@ -8,7 +8,7 @@ import { AppSettings } from '../../constants/AppSettings';
 export class GetImageService {
 
 
-  constructor(private http: HttpClient) { }
+  /*constructor(private http: HttpClient) { }
 
   // Sends Http request to backend for a specific image
   getImage(folderName: string, name: string) {
@@ -16,7 +16,7 @@ export class GetImageService {
     return this.http.get(AppSettings.BACKEND_URL + AppSettings.IMAGES_PATH + 'folder=' + folderName + '&image=' + name, {
       responseType: 'text'
    });
-  }
+  }*/
 
 
 }

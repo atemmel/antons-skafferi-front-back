@@ -21,27 +21,16 @@ export class LunchComponent implements OnInit {
 
   ngOnInit() {
     this.getLunchMenu();
-    this.getImage();
     this.getDailyLunch();
   }
 
-  getImage() {
-    this.service.getImage(this.folderName, this.imageName).subscribe(data => {
-      // Tells angular that the link and the data is safe.
-      this.image = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data);
-
-    }, error => {
-      console.log(error);
-    });
-  }
-
   getDailyLunch() {
-    let date: number = (new Date().getDay());
+    const date: number = (new Date().getDay());
     this.dailyLunch = this.lunchMeals.filter(meal => meal.day == date)
     console.log(this.dailyLunch);
   }
 
-  getLunchMenu() { 
+  getLunchMenu() {
 
     // 0 is sunday, 1 is monday, 2 is tuesday, 3 is wednesday, 4 is thursday, 5 is friday, 6 is saturday
     this.lunchMeals = [
