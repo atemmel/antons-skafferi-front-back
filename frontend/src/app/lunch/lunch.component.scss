@@ -36,7 +36,7 @@ CSS for Daily lunch chalkboard and the div with the restaurant backgrund for the
 
 //The h3's and p's on the chalkboard with the type and description of the lunch
 #daily-lunch-text { 
-    padding: 3em;
+    padding: 1.5em;
     font-family: chalk2;
     font-weight: normal !important;
 }
@@ -47,8 +47,7 @@ CSS for Daily lunch chalkboard and the div with the restaurant backgrund for the
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
-    border: 30px solid transparent;
-    padding: 20px;
+    border: 1.5em solid transparent;
     border-image: url("src/assets/images/woodframe_1199x742.png") 70 round;
 }
 
