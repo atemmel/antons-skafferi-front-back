@@ -1,16 +1,52 @@
-
+    
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Items {
+public class Dish {
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
   
     //@Id Specifies the primary key of an entity
-    @Id private String title;
+    @Id
+    @Column(name = "title", updatable = false, nullable = false)
+    private String title;
+    
+    @Column(name = "price", updatable = true, nullable = false)
     private int price;
+    
+    @Column(name = "description", updatable = true, nullable = false)
     private String description;
+    
+    @Column(name = "type", updatable = true, nullable = false)
+    private String type;
+    
+    public Dish(){}
+    
+    public Dish(String title, int price, String description, String type)
+    {
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.type = type;
+    }
+    
+    
     /**
      * @return the title
      */
@@ -55,7 +91,7 @@ public class Items {
     
 @Override
     public String toString(){
-        return "Meal [title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + "]";
+        return "Dish [title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + ",type=" + getType() + "]";
     }
       
 }
