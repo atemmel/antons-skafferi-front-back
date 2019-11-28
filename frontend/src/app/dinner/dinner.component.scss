@@ -1,94 +1,104 @@
 *{
   font-family: sans-serif;
 }
+h1 {
+  font-family: dealers;
+  text-align: center;
+  font-size: 4em;
+}
 
-.margin1em{
-  margin: 1em;
+h2{
+  font-family: dealers;
+  text-align: center !important;
+  font-size: 3em;
+  width: 100%;
+  height: initial;
+}
+
+ul{
+  list-style-type: none;
+  width: 100%;
+  li{
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    h3{
+      font-weight: bold;
+      font-size: 2em;
+    }
+    p{
+      font-size: 1.5em !important;
+    }
+  }
+}
+
+.background-image{
+  background-image: url("src/assets/images/lax5.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.menuItems{
+  min-height: 500px;
+  h2{
+    margin-top: 0.5em;
+  }
+}
+
+.menuImages{
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.minHeight{
+  min-height: 500px;
+}
+
+
+#title {
+  width: 100%;
+  margin-bottom: 1em;
+
 }
 
 #chefsChoice{
-  padding-top: 1em;
-  max-height: 90%;
-  height: 90%;
+  padding:1em;
 }
-
-
 
 #dinner{
   max-width: none;
   height: 100%;
-  //Tog bort underline
-  h3{
-    font-family: dealers;
-    text-align: center;
-  }
-  //På rät väg
-  ul{
-    list-style-type: none;
-    li{
-      text-align: center;
-      h5{
-        font-weight: bold;
-      }
-    }
-  }
+  width: 100%;
+}
+
+#menuButton{
+  box-shadow: none;
 }
 
 #dinnerBottom{
-  //padding: 1em;
   line-height: 100%;
   width: 100%;
-  height: 10%;
-  margin-bottom: 20em;
-  div{
-    height: 100%;
+  margin: 0;
+  div {
+    padding: 1em;
   }
 
-}
-
-#bookButton{
-  margin-top: 1em;
-  align-self: flex-start;
-  display: block;
-  margin-bottom: 1em;
-}
-
-
-#menuButton{
-  margin-top: 1em;
-  display: inline-block;
-  align-self: self-end;
 }
 
 #dinnerMenu{
   max-width: none;
-  h3{
-    font-family: dealers;
-    text-align: center;
-  }
-  ul{
-    list-style-type: none;
-    li{
-      text-align: center;
-      h5 {
-        font-weight: bold;
-      }
-    }
-  }
-}
-
-
-#dinner-image{
+  width: 100%;
   background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-  min-height: 800px;
-  min-width: 800px;
-  background-image: url("src/assets/images/reindeerstew.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("src/assets/images/restaurant_1920x1280.jpg");
+
+
 }
 
-//La en font som ser najs för text
-.kockensVal{
-  font-family: 'Nunito', sans-serif;
-}
+
+

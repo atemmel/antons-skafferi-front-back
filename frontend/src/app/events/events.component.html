@@ -1,7 +1,9 @@
-<section>
+<section id="eventsSection">
+  <h3 id="title">Event</h3>
   <div id="latest" class="container">
     <div *ngIf="events === null"><p>Inga kommande event</p></div>
     <div *ngIf="events != null && newestEvents.length == 1">
+      <h3>Nästkommande event</h3>
       <div class="card col-6">
         <div class="card-body">
           <h5 class="card-title">{{newestEvents[0].title}}</h5>

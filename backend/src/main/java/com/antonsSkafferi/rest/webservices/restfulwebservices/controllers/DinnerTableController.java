@@ -5,9 +5,8 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dinnertable;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.DinnerTableService;
-import java.sql.SQLException;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dinnertable;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,6 +43,7 @@ public class DinnerTableController {
     private void deleteDinnerTable(@PathVariable("id") int id){
         dinnerTableService.delete(id);
     }
+    
     //@DeleteMapping("/dinnertables")
     //Request DELETE
     /*private void deleteAll(){

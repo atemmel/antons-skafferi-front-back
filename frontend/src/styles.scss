@@ -1,12 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap-scss";
+html{
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+section{
+  width: 100%;
+}
+
 
 .nopadding {
     padding: 0 !important;
-    margin: 0 !important;
+
  }
+
+.header-background {
+  background-image: url("src/assets/images/woodbackground_2560x1600.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nomargin{
+  margin: 0 !important;
+}
+
+.parchementBackground{
+  background-image: url("src/assets/images/paper_menu_2_1752x1378.jpg");
+  background-size: cover;
+}
+
+@font-face {
+  font-family: chalk2;
+  src: url(assets/Fonts/KGSecondChancesSketch.otf) format("opentype");
+}
+
+@font-face {
+  font-family: chalk;
+  src: url(assets/Fonts/GrutchShaded.otf) format("opentype");
+}
 
  @font-face {
     font-family: dealers;
     src: url(assets/Fonts/dealers.otf) format("opentype");
   }
+
+
+.dealers{
+  font-family: dealers;
+}

@@ -1,28 +1,56 @@
+<section id="lunchSection">
+<!--Section for daily lunch chalkboard + background-->
+        <div id="top-div" class="nomargin nopadding container">
+            <div id="daily-lunch-column" class="card-column mx-auto align-middle">
+                <div class="card align-items-center">
+                    <div id="daily-lunch-board" class="card-body p-3 nopadding">
+                        <div id="daily-lunch-text">
+                            <h2 class="card-header">Dagens Lunch</h2>
+                            <ul class="align-items-stretch nopadding nomargin">    
+                                <li *ngFor="let lunchMeal of dailyLunch; let j = index" class="card-text nopadding nomargin text-center">
+                                    <h3 class="nopadding nomargin">
+                                        {{lunchMeal.type}}
+                                    </h3>
+                                    <p class="nopadding nomargin">
+                                        {{lunchMeal.mealName}}
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!--Lunchcontainer with cards for each day-->
-<div *ngIf="lunchMeals" id="lunch" class="container nopadding bg-dark">
-    
-    <div class="mx-auto">
-        <h2 id="lunch-header" class="dealer-font">Veckans Lunch</h2>
-    </div>
+<!--Section for weekly lunch with cards for each day + background-->
+    <div *ngIf="lunchMeals" id="lunch" class="container nopadding nomargin">
+        
+        <div class="header-background mx-auto nomargin nopadding">
+            <h1>Veckans Lunch</h1>
+        </div>
 
-    
+        <div class="card-columns" style="padding-bottom: 1rem;">
+            <div class="card align-items-center parchementBackground" *ngFor="let day of days; let i = index">
+                <div class="card-body p-3">
 
-    <div class="card-columns">
-        <div class="card" *ngFor="let day of days; let i = index">
-            <div class="card-body p-3">
-                <h5 *ngIf="i==0" class="card-title dealer-font lunch-menu-day">Måndag</h5>
-                <h5 *ngIf="i==1" class="card-title dealer-font lunch-menu-day">Tisdag</h5>
-                <h5 *ngIf="i==2" class="card-title dealer-font lunch-menu-day">Onsdag</h5>
-                <h5 *ngIf="i==3" class="card-title dealer-font lunch-menu-day">Torsdag</h5>
-                <h5 *ngIf="i==4" class="card-title dealer-font lunch-menu-day">Fredag</h5>
-                <p class="card-text">
-                <ul>    
-                    <li *ngFor="let lunchMeal of day; let j = index" class="nopadding">
-                        <p class="lunch-alternatives nopadding">{{lunchMeal.type}}:</p>
-                        <p class="text-secondary nopadding lunch-description">{{lunchMeal.mealName}}</p>
-                    </li>
-                </ul>
+                    <h2 *ngIf="i==0" class="card-title">Måndag</h2>
+                    <h2 *ngIf="i==1" class="card-title">Tisdag</h2>
+                    <h2 *ngIf="i==2" class="card-title">Onsdag</h2>
+                    <h2 *ngIf="i==3" class="card-title">Torsdag</h2>
+                    <h2 *ngIf="i==4" class="card-title">Fredag</h2>
+
+                    <ul class="align-items-stretch nopadding nomargin">    
+                        <li *ngFor="let lunchMeal of day; let j = index" class="nopadding nomargin text-center">
+                            <h3 class="nopadding nomargin">
+                                {{lunchMeal.type}}
+                            </h3>
+                            <p class="nopadding nomargin">
+                                {{lunchMeal.mealName}}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+</section>

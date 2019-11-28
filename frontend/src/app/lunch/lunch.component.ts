@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetImageService } from '../services/data/get-image.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { getLocaleDayNames } from '@angular/common';
 
 @Component({
   selector: 'app-lunch',
@@ -10,6 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class LunchComponent implements OnInit {
 
   lunchMeals: any;
+  dailyLunch: any;
   days: any[] = [[], [], [], [], []];
   image: any;
   imageName: string = "restaurant_1920x1280.jpg";
@@ -19,35 +21,32 @@ export class LunchComponent implements OnInit {
 
   ngOnInit() {
     this.getLunchMenu();
-    this.getImage();
+    this.getDailyLunch();
   }
 
-  getImage() {
-    this.service.getImage(this.folderName, this.imageName).subscribe(data => {
-      // Tells angular that the link and the data is safe.
-      this.image = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data);
-
-    }, error => {
-      console.log(error);
-    });
+  getDailyLunch() {
+    const date: number = (new Date().getDay());
+    this.dailyLunch = this.lunchMeals.filter(meal => meal.day == date)
+    console.log(this.dailyLunch);
   }
 
-  getLunchMenu() { 
+  getLunchMenu() {
 
+    // 0 is sunday, 1 is monday, 2 is tuesday, 3 is wednesday, 4 is thursday, 5 is friday, 6 is saturday
     this.lunchMeals = [
       {
         "mealName": "Grön Sparrissoppa",
-        "day": 0,
+        "day": 5,
         "type": "Vegetariskt"
       },
       {
         "mealName": "Panerad rödspetta med skagenröra",
-        "day": 0,
+        "day": 5,
         "type": "Fisk"
       },
       {
         "mealName": "Kycklingfilé med champinjonsås och stekt potatis",
-        "day": 0,
+        "day": 5,
         "type": "För Köttälskare"
       },
       {
@@ -66,9 +65,10 @@ export class LunchComponent implements OnInit {
         "type": "För köttälskare"
       },
       {
-        "mealName": "Clam Showder på 'Antons vis, med extra fis' med aioli",
+        "mealName": "Clam Showder på 'Antons vis' med aioli",
         "day": 4,
-        "type": "Mustig specialare *wink wink*"
+        "type": "Fisk"
+
       },
       {
         "mealName": "Örtbakad torskfilé med gratinerad potatismos",
@@ -82,8 +82,8 @@ export class LunchComponent implements OnInit {
       },
       {
         "mealName": "Ärtsoppa med pannkakor, grädde & sylt",
-        "day": 0,
-        "type": "Fis-ammunition"
+        "day": 5,
+        "type": "Klassiker"
       },
       {
         "mealName": "Laxpudding med skirat smör och lingonsylt",
@@ -96,9 +96,9 @@ export class LunchComponent implements OnInit {
         "type": "Kötträtt"
       },
       {
-        "mealName": "Antons Rövhål",
+        "mealName": "Köttfärsås och spaghetti",
         "day": 2,
-        "type": "För den våghalsiga"
+        "type": "Kött"
       },
       {
         "mealName": "Fish and chips med remouladsås",
@@ -114,7 +114,7 @@ export class LunchComponent implements OnInit {
 
     /**Sorts every individual day so that they're all ordered after type alphabetically*/
     for(var i = 0; i < this.days.length; i++) {
-      this.days[i] = this.lunchMeals.filter(meal => meal.day == i);
+      this.days[i] = this.lunchMeals.filter(meal => meal.day == i + 1);
       this.days[i].sort((lhs, rhs) => {
         var lhsType = lhs.type.toUpperCase();
         var rhsType = rhs.type.toUpperCase();
@@ -128,9 +128,5 @@ export class LunchComponent implements OnInit {
         return 0;
       });
     }
-
-
-    console.log(this.lunchMeals);
-    console.log(this.days);
   }
 }

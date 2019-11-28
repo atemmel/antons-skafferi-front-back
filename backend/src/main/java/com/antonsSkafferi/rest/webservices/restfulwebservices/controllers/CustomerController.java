@@ -5,9 +5,9 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 
+import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.CustomerRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.CustomerService;
-import java.sql.SQLException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -25,32 +28,63 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
     
     @Autowired
-    CustomerService customerService;
+    CustomerService service = CustomerService.getInstance();
     
-    @GetMapping("/customers")
+    //Get Requests
+    @RequestMapping(value = "/customers")
     //Request GET
     private List<Customer> getAllCustomers(){
-        return customerService.getAllCustomers();
+       return service.getAllCustomers();
     }
     
-    @GetMapping("/customers/{id}")
-    //Request GET
-    private Customer getCustomer(@PathVariable("id") int id){
-        return customerService.getCustomerById(id);
+    @RequestMapping(value = "/customers/customer", params= "id")
+    private Customer getCustomer(@RequestParam int id){
+        return service.getCustomerById(id);
     }
     
-    @DeleteMapping("/customers/{id}")
+    @RequestMapping(value = "/customers/customer", params= "firstName")
+    private List getCustomerByFirstName(@RequestParam String firstName){
+        return service.customersByfirstName(firstName);
+    }
+    
+    @RequestMapping(value = "/customers/customer", params= "lastName")
+    private List getCustomerByLastName(@RequestParam String lastName){
+        return service.customersBylastName(lastName);
+    }
+    
+    @RequestMapping(value = "/customers/customer", params = "email")
+    private List getCustomerByEmail(@RequestParam String email){
+        return service.customersByEmail(email);
+    }
+    
+    @RequestMapping(value = "/customers/customer/today")
+    private List getCustomerToday(){
+        return service.customersToday();
+    }
+    
+    @RequestMapping(value = "/customers/customer/date", params="dateTime")
+    private List getCustomerDateTime(@RequestParam String dateTime){
+        return service.customersByTime(dateTime);
+    }
+    
+    
+    
+    
+    
+    
+    //ALL DELETE REQUESTS
+    @DeleteMapping("/customers/delete/customer")
     //Request DELETE
-    private void deleteCustomer(@PathVariable("id") int id){
-        //this is so we dont delete table
-        //Customer temp = customerService.getCustomerById(id);
-        //temp.setDinnertable(null);
-        customerService.delete(id);
+    private void deleteCustomer(@RequestParam int id){
+
+        service.delete(id);
     }
-    @DeleteMapping("/customers")
+    
+    
+    @DeleteMapping("/customers/delete/all")
     //Request DELETE
     private void deleteAll(){
-        customerService.deleteAll();
+        service.deleteAll();
     }
     
     
@@ -61,24 +95,15 @@ public class CustomerController {
         "email": "Example@example.com"
         "dinnertable": 1
     }
-    */
+   
     @PostMapping("/customers")
     private int saveCustomer(@RequestBody Customer customer){
         customerService.saveOrUpdateCustomer(customer);
         
         return customer.getCustomerid();
     }
-        @PostMapping("/customers/update")
-    private int updateCustomer(@RequestBody Customer customer) throws SQLException, ClassNotFoundException{
-        
-        customerService.TEST(customer.getCustomerid(), customer.getEmail() ,customer.getName(), 2, customer.getBookingdatetime().toString());
-        return 2;
-    }
-    @GetMapping("/customers/today")
-    private List customersForToday(){
-         return customerService.customersForToday();
-    }
-    
+
+     */
 }
 
     

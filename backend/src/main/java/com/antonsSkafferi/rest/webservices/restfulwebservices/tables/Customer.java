@@ -3,11 +3,8 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,14 +12,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+/**
+ *
+ * @author fredriksellgren
+ */
+
 
 @Entity
+@Table(name="customer")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer implements Serializable {
-
-
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,23 +32,25 @@ public class Customer implements Serializable {
     
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Europe/Berlin")
     private Timestamp bookingdatetime;
-    @Column(name = "name", updatable = true, nullable = false)
-    private String name;
+    @Column(name = "firstname", updatable = true, nullable = false)
+    private String firstname;
+    @Column(name="lastname", updatable = true, nullable = false)
+    private String lastname;
     @Column(name = "email", updatable = true, nullable = false)
     private String email;
     
-    
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "dinnertableid", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY /*,optional = false*/)
+    @JoinColumn(name = "dinnertableid", nullable = true)
     private Dinnertable dinnertable;
     
     
     public Customer(){};
     
-    public Customer(int customerid, String name, String email, Timestamp bookingdatetime){
+    public Customer(int customerid, String firstname, String lastname, String email, Timestamp bookingdatetime){
     
         this.customerid = customerid;
-        this.name = name;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
         this.bookingdatetime = bookingdatetime;
     }
@@ -60,7 +63,7 @@ public class Customer implements Serializable {
     }
 
     /**
-     * @param id the id to set
+     * @param customerid the id to set
      */
     public void setCustomerid(int customerid) {
         this.customerid = customerid;
@@ -83,15 +86,29 @@ public class Customer implements Serializable {
     /**
      * @return the name
      */
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
     /**
-     * @param name the name to set
+     * @param firstname the name to set
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+    
+    /**
+     * @return the lastname
+     */
+    public String getLastname() {
+        return lastname;
+    }
+    
+    /**
+     * @param lastname the lastname to set
+     */
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
     
     /**
@@ -108,7 +125,7 @@ public class Customer implements Serializable {
         this.email = email;
     }
     
-        /**
+    /**
      * @return the dinnertable
      */
     public Dinnertable getDinnertable() {
@@ -125,7 +142,7 @@ public class Customer implements Serializable {
     
     @Override
     public String toString(){
-        return "Customer [customerid=" + getCustomerid() + ", name=" + getName() + ", bookingDateTime=" + getBookingdatetime()+", email=" + getEmail() + ", dinnertable = " + dinnertable + "]";
+        return "Customer [customerid=" + getCustomerid() + ", firstname=" + getFirstname() + ", lastname=" + getLastname() + ", bookingDateTime=" + getBookingdatetime()+", email=" + getEmail() + ", dinnertable = " + dinnertable + "]";
     }
     
 }
