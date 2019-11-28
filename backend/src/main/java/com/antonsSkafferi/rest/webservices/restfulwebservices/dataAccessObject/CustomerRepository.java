@@ -6,12 +6,16 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
  * @author fredriksellgren
  */
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
+    @Query(value = "SELECT * FROM CUSTOMER WHERE NAME LIKE %?1%", nativeQuery = true)
+    List<Customer> findByName(String name);
     
 }

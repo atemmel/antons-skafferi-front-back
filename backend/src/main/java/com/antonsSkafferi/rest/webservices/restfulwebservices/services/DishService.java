@@ -77,7 +77,7 @@ public class DishService {
         //This is for listing the customers that visiting the resturang today, and make the resault to a JSON object. 
     public List getDishesType(String type)
     {
-
+        
         
         Map json = new HashMap(); 
         List contentList = new ArrayList();
@@ -87,17 +87,21 @@ public class DishService {
             // create a Statement
             try (Statement stmt = conn.createStatement()) {
                 //execute query
-                try (ResultSet resultSet = stmt.executeQuery("SELECT*From Dish where TYPE LIKE "+ type+"%'")) {
+                try (ResultSet resultSet = stmt.executeQuery("SELECT*From Dish where TYPE LIKE '"+ type+"%'")) {
                     //get the result from the executed query
                     ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+                    System.out.println(resultSetMetaData);
   
 
                     //Finding the Colomn name inside the database and the data inside, parse them to map, then everything to a list == JSON
                     while(resultSet.next()){
                         Map<String,Object> columnMap = new HashMap<String, Object>();
                         
+                        
                         for(int columnIndex=1; columnIndex <= resultSetMetaData.getColumnCount(); columnIndex++){
+                            System.out.println(resultSetMetaData.getColumnName(columnIndex));
                             if(resultSet.getString(resultSetMetaData.getColumnName(columnIndex)) != null)
+              
                                 columnMap.put(resultSetMetaData.getColumnLabel(columnIndex).toLowerCase(),resultSet.getString(resultSetMetaData.getColumnName(columnIndex)));    
                             else
                                 columnMap.put(resultSetMetaData.getColumnLabel(columnIndex), "");

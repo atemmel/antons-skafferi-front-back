@@ -27,10 +27,11 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
     
-    @GetMapping("/customers")
+    @GetMapping("/customers/")
     //Request GET
     private List<Customer> getAllCustomers(){
-        return customerService.getAllCustomers();
+        //return customerService.getAllCustomers();
+        return customerService.getByName("Allamo");
     }
     
     @GetMapping("/customers/{id}")
@@ -68,16 +69,7 @@ public class CustomerController {
         
         return customer.getCustomerid();
     }
-        @PostMapping("/customers/update")
-    private int updateCustomer(@RequestBody Customer customer) throws SQLException, ClassNotFoundException{
-        
-        customerService.TEST(customer.getCustomerid(), customer.getEmail() ,customer.getName(), 2, customer.getBookingdatetime().toString());
-        return 2;
-    }
-    @GetMapping("/customers/today")
-    private List customersForToday(){
-         return customerService.customersForToday();
-    }
+    
     
 }
 

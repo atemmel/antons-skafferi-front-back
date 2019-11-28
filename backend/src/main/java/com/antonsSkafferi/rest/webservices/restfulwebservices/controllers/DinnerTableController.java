@@ -5,8 +5,8 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dinnertable;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.DinnerTableService;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dinnertable;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
