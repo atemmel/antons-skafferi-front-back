@@ -103,7 +103,7 @@ public class Customer implements Serializable {
     public String getLastname() {
         return lastname;
     }
-
+    
     /**
      * @param lastname the lastname to set
      */

@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Fredde ###
+.DS_Store

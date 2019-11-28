@@ -30,7 +30,6 @@ public class CustomerController {
     @Autowired
     CustomerService service = CustomerService.getInstance();
     
-    
     //Get Requests
     @RequestMapping(value = "/customers")
     //Request GET

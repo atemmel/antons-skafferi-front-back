@@ -5,6 +5,7 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
+import com.antonsSkafferi.rest.webservices.restfulwebservices.controllers.ConnectionManager;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.CustomerRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
 import java.time.LocalDateTime;
@@ -48,7 +49,6 @@ public final class CustomerService {
         
         return customerRepository.findById(id).get();
     }
-    
     
     
     public List<Customer> customersByfirstName(String name)
@@ -98,8 +98,7 @@ public final class CustomerService {
 
     }
     
-    
-    
+        
     public void saveOrUpdateCustomer(Customer customer){
         
         customerRepository.save(customer);
@@ -114,7 +113,5 @@ public final class CustomerService {
     
         customerRepository.deleteAll();
     }
-    //This is for listing the customers that visiting the resturang today, and make the resault to a JSON object. 
-    
 }
     
