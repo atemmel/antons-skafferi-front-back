@@ -7,8 +7,18 @@
     text-align: center;
     font-family: dealers;
     color: white;
-    font-size: 35px;
-    font-size: 4.9vw;
+    font-size: 50px;
+    /*font-size: 4.9vw; Dynamic text size*/
+}
+
+img {
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;
+}
+
+ul {
+    list-style-type: none;
 }
 
 .lunch-alternatives {
@@ -16,8 +26,8 @@
     width: 100%;
     list-style-type: none;
     font-family: sans-serif;
-    font-size: 12px;
-    font-size: 1.4vw;
+    font-size: 20px;
+    /*font-size: 1.4vw; Dynamic text size*/
 }
 
 .lunch-description {
@@ -25,8 +35,8 @@
     padding: 0 !important;
     list-style-type: none;
     font-family: sans-serif;   
-    font-size: 10px;
-    font-size: 1.295vw; 
+    font-size: 15px;
+    /*font-size: 1.295vw;  Dynamic text size*/
 }
 
 .dealer-font {
@@ -35,6 +45,6 @@
 
 .lunch-menu-day {
     text-align: center;
-    font-size: 30px;
-    font-size: 3.5vw;
+    font-size: 40px;
+    /*font-size: 3.5vw; Dynamic text size*/
 }
