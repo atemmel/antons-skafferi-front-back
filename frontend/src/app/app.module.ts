@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,6 +14,8 @@ import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -21,15 +25,17 @@ import { NavbarComponent } from './navbar/navbar.component';
     DinnerComponent,
     EventsComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-    FormsModule
-    
+    FormsModule,
+    AngularDateTimePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

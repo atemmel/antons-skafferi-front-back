@@ -5,7 +5,7 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.DinnerTable;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dinnertable;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.DinnerTableService;
 import java.sql.SQLException;
 import java.util.List;
@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -31,13 +29,13 @@ public class DinnerTableController {
     
     @GetMapping("/dinnertables")
     //Request GET
-    private List<DinnerTable> getAllDinnerTables() throws SQLException, ClassNotFoundException {
+    private List<Dinnertable> getAllDinnerTables(){
         return dinnerTableService.getAllDinnerTables();
     }
     
     @GetMapping("/dinnertables/{id}")
     //Request GET
-    private DinnerTable getTable(@PathVariable("id") int id){
+    private Dinnertable getTable(@PathVariable("id") int id){
         return dinnerTableService.getDinnerTablesById(id);
     }
     
@@ -53,16 +51,10 @@ public class DinnerTableController {
     }*/
     
    
-    @PostMapping("/dinnertables")
-    private int saveDinnerTable(@RequestBody DinnerTable dinnerTable){
-        dinnerTableService.saveOrUpdate(dinnerTable);
-        return dinnerTable.getId();
-    }
-     /*   @PostMapping("/dinnertables/update")
-    private int updateCustomer(@RequestBody DinnerTable dinnerTable) throws SQLException, ClassNotFoundException{
-        
-        //dinnerTableService.updateTable(5, "NAME", dinnerTable.getName.toString());
-        //return customer.getId();
+    /*@PostMapping("/dinnertables")
+    private int saveDinnerTable(@RequestBody Dinnertable dinnerTable){
+        dinnerTableService.saveOrUpdateDinnerTable(dinnerTable);
+        return dinnerTable.getDinnertableid();
     }*/
     
     
