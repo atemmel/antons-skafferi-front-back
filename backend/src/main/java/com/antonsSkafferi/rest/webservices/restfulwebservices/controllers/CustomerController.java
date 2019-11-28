@@ -29,7 +29,7 @@ public class CustomerController {
     @GetMapping("/customers")
     //Request GET
     private List<Customer> getAllCustomers(){
-        return customerService.getAllCustomers();
+       return customerService.getAllCustomers();
     }
     
     @GetMapping("/customers/{id}")

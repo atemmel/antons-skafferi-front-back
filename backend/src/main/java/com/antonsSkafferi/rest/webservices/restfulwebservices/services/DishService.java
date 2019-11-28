@@ -75,11 +75,9 @@ public class DishService {
         //This is for listing the customers that visiting the resturang today, and make the resault to a JSON object. 
     public List getDishesType(String type)
     {
-    
         List<Dish> dishs = new ArrayList<>();
         dishRepository.dishType(type).forEach(dish -> dishs.add(dish));
         return dishs;
-    
     }
 
     

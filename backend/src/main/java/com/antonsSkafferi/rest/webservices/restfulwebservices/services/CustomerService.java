@@ -26,11 +26,14 @@ public class CustomerService {
     
     public List<Customer> getAllCustomers()
     {
+
         List<Customer> customers;
         customers = new ArrayList<>();
+
         customerRepository.findAll().forEach(customer -> customers.add(customer));
         return customers;
     }
+    
     
     public Customer getCustomerById(int id){
         
@@ -51,7 +54,6 @@ public class CustomerService {
     
         customerRepository.deleteAll();
     }
-    
     //This is for listing the customers that visiting the resturang today, and make the resault to a JSON object. 
     public List customersForToday()
     {
@@ -72,7 +74,7 @@ public class CustomerService {
     {
     
         List<Customer> customers = new ArrayList<Customer>();
-        customerRepository.customersName(name).forEach(customer -> customers.add(customer));
+        customerRepository.customersFindByName(name).forEach(customer -> customers.add(customer));
         return customers;
     
     }

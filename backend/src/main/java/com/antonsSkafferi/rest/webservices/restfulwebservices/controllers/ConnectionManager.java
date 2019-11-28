@@ -33,11 +33,11 @@ public class ConnectionManager {
                 con = DriverManager.getConnection(url, username, password);
             } catch (SQLException ex) {
                 // log an exception. fro example:
-                System.out.println("Failed to create the database connection."); 
+                System.out.println("Failed to create the database connection. SQL EXception: " + ex); 
             }
         } catch (ClassNotFoundException ex) {
             // log an exception. for example:
-            System.out.println("Driver for database not found."); 
+            System.out.println("Driver for database not found. Class exception: " + ex); 
         }
         //Return the connection to database
         return con;

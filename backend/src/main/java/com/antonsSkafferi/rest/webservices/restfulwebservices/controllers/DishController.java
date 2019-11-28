@@ -35,7 +35,8 @@ public class DishController {
 
     }
     
-    @GetMapping("dish/type/{type}")
+
+    @GetMapping("/dish/type/{type}")
     private List getDishesType(@PathVariable("type") String type){
          return dishService.getDishesType(type);
     }
