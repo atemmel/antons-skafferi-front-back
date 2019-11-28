@@ -11,6 +11,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -21,24 +23,32 @@ import org.springframework.web.bind.annotation.RestController;
 public class DishController {
     
     @Autowired
-    DishService dishService;
+    DishService dishService = DishService.getInstance();
     
-    @GetMapping("/dish")
-    private List<Dish> getallItems(){
-        return dishService.getAllItems();
+    @RequestMapping(value = "/dishes")
+    private List<Dish> getallDishes(){
+        return dishService.getAllDishes();
     }
     
-    @GetMapping("/dish/{title}")
-    private Dish getItem(@PathVariable("title") String title){
-        System.out.println(title);
-        return dishService.getItemsByTitle(title);
-
+    @RequestMapping(value = "/dishes/dish", params = "title")
+    private List getDishesTitle(@RequestParam String title){
+        return dishService.getDishesByTitle(title);
     }
     
 
-    @GetMapping("/dish/type/{type}")
-    private List getDishesType(@PathVariable("type") String type){
-         return dishService.getDishesType(type);
+    @RequestMapping(value = "/dishes/dish", params = "type")
+    private List getDishesType(@RequestParam String type){
+         return dishService.getDishesByType(type);
+    }
+    
+    @RequestMapping(value = "/dishes/dish", params = "description")
+    private List getDishesDescription(@RequestParam String description){
+        return dishService.getDishesByDescription(description);
+    }
+    
+    @RequestMapping(value = "/dishes/dish", params = "price")
+    private List getDishesPrice(@RequestParam int price){
+        return dishService.getDishesByPrice(price);
     }
             
 }

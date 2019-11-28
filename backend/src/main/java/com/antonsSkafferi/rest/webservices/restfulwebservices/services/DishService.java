@@ -31,6 +31,14 @@ public class DishService {
     @Autowired
     DishRepository dishRepository;
     
+    private static DishService DishService;
+    
+    private DishService(){};
+    
+    public static DishService getInstance(){
+        return DishService;
+    }
+    
     @Bean
     public CommandLineRunner initItems(DishRepository itemRepository) {
         return (args) -> {
@@ -44,21 +52,43 @@ public class DishService {
         }; 
     }
     
-    
-    
-    public List<Dish> getAllItems()
+    //GET FUNCTIONS
+    public List<Dish> getAllDishes()
     {
         
-        List<Dish> dishs = new ArrayList<>();
-        dishRepository.findAll().forEach(dish -> dishs.add(dish));
+        List<Dish> dishes = new ArrayList<>();
+        dishRepository.findAll().forEach(dish -> dishes.add(dish));
         
-        return dishs; 
+        return dishes; 
     }
     
-    public Dish getItemsByTitle(String title)
+    public List<Dish> getDishesByTitle(String title)
     {
-        return dishRepository.findById(title).get();
+        List<Dish> dishes = new ArrayList<Dish>();
+        dishRepository.dishFindByTitle(title).forEach(dish -> dishes.add(dish));
+        return dishes;
     }
+    
+     public List getDishesByType(String type)
+    {
+        List<Dish> dishes = new ArrayList<Dish>();
+        dishRepository.dishFindByType(type).forEach(dish -> dishes.add(dish));
+        return dishes;
+    }
+    
+     public List getDishesByDescription(String description)
+     {
+         List<Dish> dishes = new ArrayList<Dish>();
+         dishRepository.dishFindByDescription(description).forEach(dish -> dishes.add(dish));
+         return dishes;
+     }
+     
+     public List getDishesByPrice(int price)
+     {
+         List<Dish> dishes = new ArrayList<Dish>();
+         dishRepository.dishFindByPrice(price).forEach(dish -> dishes.add(dish));
+         return dishes;
+     }
     
     public void saveOrUpdateItem(Dish item)
     {
@@ -71,13 +101,7 @@ public class DishService {
     }
     
         //This is for listing the customers that visiting the resturang today, and make the resault to a JSON object. 
-    public List getDishesType(String type)
-    {
-        List<Dish> dishs = new ArrayList<>();
-        dishRepository.dishType(type).forEach(dish -> dishs.add(dish));
-        return dishs;
-    }
-
+   
     
     
     

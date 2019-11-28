@@ -17,5 +17,15 @@ import org.springframework.data.jpa.repository.Query;
 public interface DishRepository extends JpaRepository<Dish,String> {
     
     @Query(value = "Select * from dish where type like %?1%", nativeQuery = true)
-    List<Dish> dishType(String type);
+    List<Dish> dishFindByType(String type);
+    
+    @Query(value = "Select * from dish where title like %?1%", nativeQuery = true)
+    List<Dish> dishFindByTitle(String title);
+    
+    @Query(value = "Select * from dish where description like %?1%", nativeQuery = true)
+    List<Dish> dishFindByDescription(String description);
+    
+    @Query(value = "Select * from dish where price like %?1%", nativeQuery = true)
+    List<Dish> dishFindByPrice(int price);
 }
+
