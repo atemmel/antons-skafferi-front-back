@@ -37,8 +37,8 @@ export class EventsComponent implements OnInit {
     }
     }
 
-    console.log(this.newestEvents);
-    console.log(this.events);
+    //console.log(this.newestEvents);
+    //console.log(this.events);
 
   }
 

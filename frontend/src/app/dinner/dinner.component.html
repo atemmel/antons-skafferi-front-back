@@ -1,4 +1,4 @@
-<section id="dinnerSection" class="nomargin nopadding">
+<section *ngIf="dataLoaded | async" id="dinnerSection" class="nomargin nopadding">
     <div id="dinner" class="container-fluid nopadding nomargin background-image">
       <div id="title" class="nopadding nomargin header-background">
         <h1 class="nomargin nopadding">Kvällsmeny</h1>
@@ -7,10 +7,10 @@
           <div class="col-sm nopadding nomargin minHeight">
           </div>
           <div id="chefsChoice" class="col nopadding parchementBackground">
-            <div class="row nopadding nomargin">
+            <div *ngIf="menu" class="row nopadding nomargin">
               <div class="col menuItems">
                 <h2>{{menu[0].title}}</h2>
-                <ul *ngIf="menu" class="nopadding">
+                <ul class="nopadding">
                   <li *ngFor="let item of menu[0].dishes" class="kockensVal">
                     <h3>{{item.title}}</h3>
                     <p>{{item.description}}</p>

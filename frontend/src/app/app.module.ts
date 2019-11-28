@@ -29,7 +29,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     HttpClientModule,
     CommonModule,
     FormsModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

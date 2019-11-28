@@ -27,7 +27,7 @@ export class LunchComponent implements OnInit {
   getDailyLunch() {
     const date: number = (new Date().getDay());
     this.dailyLunch = this.lunchMeals.filter(meal => meal.day == date)
-    console.log(this.dailyLunch);
+    //console.log(this.dailyLunch);
   }
 
   getLunchMenu() {
