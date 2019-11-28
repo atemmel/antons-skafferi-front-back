@@ -14,54 +14,62 @@ import javax.persistence.Id;
  * @author fredriksellgren
  */
 @Entity
-public class Todayslunch {
+public class TodaysLunch {
 
     @Id
-    @Column(name = "day", updatable = false, nullable = false)
-    private String day;
+    @Column(name = "mealname", updatable = false, nullable = false)
+    private String mealname;
     
-    @Column(name = "dish1", updatable = true, nullable = false)
-    private String dish1;
+    @Column(name = "day", updatable = true, nullable = false)
+    private int day;
     
-    @Column(name = "dish2", updatable = true, nullable = false)
-    private String dish2;
-        
-    @Column(name = "dish3", updatable = true, nullable = false)
-    private String dish3;
+    @Column(name = "type", updatable = true, nullable = false)
+    private String type;
     
-    
-    public String getDay() {
+        /**
+     * @return the mealname
+     */
+    public String getMealname() {
+        return mealname;
+    }
+
+    /**
+     * @param mealname the mealname to set
+     */
+    public void setMealname(String mealname) {
+        this.mealname = mealname;
+    }
+
+    /**
+     * @return the day
+     */
+    public int getDay() {
         return day;
     }
 
-    public void setDay(String day) {
+    /**
+     * @param day the day to set
+     */
+    public void setDay(int day) {
         this.day = day;
     }
-    
-    public String getDish1() {
-        return dish1;
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
     }
 
-    public void setDish1(String dish1) {
-        this.dish1 = dish1;
-    }
-    
-
-    public String getDish2() {
-        return dish2;
-    }
-
-
-    public void setDish2(String dish2) {
-        this.dish2 = dish2;
-    }
-
-    public String getDish3() {
-        return dish3;
-    }
-
-    public void setDish3(String dish3) {
-        this.dish3 = dish3;
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
     }
     
+    @Override
+    public String toString(){
+        return "TodaysLunch [mealname=" + getMealname() + ", day=" + getDay() + ", type=" + getType() + "]";
+    }
 }

@@ -9,7 +9,7 @@ import {GetCategoriesService} from '../services/data/get-categories.service';
 export class DinnerComponent implements OnInit {
 
   menu: Array<MenuItem> = [];
-  menu2: Array<MenuItem> = [];
+  menu2: Array<MenuItem2> = [];
   categoryResponse: any;
   categoryArray: Array<Category> = [];
   dataLoaded: Promise<boolean>;
@@ -41,6 +41,7 @@ export class DinnerComponent implements OnInit {
       Vilt: {array: [{title: "Renskav", description: "Renskav med potatismos"},
         {title: "Älgfilè", description: "Älgfilè med potatisgrattäng"},
         {title: "Bäverstek", description: "Bäverstek med potatis"}],
+        // tslint:disable-next-line:max-line-length
         picture: "https://images.ctfassets.net/wcifomac350q/74mxcPcxFKpghUOMKAGsyA/0b114891ec21bff5df58912bf7b018e5/img_viltbord_matbild.jpg?fm=webp&q=70" },
       "À La Carte": {array: [{title: "Lax", description: "Lax med potatismos"},
         {title: "Oxfilè", description: "Oxfilè med potatisgratäng"},
@@ -64,9 +65,12 @@ export class DinnerComponent implements OnInit {
       this.categoryArray.push(val);
     });
 
+    // console.log(this.categoryArray);
 
-
-    console.log(this.categoryArray);
+    this.categoryArray.forEach(item => {
+      this.menu2.push(new MenuItem2(item.name, item.url, item.id));
+    });
+    console.log(this.menu2);
 
 
 
