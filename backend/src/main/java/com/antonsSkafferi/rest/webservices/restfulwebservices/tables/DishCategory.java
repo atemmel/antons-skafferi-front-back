@@ -5,25 +5,29 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author fredriksellgren
  */
 @Entity
+@Table(name="dishCategory")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class DishCategory {
 
 
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
-    private int id;
+    @Column(name = "categoryid", updatable = false, nullable = false)
+    private int categoryid;
     @Column(name = "name", updatable = true, nullable = false)
     private String name;
     @Column(name = "url", updatable = true, nullable = false)
@@ -34,24 +38,24 @@ public class DishCategory {
     
     
     public DishCategory(int id, String name, String url) {
-        this.id = id;
+        this.categoryid = id;
         this.name = name;
         this.url = url;
     }
     
     
         /**
-     * @return the id
+     * @return the categoryid
      */
-    public int getId() {
-        return id;
+    public int getCategoryid() {
+        return categoryid;
     }
 
     /**
-     * @param id the id to set
+     * @param categoryid the categoryid to set
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setCategoryid(int categoryid) {
+        this.categoryid = categoryid;
     }
 
     /**
@@ -82,8 +86,10 @@ public class DishCategory {
         this.url = url;
     }
     
+    
+    
     @Override
     public String toString(){
-        return "DishCategory [id=" + getId() + ", name=" + getName() + ", url="+ getUrl() + "]";
+        return "DishCategory [id=" + getCategoryid() + ", name=" + getName() + ", url="+ getUrl() + "]";
     }
 }

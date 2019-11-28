@@ -5,22 +5,21 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author fredriksellgren
  */
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Users implements Serializable {
-
+@Table(name="user")
+public class User implements Serializable {
 
     
     @Id
@@ -31,6 +30,20 @@ public class Users implements Serializable {
     private String username;
     @Column(name = "password", updatable = true, nullable = false)
     private String password;
+    @Column(name = "administrator", updatable = true, nullable = false)
+    private boolean administrator;
+    
+    
+    public User(){}
+    
+    public User(int id, String username, String password, boolean administrator)
+    {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.administrator = administrator;
+    
+    }
     
     /**
      * @return the id
@@ -74,9 +87,25 @@ public class Users implements Serializable {
         this.password = password;
     }
     
+    
+    /**
+     * @return the admin
+     */
+    public boolean isAdministrator() {
+        return administrator;
+    }
+
+    /**
+     * @param admin the admin to set
+     */
+    public void setAdministrator(boolean administrator) {
+        this.administrator = administrator;
+    }
+    
+    
     @Override
     public String toString(){
-        return "Users [id=" + getId() + ", username=" + getUsername() + ", password=" + getPassword() + "]";
+        return "Users [id=" + getId() + ", username=" + getUsername() + ", password=" + getPassword() + ", admin =" + isAdministrator()+"]";
     }
     
 }
