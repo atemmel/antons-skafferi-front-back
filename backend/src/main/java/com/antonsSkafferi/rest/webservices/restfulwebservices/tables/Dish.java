@@ -1,21 +1,34 @@
     
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="dish")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Dish implements Serializable {
+
+
+
+
 
     //@Id Specifies the primary key of an entity
     @Id
+    @Column(name = "dishid", updatable = false, nullable = false)
+    private int dishid;
+    
     @Column(name = "title", updatable = false, nullable = false)
     private String title;
     
@@ -29,18 +42,43 @@ public class Dish implements Serializable {
     private String type;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="categoryid")
+    @JoinColumn(name="categoryid", insertable = false, updatable = false)
     private DishCategory dishCategory;
+    
+    @Column(name = "categoryid", updatable = true, nullable = false)
+    private int categoryid;
+    
+    //@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL)
+    //private Set<Order> order = new HashSet<>();
     
     public Dish(){}
     
-    public Dish(String title, int price, String description, String type)
+    public Dish(int dishid, String title, int price, String description, String type, int categoryid)
     {
+        this.dishid = dishid;
         this.title = title;
         this.price = price;
         this.description = description;
         this.type = type;
+        this.categoryid = categoryid;
     }
+    
+    
+     /**
+     * @return the dishid
+     */
+    public int getDishid() {
+        return dishid;
+    }
+
+    /**
+     * @param dishid the dishid to set
+     */
+    public void setDishid(int dishid) {
+        this.dishid = dishid;
+    }
+    
+    
     
     
     /**
@@ -98,11 +136,30 @@ public class Dish implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
+    
+
+    /**
+     * @param category the category to set
+     */
+    public void setCategoryid(int categoryid) {
+        this.categoryid = categoryid;
+    }
+    
+     /**
+     * @return the categoryid
+     */
+    public DishCategory getCategoryid() {
+        return dishCategory;
+    }
+
+    public void setCategoryid(DishCategory dishCategory) {
+        this.dishCategory = dishCategory;
+    }
   
     
     @Override
     public String toString(){
-        return "Dish [title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + ",type=" + getType() + "]";
+        return "Dish [title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + ",type=" + getType() + ", dishcategory=" + dishCategory +"]";
     }
       
 }

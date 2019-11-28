@@ -6,7 +6,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 /**
  *
  * @author fredriksellgren
@@ -14,7 +13,6 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="dinnertable")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Dinnertable implements Serializable {
     
@@ -26,9 +24,9 @@ public class Dinnertable implements Serializable {
     private int sizesoftable;
     @Column(name = "description", updatable = false, nullable = false)
     private String description;
-    //What the relation is mapped to customer <-- One to One --> dinnertables.
-    //@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "dinnertable")
-    //private Customer customer;    
+    
+    //@OneToMany(mappedBy = "dinnertable",cascade =  CascadeType.ALL)
+    //private Set<Order> orders;
 
     public Dinnertable(){}
     
@@ -38,6 +36,13 @@ public class Dinnertable implements Serializable {
         this.dinnertableid = dinnertableid;
     
     }
+    //Tree dots zero or more obejcts will be send.
+    /*public Dinnertable(int dinnertableid, Order...orders){
+        this.dinnertableid = dinnertableid;
+      
+        for(Order order : orders) order.setDinnertable(this);
+        this.orders = Stream.of(orders).collect(Collectors.toSet());
+    }*/
     //maybe redudant dunno yet.
     public Dinnertable(int dinnertableid, String description, int sizeoftable){
         this.dinnertableid = dinnertableid;

@@ -8,12 +8,14 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author fredriksellgren
  */
 @Entity
+@Table(name="todayLunch")
 public class TodaysLunch {
 
     @Id
