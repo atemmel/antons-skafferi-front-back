@@ -18,4 +18,10 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Query(value = "SELECT * FROM CUSTOMER WHERE NAME LIKE %?1%", nativeQuery = true)
     List<Customer> findByName(String name);
     
+    @Query(value = "Select * from customer where bookingdatetime like %?1%", nativeQuery = true)
+    List<Customer> customersToday(String date);
+    
+    @Query(value = "Select * from customer where name like %?1%", nativeQuery = true)
+    List<Customer> customersName(String name);
+
 }

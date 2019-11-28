@@ -2,6 +2,11 @@
 @import "../node_modules/bootstrap-scss";
 html{
   scroll-behavior: smooth;
+  width: 100%;
+}
+
+section{
+  width: 100%;
 }
 
 
@@ -25,12 +30,15 @@ html{
   background-size: cover;
 }
 
-.parchementBackgroundFlipped{
-  background-image: url("src/assets/images/paper_menu_1059x1317_rotate.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+@font-face {
+  font-family: chalk2;
+  src: url(assets/Fonts/KGSecondChancesSketch.otf) format("opentype");
 }
 
+@font-face {
+  font-family: chalk;
+  src: url(assets/Fonts/GrutchShaded.otf) format("opentype");
+}
 
  @font-face {
     font-family: dealers;

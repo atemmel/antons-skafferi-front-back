@@ -5,20 +5,12 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.controllers.ConnectionManager;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.CustomerRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +56,30 @@ public class CustomerService {
     public void deleteAll(){
     
         customerRepository.deleteAll();
+    }
+    //This is for listing the customers that visiting the resturang today, and make the resault to a JSON object. 
+    public List customersForToday()
+    {
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime date = LocalDateTime.now();
+        String dateForToday = dtf.format(date);
+        //For testing
+        dateForToday = "2019-01-21 20:30";
+        
+        List<Customer> customers = new ArrayList<Customer>();
+        customerRepository.customersToday(dateForToday).forEach(customer -> customers.add(customer));
+        return customers;
+
+    }
+    
+    public List customersByName(String name)
+    {
+    
+        List<Customer> customers = new ArrayList<Customer>();
+        customerRepository.customersName(name).forEach(customer -> customers.add(customer));
+        return customers;
+    
     }
 }
     
