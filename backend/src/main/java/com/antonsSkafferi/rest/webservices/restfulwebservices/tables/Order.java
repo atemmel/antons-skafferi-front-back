@@ -34,33 +34,24 @@ public class Order implements Serializable  {
     @Column(name = "orderid", updatable = false, nullable = false)
     private int orderid;
     
-   
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="tableid", nullable = false)
     private Dinnertable dinnertable;
     
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name = "dish",nullable = true)
-    private Dish dish;
+    @JoinColumn(name = "item",nullable = true)
+    private Item item;
     
-    @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name = "drink", nullable = true)
-    private Drink drink;
-    
-    @Column(name = "dishamount", updatable = true, nullable = true)
-    private int dishAmount;
-    @Column(name = "drinkamount", updatable = true, nullable = true)
-    private int drinkAmount;
+    @Column(name = "amount", updatable = true, nullable = true)
+    private int amount;
     
     public Order(){}
     
-    public Order(Dish dish, Drink drink, int dishAmount, int drinkAmount)
+    public Order(Item item, int amount)
     {
        this.dinnertable = dinnertable;
-       this.dish = dish;
-       this.drink = drink;
-       this.dishAmount = dishAmount;
-       this.drinkAmount = drinkAmount;
+       this.item = item;
+       this.amount = amount;
        
     }
     
@@ -70,22 +61,17 @@ public class Order implements Serializable  {
         if (!(o instanceof Order)) return false;
         Order that = (Order) o;
         return Objects.equals(dinnertable.getDinnertableid(), that.dinnertable.getDinnertableid()) &&
-                Objects.equals(dish.getDishid(), that.dish.getDishid()) &&
-                Objects.equals(dishAmount, that.dishAmount) &&
-                Objects.equals(drink.getDrinkid(), that.drink.getDrinkid()) &&
-                Objects.equals(drinkAmount, that.drinkAmount);
+                Objects.equals(item.getItemid(), that.item.getItemid()) &&
+                Objects.equals(amount, that.amount);
     }
     
     @Override
     public int hashCode(){
         
-    return Objects.hash(dinnertable.getDinnertableid(), dish.getDishid(), drink.getDrinkid(), dishAmount, drinkAmount);
+    return Objects.hash(dinnertable.getDinnertableid(), item.getItemid(), amount);
     }
-    
-    
-    
-    
-        /**
+   
+    /**
      * @return the id
      */
     public int getOrderid() {
@@ -116,62 +102,34 @@ public class Order implements Serializable  {
     /**
      * @return the dish
      */
-    public Dish getDish() {
-        return dish;
+    public Item getItem() {
+        return item;
     }
 
     /**
-     * @param dish the dish to set
+     * @param item the dish to set
      */
-    public void setDish(Dish dish) {
-        this.dish = dish;
-    }
-
-    /**
-     * @return the drink
-     */
-    public Drink getDrink() {
-        return drink;
-    }
-
-    /**
-     * @param drink the drink to set
-     */
-    public void setDrink(Drink drink) {
-        this.drink = drink;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     /**
      * @return the dishAmount
      */
-    public int getDishAmount() {
-        return dishAmount;
+    public int getAmount() {
+        return amount;
     }
 
     /**
-     * @param dishAmount the dishAmount to set
+     * @param amount the dishAmount to set
      */
-    public void setDishAmount(int dishAmount) {
-        this.dishAmount = dishAmount;
-    }
-
-    /**
-     * @return the drinkAmount
-     */
-    public int getDrinkAmount() {
-        return drinkAmount;
-    }
-
-    /**
-     *@param drinkAmount the drinkAmount to set
-    */
-    public void setDrinkAmount(int drinkAmount) {
-        this.drinkAmount = drinkAmount;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
     
     @Override
     public String toString(){
-        return "Order [id=" + getOrderid() + ", dishamount=" + getDishAmount() + ", dishid="+ dish + ", drinkamount=" + getDrinkAmount() + ", drinkid=" + drink +"]";
+        return "Order [orderid=" + getOrderid() + ", dinnertableid=" + dinnertable + ", itemid="+ item + ", amount=" + getAmount() + "]";
     }
     
 }
