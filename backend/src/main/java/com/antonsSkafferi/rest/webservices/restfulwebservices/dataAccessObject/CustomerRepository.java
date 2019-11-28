@@ -17,9 +17,18 @@ import org.springframework.data.jpa.repository.Query;
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     
     @Query(value = "Select * from customer where bookingdatetime like %?1%", nativeQuery = true)
-    List<Customer> customersToday(String date);
+    List<Customer> customersDateTime(String date);
     
-    @Query(value = "Select * from customer where name like %?1%", nativeQuery = true)
-    List<Customer> customersFindByName(String name);
+    @Query(value = "Select * from customer where firstname like %?1%", nativeQuery = true)
+    List<Customer> customersFindByfirstName(String firstName);
+    
+    
+    @Query(value = "Select * from customer where lastname like %?1%", nativeQuery = true)
+    List<Customer> customersFindBylastName(String lastName);
+    
+    @Query(value = "Select * from customer where email like %?1%", nativeQuery = true)
+    List<Customer> customersFindByEmail(String email);
+    
+    
 
 }

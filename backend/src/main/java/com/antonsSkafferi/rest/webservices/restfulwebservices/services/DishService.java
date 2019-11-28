@@ -5,7 +5,6 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.controllers.ConnectionManager;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dish;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,6 @@ public class DishService {
             dishRepository.save(new Dish("Viltpannbiffar",115,"löksås, syrad gurka, potatispure","kött"));
             dishRepository.save(new Dish("Grillad lammytter",115,"Basmatiris, Rogan Josh, paprika, chili, koriander, tomatsallad","kött"));
         }; 
-
     }
     
     
