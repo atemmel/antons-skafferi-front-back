@@ -7,7 +7,10 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.DishCategoryService;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.DishCategory;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -16,6 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class DishCategoryController {
-        @Autowired
+    @Autowired
     DishCategoryService dishCategoryService;
+        
+    @GetMapping("/dishCategory")
+    private List<DishCategory> getallItems(){
+        return dishCategoryService.getAllItems();
+    }   
 }

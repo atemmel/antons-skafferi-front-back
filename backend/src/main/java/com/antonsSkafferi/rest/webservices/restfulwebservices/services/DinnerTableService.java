@@ -41,7 +41,7 @@ public class DinnerTableService {
     public List<Dinnertable> getAllDinnerTables()
     {
         
-        List<Dinnertable> dinnerTables = new ArrayList<Dinnertable>();
+        List<Dinnertable> dinnerTables = new ArrayList<>();
         dinnerTableRepository.findAll().forEach(dinnerTable -> dinnerTables.add(dinnerTable));
         
         return dinnerTables; 

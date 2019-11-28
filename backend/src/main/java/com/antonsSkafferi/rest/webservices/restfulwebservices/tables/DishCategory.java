@@ -82,4 +82,8 @@ public class DishCategory {
         this.url = url;
     }
     
+    @Override
+    public String toString(){
+        return "DishCategory [id=" + getId() + ", name=" + getName() + ", url="+ getUrl() + "]";
+    }
 }

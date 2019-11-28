@@ -26,7 +26,8 @@ public class CustomerService {
     
     public List<Customer> getAllCustomers()
     {
-        List<Customer> customers = new ArrayList<Customer>();
+        List<Customer> customers;
+        customers = new ArrayList<>();
         customerRepository.findAll().forEach(customer -> customers.add(customer));
         return customers;
     }
@@ -61,7 +62,7 @@ public class CustomerService {
         //For testing
         dateForToday = "2019-01-21 20:30";
         
-        List<Customer> customers = new ArrayList<Customer>();
+        List<Customer> customers = new ArrayList<>();
         customerRepository.customersToday(dateForToday).forEach(customer -> customers.add(customer));
         return customers;
 

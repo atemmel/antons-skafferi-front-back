@@ -7,6 +7,8 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.DishCategoryRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.DishCategory;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -34,5 +36,15 @@ public class DishCategoryService {
             dishCategoryRepository.save(new DishCategory(7,"Dryck","url"));
         }; 
 
+    }
+    
+    public List<DishCategory> getAllItems()
+    {
+        
+        List<DishCategory> items;
+        items = new ArrayList<>();
+        dishCategoryRepository.findAll().forEach(item -> items.add(item));
+        
+        return items; 
     }
 }

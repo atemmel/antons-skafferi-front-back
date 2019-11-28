@@ -6,7 +6,9 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dish;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
@@ -14,4 +16,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface DishRepository extends JpaRepository<Dish,String> {
     
+    @Query(value = "Select * from dish where type like %?1%", nativeQuery = true)
+    List<Dish> dishType(String type);
 }

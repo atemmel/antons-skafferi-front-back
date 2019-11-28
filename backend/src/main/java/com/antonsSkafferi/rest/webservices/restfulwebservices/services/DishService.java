@@ -51,10 +51,10 @@ public class DishService {
     public List<Dish> getAllItems()
     {
         
-        List<Dish> items = new ArrayList<Dish>();
-        dishRepository.findAll().forEach(item -> items.add(item));
+        List<Dish> dishs = new ArrayList<>();
+        dishRepository.findAll().forEach(dish -> dishs.add(dish));
         
-        return items; 
+        return dishs; 
     }
     
     public Dish getItemsByTitle(String title)
@@ -75,43 +75,13 @@ public class DishService {
         //This is for listing the customers that visiting the resturang today, and make the resault to a JSON object. 
     public List getDishesType(String type)
     {
-
-        
-        Map json = new HashMap(); 
-        List contentList = new ArrayList();
-        
-        //create connection for a server installed in localhost, with a user "root" with no password
-        try (Connection conn = ConnectionManager.getConnection()){
-            // create a Statement
-            try (Statement stmt = conn.createStatement()) {
-                //execute query
-                try (ResultSet resultSet = stmt.executeQuery("SELECT*From Dish where TYPE LIKE '"+ type+"%'")) {
-                    //get the result from the executed query
-                    ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
-
-                    //Finding the Colomn name inside the database and the data inside, parse them to map, then everything to a list == JSON
-                    while(resultSet.next()){
-                        Map<String,Object> columnMap = new HashMap<String, Object>();
-                        
-                        for(int columnIndex=1; columnIndex <= resultSetMetaData.getColumnCount(); columnIndex++){
-                            if(resultSet.getString(resultSetMetaData.getColumnName(columnIndex)) != null)
-                                columnMap.put(resultSetMetaData.getColumnLabel(columnIndex).toLowerCase(),resultSet.getString(resultSetMetaData.getColumnName(columnIndex)));    
-                            else
-                                columnMap.put(resultSetMetaData.getColumnLabel(columnIndex), "");
-                        }
-                            contentList.add(columnMap);
-                    }
-                } catch (SQLException e){
-                        e.printStackTrace();
-                }
-                json.put("Customer", contentList);
-                return (ArrayList<String>) contentList;
-            } 
-        } catch(SQLException e ){
-                e.printStackTrace();
-            }
-        return null;
+    
+        List<Dish> dishs = new ArrayList<>();
+        dishRepository.dishType(type).forEach(dish -> dishs.add(dish));
+        return dishs;
+    
     }
+
     
     
     
