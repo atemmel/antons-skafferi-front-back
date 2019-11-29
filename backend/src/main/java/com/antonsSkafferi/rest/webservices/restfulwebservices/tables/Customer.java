@@ -1,10 +1,10 @@
 
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
+import java.sql.Time;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,16 +24,16 @@ import javax.persistence.Table;
 @Table(name="customer")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer implements Serializable {
-
-
-    
+  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerid", updatable = false, nullable = false)
     private int customerid;
     
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Europe/Berlin")
-    private Timestamp bookingdatetime;
+    @Column(name="bookingtime", updatable=true, nullable=false)
+    private String bookingtime;
+    @Column(name="bookingdate", updatable=true, nullable=false)
+    private String bookingdate;
     @Column(name = "firstname", updatable = true, nullable = false)
     private String firstname;
     @Column(name="lastname", updatable = true, nullable = false)
@@ -45,20 +45,36 @@ public class Customer implements Serializable {
     private int sizeofcompany;
     
     @ManyToOne(fetch = FetchType.LAZY /*,optional = false*/)
-    @JoinColumn(name = "dinnertableid", nullable = true)
+    @JoinColumn(name = "dinnertableid", insertable = false, updatable = false)
     private Dinnertable dinnertable;
+    
+    @Column(name = "dinnertableid", updatable = true, nullable = false)
+    private int dinnertableid;
     
     
     public Customer(){};
     
-    public Customer(int customerid, String firstname, String lastname, int sizeofcompant, String email, Timestamp bookingdatetime){
+    public Customer(int customerid, String firstname, String lastname, int sizeofcompany, String email, String bookingtime, String bookingdate){
     
         this.customerid = customerid;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.bookingdatetime = bookingdatetime;
+        this.bookingtime = bookingtime;
+        this.bookingdate = bookingdate;
         this.sizeofcompany = sizeofcompany;
+    }
+    
+    public Customer(int customerid, String firstname, String lastname, int sizeofcompany, String email, String bookingtime, String bookingdate, int dinnertableid){
+    
+        this.customerid = customerid;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.bookingtime = bookingtime;
+        this.bookingdate = bookingdate;
+        this.sizeofcompany = sizeofcompany;
+        this.dinnertableid = dinnertableid;
     }
     
     /**
@@ -121,17 +137,31 @@ public class Customer implements Serializable {
         /**
      * @return the bookingdatetime
      */
-    public Timestamp getBookingdatetime() {
-        return bookingdatetime;
+    public String getBookingtime() {
+        return bookingtime;
+    }
+    
+    /**
+     * @param bookingtime the bookingdatetime to set
+     */
+    public void setBookingtime(String bookingtime) {
+        this.bookingtime = bookingtime;
+    }
+    
+      /**
+     * @return the date
+     */
+    public String getBookingdate() {
+        return bookingdate;
     }
 
     /**
-     * @param bookingdatetime the bookingdatetime to set
+     * @param bookingdate the date to set
      */
-    public void setBookingdatetime(Timestamp bookingdatetime) {
-        this.bookingdatetime = bookingdatetime;
+    public void setBookingdate(String bookingdate) {
+        this.bookingdate = bookingdate;
     }
-    
+
     /**
      * @return the email
      */
@@ -144,6 +174,13 @@ public class Customer implements Serializable {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    /**
+     * @param dinnertableid the dinnertableid to set
+     */
+    public void setDinnertableid(int dinnertableid) {
+        this.dinnertableid = dinnertableid;
     }
     
     /**
@@ -160,10 +197,11 @@ public class Customer implements Serializable {
         this.dinnertable = dinnertable;
     }
     
+
     
     @Override
     public String toString(){
-        return "Customer [customerid=" + getCustomerid() + ", firstname=" + getFirstname() + ", lastname=" + getLastname() + ", sizeofcompany=" + getSizeofcompany() + ", bookingDateTime=" + getBookingdatetime()+", email=" + getEmail() + ", dinnertable = " + dinnertable + "]";
+        return "Customer [customerid=" + getCustomerid() + ", firstname=" + getFirstname() + ", lastname=" + getLastname() + ", sizeofcompany=" + getSizeofcompany() + ", bookingdate= " + getBookingdate() + ", bookingtime=" + getBookingtime()+", email=" + getEmail() + ", dinnertable = " + dinnertable + "]";
     }
     
 }

@@ -39,10 +39,10 @@ public class Order implements Serializable  {
     private Dinnertable dinnertable;
     
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name = "item",nullable = true)
+    @JoinColumn(name = "item",nullable = false)
     private Item item;
     
-    @Column(name = "amount", updatable = true, nullable = true)
+    @Column(name = "amount", updatable = true, nullable = false)
     private int amount;
     
     public Order(){}
