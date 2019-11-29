@@ -6,6 +6,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 /**
  *
  * @author fredriksellgren
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 
 
 @Entity
+@Table(name = "dinnertable")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Dinnertable implements Serializable {
     

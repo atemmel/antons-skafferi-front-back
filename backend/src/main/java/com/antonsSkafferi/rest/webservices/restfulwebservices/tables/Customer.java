@@ -3,8 +3,6 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,6 +22,8 @@ import javax.persistence.Table;
 @Table(name="customer")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer implements Serializable {
+
+
   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,8 +38,12 @@ public class Customer implements Serializable {
     private String firstname;
     @Column(name="lastname", updatable = true, nullable = false)
     private String lastname;
+    
     @Column(name = "email", updatable = true, nullable = false)
     private String email;
+    
+    @Column(name ="phone", updatable = true, nullable = false)
+    private String phone;
     
     @Column(name = "sizeofcompany", updatable = true, nullable = false)
     private int sizeofcompany;
@@ -54,7 +58,7 @@ public class Customer implements Serializable {
     
     public Customer(){};
     
-    public Customer(int customerid, String firstname, String lastname, int sizeofcompany, String email, String bookingtime, String bookingdate){
+    public Customer(int customerid, String firstname, String lastname, int sizeofcompany, String email, String bookingtime, String bookingdate, String phone){
     
         this.customerid = customerid;
         this.firstname = firstname;
@@ -63,9 +67,11 @@ public class Customer implements Serializable {
         this.bookingtime = bookingtime;
         this.bookingdate = bookingdate;
         this.sizeofcompany = sizeofcompany;
+        this.phone = phone;
+        
     }
     
-    public Customer(int customerid, String firstname, String lastname, int sizeofcompany, String email, String bookingtime, String bookingdate, int dinnertableid){
+    public Customer(int customerid, String firstname, String lastname, int sizeofcompany, String email, String bookingtime, String bookingdate, int dinnertableid, String phone){
     
         this.customerid = customerid;
         this.firstname = firstname;
@@ -75,6 +81,7 @@ public class Customer implements Serializable {
         this.bookingdate = bookingdate;
         this.sizeofcompany = sizeofcompany;
         this.dinnertableid = dinnertableid;
+        this.phone = phone;
     }
     
     /**
@@ -125,6 +132,20 @@ public class Customer implements Serializable {
      */
     public int getSizeofcompany() {
         return sizeofcompany;
+    }
+    
+        /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     /**
@@ -201,7 +222,7 @@ public class Customer implements Serializable {
     
     @Override
     public String toString(){
-        return "Customer [customerid=" + getCustomerid() + ", firstname=" + getFirstname() + ", lastname=" + getLastname() + ", sizeofcompany=" + getSizeofcompany() + ", bookingdate= " + getBookingdate() + ", bookingtime=" + getBookingtime()+", email=" + getEmail() + ", dinnertable = " + dinnertable + "]";
+        return "Customer [customerid=" + getCustomerid() + ", firstname=" + getFirstname() + ", lastname=" + getLastname() + ", sizeofcompany=" + getSizeofcompany() + ", bookingdate= " + getBookingdate() + ", bookingtime=" + getBookingtime()+", email=" + getEmail() + ", phone=" + getPhone()+ ", dinnertable = " + dinnertable + "]";
     }
     
 }
