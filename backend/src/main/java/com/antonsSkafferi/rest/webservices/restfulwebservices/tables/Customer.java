@@ -24,6 +24,8 @@ import javax.persistence.Table;
 @Table(name="customer")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer implements Serializable {
+
+
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +41,9 @@ public class Customer implements Serializable {
     @Column(name = "email", updatable = true, nullable = false)
     private String email;
     
+    @Column(name = "sizeofcompany", updatable = true, nullable = false)
+    private int sizeofcompany;
+    
     @ManyToOne(fetch = FetchType.LAZY /*,optional = false*/)
     @JoinColumn(name = "dinnertableid", nullable = true)
     private Dinnertable dinnertable;
@@ -46,13 +51,14 @@ public class Customer implements Serializable {
     
     public Customer(){};
     
-    public Customer(int customerid, String firstname, String lastname, String email, Timestamp bookingdatetime){
+    public Customer(int customerid, String firstname, String lastname, int sizeofcompant, String email, Timestamp bookingdatetime){
     
         this.customerid = customerid;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.bookingdatetime = bookingdatetime;
+        this.sizeofcompany = sizeofcompany;
     }
     
     /**
@@ -69,19 +75,6 @@ public class Customer implements Serializable {
         this.customerid = customerid;
     }
     
-    /**
-     * @return the bookingdatetime
-     */
-    public Timestamp getBookingdatetime() {
-        return bookingdatetime;
-    }
-
-    /**
-     * @param bookingdatetime the bookingdatetime to set
-     */
-    public void setBookingdatetime(Timestamp bookingdatetime) {
-        this.bookingdatetime = bookingdatetime;
-    }
     
     /**
      * @return the name
@@ -109,6 +102,34 @@ public class Customer implements Serializable {
      */
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+    
+     /**
+     * @return the sizeofcompany
+     */
+    public int getSizeofcompany() {
+        return sizeofcompany;
+    }
+
+    /**
+     * @param sizeofcompany the sizeofcompany to set
+     */
+    public void setSizeofcompany(int sizeofcompany) {
+        this.sizeofcompany = sizeofcompany;
+    }
+    
+        /**
+     * @return the bookingdatetime
+     */
+    public Timestamp getBookingdatetime() {
+        return bookingdatetime;
+    }
+
+    /**
+     * @param bookingdatetime the bookingdatetime to set
+     */
+    public void setBookingdatetime(Timestamp bookingdatetime) {
+        this.bookingdatetime = bookingdatetime;
     }
     
     /**
@@ -142,7 +163,7 @@ public class Customer implements Serializable {
     
     @Override
     public String toString(){
-        return "Customer [customerid=" + getCustomerid() + ", firstname=" + getFirstname() + ", lastname=" + getLastname() + ", bookingDateTime=" + getBookingdatetime()+", email=" + getEmail() + ", dinnertable = " + dinnertable + "]";
+        return "Customer [customerid=" + getCustomerid() + ", firstname=" + getFirstname() + ", lastname=" + getLastname() + ", sizeofcompany=" + getSizeofcompany() + ", bookingDateTime=" + getBookingdatetime()+", email=" + getEmail() + ", dinnertable = " + dinnertable + "]";
     }
     
 }
