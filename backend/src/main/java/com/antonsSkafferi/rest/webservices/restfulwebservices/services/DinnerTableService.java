@@ -29,11 +29,12 @@ public class DinnerTableService {
         return (args) -> {
             
             dinnertablerepository.save(new Dinnertable(1,"Fonsterbord",4));
-            dinnertablerepository.save(new Dinnertable(2,"Fonsterbord",4));
-            dinnertablerepository.save(new Dinnertable(3,"Fonsterbord",4));
-            dinnertablerepository.save(new Dinnertable(4,"Langbord",12));
-            dinnertablerepository.save(new Dinnertable(5,"Langbord",12));
-            dinnertablerepository.save(new Dinnertable(6,"Langbord",12));
+            dinnertablerepository.save(new Dinnertable(2,"Salong",4));
+            dinnertablerepository.save(new Dinnertable(3,"Fonsterbord",2));
+            dinnertablerepository.save(new Dinnertable(4,"Mitten",8));
+            dinnertablerepository.save(new Dinnertable(5,"Salong",4));
+            dinnertablerepository.save(new Dinnertable(6,"Ingång",2));
+            dinnertablerepository.save(new Dinnertable(7,"Mitten",4));
         }; 
 
     }

@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 /**
@@ -35,6 +37,16 @@ public final class CustomerService {
     public static CustomerService getInstance(){
         return CustomerService;
     }
+    
+    @Bean
+    public CommandLineRunner initCustomer(CustomerRepository customerRepository) {
+        return (args) -> {
+            
+            customerRepository.save(new Customer(2, "William", "Takolander", 1, "william_tako@hotmail.com", "20:00", "2019-11-13", 1));
+        }; 
+    }
+    
+
     
     
     //GET FUNCTIONS 
