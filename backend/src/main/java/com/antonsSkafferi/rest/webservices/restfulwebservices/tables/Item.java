@@ -41,7 +41,7 @@ public class Item implements Serializable {
     @JoinColumn(name="itemcategoryid", insertable = false, updatable = false)
     private ItemCategory itemcategory;
     
-    @Column(name = "categoryid", updatable = true, nullable = false)
+    @Column(name = "itemcategoryid", updatable = true, nullable = false)
     private int itemcategoryid;
     
     //@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL)
