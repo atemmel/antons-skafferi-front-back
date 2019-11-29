@@ -5,7 +5,6 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.controllers.ConnectionManager;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.CustomerRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
 import java.time.LocalDateTime;
@@ -16,13 +15,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author fredriksellgren
+ * @author FREDDE
  */
 @Service
 public final class CustomerService {
@@ -37,16 +34,6 @@ public final class CustomerService {
     public static CustomerService getInstance(){
         return CustomerService;
     }
-    
-    @Bean
-    public CommandLineRunner initCustomer(CustomerRepository customerRepository) {
-        return (args) -> {
-            
-            customerRepository.save(new Customer(2, "William", "Takolander", 1, "william_tako@hotmail.com", "20:00", "2019-11-13", 1));
-        }; 
-    }
-    
-
     
     
     //GET FUNCTIONS 
@@ -66,7 +53,7 @@ public final class CustomerService {
     public List<Customer> customersByfirstName(String name)
     {
     
-        List<Customer> customers = new ArrayList<Customer>();
+        List<Customer> customers = new ArrayList<>();
         customerRepository.customersFindByfirstName(name).forEach(customer -> customers.add(customer));
         return customers;
     
@@ -75,22 +62,19 @@ public final class CustomerService {
     public List<Customer> customersBylastName(String lastName)
     {
     
-        List<Customer> customers = new ArrayList<Customer>();
+        List<Customer> customers = new ArrayList<>();
         customerRepository.customersFindBylastName(lastName).forEach(customer -> customers.add(customer));
         return customers;
     
     }
     
     public List<Customer> customersByEmail(String email){
-        List<Customer> customers = new ArrayList<Customer>();
+        List<Customer> customers = new ArrayList<>();
         customerRepository.customersFindByEmail(email).forEach(customer -> customers.add(customer));
         return customers;
         
     }
     
-    
-    
-    //TODO: FIX THIS SHIT
     public List customersToday()
     {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -110,12 +94,23 @@ public final class CustomerService {
 
     }
     
-        
+    public List<Customer> customersByTable(int id){
+        List<Customer> customers = new ArrayList<>();
+        customerRepository.customersFindByTable(id).forEach(customer -> customers.add(customer));
+        return customers;
+    }
+      
     public void saveOrUpdateCustomer(Customer customer){
         
         customerRepository.save(customer);
     }
-    
+    public void changeCustomerTable(String date, String firstname, String secondname){
+        System.out.println("date: " + date + " fName: " + firstname);
+        Customer temp = customerRepository.changeCustomerTable(date, firstname, secondname);
+        System.out.println("Date: " + temp.getBookingdate() + "FirstName: " + temp.getFirstname());
+        
+        
+    }
     
     public void delete(int id){
         customerRepository.deleteById(id);
@@ -126,4 +121,3 @@ public final class CustomerService {
         customerRepository.deleteAll();
     }
 }
-    
