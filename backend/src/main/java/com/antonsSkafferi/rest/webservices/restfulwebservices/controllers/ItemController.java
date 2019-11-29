@@ -9,6 +9,8 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.services.ItemServi
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Item;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,6 +49,11 @@ public class ItemController {
     @RequestMapping(value = "/items/item", params = "price")
     private List getItemsPrice(@RequestParam int price){
         return itemService.getItemsByPrice(price);
+    }
+    
+    @PostMapping(value = "/post/items", params="item")
+    private void saveCustomer(@RequestBody Item item){
+        itemService.saveOrUpdateItem(item);
     }
             
 }

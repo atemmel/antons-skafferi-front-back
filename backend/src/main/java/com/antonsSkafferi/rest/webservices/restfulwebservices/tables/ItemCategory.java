@@ -18,7 +18,6 @@ import javax.persistence.Table;
  * @author fredriksellgren
  */
 @Entity
-@Table(name="itemcategory")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ItemCategory {
     
@@ -34,6 +33,9 @@ public class ItemCategory {
     
     public ItemCategory(){}
     
+    public ItemCategory(int itemcategoryid){
+        this.itemcategoryid = itemcategoryid;
+    }
     
     public ItemCategory(int itemcategoryid, String name, String url) {
         this.itemcategoryid = itemcategoryid;

@@ -49,11 +49,11 @@ public class Customer implements Serializable {
     private int sizeofcompany;
     
     @ManyToOne(fetch = FetchType.LAZY /*,optional = false*/)
-    @JoinColumn(name = "dinnertableid", insertable = false, updatable = false)
+    @JoinColumn(name = "dinnertableid", nullable = true)
     private Dinnertable dinnertable;
     
-    @Column(name = "dinnertableid", updatable = true, nullable = false)
-    private int dinnertableid;
+    //@Column(name = "dinnertableid", updatable = true, nullable = true)
+    //private int dinnertableid;
     
     
     public Customer(){};
@@ -71,7 +71,8 @@ public class Customer implements Serializable {
         
     }
     
-    public Customer(int customerid, String firstname, String lastname, int sizeofcompany, String email, String bookingtime, String bookingdate, int dinnertableid, String phone){
+    /* We need to check whats wrong whit this, you nolonger cant post a customer whit null table
+   public Customer(int customerid, String firstname, String lastname, int sizeofcompany, String email, String bookingtime, String bookingdate, int dinnertableid, String phone){
     
         this.customerid = customerid;
         this.firstname = firstname;
@@ -80,9 +81,9 @@ public class Customer implements Serializable {
         this.bookingtime = bookingtime;
         this.bookingdate = bookingdate;
         this.sizeofcompany = sizeofcompany;
-        this.dinnertableid = dinnertableid;
+        //this.dinnertableid = dinnertableid;
         this.phone = phone;
-    }
+    }*/
     
     /**
      * @return the id
@@ -200,9 +201,9 @@ public class Customer implements Serializable {
     /**
      * @param dinnertableid the dinnertableid to set
      */
-    public void setDinnertableid(int dinnertableid) {
+    /*public void setDinnertableid(int dinnertableid) {
         this.dinnertableid = dinnertableid;
-    }
+    }*/
     
     /**
      * @return the dinnertable

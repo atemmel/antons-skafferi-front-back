@@ -34,25 +34,26 @@ public class Item implements Serializable {
     private String type;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="itemcategoryid", insertable = false, updatable = false)
+    //@JoinColumn(name="itemcategoryid", insertable = false, updatable = false)
+    @JoinColumn(name = "itemcategoryid", nullable = true)
     private ItemCategory itemcategory;
     
-    @Column(name = "itemcategoryid", updatable = true, nullable = false)
-    private int itemcategoryid;
+    //@Column(name = "itemcategoryid", updatable = true, nullable = false)
+    //private int itemcategoryid;
     
     //@OneToMany(mappedBy = "dish", cascade = CascadeType.ALL)
     //private Set<Order> order = new HashSet<>();
     
     public Item(){}
     
-    public Item(int itemid, String title, int price, String description, String type, int itemcategoryid)
+    public Item(int itemid, String title, int price, String description, String type/*,int itemcategoryid*/)
     {
         this.itemid = itemid;
         this.title = title;
         this.price = price;
         this.description = description;
         this.type = type;
-        this.itemcategoryid = itemcategoryid;
+        //this.itemcategoryid = itemcategoryid;
     }
     
     
@@ -129,9 +130,9 @@ public class Item implements Serializable {
     /**
      * @param itemcategoryid the category to set
      */
-    public void setItemcategoryid(int itemcategoryid) {
+    /*public void setItemcategoryid(int itemcategoryid) {
         this.itemcategoryid = itemcategoryid;
-    }
+    }*/
     
      /**
      * @return the categoryid
