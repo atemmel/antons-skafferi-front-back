@@ -23,6 +23,14 @@ public class ItemCategoryService {
     @Autowired
     ItemCategoryRepository itemCategoryRepository;
     
+    private static ItemCategoryService ItemCategoryService;
+    
+    private ItemCategoryService(){};
+    
+    public static ItemCategoryService getInstance(){
+        return ItemCategoryService;
+    }
+    
     @Bean
     public CommandLineRunner initItemCategory(ItemCategoryRepository itemCategoryRepository) {
         return (args) -> {
@@ -46,5 +54,12 @@ public class ItemCategoryService {
         itemCategoryRepository.findAll().forEach(item -> items.add(item));
         
         return items; 
+    }
+    
+    public List<ItemCategory> getItemCategoryByName(String name)
+    {
+        List<ItemCategory> itemCategorys = new ArrayList<>();
+        itemCategoryRepository.itemCategoryFindByName(name).forEach(itemCategory -> itemCategorys.add(itemCategory));
+        return itemCategorys;
     }
 }

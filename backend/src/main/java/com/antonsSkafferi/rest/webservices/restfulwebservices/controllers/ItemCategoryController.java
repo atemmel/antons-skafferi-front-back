@@ -11,6 +11,8 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.ItemCategor
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,10 +22,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ItemCategoryController {
     @Autowired
-    ItemCategoryService itemCategoryService;
+    ItemCategoryService itemCategoryService = ItemCategoryService.getInstance();
         
-    @GetMapping("/itemCategory")
+    @RequestMapping(value = "/itemcategorys")
     private List<ItemCategory> getallItems(){
         return itemCategoryService.getAllItems();
     }   
+    
+    @RequestMapping(value = "/itemcategorys/itemcategory", params = "name")
+    private List getItemCategoryByName(@RequestParam String name){
+        return itemCategoryService.getItemCategoryByName(name);
+    }
 }

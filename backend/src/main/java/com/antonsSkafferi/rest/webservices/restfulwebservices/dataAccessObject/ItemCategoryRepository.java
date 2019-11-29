@@ -6,7 +6,9 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.ItemCategory;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
@@ -14,5 +16,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ItemCategoryRepository extends JpaRepository<ItemCategory,Integer> {
 
-    
+    @Query(value = "Select * from itemcategory where name like %?1%", nativeQuery = true)
+    List<ItemCategory> itemCategoryFindByName(String name);
 }
