@@ -24,7 +24,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="order_table")
+@Table(name="order")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Order implements Serializable  {
 

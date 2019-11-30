@@ -52,7 +52,7 @@ public class ItemController {
     }
     
     @PostMapping(value = "/post/items", params="item")
-    private void saveCustomer(@RequestBody Item item){
+    private void saveItem(@RequestBody Item item){
         itemService.saveOrUpdateItem(item);
     }
             
