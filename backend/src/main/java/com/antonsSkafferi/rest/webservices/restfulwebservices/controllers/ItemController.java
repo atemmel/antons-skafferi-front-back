@@ -52,11 +52,13 @@ public class ItemController {
         return itemService.getItemsByPrice(price);
     }
     
+    //Post function
     @PostMapping(value = "/post/items", params="item")
     private void saveItem(@RequestBody Item item){
         itemService.saveOrUpdateItem(item);
     }
     
+    //Delete functions
     @DeleteMapping("/items/delete/item")
     private void deleteItem(@RequestParam int id){
         itemService.delete(id);

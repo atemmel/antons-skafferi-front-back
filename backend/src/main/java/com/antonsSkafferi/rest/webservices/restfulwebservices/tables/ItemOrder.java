@@ -35,27 +35,27 @@ public class ItemOrder implements Serializable  {
     private Integer orderid;
     
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="dinnertable", referencedColumnName="dinnertableid", nullable = false)
+    @JoinColumn(name="dinnertableid", referencedColumnName="dinnertableid", nullable = false)
     private Dinnertable dinnertable;
     
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name = "item", referencedColumnName="itemid" ,nullable = false)
+    @JoinColumn(name = "itemid", referencedColumnName="itemid" ,nullable = false)
     private Item item;
     
     @Column(name = "amount", updatable = true, nullable = false)
     private int amount;
     
-    @Column(name = "adaptation", updatable = true, nullable = true)
-    private String adaptation;
+    @Column(name = "note", updatable = true, nullable = true)
+    private String note;
     
     public ItemOrder(){}
     
-    public ItemOrder(Dinnertable dinnertable, Item item, int amount, String adaptation)
+    public ItemOrder(Dinnertable dinnertable, Item item, int amount, String note)
     {
        this.dinnertable = dinnertable;
        this.item = item;
        this.amount = amount;
-       this.adaptation = adaptation;
+       this.note = note;
        
     }
     
@@ -67,13 +67,13 @@ public class ItemOrder implements Serializable  {
         return Objects.equals(dinnertable.getDinnertableid(), that.dinnertable.getDinnertableid()) &&
                 Objects.equals(item.getItemid(), that.item.getItemid()) &&
                 Objects.equals(amount, that.amount) &&
-                Objects.equals(adaptation, that.adaptation);
+                Objects.equals(note, that.note);
     }
     
     @Override
     public int hashCode(){
         
-    return Objects.hash(dinnertable.getDinnertableid(), item.getItemid(), amount , adaptation);
+    return Objects.hash(dinnertable.getDinnertableid(), item.getItemid(), amount , note);
     }
    
     /**
@@ -132,19 +132,19 @@ public class ItemOrder implements Serializable  {
         this.amount = amount;
     }
     
-    public String getAdaptation()
+    public String getNote()
     {
-        return adaptation;
+        return note;
     }
     
-    public void setAdaptation(String adaptation)
+    public void setNote(String note)
     {
-        this.adaptation = adaptation;
+        this.note = note;
     }
     
     @Override
     public String toString(){
-        return "Order [orderid=" + getOrderid() + ", dinnertableid=" + dinnertable + ", itemid="+ item + ", amount=" + getAmount() + ", adaptation="+ getAdaptation()+"]";
+        return "Order [orderid=" + getOrderid() + ", dinnertable=" + dinnertable + ", item="+ item + ", amount=" + getAmount() + ", note="+ getNote()+"]";
     }
     
 }

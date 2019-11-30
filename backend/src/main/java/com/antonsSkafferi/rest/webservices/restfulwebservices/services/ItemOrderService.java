@@ -38,4 +38,9 @@ public final class ItemOrderService {
         itemOrderRepository.findAll().forEach(order -> orders.add(order));
         return orders;
     }
+    
+    public void saveOrUpdateItemOrder(ItemOrder itemOrder)
+    {
+        itemOrderRepository.save(itemOrder);
+    }
 }
