@@ -6,8 +6,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +18,6 @@ public class Item implements Serializable {
 
     //@Id Specifies the primary key of an entity
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "itemid", updatable = false, nullable = false)
     private int itemid;
     
@@ -48,6 +45,10 @@ public class Item implements Serializable {
     //private Set<Order> order = new HashSet<>();
     
     public Item(){}
+    
+    public Item(int itemid){
+        this.itemid = itemid;
+    }
     
     public Item(int itemid, String title, int price, String description, String type/*,int itemcategoryid*/)
     {

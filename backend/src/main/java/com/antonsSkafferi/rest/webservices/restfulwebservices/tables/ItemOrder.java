@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,51 +25,55 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="order")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Order implements Serializable  {
+public class ItemOrder implements Serializable  {
 
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderid", updatable = false, nullable = false)
-    private int orderid;
+    private Integer orderid;
     
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="tableid", nullable = false)
+    @JoinColumn(name="dinnertable", referencedColumnName="dinnertableid", nullable = false)
     private Dinnertable dinnertable;
     
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name = "item",nullable = false)
+    @JoinColumn(name = "item", referencedColumnName="itemid" ,nullable = false)
     private Item item;
     
     @Column(name = "amount", updatable = true, nullable = false)
     private int amount;
     
-    public Order(){}
+    @Column(name = "adaptation", updatable = true, nullable = true)
+    private String adaptation;
     
-    public Order(Item item, int amount)
+    public ItemOrder(){}
+    
+    public ItemOrder(Dinnertable dinnertable, Item item, int amount, String adaptation)
     {
        this.dinnertable = dinnertable;
        this.item = item;
        this.amount = amount;
+       this.adaptation = adaptation;
        
     }
     
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Order)) return false;
-        Order that = (Order) o;
+        if (!(o instanceof ItemOrder)) return false;
+        ItemOrder that = (ItemOrder) o;
         return Objects.equals(dinnertable.getDinnertableid(), that.dinnertable.getDinnertableid()) &&
                 Objects.equals(item.getItemid(), that.item.getItemid()) &&
-                Objects.equals(amount, that.amount);
+                Objects.equals(amount, that.amount) &&
+                Objects.equals(adaptation, that.adaptation);
     }
     
     @Override
     public int hashCode(){
         
-    return Objects.hash(dinnertable.getDinnertableid(), item.getItemid(), amount);
+    return Objects.hash(dinnertable.getDinnertableid(), item.getItemid(), amount , adaptation);
     }
    
     /**
@@ -127,9 +132,19 @@ public class Order implements Serializable  {
         this.amount = amount;
     }
     
+    public String getAdaptation()
+    {
+        return adaptation;
+    }
+    
+    public void setAdaptation(String adaptation)
+    {
+        this.adaptation = adaptation;
+    }
+    
     @Override
     public String toString(){
-        return "Order [orderid=" + getOrderid() + ", dinnertableid=" + dinnertable + ", itemid="+ item + ", amount=" + getAmount() + "]";
+        return "Order [orderid=" + getOrderid() + ", dinnertableid=" + dinnertable + ", itemid="+ item + ", amount=" + getAmount() + ", adaptation="+ getAdaptation()+"]";
     }
     
 }

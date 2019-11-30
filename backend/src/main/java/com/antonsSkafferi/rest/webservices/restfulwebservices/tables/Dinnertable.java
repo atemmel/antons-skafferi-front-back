@@ -20,7 +20,7 @@ public class Dinnertable implements Serializable {
     
     @Id
     @Column(name = "dinnertableid", updatable = false, nullable = false)
-    private int dinnertableid;
+    private Integer dinnertableid;
     //We dont want the dinnertables values to change when we are running, change them on init instead.
     @Column(name = "sizesoftable", updatable = false, nullable = false)
     private int sizesoftable;

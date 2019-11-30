@@ -18,6 +18,7 @@ import javax.persistence.Table;
  * @author fredriksellgren
  */
 @Entity
+@Table(name = "itemcategory")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ItemCategory {
     
