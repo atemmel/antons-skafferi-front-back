@@ -62,4 +62,19 @@ public class ItemCategoryService {
         itemCategoryRepository.itemCategoryFindByName(name).forEach(itemCategory -> itemCategorys.add(itemCategory));
         return itemCategorys;
     }
+    
+    public void saveOrUpdateItemCategory(ItemCategory itemCategory)
+    {
+        itemCategoryRepository.save(itemCategory);
+    }
+    
+    public void delete(int id)
+    {
+        itemCategoryRepository.deleteById(id);
+    }
+    
+    public void deleteAll()
+    {
+        itemCategoryRepository.deleteAll();
+    }
 }

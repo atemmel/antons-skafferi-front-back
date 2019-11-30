@@ -9,6 +9,7 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.services.ItemServi
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Item;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,6 +55,16 @@ public class ItemController {
     @PostMapping(value = "/post/items", params="item")
     private void saveItem(@RequestBody Item item){
         itemService.saveOrUpdateItem(item);
+    }
+    
+    @DeleteMapping("/items/delete/item")
+    private void deleteItem(@RequestParam int id){
+        itemService.delete(id);
+    }
+    
+    @DeleteMapping("/items/delete/all")
+    private void deleteAll(){
+        itemService.deleteAll();
     }
             
 }
