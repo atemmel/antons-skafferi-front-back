@@ -10,7 +10,10 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.services.ItemCateg
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.ItemCategory;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,5 +35,20 @@ public class ItemCategoryController {
     @RequestMapping(value = "/itemcategorys/itemcategory", params = "name")
     private List getItemCategoryByName(@RequestParam String name){
         return itemCategoryService.getItemCategoryByName(name);
+    }
+    
+    @PostMapping(value = "/post/itemcategorys", params = "itemCategory")
+    private void saveItemCategory(@RequestBody ItemCategory itemCategory){
+        itemCategoryService.saveOrUpdateItemCategory(itemCategory);
+    }
+    
+    @DeleteMapping("itemcategorys/delete/itemcategory")
+    private void deleteItemCategory(@RequestParam int id){
+        itemCategoryService.delete(id);
+    }
+    
+    @DeleteMapping("itemcategorys/delete/all")
+    private void deleteAll(){
+        itemCategoryService.deleteAll();
     }
 }

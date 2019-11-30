@@ -88,9 +88,14 @@ public class ItemService {
         itemRepository.save(item);
     }
     
-    public void delete(String title)
+    public void delete(int id)
     {
-        itemRepository.deleteById(title);
+        itemRepository.deleteById(id);
+    }
+    
+    public void deleteAll()
+    {
+        itemRepository.deleteAll();
     }
     
         //This is for listing the customers that visiting the resturang today, and make the resault to a JSON object. 

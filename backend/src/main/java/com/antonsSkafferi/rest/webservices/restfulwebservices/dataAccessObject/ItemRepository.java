@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.Query;
  *
  * @author fredriksellgren
  */
-public interface ItemRepository extends JpaRepository<Item,String> {
+public interface ItemRepository extends JpaRepository<Item,Integer> {
     
     @Query(value = "Select * from item where type like %?1%", nativeQuery = true)
     List<Item> itemFindByType(String type);
