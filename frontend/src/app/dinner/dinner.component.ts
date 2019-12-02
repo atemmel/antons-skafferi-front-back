@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GetCategoriesService} from '../services/data/get-categories.service';
+import {GetItemsService} from '../services/data/get-items.service';
 
 @Component({
   selector: 'app-dinner',
@@ -7,57 +8,27 @@ import {GetCategoriesService} from '../services/data/get-categories.service';
   styleUrls: ['./dinner.component.scss']
 })
 export class DinnerComponent implements OnInit {
+  menu: Record<number, Category> = {};
+  chefsChoice: Category;
+  menuForHTML: Array<Category> = [];
 
-  menu: Array<MenuItem> = [];
-  menu2: Array<MenuItem2> = [];
   categoryResponse: any;
+  itemResponse: any;
   categoryArray: Array<Category> = [];
+  itemArray: Array<Item> = [];
   dataLoaded: Promise<boolean>;
 
-  constructor(private cat: GetCategoriesService) {}
+  constructor(private categoryGetter: GetCategoriesService, private itemGetter: GetItemsService) {}
 
   ngOnInit() {
-    this.getCategoryList();
     this.getMenu();
-
-  }
-
-  getCategoryList() {
-
-
-
   }
 
   async getMenu() {
-    let jsonObject: JSON;
-    const jsonString: any = {
-      "Kockens Val": { array: [{title: "Vildssvin", description: "Vildssvinskottlett med potatismos och lingonsylt"},
-        {title: "Vild lax", description: "Lax fångad vilt med färskpotatis som tillbehör"},
-        {title: "Renskav", description: "Renskav med potatismos"}], picture : ""},
-      Förrätter: { array: [{title: "Skagentoast", description: "Toast med skagenröra och en citronskiva"},
-        {title: "Vitlöksbröd", description: "Baguett med vitlökssmör"},
-        {title: "Mozarellasticks", description: "Friterad mozarella"}],
-        picture: "https://receptfavoriter.se/sites/default/files/vitloksbrod_65_980.jpg" },
-      Vilt: {array: [{title: "Renskav", description: "Renskav med potatismos"},
-        {title: "Älgfilè", description: "Älgfilè med potatisgrattäng"},
-        {title: "Bäverstek", description: "Bäverstek med potatis"}],
-        // tslint:disable-next-line:max-line-length
-        picture: "https://images.ctfassets.net/wcifomac350q/74mxcPcxFKpghUOMKAGsyA/0b114891ec21bff5df58912bf7b018e5/img_viltbord_matbild.jpg?fm=webp&q=70" },
-      "À La Carte": {array: [{title: "Lax", description: "Lax med potatismos"},
-        {title: "Oxfilè", description: "Oxfilè med potatisgratäng"},
-        {title: "Kötbullar", description: "Köttbullar med potatismos med lingonsylt"}],
-        picture: "https://assets.icanet.se/q_auto,f_auto/imagevaultfiles/id_152536/cf_259/helstekt-oxfile-bg-1920x540.jpg?" },
-      Dryck: {array: [{title: "Cola", description: "Burk(33cl)"},
-        {title: "ÖL", description: "Stor ÖL"},
-        {title: "Vinflarra", description: "Speedrun"}],
-        picture: "https://www.kingsizemag.se/wp-content/uploads/2019/05/beer-ls-580x345.jpg" }
-    };
-
-    jsonObject = jsonString as JSON;
-
-
-    const response = await this.cat.getCategories().toPromise();
-    this.categoryResponse = response;
+    const categoryResponse = await this.categoryGetter.getCategories().toPromise();
+    this.categoryResponse = categoryResponse;
+    const itemResponse = await this.itemGetter.getItems().toPromise();
+    this.itemResponse = itemResponse;
     this.dataLoaded = Promise.resolve(true);
 
     this.categoryResponse.forEach(val => {
@@ -65,95 +36,48 @@ export class DinnerComponent implements OnInit {
       this.categoryArray.push(val);
     });
 
-    // console.log(this.categoryArray);
+    this.itemResponse.forEach(item => {
+      const temp: Item = item;
+      this.itemArray.push(item);
+    })
 
     this.categoryArray.forEach(item => {
-      this.menu2.push(new MenuItem2(item.name, item.url, item.itemcategoryid));
+      this.menu[item.itemcategoryid] = new Category(item.itemcategoryid, item.name, item.url);
     });
-    console.log(this.menu2);
 
+    this.itemArray.forEach(item => {
+      this.menu[item.itemcategory].items.push(item);
+    });
 
-
-
-
-    // console.log(jsonObject);
-
-    for (const key of Object.keys(jsonObject)) {
-      let temp: MenuItem = new MenuItem(key);
-      temp.pictureUrl = jsonObject[key].picture;
-      const temparray: Dish[] = jsonObject[key].array;
-
-      temp.replaceDishes(temparray);
-      this.menu.push(temp);
-      temp = null;
-    }
-
-    // console.log(this.menu[0]);
-
-
-
+    Object.keys(this.menu).forEach(key => {
+      if (this.menu[key].name === "Kockens Val") {
+        this.chefsChoice = this.menu[key];
+        this.menu[key] = null;
+      } else {
+        this.menuForHTML.push(this.menu[key]);
+      }
+    });
   }
 }
 
-class Dish {
+class Item {
+  itemid: number;
   title: string;
+  price: number;
   description: string;
-
-  constructor(title: string, description: string) {
-    this.title = title;
-    this.description = description;
-  }
+  type: string;
+  itemcategory: number;
 }
 
 class Category {
   itemcategoryid: number;
   name: string;
   url: string;
+  items: Array<Item> = [];
 
   constructor(id: number, name: string, url: string) {
     this.itemcategoryid = id;
     this.name = name;
     this.url = url;
   }
-}
-
-class MenuItem2 {
-  title: string;
-  pictureUrl: string;
-  id: number;
-  public dishes: Array<Dish> = [];
-
-  constructor(title: string, pictureUrl: string, id: number) {
-    this.title = title;
-    this.pictureUrl = pictureUrl;
-    this.id = id;
-  }
-
-  addDish(newDish: Dish) {
-    this.dishes.push(newDish);
-  }
-  replaceDishes(newDishArray: Dish[]) {
-    this.dishes = newDishArray;
-  }
-
-
-}
-
-class MenuItem {
-  title: string;
-  pictureUrl: string;
-  public dishes: Array<Dish> = [];
-
-  constructor(title: string) {
-    this.title = title;
-  }
-
-  addDish(newDish: Dish) {
-    this.dishes.push(newDish);
-  }
-  replaceDishes(newDishArray: Dish[]) {
-    this.dishes = newDishArray;
-  }
-
-
 }

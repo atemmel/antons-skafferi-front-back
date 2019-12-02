@@ -144,8 +144,8 @@ public class Item implements Serializable {
      /**
      * @return the categoryid
      */
-    public ItemCategory getItemcategory() {
-        return itemcategory;
+    public int getItemcategory() {
+        return itemcategory.getItemcategoryid();
     }
 
     public void setItemcategory(ItemCategory itemcategory) {
@@ -155,7 +155,7 @@ public class Item implements Serializable {
     
     @Override
     public String toString(){
-        return "Item [Item= " + getItemid() + ", title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + ",type=" + getType() + ", itemcategory=" + itemcategory.getItemcategoryid() +"]";
+        return "Item [Item= " + getItemid() + ", title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + ",type=" + getType() + ", itemcategory=" + getItemcategory() +"]";
     }
       
 }

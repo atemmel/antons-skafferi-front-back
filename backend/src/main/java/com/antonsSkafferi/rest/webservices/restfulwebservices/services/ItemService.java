@@ -37,11 +37,6 @@ public class ItemService {
         return (args) -> {
             
             itemRepository.save(new Item(1,"Bakad fläskkarre",115,"gräddstuvad kål, senapssky, äppelmos, rostad morot","kött"));
-            itemRepository.save(new Item(2,"Oxbringa",115,"senapssås, pepparrot, rostad potatis, bakad lök, persilja","kött"));
-            itemRepository.save(new Item(3,"Fiskgryta",145,"sej, musslor, potatis, fänkål, dill, citron, aioli","fisk​"));
-            itemRepository.save(new Item(4,"Tomatsoppa",115,"Ägg 63, chili, krutonger, basilika​","vegetarisk"));
-            itemRepository.save(new Item(5,"Viltpannbiffar",115,"löksås, syrad gurka, potatispure","kött"));
-            itemRepository.save(new Item(6,"Grillad lammytter",115,"Basmatiris, Rogan Josh, paprika, chili, koriander, tomatsallad","kött"));
         }; 
     }
     

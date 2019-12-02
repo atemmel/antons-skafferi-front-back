@@ -7,11 +7,11 @@
           <div class="col-sm nopadding nomargin minHeight">
           </div>
           <div id="chefsChoice" class="col nopadding parchementBackground">
-            <div *ngIf="menu" class="row nopadding nomargin">
+            <div *ngIf="chefsChoice" class="row nopadding nomargin">
               <div class="col menuItems">
-                <h2>{{menu[0].title}}</h2>
+                <h2>{{chefsChoice.name}}</h2>
                 <ul class="nopadding">
-                  <li *ngFor="let item of menu[0].dishes" class="kockensVal">
+                  <li *ngFor="let item of chefsChoice.items" class="kockensVal">
                     <h3>{{item.title}}</h3>
                     <p>{{item.description}}</p>
                   </li>
@@ -27,24 +27,24 @@
         </div>
     </div>
 
-    <div id="dinnerMenu" *ngIf="menu" class="container mx-auto collapse">
-      <div *ngFor="let item of menu | slice:1; let i = index" class="row" >
+    <div id="dinnerMenu" *ngIf="menuForHTML" class="container mx-auto collapse">
+      <div *ngFor="let item of menuForHTML; let i = index" class="row" >
         <div *ngIf="i%2==0" class="col parchementBackground menuItems">
-          <h2>{{item.title}}</h2>
+          <h2>{{item.name}}</h2>
           <ul class="nopadding">
-            <li *ngFor="let dish of item.dishes">
+            <li *ngFor="let dish of item.items">
               <h3>{{dish.title}}</h3>
               <p>{{dish.description}}</p>
             </li>
           </ul>
         </div>
-        <div *ngIf="i%2==0" class="col-sm menuImages" [style.backgroundImage]="'url('+item.pictureUrl+')'"></div>
+        <div *ngIf="i%2==0" class="col-sm menuImages" [style.backgroundImage]="'url('+item.url+')'"></div>
 
-        <div *ngIf="i%2!=0" class="col-sm menuImages" [style.backgroundImage]="'url('+item.pictureUrl+')'"></div>
+        <div *ngIf="i%2!=0" class="col-sm menuImages" [style.backgroundImage]="'url('+item.url+')'"></div>
           <div *ngIf="i%2!=0" class="col parchementBackground menuItems">
-            <h2>{{item.title}}</h2>
+            <h2>{{item.name}}</h2>
             <ul class="nopadding">
-              <li *ngFor="let dish of item.dishes">
+              <li *ngFor="let dish of item.items">
                 <h3>{{dish.title}}</h3>
                 <p>{{dish.description}}</p>
               </li>
