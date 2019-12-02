@@ -5,10 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { BookingComponent } from './booking/booking.component';
 
 
-const routes: Routes = [
-	{ path: '', component: HomeComponent },
-	{ path: 'booking', component: BookingComponent }
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
