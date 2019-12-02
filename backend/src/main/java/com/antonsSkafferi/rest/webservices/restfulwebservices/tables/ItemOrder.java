@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
  *
@@ -27,7 +25,6 @@ import javax.persistence.Table;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ItemOrder implements Serializable  {
-
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,15 +45,18 @@ public class ItemOrder implements Serializable  {
     @Column(name = "note", updatable = true, nullable = true)
     private String note;
     
+    @Column(name = "ready", updatable = true, nullable = false)
+    private boolean ready;
+    
     public ItemOrder(){}
     
-    public ItemOrder(Dinnertable dinnertable, Item item, int amount, String note)
+    public ItemOrder(Dinnertable dinnertable, Item item, int amount, String note, boolean ready)
     {
        this.dinnertable = dinnertable;
        this.item = item;
        this.amount = amount;
        this.note = note;
-       
+       this.ready = ready;
     }
     
     @Override
@@ -67,13 +67,14 @@ public class ItemOrder implements Serializable  {
         return Objects.equals(dinnertable.getDinnertableid(), that.dinnertable.getDinnertableid()) &&
                 Objects.equals(item.getItemid(), that.item.getItemid()) &&
                 Objects.equals(amount, that.amount) &&
-                Objects.equals(note, that.note);
+                Objects.equals(note, that.note) &&
+                Objects.equals(isReady(), that.isReady());
     }
     
     @Override
     public int hashCode(){
         
-    return Objects.hash(dinnertable.getDinnertableid(), item.getItemid(), amount , note);
+    return Objects.hash(dinnertable.getDinnertableid(), item.getItemid(), amount , note, isReady());
     }
    
     /**
@@ -142,9 +143,23 @@ public class ItemOrder implements Serializable  {
         this.note = note;
     }
     
+    /**
+     * @return the ready
+     */
+    public boolean isReady() {
+        return ready;
+    }
+
+    /**
+     * @param ready the ready to set
+     */
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
+    
     @Override
     public String toString(){
-        return "Order [orderid=" + getOrderid() + ", dinnertable=" + dinnertable + ", item="+ item + ", amount=" + getAmount() + ", note="+ getNote()+"]";
+        return "Order [orderid=" + getOrderid() + ", dinnertable=" + dinnertable + ", item="+ item + ", amount=" + getAmount() + ", note="+ getNote()+", ready=" + isReady() + "]";
     }
     
 }
