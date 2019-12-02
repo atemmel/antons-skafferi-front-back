@@ -12,6 +12,6 @@ export class GetCategoriesService {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   getCategories() {
-    return this.http.get(AppSettings.BACKEND_URL + "/dishCategory");
+    return this.http.get(AppSettings.BACKEND_URL + "/itemcategorys");
   }
 }

@@ -68,7 +68,7 @@ export class DinnerComponent implements OnInit {
     // console.log(this.categoryArray);
 
     this.categoryArray.forEach(item => {
-      this.menu2.push(new MenuItem2(item.name, item.url, item.id));
+      this.menu2.push(new MenuItem2(item.name, item.url, item.itemcategoryid));
     });
     console.log(this.menu2);
 
@@ -106,12 +106,12 @@ class Dish {
 }
 
 class Category {
-  id: number;
+  itemcategoryid: number;
   name: string;
   url: string;
 
   constructor(id: number, name: string, url: string) {
-    this.id = id;
+    this.itemcategoryid = id;
     this.name = name;
     this.url = url;
   }
