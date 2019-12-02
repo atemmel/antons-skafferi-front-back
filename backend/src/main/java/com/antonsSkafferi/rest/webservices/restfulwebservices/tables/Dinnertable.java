@@ -14,21 +14,21 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="dinnertable")
+@Table(name = "dinnertable")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Dinnertable implements Serializable {
     
     @Id
     @Column(name = "dinnertableid", updatable = false, nullable = false)
-    private int dinnertableid;
+    private Integer dinnertableid;
     //We dont want the dinnertables values to change when we are running, change them on init instead.
     @Column(name = "sizesoftable", updatable = false, nullable = false)
     private int sizesoftable;
     @Column(name = "description", updatable = false, nullable = false)
     private String description;
-    //What the relation is mapped to customer <-- One to One --> dinnertables.
-    //@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "dinnertable")
-    //private Customer customer;    
+    
+    //@OneToMany(mappedBy = "dinnertable",cascade =  CascadeType.ALL)
+    //private Set<Order> orders;
 
     public Dinnertable(){}
     
@@ -38,6 +38,13 @@ public class Dinnertable implements Serializable {
         this.dinnertableid = dinnertableid;
     
     }
+    //Tree dots zero or more obejcts will be send.
+    /*public Dinnertable(int dinnertableid, Order...orders){
+        this.dinnertableid = dinnertableid;
+      
+        for(Order order : orders) order.setDinnertable(this);
+        this.orders = Stream.of(orders).collect(Collectors.toSet());
+    }*/
     //maybe redudant dunno yet.
     public Dinnertable(int dinnertableid, String description, int sizeoftable){
         this.dinnertableid = dinnertableid;

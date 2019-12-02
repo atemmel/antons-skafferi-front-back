@@ -30,3 +30,5 @@ You can also start the backend via the command line:
 cd backend
 ./start-backend
 ```
+# Database Schema
+![Repo List](/backend/src/main/resources/images/DatabaseSchema.png) 

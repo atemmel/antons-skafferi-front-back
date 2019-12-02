@@ -5,7 +5,6 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.controllers.ConnectionManager;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.CustomerRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Customer;
 import java.time.LocalDateTime;
@@ -20,7 +19,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author fredriksellgren
+ * @author FREDDE
  */
 @Service
 public final class CustomerService {
@@ -54,7 +53,7 @@ public final class CustomerService {
     public List<Customer> customersByfirstName(String name)
     {
     
-        List<Customer> customers = new ArrayList<Customer>();
+        List<Customer> customers = new ArrayList<>();
         customerRepository.customersFindByfirstName(name).forEach(customer -> customers.add(customer));
         return customers;
     
@@ -63,22 +62,19 @@ public final class CustomerService {
     public List<Customer> customersBylastName(String lastName)
     {
     
-        List<Customer> customers = new ArrayList<Customer>();
+        List<Customer> customers = new ArrayList<>();
         customerRepository.customersFindBylastName(lastName).forEach(customer -> customers.add(customer));
         return customers;
     
     }
     
     public List<Customer> customersByEmail(String email){
-        List<Customer> customers = new ArrayList<Customer>();
+        List<Customer> customers = new ArrayList<>();
         customerRepository.customersFindByEmail(email).forEach(customer -> customers.add(customer));
         return customers;
         
     }
     
-    
-    
-    //TODO: FIX THIS SHIT
     public List customersToday()
     {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -98,12 +94,23 @@ public final class CustomerService {
 
     }
     
-        
+    public List<Customer> customersByTable(int id){
+        List<Customer> customers = new ArrayList<>();
+        customerRepository.customersFindByTable(id).forEach(customer -> customers.add(customer));
+        return customers;
+    }
+      
     public void saveOrUpdateCustomer(Customer customer){
         
         customerRepository.save(customer);
     }
-    
+    public void changeCustomerTable(String date, String firstname, String secondname){
+        System.out.println("date: " + date + " fName: " + firstname);
+        Customer temp = customerRepository.changeCustomerTable(date, firstname, secondname);
+        System.out.println("Date: " + temp.getBookingdate() + "FirstName: " + temp.getFirstname());
+        
+        
+    }
     
     public void delete(int id){
         customerRepository.deleteById(id);
@@ -114,4 +121,3 @@ public final class CustomerService {
         customerRepository.deleteAll();
     }
 }
-    
