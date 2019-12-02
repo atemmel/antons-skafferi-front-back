@@ -31,21 +31,6 @@ public class ItemCategoryService {
         return ItemCategoryService;
     }
     
-    @Bean
-    public CommandLineRunner initItemCategory(ItemCategoryRepository itemCategoryRepository) {
-        return (args) -> {
-            
-            itemCategoryRepository.save(new ItemCategory(1,"Kött","url"));
-            itemCategoryRepository.save(new ItemCategory(2,"Förrätt","url"));
-            itemCategoryRepository.save(new ItemCategory(3,"Efterrätt","url"));
-            itemCategoryRepository.save(new ItemCategory(4,"Kockens Val","url"));
-            itemCategoryRepository.save(new ItemCategory(5,"Vilt","url"));
-            itemCategoryRepository.save(new ItemCategory(6,"À La Carte","url"));
-            itemCategoryRepository.save(new ItemCategory(7,"Dryck","url"));
-        }; 
-
-    }
-    
     public List<ItemCategory> getAllItems()
     {
         

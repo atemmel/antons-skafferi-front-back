@@ -6,11 +6,14 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,10 +29,14 @@ public class ItemCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "itemcategoryid", updatable = false, nullable = false)
     private int itemcategoryid;
+    
     @Column(name = "name", updatable = true, nullable = false)
     private String name;
     @Column(name = "url", updatable = true, nullable = false)
     private String url;
+    
+    @OneToMany(mappedBy = "itemcategory", cascade = CascadeType.ALL)
+    private Set<Item> items;
 
     
     public ItemCategory(){}

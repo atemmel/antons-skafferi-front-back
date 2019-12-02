@@ -32,13 +32,6 @@ public class ItemService {
         return ItemService;
     }
     
-    @Bean
-    public CommandLineRunner initItem(ItemRepository itemRepository) {
-        return (args) -> {
-            
-            itemRepository.save(new Item(1,"Bakad fläskkarre",115,"gräddstuvad kål, senapssky, äppelmos, rostad morot","kött"));
-        }; 
-    }
     
     //GET FUNCTIONS
     public List<Item> getAllItems()
