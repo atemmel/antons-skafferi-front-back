@@ -155,7 +155,7 @@ public class Item implements Serializable {
     
     @Override
     public String toString(){
-        return "Item [Item= " + getItemid() + ", title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + ",type=" + getType() + ", itemcategory=" + itemcategory +"]";
+        return "Item [Item= " + getItemid() + ", title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + ",type=" + getType() + ", itemcategory=" + itemcategory.getItemcategoryid() +"]";
     }
       
 }
