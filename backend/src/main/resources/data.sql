@@ -8,24 +8,41 @@
  * Created: 2 dec. 2019
  */
 
-insert into ItemCategory (itemcategoryid, name, url) VALUES (1,'Kött','url');
-insert into ItemCategory (itemcategoryid, name, url) VALUES (2,'Förrätt','url');
-insert into ItemCategory (itemcategoryid, name, url) VALUES (3,'Efterrätt','url');
-insert into ItemCategory (itemcategoryid, name, url) VALUES (4,'Kockens Val','url');
-insert into ItemCategory (itemcategoryid, name, url) VALUES (5,'Vilt','url');
-insert into ItemCategory (itemcategoryid, name, url) VALUES (6,'À La Carte','url');
-insert into ItemCategory (itemcategoryid, name, url) VALUES (7,'Dryck','url');
-insert into ItemCategory (itemcategoryid, name, url) VALUES (8,'fisk','url');
-insert into ItemCategory (itemcategoryid, name, url) VALUES (9,'vegetarisk','url');
+DELETE FROM ItemOrder;
+DELETE FROM Item;
+DELETE FROM ItemCategory;
+DELETE FROM Customer;
+DELETE FROM Dinnertable;
+
+insert into ItemCategory (itemcategoryid, name, url)
+VALUES (1,'Kött','url'),
+(2,'Förrätt','url'),
+(3,'Efterrätt','url'),
+(4,'Kockens Val','url'),
+(5,'Vilt','url'),
+(6,'À La Carte','url'),
+(7,'Dryck','url'),
+(8,'fisk','url'),
+(9,'vegetarisk','url');
 
 insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (1,'Bakad fläskkarre',115,'gräddstuvad kål, senapssky, äppelmos, rostad morot','kött',1);
+VALUES (1,'Bakad fläskkarre',115,'gräddstuvad kål, senapssky, äppelmos, rostad morot','kött',1),
+(2,'Oxbringa',115,'senapssås, pepparrot, rostad potatis, bakad lök, persilja','kött',1),
+(3,'Fiskgryta',115,'sej, musslor, potatis, fänkål, dill, citron, aioli','fisk​',8),
+(4,'Tomatsoppa',115,'Ägg 63, chili, krutonger, basilika','vegetarisk',9);
 
-insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (2,'Oxbringa',115,'senapssås, pepparrot, rostad potatis, bakad lök, persilja','kött',1);
+insert into Dinnertable (dinnertableid, description, sizesoftable)
+VALUES (1,'Fonsterbord',4),
+(2,'Salong',4),
+(3,'Fonsterbord',2),
+(4,'Mitten',8),
+(5,'Salong',4),
+(6,'Ingång',2),
+(7,'Mitten',4);
 
-insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (3,'Fiskgryta',115,'sej, musslor, potatis, fänkål, dill, citron, aioli','fisk​',8);
 
-insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (4,'Tomatsoppa',115,'Ägg 63, chili, krutonger, basilika','vegetarisk',9);
+insert into Customer(customerid, firstname, lastname, sizeofcompany, email, bookingtime, bookingdate, phone)
+VALUES (1, 'Allan', 'Takkolander', 4, 'Test@email.com','21:30','2019-02-02', '070-3123431');  
+
+insert into ItemOrder(orderid, amount, note, ready, dinnertableid, itemid)
+VALUES (1,1,'Utan Ost',true,1,1);
