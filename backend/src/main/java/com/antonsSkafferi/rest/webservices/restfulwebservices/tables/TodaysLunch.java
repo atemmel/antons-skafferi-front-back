@@ -5,6 +5,7 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,20 +16,31 @@ import javax.persistence.Table;
  * @author fredriksellgren
  */
 @Entity
-@Table(name="todayLunch")
-public class TodaysLunch {
+@Table(name="todayslunch")
+public class TodaysLunch implements Serializable {
 
     @Id
     @Column(name = "mealname", updatable = false, nullable = false)
     private String mealname;
     
-    @Column(name = "day", updatable = true, nullable = false)
-    private int day;
+    @Column(name = "days", updatable = true, nullable = false)
+    private int days;
     
     @Column(name = "type", updatable = true, nullable = false)
     private String type;
+
+    public TodaysLunch() {
+    }
     
-        /**
+    
+    
+    public TodaysLunch(String mealname, int day, String type)
+    {
+        this.mealname = mealname;
+        this.days = day;
+        this.type = type;
+    }
+    /**
      * @return the mealname
      */
     public String getMealname() {
@@ -43,17 +55,17 @@ public class TodaysLunch {
     }
 
     /**
-     * @return the day
+     * @return the days
      */
-    public int getDay() {
-        return day;
+    public int getDays() {
+        return days;
     }
 
     /**
-     * @param day the day to set
+     * @param days the days to set
      */
-    public void setDay(int day) {
-        this.day = day;
+    public void setDays(int days) {
+        this.days = days;
     }
 
     /**
@@ -72,6 +84,6 @@ public class TodaysLunch {
     
     @Override
     public String toString(){
-        return "TodaysLunch [mealname=" + getMealname() + ", day=" + getDay() + ", type=" + getType() + "]";
+        return "TodaysLunch [mealname=" + getMealname() + ", day=" + getDays() + ", type=" + getType() + "]";
     }
 }

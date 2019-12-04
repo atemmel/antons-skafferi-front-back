@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
@@ -23,13 +24,14 @@ import javax.persistence.ManyToOne;
  */
 
 @Entity
+@Table(name = "itemorder")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ItemOrder implements Serializable  {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderid", updatable = false, nullable = false)
-    private Integer orderid;
+    private int orderid;
     
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="dinnertableid", referencedColumnName="dinnertableid", nullable = false)
