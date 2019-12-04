@@ -1,0 +1,44 @@
+.card {
+    border: 5px solid gray;
+    margin: auto;
+    float: none;
+    display: flex;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+}
+.row{
+    margin-right: -5px;
+    margin-left: -5px;
+}
+.button {
+
+    width: 120px;
+    height: 45px;
+    font-family: 'Dealers', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #000;
+    padding: 10px 10px 10px 10px; 
+    background-color: grey;
+    border: white;
+    border-style: medium;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    float:  right;
+    float: bottom;
+    position: relative;
+    top: -20px; /* This will move it 20px up */
+    right: 20px; /* This will move it 20px to the right */
+    
+}
+.button:hover {
+    background-color: rgb(212, 212, 212);
+    box-shadow: 0px 15px 20px rgba(231, 241, 237, 0.4);
+    color: black;
+    transform: translateY(-7px);
+}

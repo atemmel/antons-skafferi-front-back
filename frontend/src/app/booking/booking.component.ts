@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-booking',
@@ -7,24 +8,32 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
-
+  @Input() showMePartially: boolean;
   
-  url = 'http://localhost:8080/customers/';
+  geturl = 'http://localhost:8080/customers';
+  posturl = 'http://localhost:8080/post/customers?customer=';
   items = [];
   json;
   clickMessage = '';
-  public customerName ='';
-  public customerEmail= '';
-  public bookingDate = "dateTime";
+  public customerFirstName = "";
+  public customerLastName= "";
+  public customerEmail= "";
+  public bookingDate = "";
+  public booingTime = "";
+  public sizeOfCompany = "";
+  public customerPhone = "";
   postData = { 
-    "bookingDateTime": "",
-    "name": "",
-    "email": ""
+    "bookingdate": "",
+    "bookingtime": "",
+    "firstname": "",
+    "lastname": "",
+    "email": "",
+    "phone": "",
+    "sizeofcompany": "",
   };
 
   constructor(private http: HttpClient){
-    this.http.get(this.url).toPromise().then(data => {
-      console.log(data);
+    this.http.get(this.geturl).subscribe(data => {
 
       for (let key in data)
         if(data.hasOwnProperty(key))
@@ -57,15 +66,31 @@ export class BookingComponent implements OnInit {
   }
 
   onClickMe() {
-    this.postData.name = this.customerName;
-    this.postData.email = this.customerEmail;
-    console.log(this.date);
-    this.postData.bookingDateTime = this.buildDate(new Date(this.date)); 
-    this.clickMessage = this.postData.bookingDateTime;
-    this.http.post(this.url, this.postData).toPromise().then((data:any) =>{
-      console.log(data);
-      this.json = JSON.stringify(data.json);
-    });
+    this.clickMessage = "Please fill all information"
+    if(this.customerFirstName !== "" && this.customerLastName !== "" && this.customerPhone !== "" && this.customerEmail !== "" && this.sizeOfCompany !== ""){
+      this.postData.firstname = this.customerFirstName;
+      console.log(this.postData.firstname)
+      this.postData.lastname = this.customerLastName;
+      this.postData.email = this.customerEmail;
+      this.postData.phone = this.customerPhone;
+      this.postData.sizeofcompany = this.sizeOfCompany;
+    
+      console.log(this.postData);
+
+
+
+      
+      const tempDateTime = this.buildDate(new Date(this.date));
+      this.postData.bookingdate = tempDateTime.substr(0,10);
+      this.postData.bookingtime =  tempDateTime.substr(11,16);
+
+      this.clickMessage = "Thanks for reservation";
+      
+
+        this.http.post(this.posturl, this.postData).subscribe((data:any) =>{
+        });
+
+      }
   }
 
   ngOnInit() {

@@ -1,35 +1,58 @@
-<div>
-    <h2>Stuff from database in Database Component</h2>
-    <div *ngFor ="let item of items">Name: {{item.name}} @ {{item.bookingDateTime}}</div>
+<!--<div>
+        <h2>Stuff from database in Database Component</h2>
+        <div *ngFor ="let item of items">Customer: {{item.firstname}} {{item.lastname}} made a reservation {{item.bookingdate}} : {{item.bookingtime}} vid bord {{item.dinnertable.dinnertableid}} sällskapet är {{item.sizeofcompany}} </div>
 </div>
-<div class ="card" style="width: 30rem;">
-<h1>TestComponent to booking send Json Whit Database</h1>
-<div class="form-group">
-    <div class="form-group col-md-6">
-        <label for="bookingDate">Bookingdate</label>
-        <angular2-date-picker class="form-control" id = "datetimepicker" [(ngModel)]="date" [settings] = "settings" style="padding: 0.2 rem 0.1 rem" ></angular2-date-picker>
-    </div>
-</div>
-
-<form>
-
-    
+-->
+<div class ="card" style="width: 25rem;" *ngIf="showMePartially">
+    <p>TestComponent to booking dinnertable</p>
     <div class="form-group">
-        <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input (input)="customerEmail=$event.target.value" type="text" class="form-control" id="customerEmail" name="customerEmail" [(ngModel)]="customerEmail"  placeholder={{customerEmail}}>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputPassword4">Name</label>
-            <input (input)="customerName=$event.target.value"  type="text" class="form-control" id="customerName" name="customerName" [(ngModel)]="customerName"  placeholder={{customerName}}>
+        <div class="form-group col-md-6" >
+            <label for="bookingDate">Bookingdate</label>
+            <angular2-date-picker class="form-control" id = "datetimepicker" [(ngModel)]="date" [settings] = "settings" style="padding: 0.2 rem 0.1 rem" ></angular2-date-picker>
         </div>
     </div>
-</form>
 
-<div align="right">
-    <button (click)="onClickMe()">Add reservation!</button>
-    {{clickMessage}}
-</div>
+    <form>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input (input)="customerEmail=$event.target.value" type="text" class="form-control" id="customerEmail" name="customerEmail" [(ngModel)]="customerEmail"  placeholder={{customerEmail}}>
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputText4">FirstName</label>
+                <input (input)="customerName=$event.target.value"  type="text" class="form-control" id="customerFirstName" name="customerFirstName" [(ngModel)]="customerFirstName"  placeholder={{customerFirstName}}>
+            </div>
+
+            <div class="clearfix visible-xs-block"></div>
+
+            <div class="col-md-6">
+                <label for="inputText4">LastName</label>
+                <input (input)="customerName=$event.target.value"  type="text" class="form-control" id="customerLastName" name="customerLastName" [(ngModel)]="customerLastName"  placeholder={{customerLastName}}>
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputText4">Phone</label>
+                <input (input)="customerName=$event.target.value"  type="text" class="form-control" id="customerPhone" name="customerPhone" [(ngModel)]="customerPhone"  placeholder={{customerPhone}}>
+            </div>
+
+            <div class="clearfix visible-xs-block"></div>
+
+            <div class="col-md-6">
+                <label for="inputText4">Sizeofcompany</label>
+                <input (input)="customerName=$event.target.value"  type="text" class="form-control" id="sizeOfCompany" name="sizeOfCompany" [(ngModel)]="sizeOfCompany"  placeholder={{sizeOfCompany}}>
+            </div>
+            <div class="clearfix visible-xs-block"></div>
+        </div>
+
+    </form>
+
+    <div>
+        <button class="button" id="button" type="button" label="Click" (click)="onClickMe()">Add reservation!</button>
+        {{clickMessage}} 
+
+    </div>
 </div>
 
 <!--{{date}}

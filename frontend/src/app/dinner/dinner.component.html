@@ -2,6 +2,12 @@
     <div id="dinner" class="container-fluid nopadding nomargin background-image">
       <div id="title" class="nopadding nomargin header-background">
         <h1 class="nomargin nopadding">Kvällsmeny</h1>
+
+        <button class="button" id="button" type="button" label="Click" (click)="toggleChild()">{{buttonText}}</button>
+        <div>
+                <app-booking [showMePartially]="showVar"></app-booking>
+        </div>
+         
       </div>
         <div class="row nomargin nopadding">
           <div class="col-sm nopadding nomargin minHeight">
