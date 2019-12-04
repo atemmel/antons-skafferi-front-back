@@ -39,31 +39,18 @@ VALUES (1,'Kött','url'),
 (9,'vegetarisk','url');
 
 insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-
-VALUES (4,'Tomatsoppa',115,'Ägg 63, chili, krutonger, basilika','vegetarisk',9);
-
-insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (5,'Cola',115,'33CL','dryck',7);
-
-insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (6,'Skakentoast',115,'Toast med skagenröra','macka',2);
-
-insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (7,'Renskav',115,'Renskav med potatis','Vilt',4);
-
-insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (8,'Glass',115,'3 skopor vaniljglass med colasås','glass',3);
-
-insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (9,'Vildssvin',115,'Vildssvinskotlett med potatisgratäng','vilt',5);
-
-insert into ITEM (itemid, title, price, description, type, itemcategoryid)
-VALUES (10,'Spagetti med kötfärsås',115,'Serveras med parmesanost','pasta',6);
-
 VALUES (1,'Bakad fläskkarre',115,'gräddstuvad kål, senapssky, äppelmos, rostad morot','kött',1),
 (2,'Oxbringa',115,'senapssås, pepparrot, rostad potatis, bakad lök, persilja','kött',1),
 (3,'Fiskgryta',115,'sej, musslor, potatis, fänkål, dill, citron, aioli','fisk​',8),
-(4,'Tomatsoppa',115,'Ägg 63, chili, krutonger, basilika','vegetarisk',9);
+(4,'Tomatsoppa',115,'Ägg 63, chili, krutonger, basilika','vegetarisk',9),
+(5,'Cola',115,'33CL','dryck',7),
+(6,'Skakentoast',115,'Toast med skagenröra','macka',2),
+(7,'Renskav',115,'Renskav med potatis','Vilt',4),
+(8,'Glass',115,'3 skopor vaniljglass med colasås','glass',3),
+(9,'Vildssvin',115,'Vildssvinskotlett med potatisgratäng','vilt',5),
+(10,'Spagetti med kötfärsås',115,'Serveras med parmesanost','pasta',6);
+
+
 
 insert into Dinnertable (dinnertableid, description, sizesoftable)
 VALUES (1,'Fonsterbord',4),
@@ -79,5 +66,5 @@ insert into Customer(customerid, firstname, lastname, sizeofcompany, email, book
 VALUES (1, 'Allan', 'Takkolander', 4, 'Test@email.com','21:30','2019-02-02', '070-3123431');  
 
 insert into ItemOrder(orderid, amount, note, ready, dinnertableid, itemid)
-VALUES (1,1,'Utan Ost',true,1,1);
+VALUES (1,1,'Utan Ost',1,1,1);
 
