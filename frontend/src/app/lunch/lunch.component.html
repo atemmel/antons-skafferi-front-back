@@ -12,7 +12,7 @@
                                         {{lunchMeal.type}}
                                     </h3>
                                     <p class="nopadding nomargin">
-                                        {{lunchMeal.mealName}}
+                                        {{lunchMeal.mealname}}
                                     </p>
                                 </li>
                             </ul>
@@ -23,7 +23,7 @@
         </div>
 
 <!--Section for weekly lunch with cards for each day + background-->
-    <div *ngIf="lunchMeals" id="lunch" class="container nopadding nomargin">
+    <div *ngIf="lunchMenuResponse" id="lunch" class="container nopadding nomargin">
         
         <div class="header-background mx-auto nomargin nopadding">
             <h1>Veckans Lunch</h1>
@@ -45,7 +45,7 @@
                                 {{lunchMeal.type}}
                             </h3>
                             <p class="nopadding nomargin">
-                                {{lunchMeal.mealName}}
+                                {{lunchMeal.mealname}}
                             </p>
                         </li>
                     </ul>
