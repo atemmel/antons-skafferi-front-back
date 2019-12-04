@@ -2,8 +2,6 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,14 +14,10 @@ import javax.persistence.Table;
 @Table(name="event")
 public class Event {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="eventid", updatable = false, nullable = false)
-    private int eventid;
-    
     @Column(name="title", updatable = true, nullable = true)
     private String title;
     
+    @Id
     @Column(name="eventdate", updatable = true, nullable = true)
     private String eventdate;
     
@@ -35,26 +29,11 @@ public class Event {
     
     public Event(){}
     
-    public Event(int eventid, String title, String eventdate, String eventtime, String picture){
-        this.eventid = eventid;
+    public Event(String title, String eventdate, String eventtime, String picture){
         this.title = title;
         this.eventdate = eventdate;
         this.eventtime = eventtime;
         this.picture = picture;
-    }
-    
-    /**
-     * @return the eventid
-     */
-    public int getEventid() {
-        return eventid;
-    }
-
-    /**
-     * @param eventid the eventid to set
-     */
-    public void setEventid(int eventid) {
-        this.eventid = eventid;
     }
 
     /**
@@ -115,6 +94,6 @@ public class Event {
     
     @Override
     public String toString(){
-        return "Event [eventid=" + getEventid() + ", title=" + getTitle() + ", eventdate="+ getEventdate() + ", eventtime=" + getEventtime() + ", picture=" + getPicture() + "]";
+        return "Event [title=" + getTitle() + ", eventdate="+ getEventdate() + ", eventtime=" + getEventtime() + ", picture=" + getPicture() + "]";
     }
 }
