@@ -50,7 +50,7 @@ export class DinnerComponent implements OnInit {
     });
 
     Object.keys(this.menu).forEach(key => {
-      if (this.menu[key].name === "Kockens Val") {
+      if (this.menu[key].name === "Kockens val") {
         this.chefsChoice = this.menu[key];
         this.menu[key] = null;
       } else {
