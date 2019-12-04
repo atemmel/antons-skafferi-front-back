@@ -13,6 +13,19 @@ DELETE FROM Item;
 DELETE FROM ItemCategory;
 DELETE FROM Customer;
 DELETE FROM Dinnertable;
+DELETE FROM todayslunch;
+
+insert into todayslunch (mealname, days, type)
+VALUES ('Lax och spenatsoppa',1,'Fisk'),
+('Stek',1,'Kötträtt'),
+('Spagetti bolognaise',2,'Pasta'),
+('Örtbakad torskfilé med gratinerad potatismos',2,'Fisk'),
+('Köttfärsås och Spagetti',2,'Kött'),
+('Fish and chips med remouladsås',3,'Fisk'),
+('Stekt fläsk med löksås',3,'För köttälskare'),
+('Pastagratäng med rökt kassler purjolök och cocktailtomater',3,'Pasta');
+
+
 
 insert into ItemCategory (itemcategoryid, name, url)
 VALUES (1,'Kött','url'),

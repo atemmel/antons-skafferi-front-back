@@ -28,7 +28,6 @@ public class CustomerController {
     CustomerService service = CustomerService.getInstance();
     
     //Get Requests
-    @CrossOrigin
     @RequestMapping(value = "/customers")
     //Request GET
     private List<Customer> getAllCustomers(){
@@ -70,7 +69,7 @@ public class CustomerController {
         return service.customersByTable(dinnerTable);
     }
     
-    @CrossOrigin
+    //@CrossOrigin
     @PostMapping(value = "/post/customers", params="customer")
     private void saveCustomer(@RequestBody Customer customer){
         service.saveOrUpdateCustomer(customer);

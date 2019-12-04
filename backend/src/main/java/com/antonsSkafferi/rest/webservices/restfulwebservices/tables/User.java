@@ -23,9 +23,9 @@ public class User implements Serializable {
 
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
-    private int id;
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "id", updatable = false, nullable = false)
+    //private int id;
     @Column(name = "username", updatable = true, nullable = false)
     private String username;
     @Column(name = "password", updatable = true, nullable = false)
@@ -36,28 +36,15 @@ public class User implements Serializable {
     
     public User(){}
     
-    public User(int id, String username, String password, boolean administrator)
+    public User(String username, String password, boolean administrator)
     {
-        this.id = id;
         this.username = username;
         this.password = password;
         this.administrator = administrator;
     
     }
     
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
 
     /**
      * @return the username
@@ -105,7 +92,7 @@ public class User implements Serializable {
     
     @Override
     public String toString(){
-        return "Users [id=" + getId() + ", username=" + getUsername() + ", password=" + getPassword() + ", admin =" + isAdministrator()+"]";
+        return "Users [username=" + getUsername() + ", password=" + getPassword() + ", admin =" + isAdministrator()+"]";
     }
     
 }

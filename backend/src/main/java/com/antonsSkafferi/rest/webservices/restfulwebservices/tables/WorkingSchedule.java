@@ -8,9 +8,12 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -34,6 +37,10 @@ public class WorkingSchedule implements Serializable {
     
     @Column(name = "end", updatable = false, nullable = false)
     private String end;
+    
+    @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name = "username", referencedColumnName="username" ,nullable = false)
+    private User user;
     
     
     public WorkingSchedule(){}
