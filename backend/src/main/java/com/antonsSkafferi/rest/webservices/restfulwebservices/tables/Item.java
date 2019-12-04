@@ -33,9 +33,6 @@ public class Item implements Serializable {
     @Column(name = "description", updatable = true, nullable = false)
     private String description;
     
-    @Column(name = "type", updatable = true, nullable = false)
-    private String type;
-    
     @ManyToOne(fetch = FetchType.LAZY)
     //@JoinColumn(name="itemcategoryid", insertable = false, updatable = false)
     @JoinColumn(name = "itemcategoryid", nullable = true)
@@ -53,13 +50,12 @@ public class Item implements Serializable {
         this.itemid = itemid;
     }
     
-    public Item(int itemid, String title, int price, String description, String type/*,int itemcategoryid*/)
+    public Item(int itemid, String title, int price, String description /*,int itemcategoryid*/)
     {
         this.itemid = itemid;
         this.title = title;
         this.price = price;
         this.description = description;
-        this.type = type;
         //this.itemcategoryid = itemcategoryid;
     }
     
@@ -120,20 +116,6 @@ public class Item implements Serializable {
         this.description = description;
     }
     
-      /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-    
     /**
      * @param itemcategoryid the category to set
      */
@@ -155,7 +137,7 @@ public class Item implements Serializable {
     
     @Override
     public String toString(){
-        return "Item [Item= " + getItemid() + ", title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + ",type=" + getType() + ", itemcategory=" + getItemcategory() +"]";
+        return "Item [Item= " + getItemid() + ", title=" + getTitle() + ", price=" + getPrice() + ", description=" + getDescription() + ", itemcategory=" + getItemcategory() +"]";
     }
       
 }
