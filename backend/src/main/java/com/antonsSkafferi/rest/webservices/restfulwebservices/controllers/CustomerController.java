@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author Allamo Olsson
  */
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class CustomerController {
     

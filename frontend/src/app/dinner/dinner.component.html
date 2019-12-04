@@ -1,37 +1,56 @@
 <section *ngIf="dataLoaded | async" id="dinnerSection" class="nomargin nopadding">
-    <div id="dinner" class="container-fluid nopadding nomargin background-image">
-      <div id="title" class="nopadding nomargin header-background">
-        <h1 class="nomargin nopadding">Kvällsmeny</h1>
+  <div id="dinner" class="container-fluid nopadding nomargin background-image">
+    <div id="title" class="nopadding nomargin header-background">
+      <h1 class="nomargin nopadding">Kvällsmeny</h1>
 
-        <button class="button" id="button" type="button" label="Click" (click)="toggleChild()">{{buttonText}}</button>
-        <div>
-                <app-booking [showMePartially]="showVar"></app-booking>
-        </div>
-         
-      </div>
-        <div class="row nomargin nopadding">
-          <div class="col-sm nopadding nomargin minHeight">
-          </div>
-          <div id="chefsChoice" class="col nopadding parchementBackground">
-            <div *ngIf="chefsChoice" class="row nopadding nomargin">
-              <div class="col menuItems">
-                <h2>{{chefsChoice.name}}</h2>
-                <ul class="nopadding">
-                  <li *ngFor="let item of chefsChoice.items" class="kockensVal">
-                    <h3>{{item.title}}</h3>
-                    <p>{{item.description}}</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="row nopadding nomargin justify-content-end">
-              <div class="col nopadding">
-                <button id="menuButton" class="btn btn-secondary float-right" data-toggle="collapse" data-target="#dinnerMenu" aria-expanded="false" aria-controls="dinnerMenu">Visa menyn</button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!--<button class="button" id="button" type="button" label="Click" (click)="toggleChild()">{{buttonText}}</button>
+      <div>
+              <app-booking [showMePartially]="showVar"></app-booking>
+      </div>-->
+
     </div>
+      <div class="row nomargin nopadding">
+        <div class="col-sm nopadding nomargin minHeight text-center">
+          <div id="bookButton">
+            <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#bookModal">Boka bord</button>
+          </div>
+        </div>
+        <div id="chefsChoice" class="col nopadding parchementBackground">
+          <div *ngIf="chefsChoice" class="row nopadding nomargin">
+            <div class="col menuItems">
+              <h2>{{chefsChoice.name}}</h2>
+              <ul class="nopadding">
+                <li *ngFor="let item of chefsChoice.items" class="kockensVal">
+                  <h3>{{item.title}}</h3>
+                  <p>{{item.description}}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row nopadding nomargin justify-content-end">
+            <div class="col nopadding">
+              <button id="menuButton" class="btn btn-secondary float-right" data-toggle="collapse" data-target="#dinnerMenu" aria-expanded="false" aria-controls="dinnerMenu">Visa menyn</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Boka bord</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-booking></app-booking>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
     <div id="dinnerMenu" *ngIf="menuForHTML" class="container mx-auto collapse">
       <div *ngFor="let item of menuForHTML; let i = index" class="row" >

@@ -1,14 +1,8 @@
-<!--<div>
-        <h2>Stuff from database in Database Component</h2>
-        <div *ngFor ="let item of items">Customer: {{item.firstname}} {{item.lastname}} made a reservation {{item.bookingdate}} : {{item.bookingtime}} vid bord {{item.dinnertable.dinnertableid}} sällskapet är {{item.sizeofcompany}} </div>
-</div>
--->
-<div class ="card" style="width: 25rem;" *ngIf="showMePartially">
-    <p>TestComponent to booking dinnertable</p>
+<!--<div class ="card">
     <div class="form-group">
         <div class="form-group col-md-6" >
-            <label for="bookingDate">Bookingdate</label>
-            <angular2-date-picker class="form-control" id = "datetimepicker" [(ngModel)]="date" [settings] = "settings" style="padding: 0.2 rem 0.1 rem" ></angular2-date-picker>
+            <label>Datum</label>
+            <angular2-date-picker class="form-control" id = "datetimepicker" [(ngModel)]="date" [settings] = "settings"></angular2-date-picker>
         </div>
     </div>
 
@@ -21,26 +15,26 @@
             </div>
 
             <div class="col-md-6">
-                <label for="inputText4">FirstName</label>
+                <label for="inputText4">Förnamn</label>
                 <input (input)="customerName=$event.target.value"  type="text" class="form-control" id="customerFirstName" name="customerFirstName" [(ngModel)]="customerFirstName"  placeholder={{customerFirstName}}>
             </div>
 
             <div class="clearfix visible-xs-block"></div>
 
             <div class="col-md-6">
-                <label for="inputText4">LastName</label>
+                <label for="inputText4">Efternamn</label>
                 <input (input)="customerName=$event.target.value"  type="text" class="form-control" id="customerLastName" name="customerLastName" [(ngModel)]="customerLastName"  placeholder={{customerLastName}}>
             </div>
 
             <div class="col-md-6">
-                <label for="inputText4">Phone</label>
+                <label for="inputText4">Telefonnummer</label>
                 <input (input)="customerName=$event.target.value"  type="text" class="form-control" id="customerPhone" name="customerPhone" [(ngModel)]="customerPhone"  placeholder={{customerPhone}}>
             </div>
 
             <div class="clearfix visible-xs-block"></div>
 
             <div class="col-md-6">
-                <label for="inputText4">Sizeofcompany</label>
+                <label for="inputText4">Antal personer</label>
                 <input (input)="customerName=$event.target.value"  type="text" class="form-control" id="sizeOfCompany" name="sizeOfCompany" [(ngModel)]="sizeOfCompany"  placeholder={{sizeOfCompany}}>
             </div>
             <div class="clearfix visible-xs-block"></div>
@@ -49,12 +43,48 @@
     </form>
 
     <div>
-        <button class="button" id="button" type="button" label="Click" (click)="onClickMe()">Add reservation!</button>
-        {{clickMessage}} 
+        <button class="btn btn-primary" id="button" type="button" label="Click" (click)="onClickMe()">Add reservation!</button>
+        {{clickMessage}}
 
     </div>
-</div>
+</div>-->
+<form>
+  <div id="dateTime">
+    <mat-form-field>
+      <input  matInput [matDatepicker]="picker" (dateChange)="dateChange($event.value)" placeholder="Välj datum">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Välj Tid</mat-label>
+      <mat-select (selectionChange)="timeChange($event.value)">
+        <mat-option value="Välj Tid">Välj Tid</mat-option>
+        <mat-option value="16:30">16.30</mat-option>
+        <mat-option value="17:00">17:00</mat-option>
+        <mat-option value="17:30">17:30</mat-option>
+        <mat-option value="18:00">16:00</mat-option>
+        <mat-option value="18:30">17:30</mat-option>
+        <mat-option value="19:00">17:30</mat-option>
+        <mat-option value="19:30">17:30</mat-option>
+        <mat-option value="20:00">17:30</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <input (input)="customerEmail=$event.target.value" matInput placeholder="Epost">
+  </mat-form-field>
+  <mat-form-field>
+    <input (input)="customerFirstName=$event.target.value" matInput placeholder="Förnamn">
+  </mat-form-field>
+  <mat-form-field>
+    <input (input)="customerLastName=$event.target.value" matInput placeholder="Efternamn">
+  </mat-form-field>
+  <mat-form-field>
+    <input (input)="customerPhone=$event.target.value" matInput placeholder="Telefonnummer">
+  </mat-form-field>
+  <mat-form-field>
+    <input (input)="sizeOfCompany=$event.target.value" matInput placeholder="Antal Personer">
+  </mat-form-field>
 
-<!--{{date}}
-{{date | date   : 'yyyy-MM-dd hh:mm' }}
--->
+  <button class="btn btn-primary" id="button" type="button" label="Click" (click)="onClickMe()">Add reservation!</button>
+</form>

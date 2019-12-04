@@ -16,6 +16,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { BookingComponent } from './booking/booking.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,13 @@ import { BookingComponent } from './booking/booking.component';
     HttpClientModule,
     CommonModule,
     FormsModule,
-    AngularDateTimePickerModule
+    AngularDateTimePickerModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
