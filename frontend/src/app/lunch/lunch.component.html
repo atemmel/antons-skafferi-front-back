@@ -6,7 +6,7 @@
                     <div id="daily-lunch-board" class="card-body p-3 nopadding">
                         <div id="daily-lunch-text">
                             <h2 class="card-header">Dagens Lunch</h2>
-                            <ul class="align-items-stretch nopadding nomargin">    
+                            <ul class="align-items-stretch nopadding nomargin">
                                 <li *ngFor="let lunchMeal of dailyLunch; let j = index" class="card-text nopadding nomargin text-center">
                                     <h3 class="nopadding nomargin">
                                         {{lunchMeal.type}}
@@ -16,7 +16,7 @@
                                     </p>
                                 </li>
                             </ul>
-                        </div>    
+                        </div>
                     </div>
                 </div>
             </div>
@@ -24,13 +24,13 @@
 
 <!--Section for weekly lunch with cards for each day + background-->
     <div *ngIf="lunchMenuResponse" id="lunch" class="container nopadding nomargin">
-        
-        <div class="header-background mx-auto nomargin nopadding">
+
+        <div class="header-background mx-auto nomargin nopadding shadow">
             <h1>Veckans Lunch</h1>
         </div>
 
-        <div class="card-columns" style="padding-bottom: 1rem;">
-            <div class="card align-items-center parchementBackground" *ngFor="let day of days; let i = index">
+        <div class="card-columns mt-3" style="padding-bottom: 1rem;">
+            <div class="card align-items-center parchementBackground shadow" *ngFor="let day of days; let i = index">
                 <div class="card-body p-3">
 
                     <h2 *ngIf="i==0" class="card-title">Måndag</h2>
@@ -39,7 +39,7 @@
                     <h2 *ngIf="i==3" class="card-title">Torsdag</h2>
                     <h2 *ngIf="i==4" class="card-title">Fredag</h2>
 
-                    <ul class="align-items-stretch nopadding nomargin">    
+                    <ul class="align-items-stretch nopadding nomargin">
                         <li *ngFor="let lunchMeal of day; let j = index" class="nopadding nomargin text-center">
                             <h3 class="nopadding nomargin">
                                 {{lunchMeal.type}}

@@ -11,13 +11,11 @@
     </div>
       <div class="row nomargin nopadding">
         <div class="col-sm nopadding nomargin minHeight text-center">
-          <div id="bookButton">
-            <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#bookModal">Boka bord</button>
-          </div>
+          <button id="bookButton" type="button" data-toggle="modal" data-target="#bookModal">Boka bord</button>
         </div>
         <div id="chefsChoice" class="col nopadding parchementBackground">
           <div *ngIf="chefsChoice" class="row nopadding nomargin">
-            <div class="col menuItems">
+            <div class="col minHeight">
               <h2>{{chefsChoice.name}}</h2>
               <ul class="nopadding">
                 <li *ngFor="let item of chefsChoice.items" class="kockensVal">

@@ -17,7 +17,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { BookingComponent } from './booking/booking.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatDividerModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -43,7 +50,8 @@ import {MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputMo
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

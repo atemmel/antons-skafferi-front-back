@@ -50,7 +50,11 @@ section{
   font-family: dealers;
 }
 
-
+.shadow{
+  -webkit-box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75) !important;
+  -moz-box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75) !important;
+  box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75) !important;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
