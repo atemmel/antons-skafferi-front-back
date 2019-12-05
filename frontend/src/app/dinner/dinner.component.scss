@@ -5,6 +5,7 @@ h1 {
   font-family: dealers;
   text-align: center;
   font-size: 4em;
+  box-shadow: 15px 15px 15px rgba(11, 12, 12, 0.4);
 }
 
 h2{
@@ -44,6 +45,10 @@ ul{
   h2{
     margin-top: 0.5em;
   }
+  -webkit-box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75);  
+  box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75);
+  background-image: url("src/assets/images/paper_menu_1059x1317_rotate.jpg");
 }
 
 .menuImages{
@@ -51,6 +56,7 @@ ul{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 .minHeight{
@@ -104,10 +110,33 @@ ul{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  vertical-align: top;
+  margin: 2em;
+
 
 }
-
-
-
-
+.btn-primary {
+  width: 180px;
+  height: 90px;
+  font-family: 'Dealers', sans-serif;
+  font-size: 25px;
+  text-transform: uppercase;
+  letter-spacing: 4.5px;
+  color: black;
+  padding: 10px 10px 10px 10px; 
+  background-image: url("src/assets/images/paper_menu_1059x1317_rotate.jpg");
+  border-color:transparent;
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+.btn-primary:hover{
+  background-color: rgb(0, 0, 0);
+  -webkit-box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75);
+  box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75);
+  color: blanchedalmond;
+  transform: translateY(-7px);
+}
