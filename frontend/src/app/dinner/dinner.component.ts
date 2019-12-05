@@ -58,22 +58,6 @@ export class DinnerComponent implements OnInit {
       }
     });
   }
-  showVar: boolean = false;
-  buttonText = "Boka bord";
-
-  toggleChild(){
-      this.showVar = !this.showVar;
-      if(this.showVar == true)
-      {
-        this.buttonText = "Avbryt";
-      }
-      else
-        this.buttonText = "Boka bord";
-
-
-      var button = document.getElementById('button').addEventListener('click',function() {
-      })
-  }
 }
 
 class Item {
