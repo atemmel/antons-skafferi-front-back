@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,7 +27,7 @@ public class DinnerTableController {
     
     
     @Autowired
-    DinnerTableService dinnerTableService;
+    DinnerTableService dinnerTableService = DinnerTableService.getInstance();
     
     
     @GetMapping("/dinnertables")
@@ -44,6 +46,11 @@ public class DinnerTableController {
     //Request DELETE
     private void deleteDinnerTable(@PathVariable("id") int id){
         dinnerTableService.delete(id);
+    }
+    
+    @RequestMapping(value = "/dinnertables/booking", params="date")
+    private List getAllUnbookedTables(@RequestParam String date){
+        return dinnerTableService.getAllUnbookedTables(date);
     }
     
     //@DeleteMapping("/dinnertables")

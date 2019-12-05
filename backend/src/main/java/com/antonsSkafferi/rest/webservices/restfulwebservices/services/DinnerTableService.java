@@ -24,6 +24,13 @@ public class DinnerTableService {
     @Autowired
     DinnerTableRepository dinnerTableRepository;
     
+    private DinnerTableService(){};
+    
+    private static DinnerTableService DinnerTableService;
+    
+    public static DinnerTableService getInstance(){
+        return DinnerTableService;
+    }
     
     public List<Dinnertable> getAllDinnerTables()
     {
@@ -32,6 +39,13 @@ public class DinnerTableService {
         dinnerTableRepository.findAll().forEach(dinnerTable -> dinnerTables.add(dinnerTable));
         
         return dinnerTables; 
+    }
+    
+    public List<Dinnertable> getAllUnbookedTables(String date)
+    {
+        List<Dinnertable> dinnerTables = new ArrayList<>();
+        dinnerTableRepository.dinnerTableFindUnbookedTablesByDate(date).forEach(dinnerTable -> dinnerTables.add(dinnerTable));
+        return dinnerTables;
     }
     
     public Dinnertable getDinnerTablesById(int id){
