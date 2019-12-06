@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TouchSequence } from 'selenium-webdriver';
+import {GetTabelsService} from '../services/data/get-tabels.service';
+import {MatDatepicker} from '@angular/material';
 
 @Component({
   selector: 'app-booking',
@@ -10,10 +11,13 @@ import { TouchSequence } from 'selenium-webdriver';
 export class BookingComponent implements OnInit {
   @Input() showMePartially: boolean;
 
+
   geturl = 'http://localhost:8080/customers';
   posturl = 'http://localhost:8080/post/customers?customer=';
   items = [];
-  json;
+  tables: Array<Table> = [];
+  tableResp: any;
+  tablesLoaded: Promise<boolean>;
   clickMessage = '';
   public customerFirstName = "";
   public customerLastName = "";
@@ -30,9 +34,10 @@ export class BookingComponent implements OnInit {
     email: "",
     phone: "",
     sizeofcompany: "",
+    dinnertable: 1,
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private tableGetter: GetTabelsService) {
     this.http.get(this.geturl).subscribe(data => {
 
       for (const key in data) {
@@ -60,12 +65,16 @@ export class BookingComponent implements OnInit {
     return num < 10  ? '0' + String(num) : num;
   }
 
+  reload() {
+    window.location.reload();
+  }
+
 
   onClickMe() {
     this.clickMessage = "Please fill all information";
     if (this.customerFirstName !== "" && this.customerLastName !== "" && this.customerPhone !== "" && this.customerEmail !== "" && this.sizeOfCompany !== "") {
       this.postData.firstname = this.customerFirstName;
-      //console.log(this.postData.firstname);
+      // console.log(this.postData.firstname);
       this.postData.lastname = this.customerLastName;
       this.postData.email = this.customerEmail;
       this.postData.phone = this.customerPhone;
@@ -81,17 +90,55 @@ export class BookingComponent implements OnInit {
         });
 
       }
+    this.postData.bookingdate = "";
+    this.postData.bookingtime = "";
+    this.postData.dinnertable = null;
+    this.postData.email = "";
+    this.postData.firstname = "";
+    this.postData.lastname = "";
+    this.postData.phone = "";
+    this.postData.sizeofcompany = "";
+    /*(document.getElementById("form") as HTMLFormElement).reset();
+    (document.getElementById("button") as HTMLInputElement).style.display = "none";
+    (document.getElementById("noTables") as HTMLInputElement).style.display = "none";
+    (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
+    (document.getElementById("mainForm") as HTMLInputElement).style.display = "none";*/
+    (document.getElementById("form") as HTMLInputElement).style.display = "none";
+    (document.getElementById("done") as HTMLInputElement).style.display = "block";
+
   }
 
   ngOnInit() {
+    (document.getElementById("button") as HTMLInputElement).style.display = "none";
+    (document.getElementById("noTables") as HTMLInputElement).style.display = "none";
+    (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
+    (document.getElementById("mainForm") as HTMLInputElement).style.display = "none";
+    (document.getElementById("done") as HTMLInputElement).style.display = "none";
   }
 
-  dateChange(event: any) {
-    const data = event;
+  async dateChange(event: any) {
+    this.tables = Array<Table>();
+    const data: Date = event;
     const formatedDate: string = data.getFullYear() + '-' + (data.getMonth() + 1 ) + '-' + data.getDate();
     console.log(formatedDate);
-    this.postData.bookingdate = formatedDate;
 
+    const resp = await this.tableGetter.getTabels(formatedDate).toPromise();
+    this.tableResp = resp;
+    this.tablesLoaded = Promise.resolve(true);
+
+    this.tableResp.forEach(val => {
+      const temp: Table = val;
+      this.tables.push(temp);
+    });
+
+    console.log(this.tables);
+
+    if (this.tables.length === 0) {
+      (document.getElementById("noTables") as HTMLInputElement).style.display = "block";
+    } else {
+      this.postData.bookingdate = formatedDate;
+      (document.getElementById("mainForm") as HTMLInputElement).style.display = "flex";
+    }
   }
 
   timeChange(event: any) {
@@ -101,6 +148,52 @@ export class BookingComponent implements OnInit {
       this.postData.bookingtime = data;
     }
 
+  }
+
+  amountChange(event: any) {
+    (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
+    const amount: number = Number(event);
+    let tableToSit: Table = null;
+    if (amount == null) {
+      return;
+    } else if (amount === 0) {
+      (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Du kan inte boka bord för 0 personer";
+      (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
+    } else if (amount === 1 || amount === 2) {
+      console.log(this.tables.find(x => x.sizeOfTable === 2));
+      tableToSit = this.tables.find((x => x.sizeOfTable === 2));
+    } else if (amount === 3 || amount === 4) {
+      console.log(this.tables.find(x => x.sizeOfTable === 4));
+      tableToSit = this.tables.find((x => x.sizeOfTable === 4));
+    } else if (amount === 5 || amount === 6) {
+      console.log(this.tables.find(x => x.sizeOfTable === 6));
+      tableToSit = this.tables.find((x => x.sizeOfTable === 6));
+    } else {
+      (document.getElementById("errorText") as HTMLInputElement).innerHTML = "För sällskap större än 6 var vänlig ring resturangen";
+      (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
+    }
+
+    if (tableToSit != null) {
+      this.postData.dinnertable = tableToSit.dinnertableid;
+      (document.getElementById("button") as HTMLInputElement).style.display = "block";
+    } else {
+      (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Det fanns inget tillgänglit bord som passar storleken" +
+        " på ert sällskap. Ni kan kontakta resturangen för att se om det går att lösa endå";
+      (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
+    }
+  }
+}
+
+
+class Table {
+  dinnertableid: number;
+  description: string;
+  sizeOfTable: number;
+
+  constructor(dinnertableid: number, description: string, sizeOfTable: number) {
+    this.dinnertableid = dinnertableid;
+    this.description = description;
+    this.sizeOfTable = sizeOfTable;
   }
 
 }

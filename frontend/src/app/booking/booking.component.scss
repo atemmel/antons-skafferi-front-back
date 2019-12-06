@@ -3,6 +3,11 @@ form{
   flex-direction: column;
 }
 
+#mainForm {
+  display: flex;
+  flex-direction: column;
+}
+
 #dateTime{
   display: flex;
   flex-direction: row;

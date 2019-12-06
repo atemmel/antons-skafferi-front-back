@@ -24,6 +24,10 @@ export class DinnerComponent implements OnInit {
     this.getMenu();
   }
 
+  reload() {
+    window.location.reload();
+  }
+
   async getMenu() {
     const categoryResponse = await this.categoryGetter.getCategories().toPromise();
     this.categoryResponse = categoryResponse;

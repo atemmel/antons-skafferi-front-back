@@ -1,7 +1,7 @@
-<form>
+<form id="form">
   <div id="dateTime">
     <mat-form-field>
-      <input  matInput [matDatepicker]="picker" (dateChange)="dateChange($event.value)" placeholder="Välj datum">
+      <input id="datePicker"  matInput [matDatepicker]="picker" (dateChange)="dateChange($event.value)" placeholder="Välj datum">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -20,21 +20,29 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <mat-form-field>
-    <input (input)="customerEmail=$event.target.value" matInput placeholder="Epost">
-  </mat-form-field>
-  <mat-form-field>
-    <input (input)="customerFirstName=$event.target.value" matInput placeholder="Förnamn">
-  </mat-form-field>
-  <mat-form-field>
-    <input (input)="customerLastName=$event.target.value" matInput placeholder="Efternamn">
-  </mat-form-field>
-  <mat-form-field>
-    <input (input)="customerPhone=$event.target.value" matInput placeholder="Telefonnummer">
-  </mat-form-field>
-  <mat-form-field>
-    <input (input)="sizeOfCompany=$event.target.value" matInput placeholder="Antal Personer">
-  </mat-form-field>
+  <p id="noTables">Det finns inga bord tillgängliga detta datum</p>
+  <div id="mainForm">
+    <mat-form-field>
+      <input (input)="customerEmail=$event.target.value" matInput placeholder="Epost">
+    </mat-form-field>
+    <mat-form-field>
+      <input (input)="customerFirstName=$event.target.value" matInput placeholder="Förnamn">
+    </mat-form-field>
+    <mat-form-field>
+      <input (input)="customerLastName=$event.target.value" matInput placeholder="Efternamn">
+    </mat-form-field>
+    <mat-form-field>
+      <input (input)="customerPhone=$event.target.value" matInput placeholder="Telefonnummer">
+    </mat-form-field>
+    <mat-form-field>
+      <input (input)="sizeOfCompany=$event.target.value" (keyup)="amountChange($event.target.value)" matInput placeholder="Antal Personer">
+    </mat-form-field>
+  </div>
+  <p id="errorText"></p>
 
   <button class="btn btn-primary" id="button" type="button" label="Click" (click)="onClickMe()">Add reservation!</button>
 </form>
+
+<div id="done">
+  <p>Tack för din bokning</p>
+</div>
