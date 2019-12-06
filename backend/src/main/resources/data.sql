@@ -24,7 +24,11 @@ VALUES ('Lax och spenatsoppa',1,'Fisk'),
 ('Köttfärsås och Spagetti',2,'Kött'),
 ('Fish and chips med remouladsås',3,'Fisk'),
 ('Stekt fläsk med löksås',3,'För köttälskare'),
-('Pastagratäng med rökt kassler purjolök och cocktailtomater',3,'Pasta');
+('Pastagratäng',3,'Pasta'),
+('Fish and chips',4,'Fisk'),
+('Stekt fläsk',4,'För köttälskare'),
+('Pasta med rökt kassler purjolök och cocktailtomater',4,'Pasta'),
+('Fiskchips med remouladsås',5,'Fisk');
 
 insert into ItemCategory (itemcategoryid, name, url)
 VALUES (1,'Kockens val','url'),
