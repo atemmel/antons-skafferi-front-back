@@ -36,4 +36,17 @@ public class ItemOrderController {
     private void saveItemOrder(@RequestBody ItemOrder order){
         itemOrderService.saveOrUpdateItemOrder(order);
     }
+    
+    @RequestMapping(value = "/orders/unready")
+    private List<ItemOrder> getUnreadyOrder()
+    {
+        return itemOrderService.getOrderStatus();
+    }
+     
+    @PostMapping(value = "/post/ready", params = "dinnertable")
+    private void setOrderReady(int dinnertable)
+    {
+        itemOrderService.setOrderReady(dinnertable);
+    }
+     
 }

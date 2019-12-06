@@ -14,6 +14,7 @@ DELETE FROM ItemCategory;
 DELETE FROM Customer;
 DELETE FROM Dinnertable;
 DELETE FROM todayslunch;
+DELETE FROM User;
 
 insert into todayslunch (mealname, days, type)
 VALUES ('Lax och spenatsoppa',1,'Fisk'),
@@ -48,14 +49,20 @@ insert into Dinnertable (dinnertableid, description, sizesoftable)
 VALUES (1,'Fonsterbord',4),
 (2,'Salong',4),
 (3,'Fonsterbord',2),
-(4,'Mitten',8),
+(4,'Mitten',6),
 (5,'Salong',4),
-(6,'Ingång',2),
-(7,'Mitten',4);
+(6,'Ingång',4),
+(7,'Mitten',6);
+
 
 insert into Customer(customerid, firstname, lastname, sizeofcompany, email, bookingtime, bookingdate, phone)
 VALUES (1, 'Allan', 'Takkolander', 4, 'Test@email.com','21:30','2019-02-02', '070-3123431');  
 
 insert into ItemOrder(orderid, amount, note, ready, dinnertableid, itemid)
-VALUES (1,1,'Utan Ost',1,1,1);
+VALUES (1,1,'Utan Ost',1,1,1),
+(2,1,'Med Ost',0,2,1);
+
+insert into User (username, password, administrator)
+VALUES ('Anton', '123', true),
+('Takko','hej',false);
 
