@@ -152,6 +152,7 @@ export class BookingComponent implements OnInit {
 
   amountChange(event: any) {
     (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
+    (document.getElementById("button") as HTMLInputElement).style.display = "none";
     const amount: number = Number(event);
     let tableToSit: Table = null;
     if (amount == null) {
@@ -160,17 +161,15 @@ export class BookingComponent implements OnInit {
       (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Du kan inte boka bord för 0 personer";
       (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
     } else if (amount === 1 || amount === 2) {
-      console.log(this.tables.find(x => x.sizeOfTable === 2));
       tableToSit = this.tables.find((x => x.sizeOfTable === 2));
     } else if (amount === 3 || amount === 4) {
-      console.log(this.tables.find(x => x.sizeOfTable === 4));
       tableToSit = this.tables.find((x => x.sizeOfTable === 4));
     } else if (amount === 5 || amount === 6) {
-      console.log(this.tables.find(x => x.sizeOfTable === 6));
       tableToSit = this.tables.find((x => x.sizeOfTable === 6));
     } else {
       (document.getElementById("errorText") as HTMLInputElement).innerHTML = "För sällskap större än 6 var vänlig ring resturangen";
       (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
+      return;
     }
 
     if (tableToSit != null) {
