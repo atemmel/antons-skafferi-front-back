@@ -1,18 +1,72 @@
-#latest{
+.latest-events{ //Div for the event pictures/divs
   max-width: none;
-  width: 98%;
+  min-width: 100%;
+  min-height: 375px;
+  position: relative;
 }
 
-#title{
-  margin: 1em;
+#event-header { //Header for event section
+  text-align: center;
+  background-image: url("src/assets/images/woodbackground_2560x1600.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-#showEventsButton{
-  margin-top: 1em;
+#event-title { //Title for the event header
+  margin:auto;
+  font-family: dealers;
 }
 
+#showEventsButton{ //Button to show all events
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  box-shadow: none;
+}
 
+.event-text-background { //Background for the event description
+  text-align: center;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+}
 
+h2 { //Title of the events in the standard view
+  color: white;
+  font-family: argon;
+}
+
+h3 { //Date of the events in the standard view
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.card-title { //The card title of the many events slider
+  color: black !important;
+}
+
+.card-text { //The card text of the many events slider
+  color: black !important;
+}
+
+#event-left-block { //Left block for when there is 2 events
+  background-image: url("src/assets/images/Carola_Placeholder_1280x853.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#event-right-block { //Right block for when there is 2 events
+  background-image: url("src/assets/images/Lasses_Orkester_1600x600.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#event-solo-block { //Solo block for when there is 1 event
+  background-image: url("src/assets/images/Carola_Placeholder_1280x853.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+//Placeholder icons for the carousel
 .carousel-control-prev-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
 }

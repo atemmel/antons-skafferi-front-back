@@ -1,29 +1,52 @@
 <section id="eventsSection">
-  <h3 id="title">Event</h3>
-  <div id="latest" class="container">
-    <div *ngIf="events === null"><p>Inga kommande event</p></div>
-    <div *ngIf="events != null && newestEvents.length == 1">
-      <h3>Nästkommande event</h3>
-      <div class="card col-6">
-        <div class="card-body">
-          <h5 class="card-title">{{newestEvents[0].title}}</h5>
-          <p class="card-text">{{newestEvents[0].date}}</p>
+  
+  <div id="event-wrapper-2-event" *ngIf="events != null && newestEvents.length == 2">
+
+    <div id="event-header" class="nopadding nomargin">
+      <h1 id="event-title" class="nopadding nomargin">Event</h1>
+    </div>
+
+    <div class="row nopadding nomargin latest-events">
+
+        <div id="event-left-block" class="col-xs-6 col-lg-6 nomargin nopadding" style="background-color: yellow;">
+          <div class="event-text-background">
+            <h2>{{newestEvents[0].title}}</h2>
+            <h3>{{newestEvents[0].date}}</h3>
+          </div>
         </div>
-      </div>
-    </div>
-    <div *ngIf="events != null && newestEvents.length == 2" class="row">
-      <div class="card col-6" *ngFor="let event of newestEvents">
-        <div class="card-body">
-          <h5 class="card-title">{{event.title}}</h5>
-          <p class="card-text">{{event.date}}</p>
+
+        <div id="event-right-block" class="col-xs-6 col-lg-6 nopadding nomargin" style="background-color: blue;">
+          <div class="event-text-background">
+            <h2>{{newestEvents[1].title}}</h2>
+            <h3>{{newestEvents[1].date}}</h3>
+          </div>
+          <button *ngIf="events.length>2" id="showEventsButton" class="btn btn-secondary" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
         </div>
-      </div>
-    </div>
-      <button *ngIf="events.length>2 " id="showEventsButton" class="btn btn-secondary" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
+
     </div>
 
+    <div id="event-wrapper-1-event" *ngIf="events != null && newestEvents.length == 1">
 
+        <div id="event-header" class="nopadding nomargin">
+          <h1 id="event-title" class="nopadding nomargin">Event</h1>
+        </div>
+    
+        <div class="row nopadding nomargin latest-events">
+    
+            <div id="event-solo-block" class="col-xs-12 col-lg-12 nomargin nopadding" style="background-color: orange;">
+              <div class="event-text-background">
+                <h2>{{newestEvents[0].title}}</h2>
+                <h3>{{newestEvents[0].date}}</h3>
+              </div>
+              <button *ngIf="events.length>2" id="showEventsButton" class="btn btn-secondary" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>    
+            </div>
 
+        </div>
+      
+    </div>
+  </div>
+
+    <!--"Visa alla event" div-->
     <div id="allEvents" class="collapse">
       <div id="allEventCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner">
@@ -34,7 +57,7 @@
                 <div class="card col-6">
                   <img class="card-img-top img-fluid" src="https://placehold.it/1920x1080/8e41f4/fff" alt="Card image cap">
                   <div class="card-body">
-                    <h5 class="card-title">{{event.title}}</h5>
+                    <h3 class="card-title">{{event.title}}</h3>
                     <p class="card-text">{{event.date}}</p>
                   </div>
                   <div class="col-3"></div>

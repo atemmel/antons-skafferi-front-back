@@ -5,56 +5,78 @@ html{
   width: 100%;
 }
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 section{
   width: 100%;
 }
 
-
-.nopadding {
+.nomargin{ //Removes margin
+  margin: 0 !important;
+}
+.nopadding { //Removes padding
     padding: 0 !important;
-
  }
 
-.header-background {
+.header-background { //Woodboard background for headers
   background-image: url("src/assets/images/woodbackground_2560x1600.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.nomargin{
-  margin: 0 !important;
-}
-
-.parchementBackground{
+.parchementBackground{//Parchmentbackground
   background-image: url("src/assets/images/paper_menu_2_1752x1378.jpg");
   background-size: cover;
 }
 
-@font-face {
+@font-face { //Chalkboard font(Filled)
   font-family: chalk2;
   src: url(assets/Fonts/KGSecondChancesSketch.otf) format("opentype");
 }
 
-@font-face {
+@font-face { //Chalkboard font(Filled edges 3D)
   font-family: chalk;
   src: url(assets/Fonts/GrutchShaded.otf) format("opentype");
 }
 
- @font-face {
-    font-family: dealers;
-    src: url(assets/Fonts/dealers.otf) format("opentype");
-  }
+@font-face { //Dealers font for menus
+  font-family: dealers;
+  src: url(assets/Fonts/dealers.otf) format("opentype");
+}
 
+@font-face { //Dealers font for menus
+  font-family: argon;
+  src: url(assets/Fonts/Argon.otf) format("opentype");
+}
 
-.dealers{
+.dealers{//Dealers font-class for menus
   font-family: dealers;
 }
 
-.shadow{
+.shadow{ //Shadowing for elements
   -webkit-box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75) !important;
   -moz-box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75) !important;
   box-shadow: 14px 13px 9px 0px rgba(0,0,0,0.75) !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1 { //Font for main-headers
+  font-size: 4em !important;
+  color: black;
+}
+
+h2 { //Font for secondary-headers
+  font-size: 3em !important;
+  color: black;
+}
+
+h3 { //Font for tertiary-headers
+  font-size: 2em !important;
+  color: black;
+}
+
+p { //Font for normal text
+  font-size: 1.5em !important;
+  color: black;
+}
+

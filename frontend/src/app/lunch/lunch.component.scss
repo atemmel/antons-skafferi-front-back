@@ -19,13 +19,17 @@ CSS for Daily lunch chalkboard and the div with the restaurant backgrund for the
     border: none;
     font-family: chalk;
     text-align: center;
-    font-size: 3em;
+    color: white;
 }
 
 //Removes the tiny white border around the cards
 .card {
     border: none;
 
+}
+
+.white-power { //Nu funkar det fan
+    color: white;
 }
 
 //The column which the chalkboard card is in
@@ -88,28 +92,22 @@ ul {
 .card-title {
     font-family: dealers;
     text-align: center;
-    font-size: 3em;
 }
 
 //h1 is "Veckans Lunch"
 h1 {
     text-align: center;
     font-family: dealers;
-    color: Black;
-    font-size: 5em;
-
 }
 
 //h3 is the type of food, i.e. "Fisk, Dagens Pasta"
 h3 {
     font-weight: bold;
     width: 100%;
-    font-size: 2em;
 }
 
 //p is the description of the food
 p {
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 1.5em;
 }
