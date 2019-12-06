@@ -14,6 +14,7 @@ DELETE FROM ItemCategory;
 DELETE FROM Customer;
 DELETE FROM Dinnertable;
 DELETE FROM todayslunch;
+DELETE FROM User;
 
 insert into todayslunch (mealname, days, type)
 VALUES ('Lax och spenatsoppa',1,'Fisk'),
@@ -58,4 +59,8 @@ VALUES (1, 'Allan', 'Takkolander', 4, 'Test@email.com','21:30','2019-02-02', '07
 
 insert into ItemOrder(orderid, amount, note, ready, dinnertableid, itemid)
 VALUES (1,1,'Utan Ost',1,1,1);
+
+insert into User (username, password, administrator)
+VALUES ('Anton', '123', true),
+('Takko','hej',false);
 
