@@ -40,13 +40,20 @@ public class WorkingSchedule implements Serializable {
     public WorkingSchedule(){}
     
     
-    public WorkingSchedule(int workingscheduleid, String date, String start, String end){
+    /*public WorkingSchedule(int workingscheduleid, String date, String start, String end){
         
         this.workingscheduleid = workingscheduleid;
         this.date = date;
         this.start = start;
         this.end = end;
         
+    }*/
+    
+    public WorkingSchedule(String date, String start, String end){
+        
+        this.date = date;
+        this.start = start;
+        this.end = end;
     }
     
     

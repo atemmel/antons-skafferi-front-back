@@ -6,7 +6,9 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.EmployeeScheduleRepository;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.WorkingScheduleRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.EmployeeSchedule;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.WorkingSchedule;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class EmployeeScheduleService {
     
    @Autowired
    EmployeeScheduleRepository employeeScheduleRepository;
+   @Autowired
+   WorkingScheduleRepository workingScheduleRepository;
     
     private static EmployeeScheduleService employeeScheduleService;
     
@@ -38,10 +42,22 @@ public class EmployeeScheduleService {
     }
    
     public void postEmployeeSchedule(String fname, String date, String start, String end){
-        int tempone = employeeScheduleRepository.getEmployee(fname);
-        int temptwo = employeeScheduleRepository.getWorkSchedule(date, start, end);
-        EmployeeSchedule tempthree = new EmployeeSchedule(tempone,temptwo);
-        employeeScheduleRepository.save(tempthree);
+        
+        int tempEmployeeId = employeeScheduleRepository.getEmployee(fname);
+        Integer tempWorkScheduleId = employeeScheduleRepository.getWorkSchedule(date, start, end);
+        
+        if(tempWorkScheduleId != null)
+        {
+            EmployeeSchedule completeEmployeeSchedule = new EmployeeSchedule(tempEmployeeId,tempWorkScheduleId);
+            employeeScheduleRepository.save(completeEmployeeSchedule);
+        }
+        else{
+            workingScheduleRepository.save(new WorkingSchedule(date, start, end));
+            tempWorkScheduleId = employeeScheduleRepository.getWorkSchedule(date, start, end);
+            EmployeeSchedule completeEmployeeSchedule = new EmployeeSchedule(tempEmployeeId,tempWorkScheduleId);
+            employeeScheduleRepository.save(completeEmployeeSchedule);
+        }
+        
     }
     
 }
