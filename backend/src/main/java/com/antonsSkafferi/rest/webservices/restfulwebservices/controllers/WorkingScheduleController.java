@@ -10,6 +10,7 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.WorkingSche
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,18 @@ public class WorkingScheduleController {
     @PostMapping(value = "/post/schedules", params="schedule")
     private void saveSchedule(@RequestBody WorkingSchedule workingSchedule){
         service.saveOrUpdateSchedule(workingSchedule);
+    }
+    
+    @DeleteMapping("/schedules/delete/schedule")
+    private void deleteScedule(@RequestParam int id){
+
+        service.deleteScheduleById(id);
+    }
+
+
+    @DeleteMapping("/schedules/delete/all")
+    private void deleteAll(){
+        service.deleteAll();
     }
     
 }
