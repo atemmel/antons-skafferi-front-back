@@ -23,7 +23,7 @@
     "@angular/router": "~8.2.13",
     "angular2-datetimepicker": "^1.1.1",
     "bootstrap-scss": "^4.4.1",
-    "rxjs": "~6.4.0",
+    "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
