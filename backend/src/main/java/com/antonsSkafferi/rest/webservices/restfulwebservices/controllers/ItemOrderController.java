@@ -60,5 +60,9 @@ public class ItemOrderController {
     {
         itemOrderService.setOrderDeliverd(dinnertable);
     }
-     
+    
+    @RequestMapping(value = "/orders/sum", params= "dinnertable")
+    private int getSumOrder(int dinnertable){
+        return itemOrderService.getSumOfOrder(dinnertable);
+    }
 }

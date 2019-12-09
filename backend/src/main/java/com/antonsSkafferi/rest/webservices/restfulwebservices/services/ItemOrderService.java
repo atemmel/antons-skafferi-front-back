@@ -65,4 +65,9 @@ public final class ItemOrderService {
     public void setOrderDeliverd(int dinnertableid){
        itemOrderRepository.setOrderDeliverd(dinnertableid);
     }
+    
+    public int getSumOfOrder(int dinnertable)
+    {
+        return itemOrderRepository.orderSum(dinnertable);
+    }
 }

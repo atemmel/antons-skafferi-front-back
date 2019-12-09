@@ -40,7 +40,7 @@ public class WorkingScheduleController {
     }
     
     @PostMapping(value = "/post/schedules", params="schedule")
-    private void saveCustomer(@RequestBody WorkingSchedule workingSchedule){
+    private void saveSchedule(@RequestBody WorkingSchedule workingSchedule){
         service.saveOrUpdateSchedule(workingSchedule);
     }
     

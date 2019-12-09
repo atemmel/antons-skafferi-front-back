@@ -33,4 +33,7 @@ public interface ItemOrderRepository extends JpaRepository<ItemOrder,Integer> {
     @Modifying
     @Query(value= "UPDATE itemorder SET ready = 2 WHERE dinnertableid = ?1", nativeQuery = true)
     void setOrderDeliverd(int dinnertableid);
+    
+    @Query(value = "SELECT SUM (price * amount) FROM ITEM INNER JOIN ITEMORDER ON ITEM.ITEMID = ITEMORDER.ITEMID AND DINNERTABLEID = ?1", nativeQuery = true)
+    int orderSum(int dinnertableid);
 }
