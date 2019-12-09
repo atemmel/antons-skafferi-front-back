@@ -18,11 +18,19 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface ItemOrderRepository extends JpaRepository<ItemOrder,Integer> {
     
-    @Query(value = "Select * from ITEMORDER where ready = false", nativeQuery = true)
+    @Query(value = "Select * from ITEMORDER where ready = 0", nativeQuery = true)
     List<ItemOrder> unreadyOrders();
    
     @Transactional
     @Modifying
-    @Query(value= "UPDATE itemorder SET ready = true WHERE dinnertableid = ?1", nativeQuery = true)
+    @Query(value= "UPDATE itemorder SET ready = 1 WHERE dinnertableid = ?1", nativeQuery = true)
     void setOrderReady(int dinnertableid);
+    
+    @Query(value= "Select * from ITEMORDER where ready = 1", nativeQuery = true)
+    List<ItemOrder> readyOrders();
+    
+    @Transactional
+    @Modifying
+    @Query(value= "UPDATE itemorder SET ready = 2 WHERE dinnertableid = ?1", nativeQuery = true)
+    void setOrderDeliverd(int dinnertableid);
 }

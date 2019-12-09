@@ -48,11 +48,11 @@ public class ItemOrder implements Serializable  {
     private String note;
     
     @Column(name = "ready", updatable = true, nullable = false)
-    private boolean ready;
+    private int ready;
     
     public ItemOrder(){}
     
-    public ItemOrder(Dinnertable dinnertable, Item item, int amount, String note, boolean ready)
+    public ItemOrder(Dinnertable dinnertable, Item item, int amount, String note, int ready)
     {
        this.dinnertable = dinnertable;
        this.item = item;
@@ -70,13 +70,13 @@ public class ItemOrder implements Serializable  {
                 Objects.equals(item.getItemid(), that.item.getItemid()) &&
                 Objects.equals(amount, that.amount) &&
                 Objects.equals(note, that.note) &&
-                Objects.equals(isReady(), that.isReady());
+                Objects.equals(ready, that.ready);
     }
     
     @Override
     public int hashCode(){
         
-    return Objects.hash(dinnertable.getDinnertableid(), item.getItemid(), amount , note, isReady());
+    return Objects.hash(dinnertable.getDinnertableid(), item.getItemid(), amount , note, ready);
     }
    
     /**
@@ -148,20 +148,20 @@ public class ItemOrder implements Serializable  {
     /**
      * @return the ready
      */
-    public boolean isReady() {
+    public int getReady() {
         return ready;
     }
 
     /**
      * @param ready the ready to set
      */
-    public void setReady(boolean ready) {
+    public void setReady(int ready) {
         this.ready = ready;
     }
     
     @Override
     public String toString(){
-        return "Order [orderid=" + getOrderid() + ", dinnertable=" + dinnertable + ", item="+ item + ", amount=" + getAmount() + ", note="+ getNote()+", ready=" + isReady() + "]";
+        return "Order [orderid=" + getOrderid() + ", dinnertable=" + dinnertable + ", item="+ item + ", amount=" + getAmount() + ", note="+ getNote()+", ready=" + getReady() + "]";
     }
     
 }
