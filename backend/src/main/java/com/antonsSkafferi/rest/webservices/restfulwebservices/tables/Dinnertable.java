@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Table(name = "dinnertable")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Dinnertable implements Serializable {
-    
+
     @Id
     @Column(name = "dinnertableid", updatable = false, nullable = false)
     private Integer dinnertableid;
@@ -26,6 +26,8 @@ public class Dinnertable implements Serializable {
     private int sizesoftable;
     @Column(name = "description", updatable = false, nullable = false)
     private String description;
+    @Column(name = "active", updatable = true, nullable = false)
+    private boolean active;
     
     //@OneToMany(mappedBy = "dinnertable",cascade =  CascadeType.ALL)
     //private Set<Order> orders;
@@ -46,11 +48,11 @@ public class Dinnertable implements Serializable {
         this.orders = Stream.of(orders).collect(Collectors.toSet());
     }*/
     //maybe redudant dunno yet.
-    public Dinnertable(int dinnertableid, String description, int sizeoftable){
+    public Dinnertable(int dinnertableid, String description, int sizeoftable, boolean active){
         this.dinnertableid = dinnertableid;
         this.description = description;
         this.sizesoftable = sizeoftable;
-    
+        this.active = active;
     
     }
     
@@ -96,8 +98,22 @@ public class Dinnertable implements Serializable {
         this.description = description;
     }
     
+    /**
+     * @return the active
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * @param active the active to set
+     */
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    
     @Override
     public String toString(){
-        return "Dinnertable [dinnertableid=" + getDinnertableid() + ", sizeOfTable=" + getsizeOfTable() + ", description=" + getDescription() + "]";
+        return "Dinnertable [dinnertableid=" + getDinnertableid() + ", sizeOfTable=" + getsizeOfTable() + ", description=" + getDescription() + ", active= " + isActive() + "]";
     }
 }
