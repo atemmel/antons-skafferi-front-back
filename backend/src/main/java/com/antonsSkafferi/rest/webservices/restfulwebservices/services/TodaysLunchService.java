@@ -37,4 +37,8 @@ public class TodaysLunchService {
         return lunches;
     }
     
+    public void saveOrUpdateTodayslunch(TodaysLunch todaysLunch){
+        todaysLunchRepository.save(todaysLunch);
+    }
+    
 }

@@ -14,7 +14,11 @@ DELETE FROM ItemCategory;
 DELETE FROM Customer;
 DELETE FROM Dinnertable;
 DELETE FROM todayslunch;
+DELETE FROM EmployeeSchedule;
+DELETE FROM Employee;
+DELETE FROM workingschedule;
 DELETE FROM User;
+
 
 insert into todayslunch (mealname, days, type)
 VALUES ('Lax och spenatsoppa',1,'Fisk'),
@@ -69,4 +73,14 @@ VALUES (1,1,'Utan Ost',1,1,1),
 insert into User (username, password, administrator)
 VALUES ('Anton', '123', true),
 ('Takko','hej',false);
+
+insert into Employee (employeeid, fname, lname, username)
+VALUES(1,'Anton','Antonsson','Anton');
+
+insert into WORKINGSCHEDULE (workingscheduleid, date, end, start, username)
+VALUES(1,'2019-01-01','23:30','14:00','Anton');
+
+insert into EMPLOYEESCHEDULE (employeescheduleid, employeeid, workingscheduleid)
+VALUES(1,1,1);
+
 
