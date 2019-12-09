@@ -25,4 +25,12 @@ public interface DinnerTableRepository extends JpaRepository<Dinnertable,Integer
     @Modifying
     @Query(value = "UPDATE DINNERTABLE SET active = 1 WHERE dinnertableid = ?1", nativeQuery = true)
     void setActiveTrue(int dinnertableid);
+    
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE DINNERTABLE SET active = 0 WHERE dinnertableid = ?1", nativeQuery = true)
+    void setActiveFalse(int dinnertableid);
+    
+    @Query(value = "SELECT active FROM DINNERTABLE WHERE dinnertableid = ?1", nativeQuery = true)
+    boolean checkActive(int dinnertableid);
 }
