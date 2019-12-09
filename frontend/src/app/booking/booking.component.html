@@ -23,19 +23,25 @@
   <p id="noTables">Det finns inga bord tillgängliga detta datum</p>
   <div id="mainForm">
     <mat-form-field>
-      <input (input)="customerEmail=$event.target.value" matInput placeholder="Epost">
+      <input (input)="customerEmail=$event.target.value" matInput placeholder="Epost" [formControl]="emailFormControl">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">Skriv in en giltg mailadress</mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">Email krävs</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input (input)="customerFirstName=$event.target.value" matInput placeholder="Förnamn">
+      <input (input)="customerFirstName=$event.target.value" matInput placeholder="Förnamn" [formControl]="nameFormControl">
+      <mat-error *ngIf="nameFormControl.hasError('required')">Förnamn krävs</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input (input)="customerLastName=$event.target.value" matInput placeholder="Efternamn">
+      <input (input)="customerLastName=$event.target.value" matInput placeholder="Efternamn" [formControl]="lastNameFormControl">
+      <mat-error *ngIf="lastNameFormControl.hasError('required')">Efternamn krävs</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input (input)="customerPhone=$event.target.value" matInput placeholder="Telefonnummer">
+      <input type="number" inputmode="numeric" pattern="[0-9]*" digitOnly (input)="customerPhone=$event.target.value" matInput placeholder="Telefonnummer" [formControl]="phoneFormControl">
+      <mat-error *ngIf="phoneFormControl.hasError('required')">Telefonnummer krävs</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input (input)="sizeOfCompany=$event.target.value" (keyup)="amountChange($event.target.value)" matInput placeholder="Antal Personer">
+      <input (input)="sizeOfCompany=$event.target.value" (keyup)="amountChange($event.target.value)" matInput placeholder="Antal Personer" [formControl]="amountFormControl">
+      <mat-error *ngIf="amountFormControl.hasError('required')">Storleken på sällskapet krävs</mat-error>
     </mat-form-field>
   </div>
   <p id="errorText"></p>
