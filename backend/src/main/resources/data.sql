@@ -56,7 +56,7 @@ VALUES (1,'Bakad fläskkarre',115,'gräddstuvad kål, senapssky, äppelmos, rost
 insert into Dinnertable (dinnertableid, description, sizesoftable)
 VALUES (1,'Fonsterbord',4),
 (2,'Salong',4),
-(3,'Fonsterbord',2),
+(3,'Fonsterbord',4),
 (4,'Mitten',6),
 (5,'Salong',4),
 (6,'Ingång',4),
