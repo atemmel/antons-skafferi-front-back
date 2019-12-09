@@ -1,7 +1,19 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {GetTabelsService} from '../services/data/get-tabels.service';
-import {MatDatepicker} from '@angular/material';
+import {ErrorStateMatcher} from '@angular/material';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+
+}
+
+
+
 
 @Component({
   selector: 'app-booking',
@@ -10,7 +22,25 @@ import {MatDatepicker} from '@angular/material';
 })
 export class BookingComponent implements OnInit {
   @Input() showMePartially: boolean;
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
+  nameFormControl = new FormControl('', [
+    Validators.required,
+    ]);
+  lastNameFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  phoneFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  amountFormControl = new FormControl('', [
+    Validators.required,
+  ]);
 
   geturl = 'http://localhost:8080/customers';
   posturl = 'http://localhost:8080/post/customers?customer=';
@@ -48,23 +78,6 @@ export class BookingComponent implements OnInit {
     });
   }
 
-
-  // https://www.npmjs.com/package/angular2-datetimepicker
-  date: Date = new Date();
-  settings = {
-    bigBanner: true,
-    timePicker: true,
-    format : 'yyyy-MM-dd hh:mm',
-    defaultOpen: false,
-    closeOnSelect: false
-
-  };
-
-  // Pads a leading 0 for single digit numbers
-  padDigit(num: number) {
-    return num < 10  ? '0' + String(num) : num;
-  }
-
   reload() {
     window.location.reload();
   }
@@ -72,7 +85,8 @@ export class BookingComponent implements OnInit {
 
   onClickMe() {
     this.clickMessage = "Please fill all information";
-    if (this.customerFirstName !== "" && this.customerLastName !== "" && this.customerPhone !== "" && this.customerEmail !== "" && this.sizeOfCompany !== "") {
+    if (this.customerFirstName !== "" && this.customerLastName !== "" && this.customerPhone !== "" &&
+      !this.emailFormControl.hasError('email') && !this.emailFormControl.hasError('required') && this.sizeOfCompany !== "") {
       this.postData.firstname = this.customerFirstName;
       // console.log(this.postData.firstname);
       this.postData.lastname = this.customerLastName;
@@ -96,11 +110,6 @@ export class BookingComponent implements OnInit {
       this.postData.lastname = "";
       this.postData.phone = "";
       this.postData.sizeofcompany = "";
-      /*(document.getElementById("form") as HTMLFormElement).reset();
-      (document.getElementById("button") as HTMLInputElement).style.display = "none";
-      (document.getElementById("noTables") as HTMLInputElement).style.display = "none";
-      (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
-      (document.getElementById("mainForm") as HTMLInputElement).style.display = "none";*/
       (document.getElementById("form") as HTMLInputElement).style.display = "none";
       (document.getElementById("done") as HTMLInputElement).style.display = "block";
 
@@ -158,15 +167,19 @@ export class BookingComponent implements OnInit {
   }
 
   amountChange(event: any) {
+    console.log(event);
+    console.log(typeof event);
     (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
     (document.getElementById("button") as HTMLInputElement).style.display = "none";
+    if (event === "") {
+      return;
+    }
     const amount: number = Number(event);
     let tableToSit: Table = null;
-    if (amount == null) {
-      return;
-    } else if (amount === 0) {
+    if (amount === 0) {
       (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Du kan inte boka bord för 0 personer";
       (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
+      return;
     } else if (amount > 0 && amount < 5) {
       tableToSit = this.tables.find((x => x.sizeOfTable === 4));
       if (tableToSit == null) {

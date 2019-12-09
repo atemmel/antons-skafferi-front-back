@@ -42,11 +42,6 @@ public class WorkingSchedule implements Serializable {
     @Column(name = "end", updatable = false, nullable = false)
     private String end;
     
-    @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name = "username", referencedColumnName="username" ,nullable = false)
-    private User user;
-    
-    
     public WorkingSchedule(){}
     
     

@@ -11,7 +11,7 @@ import { DinnerComponent } from './dinner/dinner.component';
 import { EventsComponent } from './events/events.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -51,7 +51,8 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

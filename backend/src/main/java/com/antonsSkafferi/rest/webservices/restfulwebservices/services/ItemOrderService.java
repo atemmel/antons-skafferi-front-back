@@ -40,6 +40,13 @@ public final class ItemOrderService {
         return orders;
     }
     
+    public List<ItemOrder> getOrederByTable(int dinnertableid)
+    {
+        List<ItemOrder> orders = new ArrayList<>();
+        itemOrderRepository.getOrderByTable(dinnertableid).forEach(order -> orders.add(order));
+        return orders;
+    }
+    
     public void saveOrUpdateItemOrder(ItemOrder itemOrder)
     {
         itemOrderRepository.save(itemOrder);
@@ -64,5 +71,10 @@ public final class ItemOrderService {
     
     public void setOrderDeliverd(int dinnertableid){
        itemOrderRepository.setOrderDeliverd(dinnertableid);
+    }
+    
+    public int getSumOfOrder(int dinnertable)
+    {
+        return itemOrderRepository.orderSum(dinnertable);
     }
 }

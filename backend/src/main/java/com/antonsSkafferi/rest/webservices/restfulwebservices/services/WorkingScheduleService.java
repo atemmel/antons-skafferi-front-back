@@ -46,5 +46,13 @@ public class WorkingScheduleService {
         
         workingScheduleRepository.save(workingSchedule);
     }
+    
+    public void deleteScheduleById(int sceduleid){
+        workingScheduleRepository.deleteById(sceduleid);
+    }
+    
+    public void deleteAll(){
+        workingScheduleRepository.deleteAll();
+    }
             
 }
