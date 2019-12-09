@@ -73,6 +73,12 @@ CSS for Weekly lunchmenu and the div with the restaurant backgrund for the weekl
     background-image: url("src/assets/images/restaurant_picture_2_1920x1080.jpg");
 }
 
+.lunch-day-background {
+    background-image: url("src/assets/images/paper_menu_2_1752x1378.jpg");
+    background-size: cover;
+    min-height: 250px;
+}
+
 //Remove the dots from the styling on the lists
 ul {
     li {
@@ -80,8 +86,8 @@ ul {
     }
 }
 
-//Changes the title of the cards which is what day it is, i.e. "Måndag"
-.card-title {
+//h2 is the weekday headers
+h2 {
     font-family: dealers;
     text-align: center;
 }

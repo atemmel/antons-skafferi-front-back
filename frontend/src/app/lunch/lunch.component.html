@@ -26,9 +26,110 @@
     <div *ngIf="lunchMenuResponse" id="lunch" class="container nopadding nomargin">
 
         <div class="header-background mx-auto nomargin nopadding shadow">
-            <h1>Veckans Lunch</h1>
+            <h1 class="nomargin nopadding">Veckans Lunch</h1>
         </div>
 
+        <!--Måndag-->
+        <div class="row nopadding nomargin">
+            <div class="col-6 lunch-day-background nopadding nomargin">
+                <h2>Måndag</h2>
+                <ul class="align-items-stretch nopadding nomargin">
+                    <li *ngFor="let lunchMeal of days[0]; let j = index" class="nopadding nomargin text-center">
+                        <h3 class="nopadding nomargin">
+                            {{lunchMeal.type}}
+                        </h3>
+                        <p class="nopadding nomargin">
+                            {{lunchMeal.mealname}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 nopadding nomargin">
+                    <!--BILD-->
+            </div>
+        </div>
+
+        <!--Tisdag-->
+        <div class="row nopadding nomargin">
+            <div class="col-6 nopadding nomargin">
+                    <!--BILD-->
+            </div>
+            <div class="col-6 lunch-day-background nopadding nomargin">
+                <h2>Tisdag</h2>
+                <ul class="align-items-stretch nopadding nomargin">
+                    <li *ngFor="let lunchMeal of days[1]; let j = index" class="nopadding nomargin text-center">
+                        <h3 class="nopadding nomargin">
+                            {{lunchMeal.type}}
+                        </h3>
+                        <p class="nopadding nomargin">
+                            {{lunchMeal.mealname}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--Onsdag-->
+        <div class="row nopadding nomargin">
+            <div class="col-6 lunch-day-background nopadding nomargin">
+                <h2>Onsdag</h2>
+                <ul class="align-items-stretch nopadding nomargin">
+                    <li *ngFor="let lunchMeal of days[2]; let j = index" class="nopadding nomargin text-center">
+                        <h3 class="nopadding nomargin">
+                            {{lunchMeal.type}}
+                        </h3>
+                        <p class="nopadding nomargin">
+                            {{lunchMeal.mealname}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 nopadding nomargin">
+                    <!--BILD-->
+            </div>
+        </div>
+
+        <!--Torsdag-->
+        <div class="row nopadding nomargin">
+            <div class="col-6 nopadding nomargin">
+                    <!--BILD-->
+            </div>
+            <div class="col-6 lunch-day-background nopadding nomargin">
+                <h2>Torsdag</h2>
+                <ul class="align-items-stretch nopadding nomargin">
+                    <li *ngFor="let lunchMeal of days[3]; let j = index" class="nopadding nomargin text-center">
+                        <h3 class="nopadding nomargin">
+                            {{lunchMeal.type}}
+                        </h3>
+                        <p class="nopadding nomargin">
+                            {{lunchMeal.mealname}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--Fredag-->
+        <div class="row nopadding nomargin">
+            <div class="col-6 lunch-day-background nopadding nomargin">
+                <h2>Fredag</h2>
+                <ul class="align-items-stretch nopadding nomargin">
+                    <li *ngFor="let lunchMeal of days[4]; let j = index" class="nopadding nomargin text-center">
+                        <h3 class="nopadding nomargin">
+                            {{lunchMeal.type}}
+                        </h3>
+                        <p class="nopadding nomargin">
+                            {{lunchMeal.mealname}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 nopadding nomargin">
+                    <!--BILD-->
+            </div>
+        </div>
+
+    <!--
         <div class="card-columns mt-3" style="padding-bottom: 1rem;">
             <div class="card align-items-center parchementBackground shadow" *ngFor="let day of days; let i = index">
                 <div class="card-body p-3">
@@ -52,5 +153,6 @@
                 </div>
             </div>
         </div>
+    -->
     </div>
 </section>
