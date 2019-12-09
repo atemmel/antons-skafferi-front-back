@@ -32,3 +32,20 @@ cd backend
 ```
 # Database Schema
 ![Repo List](/backend/src/main/resources/images/DatabaseSchema.png) 
+
+# Developers
+
+## Frontend (Web)
+
+- Elias Berglin [Github Page Overview](https://github.com/typelias)
+- Gustav Nilsson [Github Page Overview](https://github.com/JohnGNilsson)
+
+## Backend (API)
+
+- Allamo Olsson [Github Page Overview](https://github.com/Ninhow)
+- Isak Kjellhard [Github Page Overview](https://github.com/kjellhard)
+
+## Backend (Database)
+
+- William Takolander [Github Page Overview](https://github.com/Takolander)
+- Fredrik Sellgren [Github Page Overview](https://github.com/iSellgren)

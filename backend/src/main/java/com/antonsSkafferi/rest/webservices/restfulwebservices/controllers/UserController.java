@@ -8,7 +8,6 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.services.UserService;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.User;
 import java.util.List;
-import static jdk.internal.util.StaticProperty.userName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
