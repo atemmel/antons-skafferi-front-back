@@ -33,7 +33,7 @@ public class EmployeeScheduleController {
     }
     
     @PostMapping(value = "/post/employeesecheduals", params = {"name","date", "start", "end"})
-    private void setEmployeeSechedual(String name, String date, String start, String end)
+    private void setEmployeeSchedual(String name, String date, String start, String end)
     {
         service.setEmployeeSchedule(name, date, start, end);
     }
