@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -30,6 +31,11 @@ public class ItemOrderController {
     //Request GET
     private List<ItemOrder> getAllOrders(){
        return itemOrderService.getAllOrders();
+    }
+    
+    @RequestMapping(value = "/orders/table", params = "dinnertable")
+    private List<ItemOrder> getOrderByTable(@RequestParam int dinnertable){
+        return itemOrderService.getOrederByTable(dinnertable);
     }
     
     @PostMapping(value = "/post/orders", params = "order")
@@ -60,5 +66,9 @@ public class ItemOrderController {
     {
         itemOrderService.setOrderDeliverd(dinnertable);
     }
-     
+    
+    @RequestMapping(value = "/orders/sum", params= "dinnertable")
+    private int getSumOrder(int dinnertable){
+        return itemOrderService.getSumOfOrder(dinnertable);
+    }
 }
