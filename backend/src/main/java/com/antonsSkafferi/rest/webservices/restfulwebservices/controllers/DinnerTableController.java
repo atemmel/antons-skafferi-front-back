@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -67,5 +68,18 @@ public class DinnerTableController {
     }*/
     
     
+    @PostMapping(value = "/post/active/true", params="dinnertable")
+    private void setActiveTrue(@RequestParam int dinnertable){
+        dinnerTableService.setActiveTrue(dinnertable);
+    }
     
+    @PostMapping(value = "/post/active/false", params="dinnertable")
+    private void setActiveFalse(@RequestParam int dinnertable){
+        dinnerTableService.setActiveFalse(dinnertable);
+    }
+    
+    @RequestMapping(value = "/dinnertables/active", params="dinnertable")
+    private boolean checkActive(@RequestParam int dinnertable){
+       return dinnerTableService.checkActive(dinnertable);
+    }
 }

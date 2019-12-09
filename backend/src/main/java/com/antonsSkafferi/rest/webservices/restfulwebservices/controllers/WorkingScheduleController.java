@@ -57,4 +57,10 @@ public class WorkingScheduleController {
         service.deleteAll();
     }
     
+    @RequestMapping(value= "/schedules/schedule/getid", params={"date", "start", "end"})
+    private int getScheduleId(@RequestParam String date, String start, String end){
+        
+        return service.getScheduleIdByDateStartEnd(date, start, end);
+    }
+    
 }

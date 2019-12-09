@@ -37,4 +37,8 @@ public class EmployeeScheduleService {
         return empschedules;
     }
     
+    public void setEmployeeSchedule(String name, String date, String start, String end){
+        employeeScheduleRepository.setEmployeeSchedule(name, date, start, end);
+    }
+    
 }

@@ -68,4 +68,16 @@ public class DinnerTableService {
     
         dinnerTableRepository.deleteAll();
     }
+    
+    public void setActiveTrue(int dinnertableid){
+        dinnerTableRepository.setActiveTrue(dinnertableid);
+    }
+    
+    public void setActiveFalse(int dinnertableid){
+        dinnerTableRepository.setActiveFalse(dinnertableid);
+    }
+    
+    public boolean checkActive(int dinnertableid){
+        return dinnerTableRepository.checkActive(dinnertableid);
+    }
 }
