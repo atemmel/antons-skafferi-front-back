@@ -18,33 +18,49 @@ import javax.persistence.Table;
  * @author fredriksellgren
  */
 @Entity
+@Table(name="user")
 public class User implements Serializable {
 
-    
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "id", updatable = false, nullable = false)
-    //private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userid", updatable = false, nullable = false)
+    private int userid;
+    
     @Column(name = "username", updatable = true, nullable = false)
     private String username;
+    
     @Column(name = "password", updatable = true, nullable = false)
     private String password;
+    
     @Column(name = "administrator", updatable = true, nullable = false)
     private boolean administrator;
     
     
     public User(){}
     
-    public User(String username, String password, boolean administrator)
+    public User(int userid, String username, String password, boolean administrator)
     {
+        this.userid = userid;
         this.username = username;
         this.password = password;
         this.administrator = administrator;
     
     }
+   
+    /**
+     * @return the userid
+     */
+    public int getUserid() {
+        return userid;
+    }
+
+    /**
+     * @param userid the userid to set
+     */
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
     
-
-
     /**
      * @return the username
      */
@@ -82,7 +98,7 @@ public class User implements Serializable {
     }
 
     /**
-     * @param admin the admin to set
+     * @param administrator the admin to set
      */
     public void setAdministrator(boolean administrator) {
         this.administrator = administrator;
@@ -91,7 +107,7 @@ public class User implements Serializable {
     
     @Override
     public String toString(){
-        return "Users [username=" + getUsername() + ", password=" + getPassword() + ", admin =" + isAdministrator()+"]";
+        return "Users [userid=" + getUserid() + ", username=" + getUsername() + ", password=" + getPassword() + ", admin =" + isAdministrator()+"]";
     }
     
 }

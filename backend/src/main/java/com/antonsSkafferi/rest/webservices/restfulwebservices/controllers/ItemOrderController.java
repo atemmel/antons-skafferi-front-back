@@ -40,13 +40,25 @@ public class ItemOrderController {
     @RequestMapping(value = "/orders/unready")
     private List<ItemOrder> getUnreadyOrder()
     {
-        return itemOrderService.getOrderStatus();
+        return itemOrderService.getUnreadyOrders();
+    }
+    
+    @RequestMapping(value = "/orders/ready")
+    private List<ItemOrder> getReadyOrders()
+    {
+        return itemOrderService.getReadyOrders();
     }
      
     @PostMapping(value = "/post/ready", params = "dinnertable")
     private void setOrderReady(int dinnertable)
     {
         itemOrderService.setOrderReady(dinnertable);
+    }
+    
+    @PostMapping(value = "/post/delivered", params = "dinnertable")
+    private void setOrderDelivered(int dinnertable)
+    {
+        itemOrderService.setOrderDeliverd(dinnertable);
     }
      
 }

@@ -45,7 +45,7 @@ public final class ItemOrderService {
         itemOrderRepository.save(itemOrder);
     }
     
-    public List<ItemOrder> getOrderStatus(){
+    public List<ItemOrder> getUnreadyOrders(){
         
         List<ItemOrder> orders = new ArrayList<>();
         itemOrderRepository.unreadyOrders().forEach(order -> orders.add(order));
@@ -54,5 +54,15 @@ public final class ItemOrderService {
     
     public void setOrderReady(int dinnertableid){
         itemOrderRepository.setOrderReady(dinnertableid);
+    }
+    
+    public List<ItemOrder> getReadyOrders(){
+        List<ItemOrder> orders = new ArrayList<>();
+        itemOrderRepository.readyOrders().forEach(order -> orders.add(order));
+        return orders;
+    }
+    
+    public void setOrderDeliverd(int dinnertableid){
+       itemOrderRepository.setOrderDeliverd(dinnertableid);
     }
 }

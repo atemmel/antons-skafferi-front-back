@@ -35,9 +35,13 @@ public class UserService {
         return users;
     }
     
+    public User getUserById(int userid)
+    {
+        return userRepository.getUserById(userid);
+    }
+    
     public User usersLogin(String username, String password)
     {
-        List<User> users = new ArrayList<>();
         return userRepository.usersLogin(username, password);
     }
     
