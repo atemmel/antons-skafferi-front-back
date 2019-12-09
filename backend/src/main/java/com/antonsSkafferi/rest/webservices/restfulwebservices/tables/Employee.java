@@ -5,6 +5,7 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,10 +20,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name= "employee")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Employee implements Serializable {
 
-
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employeeid", updatable = false, nullable = false)
@@ -34,17 +34,17 @@ public class Employee implements Serializable {
     @Column(name = "lname", updatable = false, nullable = false)
     private String lname;
     
-    @Column(name ="userid", updatable = false, nullable = false)
-    private int userid;
+    @Column(name ="username", updatable = false, nullable = false)
+    private String username;
     
     
     public Employee(){}
     
-    public Employee(int employeeid, String fname, String lname, int userid){
+    public Employee(int employeeid, String fname, String lname, String username){
         
         this.employeeid = employeeid;
         this.fname = fname;
-        this.userid = userid;
+        this.username = username;
         this.lname = lname;
         
     }
@@ -91,24 +91,24 @@ public class Employee implements Serializable {
     public void setLname(String lname) {
         this.lname = lname;
     }
-
+    
     /**
-     * @return the userid
+     * @return the username
      */
-    public int getUserid() {
-        return userid;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param userid the userid to set
+     * @param username the username to set
      */
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     @Override
     public String toString(){
-        return "Employee [employeeid = " + getEmployeeid() + ", fname=" + getFname() + ",lname =" + getLname() + ", userid=" + getUserid() + "]";
+        return "Employee [employeeid = " + getEmployeeid() + ", fname=" + getFname() + ",lname =" + getLname() + ", username=" + getUsername() + "]";
     }
     
 }

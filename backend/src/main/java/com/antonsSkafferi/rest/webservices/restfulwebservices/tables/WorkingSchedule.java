@@ -5,6 +5,7 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.tables;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,12 +15,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author fredriksellgren
  */
 @Entity
+@Table(name="workingschedule")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class WorkingSchedule implements Serializable {
 
 
@@ -46,8 +50,9 @@ public class WorkingSchedule implements Serializable {
     public WorkingSchedule(){}
     
     
-    public WorkingSchedule(String date, String start, String end){
+    public WorkingSchedule(int workingscheduleid, String date, String start, String end){
         
+        this.workingscheduleid = workingscheduleid;
         this.date = date;
         this.start = start;
         this.end = end;

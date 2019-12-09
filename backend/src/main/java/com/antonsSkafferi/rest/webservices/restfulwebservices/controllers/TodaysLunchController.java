@@ -10,6 +10,8 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.TodaysLunch
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +28,10 @@ public class TodaysLunchController {
     @RequestMapping(value = "/lunches")
     private List<TodaysLunch> getAllLunches() {
         return todaysLunchService.getAllLunches();
+    }
+    
+    @PostMapping(value = "/post/todayslunch", params="todayslunch")
+    private void saveTodayslunch(@RequestBody TodaysLunch todaysLunch){
+        todaysLunchService.saveOrUpdateTodayslunch(todaysLunch);
     }
 }
