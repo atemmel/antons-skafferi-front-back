@@ -53,14 +53,14 @@ VALUES (1,'Bakad fläskkarre',115,'gräddstuvad kål, senapssky, äppelmos, rost
 (9,'Vildssvin',115,'Vildssvinskotlett med potatisgratäng',1),
 (10,'Spagetti med kötfärsås',115,'Serveras med parmesanost',3);
 
-insert into Dinnertable (dinnertableid, description, sizesoftable)
-VALUES (1,'Fonsterbord',4),
-(2,'Salong',4),
-(3,'Fonsterbord',4),
-(4,'Mitten',6),
-(5,'Salong',4),
-(6,'Ingång',4),
-(7,'Mitten',6);
+insert into Dinnertable (dinnertableid, description, sizesoftable, active)
+VALUES (1,'Fonsterbord',4,false),
+(2,'Salong',4,false),
+(3,'Fonsterbord',4,false),
+(4,'Mitten',6,false),
+(5,'Salong',4,false),
+(6,'Ingång',4,false),
+(7,'Mitten',6,false);
 
 
 insert into Customer(customerid, firstname, lastname, sizeofcompany, email, bookingtime, bookingdate, phone)
