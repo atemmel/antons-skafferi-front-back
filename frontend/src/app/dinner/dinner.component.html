@@ -21,6 +21,7 @@
                 <li *ngFor="let item of chefsChoice.items" class="kockensVal">
                   <h3>{{item.title}}</h3>
                   <p>{{item.description}}</p>
+                  <p><strong>{{item.price}}kr</strong></p>
                 </li>
               </ul>
             </div>
@@ -58,6 +59,7 @@
             <li *ngFor="let dish of item.items">
               <h3>{{dish.title}}</h3>
               <p>{{dish.description}}</p>
+              <p><strong>{{dish.price}}kr</strong></p>
             </li>
           </ul>
         </div>
@@ -70,6 +72,7 @@
               <li *ngFor="let dish of item.items">
                 <h3>{{dish.title}}</h3>
                 <p>{{dish.description}}</p>
+                <p><strong>{{dish.price}}kr</strong></p>
               </li>
             </ul>
           </div>

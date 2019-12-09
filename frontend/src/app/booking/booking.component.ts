@@ -1,8 +1,9 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {GetTabelsService} from '../services/data/get-tabels.service';
 import {ErrorStateMatcher} from '@angular/material';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {AppSettings} from '../constants/AppSettings';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -42,18 +43,13 @@ export class BookingComponent implements OnInit {
     Validators.required,
   ]);
 
-  geturl = 'http://localhost:8080/customers';
-  posturl = 'http://localhost:8080/post/customers?customer=';
-  items = [];
+  posturl = AppSettings.BACKEND_URL + '/post/customers?customer=';
   tables: Array<Table> = [];
   tableResp: any;
   tablesLoaded: Promise<boolean>;
-  clickMessage = '';
   public customerFirstName = "";
   public customerLastName = "";
   public customerEmail = "";
-  public bookingDate = "";
-  public booingTime = "";
   public sizeOfCompany = "";
   public customerPhone = "";
   postData = {
@@ -67,16 +63,7 @@ export class BookingComponent implements OnInit {
     dinnertable: 1,
   };
 
-  constructor(private http: HttpClient, private tableGetter: GetTabelsService) {
-    this.http.get(this.geturl).subscribe(data => {
-
-      for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-          this.items.push(data[key]);
-        }
-      }
-    });
-  }
+  constructor(private http: HttpClient, private tableGetter: GetTabelsService) {}
 
   reload() {
     window.location.reload();
@@ -84,21 +71,13 @@ export class BookingComponent implements OnInit {
 
 
   onClickMe() {
-    this.clickMessage = "Please fill all information";
     if (this.customerFirstName !== "" && this.customerLastName !== "" && this.customerPhone !== "" &&
       !this.emailFormControl.hasError('email') && !this.emailFormControl.hasError('required') && this.sizeOfCompany !== "") {
       this.postData.firstname = this.customerFirstName;
-      // console.log(this.postData.firstname);
       this.postData.lastname = this.customerLastName;
       this.postData.email = this.customerEmail;
       this.postData.phone = this.customerPhone;
       this.postData.sizeofcompany = this.sizeOfCompany;
-
-      console.log(this.postData);
-
-
-      this.clickMessage = "Thanks for reservation";
-
 
       this.http.post(this.posturl, this.postData).subscribe((data: any) => {
         });
@@ -112,9 +91,8 @@ export class BookingComponent implements OnInit {
       this.postData.sizeofcompany = "";
       (document.getElementById("form") as HTMLInputElement).style.display = "none";
       (document.getElementById("done") as HTMLInputElement).style.display = "block";
-
       } else {
-      (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Var vänlig fyll i alla fält";
+      (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Var vänlig kontrollera alla fält";
       (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
     }
 
@@ -127,11 +105,25 @@ export class BookingComponent implements OnInit {
     (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
     (document.getElementById("mainForm") as HTMLInputElement).style.display = "none";
     (document.getElementById("done") as HTMLInputElement).style.display = "none";
+    (document.getElementById("timePicker") as HTMLInputElement).style.display = "none";
   }
 
   async dateChange(event: any) {
+    (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
+    (document.getElementById("timePicker") as HTMLInputElement).style.display = "none";
     this.tables = Array<Table>();
     const data: Date = event;
+    const day = data.getDay();
+    if (day === 0) {
+      (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Vi har inte öppet på söndagar";
+      (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
+      (document.getElementById("button") as HTMLInputElement).style.display = "none";
+      (document.getElementById("noTables") as HTMLInputElement).style.display = "none";
+      (document.getElementById("mainForm") as HTMLInputElement).style.display = "none";
+      (document.getElementById("timePicker") as HTMLInputElement).style.display = "none";
+      return;
+    }
+    (document.getElementById("timePicker") as HTMLInputElement).style.display = "block";
     const formatedDate: string = data.getFullYear() + '-' + (data.getMonth() + 1 ) + '-' + data.getDate();
     console.log(formatedDate);
 
@@ -167,8 +159,6 @@ export class BookingComponent implements OnInit {
   }
 
   amountChange(event: any) {
-    console.log(event);
-    console.log(typeof event);
     (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
     (document.getElementById("button") as HTMLInputElement).style.display = "none";
     if (event === "") {
