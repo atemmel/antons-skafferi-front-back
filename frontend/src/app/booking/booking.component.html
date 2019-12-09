@@ -5,7 +5,7 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field id="timePicker">
       <mat-label>Välj Tid</mat-label>
       <mat-select (selectionChange)="timeChange($event.value)">
         <mat-option value="Välj Tid">Välj Tid</mat-option>

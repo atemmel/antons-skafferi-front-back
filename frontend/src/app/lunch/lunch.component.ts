@@ -19,7 +19,7 @@ export class LunchComponent implements OnInit {
 
   ngOnInit() {
     this.getLunchMenu();
-    
+
   }
 
   getDailyLunch() {
@@ -33,7 +33,6 @@ export class LunchComponent implements OnInit {
     const lunchMenuResponse = await this.lunchGetter.getLunches().toPromise();
     this.lunchMenuResponse = lunchMenuResponse;
     this.lunchMenuLoaded = Promise.resolve(true);
-    console.log(lunchMenuResponse);
     // 0 is sunday, 1 is monday, 2 is tuesday, 3 is wednesday, 4 is thursday, 5 is friday, 6 is saturday
 
     /**Sorts every individual day so that they're all ordered after type alphabetically*/
@@ -54,7 +53,7 @@ export class LunchComponent implements OnInit {
     }
     this.getDailyLunch();
   }
-  
+
 }
 
 class LunchMeal {
@@ -66,6 +65,6 @@ class LunchMeal {
   constructor(mealName: string, day: number, mealType: string) {
     this.mealName = mealName;
     this.day = day;
-    this.mealType = mealType; 
+    this.mealType = mealType;
   }
 }
