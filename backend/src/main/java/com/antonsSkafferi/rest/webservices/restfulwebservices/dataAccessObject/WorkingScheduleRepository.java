@@ -15,5 +15,7 @@ public interface WorkingScheduleRepository extends JpaRepository<WorkingSchedule
     @Query(value = "Select * from workingschedule where date like %?1%", nativeQuery = true)
     List<WorkingSchedule> scheduleDateTime(String date);
     
+    @Query(value = "SELECT WORKINGSCHEDULEID FROM WORKINGSCHEDULE WHERE DATE = ?1 AND START = ?2 AND END = ?3", nativeQuery = true)
+    int getScheduleIdByDateStartEnd(String date, String start, String end);
     
 }

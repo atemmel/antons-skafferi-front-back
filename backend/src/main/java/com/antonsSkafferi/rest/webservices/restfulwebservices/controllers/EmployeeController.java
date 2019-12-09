@@ -5,12 +5,12 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.controllers;
 
-import com.antonsSkafferi.rest.webservices.restfulwebservices.services.EmployeeScheduleService;
-import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.EmployeeSchedule;
-import java.util.List;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.services.EmployeeService;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -19,17 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
-public class EmployeeScheduleController {
-    
+public class EmployeeController {
     
     @Autowired
-    EmployeeScheduleService service = EmployeeScheduleService.getInstance();
+    EmployeeService service = EmployeeService.getInstance();
     
-    @RequestMapping(value = "/empschedules")
-    //Request GET
-    private List<EmployeeSchedule> getAllEmployeeWorkingSchedule(){
-       return service.getAllEmployeeSchedules();
+    
+    
+    @RequestMapping(value = "/employees", params= "name")
+    private int getUserLogin(@RequestParam String name){
+        return service.getEmployeeIdByName(name);
     }
-    
-    
 }

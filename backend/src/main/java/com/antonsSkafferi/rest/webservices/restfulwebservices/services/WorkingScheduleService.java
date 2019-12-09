@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.WorkingScheduleRepository;
@@ -53,6 +48,9 @@ public class WorkingScheduleService {
     
     public void deleteAll(){
         workingScheduleRepository.deleteAll();
+    }
+    public int getScheduleIdByDateStartEnd(String date, String start, String end){
+        return workingScheduleRepository.getScheduleIdByDateStartEnd(date, start, end);
     }
             
 }
