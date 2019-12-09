@@ -1,7 +1,7 @@
 .latest-events{ //Div for the event pictures/divs
   max-width: none;
   min-width: 100%;
-  min-height: 375px;
+  min-height: 450px;
   position: relative;
 }
 
@@ -55,6 +55,7 @@ h3 { //Date of the events in the standard view
   background-image: url("src/assets/images/Pizzabagare_678x1024.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: top;
 }
 
 #event-solo-block { //Solo block for when there is 1 event
