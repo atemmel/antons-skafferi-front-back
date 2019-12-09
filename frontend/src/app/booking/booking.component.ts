@@ -88,23 +88,27 @@ export class BookingComponent implements OnInit {
 
       this.http.post(this.posturl, this.postData).subscribe((data: any) => {
         });
+      this.postData.bookingdate = "";
+      this.postData.bookingtime = "";
+      this.postData.dinnertable = null;
+      this.postData.email = "";
+      this.postData.firstname = "";
+      this.postData.lastname = "";
+      this.postData.phone = "";
+      this.postData.sizeofcompany = "";
+      /*(document.getElementById("form") as HTMLFormElement).reset();
+      (document.getElementById("button") as HTMLInputElement).style.display = "none";
+      (document.getElementById("noTables") as HTMLInputElement).style.display = "none";
+      (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
+      (document.getElementById("mainForm") as HTMLInputElement).style.display = "none";*/
+      (document.getElementById("form") as HTMLInputElement).style.display = "none";
+      (document.getElementById("done") as HTMLInputElement).style.display = "block";
 
-      }
-    this.postData.bookingdate = "";
-    this.postData.bookingtime = "";
-    this.postData.dinnertable = null;
-    this.postData.email = "";
-    this.postData.firstname = "";
-    this.postData.lastname = "";
-    this.postData.phone = "";
-    this.postData.sizeofcompany = "";
-    /*(document.getElementById("form") as HTMLFormElement).reset();
-    (document.getElementById("button") as HTMLInputElement).style.display = "none";
-    (document.getElementById("noTables") as HTMLInputElement).style.display = "none";
-    (document.getElementById("errorText") as HTMLInputElement).style.display = "none";
-    (document.getElementById("mainForm") as HTMLInputElement).style.display = "none";*/
-    (document.getElementById("form") as HTMLInputElement).style.display = "none";
-    (document.getElementById("done") as HTMLInputElement).style.display = "block";
+      } else {
+      (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Var vänlig fyll i alla fält";
+      (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
+    }
+
 
   }
 
@@ -137,7 +141,7 @@ export class BookingComponent implements OnInit {
       (document.getElementById("noTables") as HTMLInputElement).style.display = "block";
     } else {
       this.postData.bookingdate = formatedDate;
-      (document.getElementById("mainForm") as HTMLInputElement).style.display = "flex";
+
     }
   }
 
@@ -145,7 +149,10 @@ export class BookingComponent implements OnInit {
     const data = event.toString();
     console.log(event.toString());
     if (data !== "Välj Tid") {
+      (document.getElementById("mainForm") as HTMLInputElement).style.display = "flex";
       this.postData.bookingtime = data;
+    } else {
+      (document.getElementById("mainForm") as HTMLInputElement).style.display = "none";
     }
 
   }
@@ -160,11 +167,12 @@ export class BookingComponent implements OnInit {
     } else if (amount === 0) {
       (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Du kan inte boka bord för 0 personer";
       (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
-    } else if (amount === 1 || amount === 2) {
-      tableToSit = this.tables.find((x => x.sizeOfTable === 2));
-    } else if (amount === 3 || amount === 4) {
+    } else if (amount > 0 && amount < 5) {
       tableToSit = this.tables.find((x => x.sizeOfTable === 4));
-    } else if (amount === 5 || amount === 6) {
+      if (tableToSit == null) {
+        tableToSit = this.tables.find((x => x.sizeOfTable === 6));
+      }
+    } else if (amount > 4 && amount < 7) {
       tableToSit = this.tables.find((x => x.sizeOfTable === 6));
     } else {
       (document.getElementById("errorText") as HTMLInputElement).innerHTML = "För sällskap större än 6 var vänlig ring resturangen";
