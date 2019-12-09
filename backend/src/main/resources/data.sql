@@ -80,5 +80,5 @@ VALUES(1,'Anton','Antonsson','Anton');
 insert into WORKINGSCHEDULE (workingscheduleid, date, end, start)
 VALUES(1,'2019-01-01','23:30','14:00');
 
-insert into EMPLOYEESCHEDULE (employeescheduleid, employeeid, workingscheduleid)
-VALUES(1,1,1);
+/*insert into EMPLOYEESCHEDULE (employeescheduleid, employeeid, workingscheduleid)
+VALUES(1,1,1);*/

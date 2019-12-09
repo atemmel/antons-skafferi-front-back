@@ -36,9 +36,12 @@ public class EmployeeScheduleService {
         employeeScheduleRepository.findAll().forEach(empschedule -> empschedules.add(empschedule));
         return empschedules;
     }
-    
-    public void setEmployeeSchedule(String name, String date, String start, String end){
-        employeeScheduleRepository.setEmployeeSchedule(name, date, start, end);
+   
+    public void postEmployeeSchedule(String fname, String date, String start, String end){
+        int tempone = employeeScheduleRepository.getEmployee(fname);
+        int temptwo = employeeScheduleRepository.getWorkSchedule(date, start, end);
+        EmployeeSchedule tempthree = new EmployeeSchedule(tempone,temptwo);
+        employeeScheduleRepository.save(tempthree);
     }
     
 }

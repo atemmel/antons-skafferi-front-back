@@ -47,7 +47,14 @@ public class EmployeeSchedule implements Serializable {
     @Column(name = "workingscheduleid", updatable = true, nullable = false)
     private int workingscheduleid;
     
-        /**
+    public EmployeeSchedule(){}
+    
+    public EmployeeSchedule(int employeeid, int workingscheduleid){
+        this.employeeid = employeeid;
+        this.workingscheduleid = workingscheduleid;
+    }
+    
+    /**
      * @return the employeescheduleid
      */
     public int getEmployeescheduleid() {
