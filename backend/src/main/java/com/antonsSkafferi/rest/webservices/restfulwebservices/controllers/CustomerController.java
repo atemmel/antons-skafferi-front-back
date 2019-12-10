@@ -88,7 +88,7 @@ public class CustomerController {
     
     
     //ALL DELETE REQUESTS
-    @DeleteMapping("/customers/delete/customer")
+    @DeleteMapping(value="/customers/delete/customer", params="id")
     //Request DELETE
     private void deleteCustomer(@RequestParam int id){
 

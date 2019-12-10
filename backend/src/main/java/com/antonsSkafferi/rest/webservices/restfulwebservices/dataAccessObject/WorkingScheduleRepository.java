@@ -22,4 +22,7 @@ public interface WorkingScheduleRepository extends JpaRepository<WorkingSchedule
     @Query(value = "SELECT WORKINGSCHEDULEID FROM WORKINGSCHEDULE WHERE DATE = ?1 AND START = ?2 AND END = ?3", nativeQuery = true)
     int getScheduleIdByDateStartEnd(String date, String start, String end);
     
+    @Query(value = "SELECT * FROM WORKINGSCHEDULE WHERE DATE = ?1 AND START = ?2 AND END = ?3",  nativeQuery = true)
+    WorkingSchedule getWorkSchedule(String date, String start, String end);
+    
 }

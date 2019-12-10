@@ -5,7 +5,9 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
+import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.EmployeeRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.UserRepository;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Employee;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,9 @@ public class UserService {
     
     @Autowired
     UserRepository userRepository;
+    
+    @Autowired
+    EmployeeRepository employeeRepository;
     
     private static UserService UserService;
     
@@ -48,7 +53,7 @@ public class UserService {
     public void saveOrUpdateUser(User user){   
         userRepository.save(user);
     }
-    public void createUser(String firstname, String lastname, String password, boolean admin){
+    public User createUser(String firstname, String lastname, String password, boolean admin){
         
         String fname = firstname.substring(0,2);
         String lname = lastname.substring(0,2);
@@ -63,32 +68,29 @@ public class UserService {
                 username = username.substring(0, username.length()-1)+tmp;
                 
                 checkUserExists = userRepository.checkIfUserExists(username);
-                userRepository.save(new User(username, password, admin));
                 
             }else if(username.length() == 6){
                 username = username.substring(0, username.length()-2)+tmp;
 
                 
                 checkUserExists = userRepository.checkIfUserExists(username);
-                userRepository.save(new User(username, password, admin));
+
             }else if (username.length() == 7){
                 
-                username = username.substring(0, username.length()-3)+tmp;             
+                username = username.substring(0, username.length()-3)+tmp;
+                
                 checkUserExists = userRepository.checkIfUserExists(username);
-                userRepository.save(new User(username, password, admin));
+
             }else if (username.length() >= 8){
                 
-                username = username.substring(0, username.length()-4)+tmp;           
-                checkUserExists = userRepository.checkIfUserExists(username);
-                userRepository.save(new User(username, password, admin));
-            }
-            
-            else{
-
-                userRepository.save(new User(username, password, admin));
+                username = username.substring(0, username.length()-4)+tmp;
+                
+                checkUserExists = userRepository.checkIfUserExists(username);;
             }
             
         }
-            userRepository.save(new User(username, password, admin)); 
+            employeeRepository.save(new Employee(firstname,lastname));
+            userRepository.save(new User(username, password, admin));
+            return new User(username, password, admin);
     }
 }

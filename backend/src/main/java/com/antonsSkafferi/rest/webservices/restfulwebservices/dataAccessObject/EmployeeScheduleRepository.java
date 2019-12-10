@@ -6,9 +6,7 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.EmployeeSchedule;
-import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 /**
@@ -16,17 +14,11 @@ import org.springframework.data.jpa.repository.Query;
  * @author fredriksellgren
  */
 public interface EmployeeScheduleRepository extends JpaRepository<EmployeeSchedule,Integer> {
-   
-    @Query(value = "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FNAME = ?1", nativeQuery = true)
-    int getEmployee(String fname);
+
+    @Query(value = "SELECT * FROM EMPLOYEESCHEDULE WHERE employeeid = ?1 AND WORKINGSCHEDULEID = ?2", nativeQuery = true)
+    EmployeeSchedule getEmployeeSchedule(int employeeid, int scheduleid);
     
-    @Query(value = "SELECT WORKINGSCHEDULEID FROM WORKINGSCHEDULE WHERE DATE = ?1 AND START = ?2 AND END = ?3",  nativeQuery = true)
-    Integer getWorkSchedule(String date, String start, String end);
-    
-    @Query(value = "SELECT * FROM EMPLOYEESCHEDULE WHERE employeeid = (SELECT EMPLOYEEID FROM EMPLOYEE WHERE FNAME = ?1)", nativeQuery = true)
-    EmployeeSchedule getEmployeeSchedule(String name);
-    
-    @Query(value = "SELECT * FROM EMPLOYEESCHEDULE WHERE employeeid = (SELECT EMPLOYEEID FROM EMPLOYEE WHERE FNAME = ?1) AND workingscheduleid = (SELECT WORKINGSCHEDULEID FROM WORKINGSCHEDULE WHERE DATE = ?2 AND START = ?3 AND END = ?4)", nativeQuery = true)
-    EmployeeSchedule getEmployeeScheduleDelete(String name, String date, String start, String end);
+    @Query(value = "SELECT * FROM EMPLOYEESCHEDULE WHERE employeeid = ?1 AND workingscheduleid = ?2", nativeQuery = true)
+    EmployeeSchedule getEmployeeScheduleDelete(int employeeid, int  workingscheduleid);
 }
     
