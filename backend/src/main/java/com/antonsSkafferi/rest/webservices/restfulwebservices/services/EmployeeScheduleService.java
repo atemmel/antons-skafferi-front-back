@@ -25,6 +25,7 @@ public class EmployeeScheduleService {
    EmployeeScheduleRepository employeeScheduleRepository;
    @Autowired
    WorkingScheduleRepository workingScheduleRepository;
+   
     
     private static EmployeeScheduleService employeeScheduleService;
     
@@ -41,43 +42,40 @@ public class EmployeeScheduleService {
         return empschedules;
     }
    
-    public void postEmployeeSchedule(String fname, String date, String start, String end){
+    public void postEmployeeSchedule(int employeeid, String date, String start, String end){
         
-        int tempEmployeeId = employeeScheduleRepository.getEmployee(fname);
-        Integer tempWorkScheduleId = employeeScheduleRepository.getWorkSchedule(date, start, end);
-        
-        if(tempWorkScheduleId != null)
+        WorkingSchedule tempWorkSchedule = workingScheduleRepository.getWorkSchedule(date, start, end);
+        if(tempWorkSchedule != null)
         {
-            EmployeeSchedule completeEmployeeSchedule = new EmployeeSchedule(tempEmployeeId,tempWorkScheduleId);
+            EmployeeSchedule completeEmployeeSchedule = new EmployeeSchedule(employeeid,tempWorkSchedule.getWorkingscheduleid());
             employeeScheduleRepository.save(completeEmployeeSchedule);
         }
+        
         else{
             workingScheduleRepository.save(new WorkingSchedule(date, start, end));
-            tempWorkScheduleId = employeeScheduleRepository.getWorkSchedule(date, start, end);
-            EmployeeSchedule completeEmployeeSchedule = new EmployeeSchedule(tempEmployeeId,tempWorkScheduleId);
+            WorkingSchedule temp1WorkSchedule = workingScheduleRepository.getWorkSchedule(date, start, end);
+            EmployeeSchedule completeEmployeeSchedule = new EmployeeSchedule(employeeid,temp1WorkSchedule.getWorkingscheduleid());
             employeeScheduleRepository.save(completeEmployeeSchedule);
         }
         
     }
     
-    public void switchEmployeeSchedule(String employeeOne, String employeeTwo){
+    public void switchEmployeeSchedule(int employeeOne, int employeeTwo, int scheduleIdOne, int scheduleIdTwo){
         
-        EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(employeeOne);
-        int tempEmployeeOneId = tempEmployeeOne.getEmployeeid();
-        EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(employeeTwo);
-        int tempEmployeeTwoId = tempEmployeeTwo.getEmployeeid();
+        EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(employeeOne, scheduleIdOne);
+        EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(employeeTwo, scheduleIdTwo);
         
-        tempEmployeeOne.setEmployeeid(tempEmployeeTwoId);
-        tempEmployeeTwo.setEmployeeid(tempEmployeeOneId);
+        tempEmployeeOne.setEmployeeid(employeeTwo);
+        tempEmployeeTwo.setEmployeeid(employeeOne);
         
         employeeScheduleRepository.save(tempEmployeeOne);
         employeeScheduleRepository.save(tempEmployeeTwo);    
     }
     
-    public void deleteEmployeeSchedule(String name, String date, String start, String end){
-        EmployeeSchedule tempEmployeeId = employeeScheduleRepository.getEmployeeScheduleDelete(name, date, start, end);
+    public void deleteEmployeeSchedule(int employeeid, int workingscheduleid){
+        EmployeeSchedule tempEmployeeScheduleId = employeeScheduleRepository.getEmployeeScheduleDelete(employeeid, workingscheduleid);
         
-        employeeScheduleRepository.deleteById(tempEmployeeId.getEmployeescheduleid());
+        employeeScheduleRepository.deleteById(tempEmployeeScheduleId.getEmployeescheduleid());
     }
     
 }

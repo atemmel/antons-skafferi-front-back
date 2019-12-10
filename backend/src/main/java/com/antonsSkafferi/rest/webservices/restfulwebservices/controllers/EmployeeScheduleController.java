@@ -34,19 +34,18 @@ public class EmployeeScheduleController {
        return service.getAllEmployeeSchedules();
     }
     
-    @PostMapping(value = "/post/employeesechedual",  params = {"name","date", "start", "end"})
-    private void setEmployeeSchedual(@RequestParam String name, String date, String start, String end){
-        service.postEmployeeSchedule(name, date, start, end);
+    @PostMapping(value = "/empschedules/post/employeesechedual",  params = {"employeeid","date", "start", "end"})
+    private void setEmployeeSchedual(@RequestParam int employeeid, String date, String start, String end){
+        service.postEmployeeSchedule(employeeid, date, start, end);
     }
  
-    
-    @PostMapping(value = "/post/switchemployeesecheduals", params = {"one","two"})
-    private void switchEmployeeSchedualId(@RequestParam String one, String two){
-        service.switchEmployeeSchedule(one, two);
+    @PostMapping(value = "/empschedules/post/switchemployeesecheduals", params = {"empone","emptwo","scheduleone","scheduletwo"})
+    private void switchEmployeeSchedualId(@RequestParam int empone, int emptwo, int scheduleone, int scheduletwo){
+        service.switchEmployeeSchedule(empone, emptwo, scheduleone, scheduletwo);
     }
     
-    @DeleteMapping(value = "/delete/employeesechedual", params = {"name","date", "start", "end"})
-    private void deleteEmployeeSchedule(@RequestParam String name, String date, String start, String end){
-        service.deleteEmployeeSchedule(name, date, start, end);
+    @DeleteMapping(value = "/empschedules/delete/employeesechedual", params = {"employeeid", "workscheduleid"})
+    private void deleteEmployeeSchedule(@RequestParam int employeeid, int workscheduleid){
+        service.deleteEmployeeSchedule(employeeid, workscheduleid);
     }
 }
