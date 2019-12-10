@@ -47,7 +47,7 @@ public class UserController {
     }
     
     @PostMapping(value = "/post/newuser", params={"firstname","lastname","password","admin"})
-    private String newUser(@RequestParam String firstname, String lastname, String password, boolean admin){
+    private User newUser(@RequestParam String firstname, String lastname, String password, boolean admin){
         return service.createUser(firstname, lastname, password, admin);
     }
     

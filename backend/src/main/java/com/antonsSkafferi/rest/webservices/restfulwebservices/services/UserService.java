@@ -48,7 +48,7 @@ public class UserService {
     public void saveOrUpdateUser(User user){   
         userRepository.save(user);
     }
-    public String createUser(String firstname, String lastname, String password, boolean admin){
+    public User createUser(String firstname, String lastname, String password, boolean admin){
         
         String fname = firstname.substring(0,2);
         String lname = lastname.substring(0,2);
@@ -85,6 +85,6 @@ public class UserService {
             
         }
             userRepository.save(new User(username, password, admin));
-            return username +","+ password + ","+ admin;
+            return new User(username, password, admin);
     }
 }
