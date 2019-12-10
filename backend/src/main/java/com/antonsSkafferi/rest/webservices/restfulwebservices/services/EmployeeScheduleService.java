@@ -60,4 +60,24 @@ public class EmployeeScheduleService {
         
     }
     
+    public void switchEmployeeSchedule(String employeeOne, String employeeTwo){
+        
+        EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(employeeOne);
+        int tempEmployeeOneId = tempEmployeeOne.getEmployeeid();
+        EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(employeeTwo);
+        int tempEmployeeTwoId = tempEmployeeTwo.getEmployeeid();
+        
+        tempEmployeeOne.setEmployeeid(tempEmployeeTwoId);
+        tempEmployeeTwo.setEmployeeid(tempEmployeeOneId);
+        
+        employeeScheduleRepository.save(tempEmployeeOne);
+        employeeScheduleRepository.save(tempEmployeeTwo);    
+    }
+    
+    public void deleteEmployeeSchedule(String name, String date, String start, String end){
+        EmployeeSchedule tempEmployeeId = employeeScheduleRepository.getEmployeeScheduleDelete(name, date, start, end);
+        
+        employeeScheduleRepository.deleteById(tempEmployeeId.getEmployeescheduleid());
+    }
+    
 }

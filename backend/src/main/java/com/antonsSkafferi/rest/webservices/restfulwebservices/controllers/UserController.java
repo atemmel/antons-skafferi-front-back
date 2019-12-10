@@ -42,8 +42,13 @@ public class UserController {
     }
     
     @PostMapping(value = "/post/users", params="user")
-    private void saveCustomer(@RequestBody User user){
+    private void saveUser(@RequestBody User user){
         service.saveOrUpdateUser(user);
+    }
+    
+    @PostMapping(value = "/post/newuser", params={"firstname","lastname","password","admin"})
+    private void newUser(@RequestParam String firstname, String lastname, String password, boolean admin){
+        service.createUser(firstname, lastname, password, admin);
     }
     
     
