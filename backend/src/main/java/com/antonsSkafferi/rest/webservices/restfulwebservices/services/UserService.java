@@ -5,7 +5,9 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
+import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.EmployeeRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.UserRepository;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Employee;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,9 @@ public class UserService {
     
     @Autowired
     UserRepository userRepository;
+    
+    @Autowired
+    EmployeeRepository employeeRepository;
     
     private static UserService UserService;
     
@@ -84,6 +89,7 @@ public class UserService {
             }
             
         }
+            employeeRepository.save(new Employee(firstname,lastname,username));
             userRepository.save(new User(username, password, admin));
             return new User(username, password, admin);
     }
