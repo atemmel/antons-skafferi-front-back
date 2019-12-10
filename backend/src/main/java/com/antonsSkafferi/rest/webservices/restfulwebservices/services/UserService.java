@@ -89,7 +89,7 @@ public class UserService {
             }
             
         }
-            employeeRepository.save(new Employee(firstname,lastname,username));
+            employeeRepository.save(new Employee(firstname,lastname));
             userRepository.save(new User(username, password, admin));
             return new User(username, password, admin);
     }
