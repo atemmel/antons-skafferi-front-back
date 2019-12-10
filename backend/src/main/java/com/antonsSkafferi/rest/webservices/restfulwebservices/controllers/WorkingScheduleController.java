@@ -63,4 +63,9 @@ public class WorkingScheduleController {
         return service.getScheduleIdByDateStartEnd(date, start, end);
     }
     
+    @RequestMapping(value= "/schedules/schedule", params={"employeeid","date"})
+    private List<WorkingSchedule> getWorkScheduleByIdAndDate(@RequestParam int employeeid, String date){
+        return service.getWorkScheduleByIdAndDate(employeeid, date);
+    }
+    
 }
