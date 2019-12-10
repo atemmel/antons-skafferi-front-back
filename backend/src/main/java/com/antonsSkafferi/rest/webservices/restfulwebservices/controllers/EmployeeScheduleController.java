@@ -10,6 +10,7 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.EmployeeSch
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,9 +34,19 @@ public class EmployeeScheduleController {
        return service.getAllEmployeeSchedules();
     }
     
-    @PostMapping(value = "/post/employeesecheduals",  params = {"name","date", "start", "end"})
-    private void setsetEmployeeSchedual(@RequestParam String name, String date, String start, String end){
+    @PostMapping(value = "/post/employeesechedual",  params = {"name","date", "start", "end"})
+    private void setEmployeeSchedual(@RequestParam String name, String date, String start, String end){
         service.postEmployeeSchedule(name, date, start, end);
     }
  
+    
+    @PostMapping(value = "/post/switchemployeesecheduals", params = {"one","two"})
+    private void switchEmployeeSchedualId(@RequestParam String one, String two){
+        service.switchEmployeeSchedule(one, two);
+    }
+    
+    @DeleteMapping(value = "/delete/employeesechedual", params = {"name","date", "start", "end"})
+    private void deleteEmployeeSchedule(@RequestParam String name, String date, String start, String end){
+        service.deleteEmployeeSchedule(name, date, start, end);
+    }
 }

@@ -22,4 +22,11 @@ public interface EmployeeScheduleRepository extends JpaRepository<EmployeeSchedu
     
     @Query(value = "SELECT WORKINGSCHEDULEID FROM WORKINGSCHEDULE WHERE DATE = ?1 AND START = ?2 AND END = ?3",  nativeQuery = true)
     Integer getWorkSchedule(String date, String start, String end);
+    
+    @Query(value = "SELECT * FROM EMPLOYEESCHEDULE WHERE employeeid = (SELECT EMPLOYEEID FROM EMPLOYEE WHERE FNAME = ?1)", nativeQuery = true)
+    EmployeeSchedule getEmployeeSchedule(String name);
+    
+    @Query(value = "SELECT * FROM EMPLOYEESCHEDULE WHERE employeeid = (SELECT EMPLOYEEID FROM EMPLOYEE WHERE FNAME = ?1) AND workingscheduleid = (SELECT WORKINGSCHEDULEID FROM WORKINGSCHEDULE WHERE DATE = ?2 AND START = ?3 AND END = ?4)", nativeQuery = true)
+    EmployeeSchedule getEmployeeScheduleDelete(String name, String date, String start, String end);
 }
+    
