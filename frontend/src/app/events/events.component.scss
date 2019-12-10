@@ -35,6 +35,11 @@ h3 { //Date of the events in the standard view
   color: white;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
+  text-align: center;
+}
+
+p {
+  text-align: center;
 }
 
 .card-title { //The card title of the many events slider
@@ -72,3 +77,26 @@ h3 { //Date of the events in the standard view
 .carousel-control-next-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
 }
+
+
+//Button to show the picture gallery for a specific event
+#picture-gallery {
+  float: right;
+} 
+
+//EVENTPICTURES ===
+#modal-contents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#modal-image-div {
+  width: 25%;
+  height: auto;
+}
+
+#modal-img {
+  object-fit: contain;
+}
+
