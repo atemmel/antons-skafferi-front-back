@@ -9,6 +9,7 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.services.ItemOrder
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.ItemOrder;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,5 +71,10 @@ public class ItemOrderController {
     @RequestMapping(value = "/orders/sum", params= "dinnertable")
     private int getSumOrder(int dinnertable){
         return itemOrderService.getSumOfOrder(dinnertable);
+    }
+    
+    @DeleteMapping(value = "/orders/delete", params= "dinnertable")
+    private void deleteOrdersFromTable(int dinnertable){
+        itemOrderService.deleteOrdersFromTable(dinnertable);
     }
 }

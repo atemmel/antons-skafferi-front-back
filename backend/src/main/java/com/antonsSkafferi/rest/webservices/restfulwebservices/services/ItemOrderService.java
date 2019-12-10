@@ -76,4 +76,10 @@ public final class ItemOrderService {
     {
         return itemOrderRepository.orderSum(dinnertable);
     }
+    
+    public void deleteOrdersFromTable(int deinnertable){
+        List<ItemOrder> orders = new ArrayList<>();
+        itemOrderRepository.getOrderByTable(deinnertable).forEach(order -> orders.add(order));
+        itemOrderRepository.deleteInBatch(orders);
+    }
 }
