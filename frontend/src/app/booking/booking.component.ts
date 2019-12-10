@@ -83,13 +83,13 @@ export class BookingComponent implements OnInit {
       const resp = await this.tableGetter.getTabels(this.formatedDate).toPromise();
       this.tableResp = resp;
       this.tableCheck = Promise.resolve(true);
-      this.tables = [];
+      this.tables = Array<Table>();
       this.tableResp.forEach(val => {
         const temp: Table = val;
         this.tables.push(temp);
       });
 
-      const res = this.tables.find(x => x.dinnertableid = this.postData.dinnertable);
+      const res = this.tables.find(x => x.dinnertableid === this.postData.dinnertable);
       if (res) {
         this.http.post(this.posturl, this.postData).subscribe((data: any) => {
         });
