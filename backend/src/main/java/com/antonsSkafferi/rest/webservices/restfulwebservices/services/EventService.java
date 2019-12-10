@@ -35,11 +35,11 @@ public class EventService {
     }
     public void createEvent(String date) throws FileNotFoundException, IOException{
         System.out.println(date);
-        new File("../"+date).mkdirs();
+        new File("../backend/src/main/resources/images/"+date).mkdirs();
         File file = ResourceUtils.getFile("../"+date);
         
         if(file.exists()){
-           File temp = new File("../"+date+"/testar.png");
+           File temp = new File("../backend/src/main/resources/images/"+date+"/testar.png");
            //Create the file
            if (temp.createNewFile()){
              System.out.println("File is created!");
