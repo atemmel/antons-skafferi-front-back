@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author fredriksellgren
+ * @author willi
  */
 @Service
 public class WorkingScheduleService {

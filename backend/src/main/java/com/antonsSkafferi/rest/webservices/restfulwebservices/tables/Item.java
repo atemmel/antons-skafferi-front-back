@@ -13,6 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author willi
+ */
 @Entity
 @Table(name="item")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

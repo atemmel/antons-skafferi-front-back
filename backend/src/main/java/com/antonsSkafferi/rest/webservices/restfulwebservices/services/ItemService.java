@@ -11,12 +11,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.ItemRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 
 /**
  *
- * @author fredriksellgren
+ * @author willi
  */
 @Service
 public class ItemService {

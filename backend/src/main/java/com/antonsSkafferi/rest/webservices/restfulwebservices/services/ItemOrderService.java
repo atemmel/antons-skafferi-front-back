@@ -9,7 +9,6 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.I
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.ItemOrder;
 import java.util.ArrayList;
 import java.util.List;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

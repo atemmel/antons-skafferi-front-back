@@ -13,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 
 /**
  *
- * @author FREDDE
+ * @author Allamo Olsson
  */
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     
@@ -33,9 +33,10 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Query(value = "Select * from customer where dinnertableid like %?1%", nativeQuery = true)
     List<Customer> customersFindByTable(int id);
     
-    @Query(value = "SELECT * FROM CUSTOMER WHERE bookingdatetime LIKE %:bookingdatetime% AND FIRSTNAME LIKE %:firstname% AND LASTNAME LIKE %:secondname%", nativeQuery = true)
+    @Query(value = "SELECT * FROM CUSTOMER WHERE bookingdate LIKE %:bookingdate% AND bookingtime LIKE %:bookingtime% AND FIRSTNAME LIKE %:firstname% AND LASTNAME LIKE %:secondname%", nativeQuery = true)
     Customer changeCustomerTable(
-            @Param("bookingdatetime") String bookingdatetime,
+            @Param("bookingdate") String bookingdate,
+            @Param("bookingtime") String bookingtime,
             @Param("firstname") String firstname, 
             @Param("secondname") String secondname);
 }

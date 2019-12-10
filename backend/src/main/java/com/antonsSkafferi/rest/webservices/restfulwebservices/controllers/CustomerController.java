@@ -77,10 +77,10 @@ public class CustomerController {
     }
     
     
-    @PostMapping(value = "/post/customers/table", params={"date", "firstname", "secondname"})
-    private void changeCustomerTable(@RequestParam String date, String firstname, String secondname){
+    @PostMapping(value = "/post/customers/table", params={"date", "time", "firstname", "secondname"})
+    private void changeCustomerTable(@RequestParam String date, String time, String firstname, String secondname){
         System.out.println("DET FUNKAR");
-        service.changeCustomerTable(date, firstname, secondname);
+        service.changeCustomerTable(date, time, firstname, secondname);
     }
     
     

@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.Query;
 
 /**
  *
- * @author fredriksellgren
+ * @author Allamo Olsson
  */
 public interface DinnerTableRepository extends JpaRepository<Dinnertable,Integer> {
     

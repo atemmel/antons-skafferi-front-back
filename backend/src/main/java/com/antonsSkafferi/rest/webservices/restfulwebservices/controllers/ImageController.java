@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.constants.*;
 /**
  *
- * @author ninhow
+ * @author Allamo Olsson
  */
 @CrossOrigin(origins="http://localhost:4200")
 @RestController

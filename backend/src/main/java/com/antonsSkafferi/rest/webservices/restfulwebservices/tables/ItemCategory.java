@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author fredriksellgren
+ * @author willi
  */
 @Entity
 @Table(name = "itemcategory")

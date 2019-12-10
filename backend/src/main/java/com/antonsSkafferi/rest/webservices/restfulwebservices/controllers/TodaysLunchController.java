@@ -25,6 +25,7 @@ public class TodaysLunchController {
     
     @Autowired
     TodaysLunchService todaysLunchService = TodaysLunchService.getInstance();
+    
     @RequestMapping(value = "/lunches")
     private List<TodaysLunch> getAllLunches() {
         return todaysLunchService.getAllLunches();

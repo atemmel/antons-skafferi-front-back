@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author fredriksellgren
+ * @author willi
  */
 @CrossOrigin(origins="http://localhost:4200")
 @RestController

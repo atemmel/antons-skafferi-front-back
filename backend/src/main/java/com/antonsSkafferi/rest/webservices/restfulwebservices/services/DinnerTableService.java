@@ -10,8 +10,6 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Dinnertable
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 /**

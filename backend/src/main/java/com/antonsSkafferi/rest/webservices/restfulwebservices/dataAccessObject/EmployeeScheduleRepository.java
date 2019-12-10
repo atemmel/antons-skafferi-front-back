@@ -20,7 +20,6 @@ public interface EmployeeScheduleRepository extends JpaRepository<EmployeeSchedu
     @Query(value = "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FNAME = ?1", nativeQuery = true)
     int getEmployee(String fname);
     
-    @Query(value = "SELECT  WORKINGSCHEDULEID FROM WORKINGSCHEDULE WHERE DATE = ?1 AND START = ?2 AND END = ?3",  nativeQuery = true)
+    @Query(value = "SELECT WORKINGSCHEDULEID FROM WORKINGSCHEDULE WHERE DATE = ?1 AND START = ?2 AND END = ?3",  nativeQuery = true)
     Integer getWorkSchedule(String date, String start, String end);
-    
 }

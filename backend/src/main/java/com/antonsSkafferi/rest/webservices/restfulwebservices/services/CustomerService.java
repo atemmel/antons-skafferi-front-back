@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author FREDDE
+ * @author Allamo Olsson
  */
 @Service
 public final class CustomerService {
@@ -104,9 +104,9 @@ public final class CustomerService {
         
         customerRepository.save(customer);
     }
-    public void changeCustomerTable(String date, String firstname, String secondname){
+    public void changeCustomerTable(String date, String time, String firstname, String secondname){
         System.out.println("date: " + date + " fName: " + firstname);
-        Customer temp = customerRepository.changeCustomerTable(date, firstname, secondname);
+        Customer temp = customerRepository.changeCustomerTable(date, time, firstname, secondname);
         System.out.println("Date: " + temp.getBookingdate() + "FirstName: " + temp.getFirstname());
         
         
