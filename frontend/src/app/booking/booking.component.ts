@@ -47,6 +47,8 @@ export class BookingComponent implements OnInit {
   tables: Array<Table> = [];
   tableResp: any;
   tablesLoaded: Promise<boolean>;
+  tableCheck: Promise<boolean>;
+  formatedDate: string;
   public customerFirstName = "";
   public customerLastName = "";
   public customerEmail = "";
@@ -70,7 +72,7 @@ export class BookingComponent implements OnInit {
   }
 
 
-  onClickMe() {
+  async onClickMe() {
     if (this.customerFirstName !== "" && this.customerLastName !== "" && this.customerPhone !== "" &&
       !this.emailFormControl.hasError('email') && !this.emailFormControl.hasError('required') && this.sizeOfCompany !== "") {
       this.postData.firstname = this.customerFirstName;
@@ -78,20 +80,35 @@ export class BookingComponent implements OnInit {
       this.postData.email = this.customerEmail;
       this.postData.phone = this.customerPhone;
       this.postData.sizeofcompany = this.sizeOfCompany;
+      const resp = await this.tableGetter.getTabels(this.formatedDate).toPromise();
+      this.tableResp = resp;
+      this.tableCheck = Promise.resolve(true);
+      this.tables = [];
+      this.tableResp.forEach(val => {
+        const temp: Table = val;
+        this.tables.push(temp);
+      });
 
-      this.http.post(this.posturl, this.postData).subscribe((data: any) => {
+      const res = this.tables.find(x => x.dinnertableid = this.postData.dinnertable);
+      if (res) {
+        this.http.post(this.posturl, this.postData).subscribe((data: any) => {
         });
-      this.postData.bookingdate = "";
-      this.postData.bookingtime = "";
-      this.postData.dinnertable = null;
-      this.postData.email = "";
-      this.postData.firstname = "";
-      this.postData.lastname = "";
-      this.postData.phone = "";
-      this.postData.sizeofcompany = "";
-      (document.getElementById("form") as HTMLInputElement).style.display = "none";
-      (document.getElementById("done") as HTMLInputElement).style.display = "block";
+        this.postData.bookingdate = "";
+        this.postData.bookingtime = "";
+        this.postData.dinnertable = null;
+        this.postData.email = "";
+        this.postData.firstname = "";
+        this.postData.lastname = "";
+        this.postData.phone = "";
+        this.postData.sizeofcompany = "";
+        (document.getElementById("form") as HTMLInputElement).style.display = "none";
+        (document.getElementById("done") as HTMLInputElement).style.display = "block";
       } else {
+        (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Ert bord vart tyvärr bokat var vänlig försök igen ";
+        (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
+        this.amountChange(this.postData.sizeofcompany.toString());
+      }
+    } else {
       (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Var vänlig kontrollera alla fält";
       (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
     }
@@ -124,10 +141,10 @@ export class BookingComponent implements OnInit {
       return;
     }
     (document.getElementById("timePicker") as HTMLInputElement).style.display = "block";
-    const formatedDate: string = data.getFullYear() + '-' + (data.getMonth() + 1 ) + '-' + data.getDate();
-    console.log(formatedDate);
+    this.formatedDate = data.getFullYear() + '-' + (data.getMonth() + 1 ) + '-' + data.getDate();
+    console.log(this.formatedDate);
 
-    const resp = await this.tableGetter.getTabels(formatedDate).toPromise();
+    const resp = await this.tableGetter.getTabels(this.formatedDate).toPromise();
     this.tableResp = resp;
     this.tablesLoaded = Promise.resolve(true);
 
@@ -141,7 +158,7 @@ export class BookingComponent implements OnInit {
     if (this.tables.length === 0) {
       (document.getElementById("noTables") as HTMLInputElement).style.display = "block";
     } else {
-      this.postData.bookingdate = formatedDate;
+      this.postData.bookingdate = this.formatedDate;
 
     }
   }
