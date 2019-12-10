@@ -85,6 +85,6 @@ public class UserService {
             
         }
             userRepository.save(new User(username, password, admin));
-            return "successfully created user: "+ username +" with password: "+ password + " Is user admin: "+ admin;
+            return username +","+ password + ","+ admin;
     }
 }
