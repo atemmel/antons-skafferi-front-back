@@ -10,7 +10,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
-
 }
 
 
@@ -104,9 +103,26 @@ export class BookingComponent implements OnInit {
         (document.getElementById("form") as HTMLInputElement).style.display = "none";
         (document.getElementById("done") as HTMLInputElement).style.display = "block";
       } else {
-        (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Ert bord vart tyvärr bokat var vänlig försök igen ";
-        (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
-        this.amountChange(this.postData.sizeofcompany.toString());
+        const amount: number = Number(this.sizeOfCompany);
+        let tableToSit: Table;
+        if (amount > 0 && amount < 5) {
+          tableToSit = this.tables.find((x => x.sizeOfTable === 4));
+          if (tableToSit == null) {
+            tableToSit = this.tables.find((x => x.sizeOfTable === 6));
+          }
+        } else if (amount > 4 && amount < 7) {
+          tableToSit = this.tables.find((x => x.sizeOfTable === 6));
+        }
+
+        if (tableToSit != null) {
+          this.postData.dinnertable = tableToSit.dinnertableid;
+          this.onClickMe();
+        } else {
+          (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Det fanns inget tillgänglit bord som passar storleken" +
+            " på ert sällskap. Ni kan kontakta resturangen för att se om det går att lösa endå";
+          (document.getElementById("errorText") as HTMLInputElement).style.display = "block";
+          return;
+        }
       }
     } else {
       (document.getElementById("errorText") as HTMLInputElement).innerHTML = "Var vänlig kontrollera alla fält";
