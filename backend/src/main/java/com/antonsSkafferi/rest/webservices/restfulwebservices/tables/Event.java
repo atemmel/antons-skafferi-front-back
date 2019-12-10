@@ -21,18 +21,14 @@ public class Event {
     @Column(name="eventdate", updatable = true, nullable = true)
     private String eventdate;
     
-    @Column(name="eventtime", updatable = true, nullable = true)
-    private String eventtime;
-    
     @Column(name="picture", updatable = true, nullable = true)
     private String picture;
     
     public Event(){}
     
-    public Event(String title, String eventdate, String eventtime, String picture){
+    public Event(String title, String eventdate, String picture){
         this.title = title;
         this.eventdate = eventdate;
-        this.eventtime = eventtime;
         this.picture = picture;
     }
 
@@ -65,20 +61,6 @@ public class Event {
     }
 
     /**
-     * @return the eventtime
-     */
-    public String getEventtime() {
-        return eventtime;
-    }
-
-    /**
-     * @param eventtime the eventtime to set
-     */
-    public void setEventtime(String eventtime) {
-        this.eventtime = eventtime;
-    }
-
-    /**
      * @return the picture
      */
     public String getPicture() {
@@ -94,6 +76,6 @@ public class Event {
     
     @Override
     public String toString(){
-        return "Event [title=" + getTitle() + ", eventdate="+ getEventdate() + ", eventtime=" + getEventtime() + ", picture=" + getPicture() + "]";
+        return "Event [title=" + getTitle() + ", eventdate="+ getEventdate() + ", picture=" + getPicture() + "]";
     }
 }
