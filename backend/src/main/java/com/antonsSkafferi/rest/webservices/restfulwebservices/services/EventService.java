@@ -36,7 +36,7 @@ public class EventService {
     public void createEvent(String date) throws FileNotFoundException, IOException{
         System.out.println(date);
         new File("../backend/src/main/resources/images/"+date).mkdirs();
-        File file = ResourceUtils.getFile("../"+date);
+        File file = ResourceUtils.getFile("../backend/src/main/resources/images/"+date);
         
         if(file.exists()){
            File temp = new File("../backend/src/main/resources/images/"+date+"/testar.png");
