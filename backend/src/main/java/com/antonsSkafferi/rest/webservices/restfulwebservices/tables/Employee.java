@@ -9,9 +9,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -34,26 +37,29 @@ public class Employee implements Serializable {
     @Column(name = "lname", updatable = false, nullable = false)
     private String lname;
     
-    @Column(name ="username", updatable = false, nullable = false)
-    private String username;
+    //@Column(name ="username", updatable = false, nullable = false)
+    //private String username;
+    @ManyToOne(fetch = FetchType.LAZY /*,optional = false*/)
+    @JoinColumn(name = "username", nullable = true)
+    private User user;
     
     
     public Employee(){}
     
-    public Employee(String fname, String lname, String username){
+    public Employee(String fname, String lname){
         
         this.fname = fname;
-        this.username = username;
+        //this.username = username;
         this.lname = lname;
         
     }
     
     
-    public Employee(int employeeid, String fname, String lname, String username){
+    public Employee(int employeeid, String fname, String lname){
         
         this.employeeid = employeeid;
         this.fname = fname;
-        this.username = username;
+        //this.username = username;
         this.lname = lname;
         
     }
@@ -101,23 +107,13 @@ public class Employee implements Serializable {
         this.lname = lname;
     }
     
-    /**
-     * @return the username
-     */
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
-
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    
+   
     @Override
     public String toString(){
-        return "Employee [employeeid = " + getEmployeeid() + ", fname=" + getFname() + ",lname =" + getLname() + ", username=" + getUsername() + "]";
+        return "Employee [employeeid = " + getEmployeeid() + ", fname=" + getFname() + ",lname =" + getLname() + ", user=" + user + "]";
     }
     
 }
