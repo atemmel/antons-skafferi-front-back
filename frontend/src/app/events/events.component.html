@@ -1,6 +1,6 @@
-<section id="eventsSection">
+<section id="eventsSection" *ngIf="events != null || newestEvents.length != 0">
   
-  <div id="event-wrapper-2-event" *ngIf="events != null && newestEvents.length == 2">
+  <div id="event-wrapper-2-event" *ngIf="events != null && newestEvents.length === 2">
 
     <div id="event-header" class="nopadding nomargin header-background">
       <h1 id="event-title" class="nopadding nomargin">Event</h1>
@@ -8,14 +8,14 @@
 
     <div class="row nopadding nomargin latest-events">
 
-        <div id="event-left-block" class="col-xs-6 col-lg-6 nomargin nopadding" style="background-color: yellow;">
+        <div id="event-left-block" class="col-xs-6 col-lg-6 nomargin nopadding">
           <div class="event-text-background">
             <h2>{{newestEvents[0].title}}</h2>
             <h3>{{newestEvents[0].date}}</h3>
           </div>
         </div>
 
-        <div id="event-right-block" class="col-xs-6 col-lg-6 nopadding nomargin" style="background-color: blue;">
+        <div id="event-right-block" class="col-xs-6 col-lg-6 nopadding nomargin">
           <div class="event-text-background">
             <!--<h2>{{newestEvents[1].title}}</h2>
             <h3>{{newestEvents[1].date}}</h3>-->
@@ -27,8 +27,12 @@
         </div>
 
     </div>
+<!-- div for if there is only 1 event, gives the error: 
+  ERROR in src/app/events/events.component.html(31,37): This condition will always return 'false' since the types '2' and '1' have no overlap.
+  since it has a hardcoded object that will never have only 1 event
 
-    <div id="event-wrapper-1-event" *ngIf="events != null && newestEvents.length == 1">
+
+    <div id="event-wrapper-1-event" *ngIf="events != null && newestEvents.length === 1">
 
         <div id="event-header" class="nopadding nomargin header-background">
           <h1 id="event-title" class="nopadding nomargin">Event</h1>
@@ -36,7 +40,7 @@
     
         <div class="row nopadding nomargin latest-events">
     
-            <div id="event-solo-block" class="col-xs-12 col-lg-12 nomargin nopadding" style="background-color: orange;">
+            <div id="event-solo-block" class="col-xs-12 col-lg-12 nomargin nopadding">
               <div class="event-text-background">
                 <h2>{{newestEvents[0].title}}</h2>
                 <h3>{{newestEvents[0].date}}</h3>
@@ -47,6 +51,7 @@
         </div>
       
     </div>
+-->
   </div>
 
     <!--"Visa alla event" div-->
