@@ -33,7 +33,7 @@ public class EmployeeController {
     }
     
     @RequestMapping(value = "/employees", params= "name")
-    private int getUserLogin(@RequestParam String name){
+    private int getEmployeeIdByName(@RequestParam String name){
         return service.getEmployeeIdByName(name);
     }
 }
