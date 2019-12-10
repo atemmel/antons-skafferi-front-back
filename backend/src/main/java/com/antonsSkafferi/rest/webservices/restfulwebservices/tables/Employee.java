@@ -40,6 +40,15 @@ public class Employee implements Serializable {
     
     public Employee(){}
     
+    public Employee(String fname, String lname, String username){
+        
+        this.fname = fname;
+        this.username = username;
+        this.lname = lname;
+        
+    }
+    
+    
     public Employee(int employeeid, String fname, String lname, String username){
         
         this.employeeid = employeeid;
