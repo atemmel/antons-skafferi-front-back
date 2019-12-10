@@ -22,4 +22,7 @@ public interface UserRepository extends JpaRepository<User,String> {
     
     @Query(value = "Select * from user where userid = ?1", nativeQuery = true)
     User getUserById(int userid);
+    
+    @Query(value = "Select * from user where username = ?1", nativeQuery = true)
+    String checkIfUserExists(String username);
 }
