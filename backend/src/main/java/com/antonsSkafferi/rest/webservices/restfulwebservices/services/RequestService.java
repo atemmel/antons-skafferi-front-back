@@ -32,27 +32,31 @@ public class RequestService {
     
     
     public static RequestService getInstance(){
-           return requestService; 
+        if(requestService == null) {
+            requestService = new RequestService();
+        }
+        
+        return requestService; 
     }
     
     public void addRequest(Request request) {
-        /*int index = requests.indexOf(request);
+        int index = requests.indexOf(request);
         if(index != -1) {   
             //Om requesten redan existerar
-            //Request tmp = requests.get(index);
-            //EmployeeSchedule tempEmployeeOne = service.getEmployeeScheduleById(tmp.employeeId1, tmp.scheduleId1);
-            //EmployeeSchedule tempEmployeeTwo = service.getEmployeeScheduleById(tmp.employeeId2, tmp.scheduleId2);
+            Request tmp = requests.get(index);
+            EmployeeSchedule tempEmployeeOne = service.getEmployeeScheduleById(tmp.employeeId1, tmp.scheduleId1);
+            EmployeeSchedule tempEmployeeTwo = service.getEmployeeScheduleById(tmp.employeeId2, tmp.scheduleId2);
                
-            //tempEmployeeOne.setEmployeeid(tmp.employeeId2);
-            //tempEmployeeTwo.setEmployeeid(tmp.employeeId1);
+            tempEmployeeOne.setEmployeeid(tmp.employeeId2);
+            tempEmployeeTwo.setEmployeeid(tmp.employeeId1);
         
-            //employeeScheduleRepository.save(tempEmployeeOne);
-            //employeeScheduleRepository.save(tempEmployeeTwo);   
+            employeeScheduleRepository.save(tempEmployeeOne);
+            employeeScheduleRepository.save(tempEmployeeTwo);   
 
         } else {    
             //Annars läggs den till
             requests.add(request);
-        }*/
+        }
     }
     
     
