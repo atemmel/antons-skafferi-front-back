@@ -60,13 +60,16 @@ public class EmployeeScheduleService {
         
     }
     
-    public void switchEmployeeSchedule(int employeeOne, int employeeTwo, int scheduleIdOne, int scheduleIdTwo){
+    public void switchEmployeeSchedule(String userOne, String userTwo, int scheduleIdOne, int scheduleIdTwo){
         
-        EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(employeeOne, scheduleIdOne);
-        EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(employeeTwo, scheduleIdTwo);
+        EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(userOne, scheduleIdOne);
+        EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(userTwo, scheduleIdTwo);
         
-        tempEmployeeOne.setEmployeeid(employeeTwo);
-        tempEmployeeTwo.setEmployeeid(employeeOne);
+        int tempEmployeeOneId = tempEmployeeOne.getEmployeeid();
+        int tempEmployeeTwoId = tempEmployeeTwo.getEmployeeid();
+        
+        tempEmployeeOne.setEmployeeid(tempEmployeeTwoId);
+        tempEmployeeTwo.setEmployeeid(tempEmployeeOneId);
         
         employeeScheduleRepository.save(tempEmployeeOne);
         employeeScheduleRepository.save(tempEmployeeTwo);    
