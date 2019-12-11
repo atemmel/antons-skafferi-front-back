@@ -30,7 +30,7 @@ public class EmployeeScheduleService {
     
     private static EmployeeScheduleService employeeScheduleService;
     
-    private EmployeeScheduleService(){};
+    EmployeeScheduleService(){};
     
     public static EmployeeScheduleService getInstance(){
         return employeeScheduleService;
@@ -67,15 +67,18 @@ public class EmployeeScheduleService {
     
     public void switchEmployeeSchedule(String userOne, String userTwo, int scheduleIdOne, int scheduleIdTwo){
         
+        
         EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(userOne, scheduleIdOne);
         EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(userTwo, scheduleIdTwo);
         
-        RequestService.getInstance().addRequest(new Request(tempEmployeeOne.getEmployeeid(), tempEmployeeTwo.getEmployeeid(), scheduleIdOne, scheduleIdTwo));
+        Request req = new Request(tempEmployeeOne.getEmployeeid(), tempEmployeeTwo.getEmployeeid(), scheduleIdOne, scheduleIdTwo);
+        System.out.println("ADAM HAR GJORT FEL: " + req.employeeId1);
+        //Raden under pajar allt
+        RequestService.getInstance().addRequest(req);
     }
     
     public void deleteEmployeeSchedule(int employeeid, int workingscheduleid){
         EmployeeSchedule tempEmployeeScheduleId = employeeScheduleRepository.getEmployeeSchedule(employeeid, workingscheduleid);
-        
         employeeScheduleRepository.deleteById(tempEmployeeScheduleId.getEmployeescheduleid());
     }
     

@@ -36,16 +36,16 @@ public class Request {
             return false;
         }
         final Request other = (Request) obj;
-        if (this.employeeId1 != other.employeeId1) {
+        if (this.employeeId1 != other.employeeId1 && this.employeeId1 != other.employeeId2) {
             return false;
         }
-        if (this.employeeId2 != other.employeeId2) {
+        if (this.employeeId2 != other.employeeId2 && this.employeeId2 != other.employeeId1) {
             return false;
         }
-        if (this.scheduleId1 != other.scheduleId1) {
+        if (this.scheduleId1 != other.scheduleId1 && this.scheduleId1 != other.scheduleId2) {
             return false;
         }
-        if (this.scheduleId2 != other.scheduleId2) {
+        if (this.scheduleId2 != other.scheduleId2 && this.scheduleId2 != other.scheduleId1) {
             return false;
         }
         return true;

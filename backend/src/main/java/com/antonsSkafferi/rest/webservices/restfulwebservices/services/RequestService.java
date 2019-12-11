@@ -17,7 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class RequestService {
     
+    @Autowired
     EmployeeScheduleRepository employeeScheduleRepository;
+    
+    EmployeeScheduleService service = new EmployeeScheduleService();
        
     ArrayList<Request> requests = new ArrayList<>();
     
@@ -33,22 +36,23 @@ public class RequestService {
     }
     
     public void addRequest(Request request) {
-        int index = requests.indexOf(request);
-        if(index != -1) {   //Om requesten redan existerar
-            Request tmp = requests.get(index);
-            EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(tmp.employeeId1, tmp.scheduleId1);
-            EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(tmp.employeeId2, tmp.scheduleId2);
+        /*int index = requests.indexOf(request);
+        if(index != -1) {   
+            //Om requesten redan existerar
+            //Request tmp = requests.get(index);
+            //EmployeeSchedule tempEmployeeOne = service.getEmployeeScheduleById(tmp.employeeId1, tmp.scheduleId1);
+            //EmployeeSchedule tempEmployeeTwo = service.getEmployeeScheduleById(tmp.employeeId2, tmp.scheduleId2);
                
-            tempEmployeeOne.setEmployeeid(tmp.employeeId2);
-            tempEmployeeTwo.setEmployeeid(tmp.employeeId1);
+            //tempEmployeeOne.setEmployeeid(tmp.employeeId2);
+            //tempEmployeeTwo.setEmployeeid(tmp.employeeId1);
         
-            employeeScheduleRepository.save(tempEmployeeOne);
-            employeeScheduleRepository.save(tempEmployeeTwo);   
+            //employeeScheduleRepository.save(tempEmployeeOne);
+            //employeeScheduleRepository.save(tempEmployeeTwo);   
 
         } else {    
             //Annars läggs den till
             requests.add(request);
-        }
+        }*/
     }
     
     
