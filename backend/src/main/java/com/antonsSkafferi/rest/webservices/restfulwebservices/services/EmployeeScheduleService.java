@@ -30,10 +30,13 @@ public class EmployeeScheduleService {
     
     private static EmployeeScheduleService employeeScheduleService;
     
-    EmployeeScheduleService(){};
+    private EmployeeScheduleService(){};
     
     public static EmployeeScheduleService getInstance(){
-        return employeeScheduleService;
+        if(employeeScheduleService == null) {
+            employeeScheduleService = new EmployeeScheduleService();
+        }    
+        return employeeScheduleService; 
     }
     
         //Get all EmployeeSchedules

@@ -20,38 +20,37 @@ public class RequestService {
     @Autowired
     EmployeeScheduleRepository employeeScheduleRepository;
     
-    EmployeeScheduleService service = new EmployeeScheduleService();
        
     ArrayList<Request> requests = new ArrayList<>();
     
     private static RequestService requestService;
     
     private RequestService(){
-        requestService = new RequestService();
     };
     
     
     public static RequestService getInstance(){
         if(requestService == null) {
             requestService = new RequestService();
-        }
-        
+        }    
         return requestService; 
     }
     
     public void addRequest(Request request) {
         int index = requests.indexOf(request);
         if(index != -1) {   
-            //Om requesten redan existerar
+           //Om requesten redan existerar
             Request tmp = requests.get(index);
-            EmployeeSchedule tempEmployeeOne = service.getEmployeeScheduleById(tmp.employeeId1, tmp.scheduleId1);
-            EmployeeSchedule tempEmployeeTwo = service.getEmployeeScheduleById(tmp.employeeId2, tmp.scheduleId2);
-               
+            
+            EmployeeSchedule tempEmployeeOne = EmployeeScheduleService.getInstance().getEmployeeScheduleById(tmp.employeeId1, tmp.scheduleId1);
+            EmployeeSchedule tempEmployeeTwo = EmployeeScheduleService.getInstance().getEmployeeScheduleById(tmp.employeeId2, tmp.scheduleId2);
+            /*
             tempEmployeeOne.setEmployeeid(tmp.employeeId2);
             tempEmployeeTwo.setEmployeeid(tmp.employeeId1);
         
             employeeScheduleRepository.save(tempEmployeeOne);
-            employeeScheduleRepository.save(tempEmployeeTwo);   
+            employeeScheduleRepository.save(tempEmployeeTwo); */
+           System.out.println("I IF SATSEN");
 
         } else {    
             //Annars läggs den till
