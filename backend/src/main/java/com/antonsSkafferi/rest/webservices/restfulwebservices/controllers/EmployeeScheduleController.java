@@ -48,4 +48,11 @@ public class EmployeeScheduleController {
     private void deleteEmployeeSchedule(@RequestParam int employeeid, int workscheduleid){
         service.deleteEmployeeSchedule(employeeid, workscheduleid);
     }
+    
+    
+    @RequestMapping(value="/empschedules/username", params= "workscheduleid")
+    private String x(@RequestParam int workscheduleid){
+        return service.getUserNameByWorkScheduleId(workscheduleid);
+    }
+    
 }

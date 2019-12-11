@@ -32,9 +32,9 @@ public class WorkingScheduleService {
         return schedules;
     }
     
-    public List<WorkingSchedule> scheduleByDate(String time){
+    public List<WorkingSchedule> scheduleByDate(String date){
         List<WorkingSchedule> schedules = new ArrayList<>();
-        workingScheduleRepository.scheduleDateTime(time).forEach(schedule -> schedules.add(schedule));
+        workingScheduleRepository.scheduleDateTime(date).forEach(schedule -> schedules.add(schedule));
         return schedules;
     }
     public void saveOrUpdateSchedule(WorkingSchedule workingSchedule){

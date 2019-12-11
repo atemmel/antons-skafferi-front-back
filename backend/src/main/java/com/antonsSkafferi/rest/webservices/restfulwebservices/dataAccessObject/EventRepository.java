@@ -7,6 +7,7 @@ package com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
@@ -14,4 +15,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface EventRepository extends JpaRepository<Event,String> {
     
+    @Query(value = "Select * from event where eventdate = ?1", nativeQuery = true)
+    Event findEvent(String date);
 }

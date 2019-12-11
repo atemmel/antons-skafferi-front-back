@@ -87,11 +87,23 @@ public class CodecBase64 {
      */
     public static void writeByteArraysToFile(String fileName, byte[] content) throws IOException {
 
-        File file = new File(fileName);
+        File file = new File("../backend/src/main/resources/images/"+fileName+".jpeg");
+        //File file = new File(fileName);
         BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(file));
         writer.write(content);
         writer.flush();
         writer.close();
     }
+    
+    public static void writeByteArraysToFileFolder(String fileName, byte[] content, String folder) throws IOException {
+
+        File file = new File("../backend/src/main/resources/images/"+ folder + "/" +fileName+".jpeg");
+        //File file = new File(fileName);
+        BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(file));
+        writer.write(content);
+        writer.flush();
+        writer.close();
+    }
+
 
 }

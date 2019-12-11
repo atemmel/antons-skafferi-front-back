@@ -35,9 +35,9 @@ public class WorkingScheduleController {
        return service.getAllSchedules();
     }
     
-    @RequestMapping(value = "/schedules/schedule/date", params="dateTime")
-    private List getScheduleDateTime(@RequestParam String dateTime){
-        return service.scheduleByDate(dateTime);
+    @RequestMapping(value = "/schedules/schedule/date", params="date")
+    private List<WorkingSchedule> getScheduleByDate(@RequestParam String date){
+        return service.scheduleByDate(date);
     }
     
     @PostMapping(value = "/post/schedules", params="schedule")

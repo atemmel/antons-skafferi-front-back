@@ -78,4 +78,8 @@ public class EmployeeScheduleService {
         employeeScheduleRepository.deleteById(tempEmployeeScheduleId.getEmployeescheduleid());
     }
     
+    public String getUserNameByWorkScheduleId(int workingscheduleid){
+        return employeeScheduleRepository.getUserNameByWorkScheduleId(workingscheduleid);
+    }
+    
 }
