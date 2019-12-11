@@ -19,7 +19,7 @@ public interface EmployeeScheduleRepository extends JpaRepository<EmployeeSchedu
     EmployeeSchedule getEmployeeSchedule(String username, int scheduleid);
     
     @Query(value = "SELECT * FROM EMPLOYEESCHEDULE WHERE employeeid = ?1 AND workingscheduleid = ?2", nativeQuery = true)
-    EmployeeSchedule getEmployeeScheduleDelete(int employeeid, int  workingscheduleid);
+    EmployeeSchedule getEmployeeSchedule(int employeeid, int  workingscheduleid);
     
     @Query(value = "SELECT EMPLOYEE.USERNAME FROM EMPLOYEE INNER JOIN EMPLOYEESCHEDULE ON EMPLOYEE.EMPLOYEEID = EMPLOYEESCHEDULE.EMPLOYEEID WHERE WORKINGSCHEDULEID = ?1", nativeQuery = true)
     String getUserNameByWorkScheduleId(int workingscheduleid);
