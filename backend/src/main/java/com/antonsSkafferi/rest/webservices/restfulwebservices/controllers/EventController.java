@@ -11,6 +11,7 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Event;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,10 +36,16 @@ public class EventController {
     @Autowired
     EventService service = EventService.getInstance();
     
+    @RequestMapping(value = "/events/event", params="date")
+    private Event getEvent(@RequestParam String date){
+        return service.getEvent(date);
+    }
+    
     @PostMapping(value = "/post/events", params="event")
     private void saveEvent(@RequestBody Event event){
         service.saveOrUpdateEvent(event);
     }
+    
     
     @PostMapping(value = "/post/event", params={"date"})
     private void newEvent(@RequestParam String date) throws IOException{
@@ -51,10 +58,10 @@ public class EventController {
        //System.out.println((String)payload.get("myMap"));
        
        //service.saveOrUpdateEvent(new Event(new String(payload.)));
-         System.out.println(payload.getTitle());
-         System.out.println(payload.getDate());
-         System.out.println(payload.getImageName());
-         System.out.println(Arrays.toString(payload.getImage()));
+         //System.out.println(payload.getTitle());
+         //System.out.println(payload.getDate());
+         //System.out.println(payload.getImageName());
+         //System.out.println(Arrays.toString(payload.getImage()));
          
         //Skapa Event
         service.createEvent(payload.getTitle(),payload.getDate(), payload.getImage(), payload.getImageName());

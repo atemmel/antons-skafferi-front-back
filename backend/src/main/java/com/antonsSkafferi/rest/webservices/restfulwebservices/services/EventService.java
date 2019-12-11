@@ -36,6 +36,10 @@ public class EventService {
     public void saveOrUpdateEvent(Event event) {
        eventRepository.save(event);
     }
+    
+    public Event getEvent(String date){
+        return eventRepository.findEvent(date);
+    }
     public void createEvent(String title, String date, byte[] content, String fileName) throws FileNotFoundException, IOException{
         System.out.println(date);
         new File("../backend/src/main/resources/images/"+date).mkdirs();
