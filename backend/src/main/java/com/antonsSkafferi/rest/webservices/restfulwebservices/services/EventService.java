@@ -12,6 +12,8 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Event;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -31,6 +33,12 @@ public class EventService {
     
     public static EventService getInstance(){
         return EventService;
+    }
+    
+    public List<Event> findAll(){
+        List<Event> events = new ArrayList<>();
+        eventRepository.findAll().forEach(customer -> events.add(customer));
+        return events;
     }
 
     public void saveOrUpdateEvent(Event event) {

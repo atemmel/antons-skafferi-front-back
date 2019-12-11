@@ -10,6 +10,7 @@ import com.antonsSkafferi.rest.webservices.restfulwebservices.services.EventServ
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Event;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +36,11 @@ public class EventController {
     
     @Autowired
     EventService service = EventService.getInstance();
+    
+    @RequestMapping(value = "/events")
+    private List<Event> getAllEvents(){
+        return service.findAll();
+    }
     
     @RequestMapping(value = "/events/event", params="date")
     private Event getEvent(@RequestParam String date){

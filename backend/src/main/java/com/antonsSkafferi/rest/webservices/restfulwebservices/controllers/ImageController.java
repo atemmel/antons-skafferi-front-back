@@ -28,9 +28,9 @@ public class ImageController {
     @GetMapping(
       path = "/images"
     )
-    static public ResponseEntity<String> getImageWithMediaType(@RequestParam String image, @RequestParam String folder) throws IOException, Exception {
-        System.out.println("image: " + image + "folder: " + folder);
-        File tempFile = new File(CONSTANTS.PROJECT_PATH + CONSTANTS.IMAGES_PATH + "/" + folder + "/" + image);
+    static public ResponseEntity<String> getImageWithMediaType(@RequestParam String path) throws IOException, Exception {
+        System.out.println("path: " + path);
+        File tempFile = new File(path);
       
          return !tempFile.exists() ? new ResponseEntity<>(HttpStatus.BAD_REQUEST) : ResponseEntity.ok(CodecBase64.encode(tempFile, true));//!tempFile.exists() ? null : CodecBase64.encode(tempFile, true);
     }
