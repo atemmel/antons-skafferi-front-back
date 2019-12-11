@@ -1,7 +1,7 @@
 <form id="form">
   <div id="dateTime">
     <mat-form-field>
-      <input id="datePicker"  matInput [matDatepicker]="picker" (dateChange)="dateChange($event.value)" placeholder="Välj datum">
+      <input id="datePicker" [min]="currDate"  matInput [matDatepicker]="picker" (dateChange)="dateChange($event.value)" placeholder="Välj datum">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

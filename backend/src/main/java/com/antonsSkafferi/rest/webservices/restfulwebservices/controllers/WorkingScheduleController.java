@@ -45,7 +45,7 @@ public class WorkingScheduleController {
         service.saveOrUpdateSchedule(workingSchedule);
     }
     
-    @DeleteMapping("/schedules/delete/schedule")
+    @DeleteMapping(value="/schedules/delete/schedule", params="id")
     private void deleteScedule(@RequestParam int id){
 
         service.deleteScheduleById(id);
@@ -61,6 +61,11 @@ public class WorkingScheduleController {
     private int getScheduleId(@RequestParam String date, String start, String end){
         
         return service.getScheduleIdByDateStartEnd(date, start, end);
+    }
+    
+    @RequestMapping(value= "/schedules/schedule", params={"name","date"})
+    private List<WorkingSchedule> getWorkScheduleByNameAndDate(@RequestParam String name, String date){
+        return service.getWorkScheduleByNameAndDate(name, date);
     }
     
 }

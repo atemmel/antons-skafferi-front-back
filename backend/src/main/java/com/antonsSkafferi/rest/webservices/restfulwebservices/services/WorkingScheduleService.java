@@ -52,5 +52,16 @@ public class WorkingScheduleService {
     public int getScheduleIdByDateStartEnd(String date, String start, String end){
         return workingScheduleRepository.getScheduleIdByDateStartEnd(date, start, end);
     }
-            
-}
+    
+    public List<WorkingSchedule> getWorkScheduleByNameAndDate(String name, String date){
+        List<WorkingSchedule> schedules = new ArrayList<>();
+        List<Integer> ids = new ArrayList<>();
+        workingScheduleRepository.getWorkScheduleByNameAndDate(name, date).forEach(id -> ids.add(id));
+        
+        for(int i = 0; i < ids.size(); i++){
+            schedules.add(workingScheduleRepository.findById(ids.get(i)).get());
+        }
+        return schedules;
+    }
+}    
+

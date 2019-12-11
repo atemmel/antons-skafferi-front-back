@@ -55,6 +55,18 @@ public class ItemOrderController {
     {
         return itemOrderService.getReadyOrders();
     }
+    
+    @RequestMapping(value = "/orders/sorted")
+    private List<ItemOrder> getSortedOrders()
+    {
+        return itemOrderService.getSortedOrders();
+    }
+    
+    @RequestMapping(value = "/orders/prepare")
+    private List<ItemOrder> getOrdersToPrepare()
+    {
+        return itemOrderService.getOrdersToPrepare();
+    }
      
     @PostMapping(value = "/post/ready", params = "dinnertable")
     private void setOrderReady(int dinnertable)
