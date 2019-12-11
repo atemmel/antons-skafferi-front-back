@@ -48,6 +48,7 @@ export class BookingComponent implements OnInit {
   tablesLoaded: Promise<boolean>;
   tableCheck: Promise<boolean>;
   formatedDate: string;
+  currDate = new Date();
   public customerFirstName = "";
   public customerLastName = "";
   public customerEmail = "";
