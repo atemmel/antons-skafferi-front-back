@@ -68,6 +68,19 @@ public final class ItemOrderService {
         return orders;
     }
     
+    public List<ItemOrder> getSortedOrders(){
+        List<ItemOrder> orders = new ArrayList<>();
+        itemOrderRepository.sortedOrders().forEach(order -> orders.add(order));
+        return orders;
+    }
+    
+        public List<ItemOrder> getOrdersToPrepare(){
+        List<ItemOrder> orders = new ArrayList<>();
+        itemOrderRepository.getOrderToPrepare().forEach(order -> orders.add(order));
+        return orders;
+    }
+    
+    
     public void setOrderDeliverd(int dinnertableid){
        itemOrderRepository.setOrderDeliverd(dinnertableid);
     }
