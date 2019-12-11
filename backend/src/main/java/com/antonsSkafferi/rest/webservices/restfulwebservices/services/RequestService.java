@@ -19,9 +19,6 @@ public class RequestService {
         public int scheduleId1;
         public int scheduleId2;
 
-        public boolean approval1;
-        public boolean approval2;
-
         @Override
         public boolean equals(Object obj) {
             if (this == obj) {
@@ -63,8 +60,15 @@ public class RequestService {
     
     public void addRequest(Request request) {
         int index = requests.indexOf(request);
-        if(index != -1) {
-            requests
+        if(index != -1) {   //Om requesten redan existerar
+            //Sätt in i databas
+            requests.remove(index);
+        } else {    //Annars läggs den till
+            requests.add(request);
         }
+    }
+    
+    public void clearRequests() {
+        requests.clear();
     }
 }
