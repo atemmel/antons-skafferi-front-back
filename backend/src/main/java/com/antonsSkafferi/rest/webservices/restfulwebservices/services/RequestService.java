@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author ninhow
  */
 public class RequestService {
+    
     public class Request {
         public int employeeId1;
         public int employeeId2;
@@ -52,21 +53,24 @@ public class RequestService {
     
     private static RequestService requestService;
     
-    private RequestService(){};
+    private RequestService(){
+        requestService = new RequestService();
+    };
+    
     
     public static RequestService getInstance(){
-        return requestService;
+           return requestService; 
     }
     
     public void addRequest(Request request) {
         int index = requests.indexOf(request);
         if(index != -1) {   //Om requesten redan existerar
-            //Sätt in i databas
-            requests.remove(index);
-        } else {    //Annars läggs den till
+        } else {    
+            //Annars läggs den till
             requests.add(request);
         }
     }
+    
     
     public void clearRequests() {
         requests.clear();
