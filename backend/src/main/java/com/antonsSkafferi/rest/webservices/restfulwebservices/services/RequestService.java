@@ -5,66 +5,54 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
+import com.antonsSkafferi.rest.webservices.restfulwebservices.classes.Request;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.EmployeeScheduleRepository;
+import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.EmployeeSchedule;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author ninhow
  */
 public class RequestService {
-    public class Request {
-        public int employeeId1;
-        public int employeeId2;
-
-        public int scheduleId1;
-        public int scheduleId2;
-
-        public boolean approval1;
-        public boolean approval2;
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null) {
-                return false;
-            }
-            if (getClass() != obj.getClass()) {
-                return false;
-            }
-            final Request other = (Request) obj;
-            if (this.employeeId1 != other.employeeId1) {
-                return false;
-            }
-            if (this.employeeId2 != other.employeeId2) {
-                return false;
-            }
-            if (this.scheduleId1 != other.scheduleId1) {
-                return false;
-            }
-            if (this.scheduleId2 != other.scheduleId2) {
-                return false;
-            }
-            return true;
-        }
-        
-    }
     
+    EmployeeScheduleRepository employeeScheduleRepository;
+       
     ArrayList<Request> requests = new ArrayList<>();
     
     private static RequestService requestService;
     
-    private RequestService(){};
+    private RequestService(){
+        requestService = new RequestService();
+    };
+    
     
     public static RequestService getInstance(){
-        return requestService;
+           return requestService; 
     }
     
     public void addRequest(Request request) {
         int index = requests.indexOf(request);
-        if(index != -1) {
-            requests
+        if(index != -1) {   //Om requesten redan existerar
+            Request tmp = requests.get(index);
+            EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(tmp.employeeId1, tmp.scheduleId1);
+            EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(tmp.employeeId2, tmp.scheduleId2);
+               
+            tempEmployeeOne.setEmployeeid(tmp.employeeId2);
+            tempEmployeeTwo.setEmployeeid(tmp.employeeId1);
+        
+            employeeScheduleRepository.save(tempEmployeeOne);
+            employeeScheduleRepository.save(tempEmployeeTwo);   
+
+        } else {    
+            //Annars läggs den till
+            requests.add(request);
         }
+    }
+    
+    
+    public void clearRequests() {
+        requests.clear();
     }
 }

@@ -5,6 +5,7 @@
  */
 package com.antonsSkafferi.rest.webservices.restfulwebservices.services;
 
+import com.antonsSkafferi.rest.webservices.restfulwebservices.classes.Request;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.EmployeeScheduleRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject.WorkingScheduleRepository;
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.EmployeeSchedule;
@@ -41,6 +42,10 @@ public class EmployeeScheduleService {
         employeeScheduleRepository.findAll().forEach(empschedule -> empschedules.add(empschedule));
         return empschedules;
     }
+    
+    public EmployeeSchedule getEmployeeScheduleById(int employee, int schedule){
+        return employeeScheduleRepository.getEmployeeSchedule(employee, schedule);
+    }
    
     public void postEmployeeSchedule(int employeeid, String date, String start, String end){
         
@@ -60,20 +65,16 @@ public class EmployeeScheduleService {
         
     }
     
-    public void switchEmployeeSchedule(int employeeOne, int employeeTwo, int scheduleIdOne, int scheduleIdTwo){
+    public void switchEmployeeSchedule(String userOne, String userTwo, int scheduleIdOne, int scheduleIdTwo){
         
-        EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(employeeOne, scheduleIdOne);
-        EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(employeeTwo, scheduleIdTwo);
+        EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(userOne, scheduleIdOne);
+        EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(userTwo, scheduleIdTwo);
         
-        tempEmployeeOne.setEmployeeid(employeeTwo);
-        tempEmployeeTwo.setEmployeeid(employeeOne);
-        
-        employeeScheduleRepository.save(tempEmployeeOne);
-        employeeScheduleRepository.save(tempEmployeeTwo);    
+        RequestService.getInstance().addRequest(new Request(tempEmployeeOne.getEmployeeid(), tempEmployeeTwo.getEmployeeid(), scheduleIdOne, scheduleIdTwo));
     }
     
     public void deleteEmployeeSchedule(int employeeid, int workingscheduleid){
-        EmployeeSchedule tempEmployeeScheduleId = employeeScheduleRepository.getEmployeeScheduleDelete(employeeid, workingscheduleid);
+        EmployeeSchedule tempEmployeeScheduleId = employeeScheduleRepository.getEmployeeSchedule(employeeid, workingscheduleid);
         
         employeeScheduleRepository.deleteById(tempEmployeeScheduleId.getEmployeescheduleid());
     }

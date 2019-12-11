@@ -39,9 +39,9 @@ public class EmployeeScheduleController {
         service.postEmployeeSchedule(employeeid, date, start, end);
     }
  
-    @PostMapping(value = "/empschedules/post/switchemployeesecheduals", params = {"empone","emptwo","scheduleone","scheduletwo"})
-    private void switchEmployeeSchedualId(@RequestParam int empone, int emptwo, int scheduleone, int scheduletwo){
-        service.switchEmployeeSchedule(empone, emptwo, scheduleone, scheduletwo);
+    @PostMapping(value = "/empschedules/post/switchemployeesecheduals", params = {"userone","usertwo","scheduleone","scheduletwo"})
+    private void switchEmployeeSchedualId(@RequestParam String userOne, String userTwo, int scheduleone, int scheduletwo){
+        service.switchEmployeeSchedule(userOne, userTwo, scheduleone, scheduletwo);
     }
     
     @DeleteMapping(value = "/empschedules/delete/employeesechedual", params = {"employeeid", "workscheduleid"})
