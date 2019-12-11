@@ -39,4 +39,10 @@ public interface ItemOrderRepository extends JpaRepository<ItemOrder,Integer> {
     
     @Query(value = "SELECT * FROM itemorder WHERE dinnertableid = ?1", nativeQuery = true)
     List<ItemOrder> getOrderByTable(int dinnertableid);
+    
+    @Query(value = "Select * from ITEMORDER order by ready", nativeQuery = true)
+    List<ItemOrder> sortedOrders();
+    
+    @Query(value = "SELECT * FROM ITEMORDER where not READY  = 2", nativeQuery = true)
+    List<ItemOrder> getOrderToPrepare();
 }
