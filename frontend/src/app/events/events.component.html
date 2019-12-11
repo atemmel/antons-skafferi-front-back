@@ -2,55 +2,49 @@
 
   <div id="event-wrapper-2-event" *ngIf="events != null && newestEvents.length === 2">
 
-    <div id="event-header" class="nopadding nomargin header-background">
-      <h1 id="event-title" class="nopadding nomargin">Event</h1>
+    <div class="nopadding nomargin header-background event-header">
+      <h1 class="nopadding nomargin event-title">Event</h1>
     </div>
 
     <div class="row nopadding nomargin latest-events">
 
-        <div id="event-left-block" class="col-xs-6 col-lg-6 nomargin nopadding">
+        <div id="event-left-block" class="col-xs-6 col-lg-6 nomargin nopadding" [style.backgroundImage]="'url('+newestEvents[0].picture+')'">
           <div class="event-text-background">
             <h2>{{newestEvents[0].title}}</h2>
-            <h3>{{newestEvents[0].date}}</h3>
+            <h3>{{newestEvents[0].eventdate}}</h3>
           </div>
         </div>
 
-        <div id="event-right-block" class="col-xs-6 col-lg-6 nopadding nomargin">
+        <div id="event-right-block" class="col-xs-6 col-lg-6 nopadding nomargin" [style.backgroundImage]="'url('+newestEvents[1].picture+')'">
           <div class="event-text-background">
             <h2>{{newestEvents[1].title}}</h2>
-            <h3>{{newestEvents[1].date}}</h3>
+            <h3>{{newestEvents[1].eventdate}}</h3>
 
           </div>
-          <button *ngIf="events.length>2" id="showEventsButton" class="btn btn-secondary" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
+          <button *ngIf="events.length>2" class="btn btn-secondary showEventsButton" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
         </div>
 
     </div>
-<!-- div for if there is only 1 event, gives the error:
-  ERROR in src/app/events/events.component.html(31,37): This condition will always return 'false' since the types '2' and '1' have no overlap.
-  since it has a hardcoded object that will never have only 1 event
-
-
+  </div>
     <div id="event-wrapper-1-event" *ngIf="events != null && newestEvents.length === 1">
 
-        <div id="event-header" class="nopadding nomargin header-background">
-          <h1 id="event-title" class="nopadding nomargin">Event</h1>
+        <div class="nopadding nomargin header-background event-header">
+          <h1 class="nopadding nomargin event-title">Event</h1>
         </div>
 
-        <div class="row nopadding nomargin latest-events">
-
-            <div id="event-solo-block" class="col-xs-12 col-lg-12 nomargin nopadding">
-              <div class="event-text-background">
-                <h2>{{newestEvents[0].title}}</h2>
-                <h3>{{newestEvents[0].date}}</h3>
-              </div>
-              <button *ngIf="events.length>2" id="showEventsButton" class="btn btn-secondary" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
+          <div class="card bg-dark text-white">
+            <img [src]="newestEvents[0].picture" class="card-img" alt="...">
+            <div class="card-img-overlay">
+              <h2>{{newestEvents[0].title}}</h2>
+              <h3>{{newestEvents[0].eventdate}}</h3>
+            </div>
+              <button *ngIf="events.length>2" class="btn btn-secondary showEventsButton" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
             </div>
 
-        </div>
+
+
 
     </div>
--->
-  </div>
 
     <!--"Visa alla event" div (lägg till class="collapse" på allEvents-->
   <div id="allEvents">
@@ -64,16 +58,16 @@
                 <img class="card-img-top img-fluid" src="https://placehold.it/1920x1080/8e41f4/fff" alt="Card image cap">
                 <div class="card-body">
                   <h3 class="card-title">{{event.title}}</h3>
-                  <p class="card-text">{{event.date}}</p>
+                  <p class="card-text">{{event.eventdate}}</p>
 
                   <!--Button to toggle the modal-->
-                  <button id="picture-gallery" class="btn btn-secondary" data-toggle="modal" data-target="#event-pictures" (click)="getEventPictures(event.date)">Bildgalleri</button>
+                  <button id="picture-gallery" class="btn btn-secondary" data-toggle="modal" data-target="#event-pictures" (click)="getEventPictures(event.eventdate)">Bildgalleri</button>
                   <!-- Modal for showing all pictures of an event -->
                   <div class="modal fade" id="event-pictures" tabindex="-1" role="dialog" aria-labelledby="event-pictures-title" aria-hidden="true">
                     <div class="modal-dialog modal-xl" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="Modal-title">{{event.title}}   {{event.date}}</h5>
+                          <h5 class="modal-title" id="Modal-title">{{event.title}}   {{event.eventdate}}</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>

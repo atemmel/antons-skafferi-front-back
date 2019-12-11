@@ -5,16 +5,16 @@
   position: relative;
 }
 
-#event-header { //Header for event section
+.event-header { //Header for event section
   text-align: center;
 }
 
-#event-title { //Title for the event header
+.event-title { //Title for the event header
   margin:auto;
   font-family: dealers;
 }
 
-#showEventsButton{ //Button to show all events
+.showEventsButton{ //Button to show all events
   position: absolute;
   bottom: 0;
   right: 0;
@@ -24,6 +24,15 @@
 .event-text-background { //Background for the event description
   text-align: center;
   background-color: rgba($color: #000000, $alpha: 0.4);
+}
+
+.card-img {
+  max-height: 350px;
+  max-width: 350px;
+}
+
+.card {
+  max-width: 350px;
 }
 
 h2 { //Title of the events in the standard view
@@ -51,22 +60,20 @@ p {
 }
 
 #event-left-block { //Left block for when there is 2 events
-  background-image: url("src/assets/images/Carola_Placeholder_1280x853.jpg");
+  //background-image: url("src/assets/images/Carola_Placeholder_1280x853.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 #event-right-block { //Right block for when there is 2 events
-  background-image: url("src/assets/images/Pizzabagare_678x1024.jpg");
+  //background-image: url("src/assets/images/Pizzabagare_678x1024.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
 }
 
 #event-solo-block { //Solo block for when there is 1 event
-  background-image: url("src/assets/images/Carola_Placeholder_1280x853.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  //background-image: url("src/assets/images/Carola_Placeholder_1280x853.jpg");
 }
 
 //Placeholder icons for the carousel
@@ -82,7 +89,7 @@ p {
 //Button to show the picture gallery for a specific event
 #picture-gallery {
   float: right;
-} 
+}
 
 //EVENTPICTURES ===
 #modal-contents {
