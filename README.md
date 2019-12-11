@@ -54,6 +54,7 @@ cd backend
 
 ## Customer
 
+```
 Path: /customers
 Returns all customers
 Exampel: http://locahost:8080/customers 
@@ -103,4 +104,4 @@ Example: http://localhost:8080/customers/delete/customer?id=
 Path: /customers/delete/all
 Deletes all customers
 Example: http://localhost:8080/customers/delete/all
-
+```
