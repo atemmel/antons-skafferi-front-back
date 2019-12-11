@@ -75,10 +75,17 @@ VALUES ('Anton', '123', true),
 ('Takko','hej',false);
 
 insert into Employee (employeeid, fname, lname, username)
-VALUES(1,'Anton','Antonsson','Anton');
+VALUES(1,'Anton','Antonsson','Anton'),
+(2,'William','Takolander','Takko');
 
 insert into WORKINGSCHEDULE (workingscheduleid, date, end, start)
-VALUES(1,'2019-01-01','23:30','14:00');
+VALUES(1,'2019-01-01','23:30','14:00'),
+(2,'2019-01-01','20:00','08:00'),
+(3,'2019-01-01','18:00','12:00'),
+(4,'2019-01-01','16:00','08:00');
 
-/*insert into EMPLOYEESCHEDULE (employeescheduleid, employeeid, workingscheduleid)
-VALUES(1,1,1);*/
+insert into EMPLOYEESCHEDULE (employeescheduleid, employeeid, workingscheduleid)
+VALUES(1,1,1),
+(2,2,2),
+(3,1,3),
+(4,2,4);
