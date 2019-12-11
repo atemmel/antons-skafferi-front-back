@@ -20,6 +20,14 @@ public class RequestService {
         public int scheduleId1;
         public int scheduleId2;
 
+        public Request(int employeeId1, int employeeId2, int scheduleId1, int scheduleId2) {
+            this.employeeId1 = employeeId1;
+            this.employeeId2 = employeeId2;
+            this.scheduleId1 = scheduleId1;
+            this.scheduleId2 = scheduleId2;
+        }
+
+        
         @Override
         public boolean equals(Object obj) {
             if (this == obj) {
