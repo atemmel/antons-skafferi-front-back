@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import  {GetEventsService} from '../services/data/get-events.service';
 
 @Component({
   selector: 'app-events',
@@ -12,14 +13,18 @@ export class EventsComponent implements OnInit {
   newestEvents: Event[];
   currentIndex: number;
   imagePath: string = "../assets/images/lax5.jpg";
+  eventsLoaded: Promise<boolean>
 
-  constructor() { }
+  constructor(private eventGetter: GetEventsService) { }
 
   ngOnInit() {
     this.getEvents();
   }
 
-  getEvents() {
+  async getEvents() {
+    const resp: any = await this.eventGetter.getEvents().toPromise();
+    this.eventsLoaded = Promise.resolve(true);
+    console.log(resp);
     const jsonString = '[ {"title": "Carola", "date": "7-12-2019"}, {"title": "Lasses orkester", "date": "12-12-2019"}, ' +
       '{"title": "Tummels trumma", "date": "15-12-2019"}, ' +
       '{"title": "Antons gitar trio", "date": "19-12-2019"}, ' +

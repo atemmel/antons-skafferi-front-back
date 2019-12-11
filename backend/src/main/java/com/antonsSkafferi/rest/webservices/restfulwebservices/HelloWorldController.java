@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloWorldController {
     //hello-world
-    @GetMapping(path="/")
     public String helloWorld(){
         return "Hello World";
     }
