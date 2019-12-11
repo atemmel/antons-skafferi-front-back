@@ -49,3 +49,59 @@ cd backend
 
 - William Takolander [Github Page Overview](https://github.com/Takolander)
 - Fredrik Sellgren [Github Page Overview](https://github.com/iSellgren)
+
+# API 
+
+## Customer
+
+```
+Path: /customers
+Returns all customers
+Exampel: http://locahost:8080/customers 
+
+Path: /customers/customer, Params: id
+Returns specific customer by id
+Example: http://locahost:8080/customers/customer?id=
+
+Path: /customers/customer, Params: firstName
+Returns specific customer by first name 
+Example: http://locahost:8080/customers/customer?firstName=
+
+Path: /customers/customer, Params: lastName
+Returns specific customer by last name
+Example: http://locahost:8080/customers/customer?lastName=
+
+Path: /customers/customer, Params: email
+Returns specific customer by email.
+Example: http://locahost:8080/customers/customer?email=
+
+Path: /customers/customer/today
+Returns all customers that are supposed to come in today
+Example: http://locahost:8080/customers/customer/today
+
+Path: /customers/dinnertable, Params: dinnerTable
+Returns all customers that are booked on a specified table
+Example: http://locahost:8080/customers/dinnertable?dinnertable=
+
+Path: /customers/customer/date, Params: dateTime
+Returns all customers that are booked a specific time
+Example: http://locahost:8080/customers/customer/date?dateTime=
+
+Path: /post/customers, Params: customer body
+Posts a new customer, you need a customer body
+Example: http://locahost:8080/post/customers?customer=
+
+Path: /post/customers/table, Params: date, firstname, secondname
+Changes a customer in table, you need a customer body
+Example:
+http://localhost:8080/post/customers/table?date=&time=&firstname=&secondname=
+
+
+Path: /customers/delete/customer, Params: id
+Deletes specific customer by id
+Example: http://localhost:8080/customers/delete/customer?id=
+
+Path: /customers/delete/all
+Deletes all customers
+Example: http://localhost:8080/customers/delete/all
+```
