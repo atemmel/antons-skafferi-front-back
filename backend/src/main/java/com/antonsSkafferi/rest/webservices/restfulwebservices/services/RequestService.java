@@ -36,26 +36,18 @@ public class RequestService {
         return requestService; 
     }
     
-    public void addRequest(Request request) {
+    public boolean addRequest(Request request) {
         int index = requests.indexOf(request);
         if(index != -1) {   
            //Om requesten redan existerar
-            Request tmp = requests.get(index);
-            
-            EmployeeSchedule tempEmployeeOne = EmployeeScheduleService.getInstance().getEmployeeScheduleById(tmp.employeeId1, tmp.scheduleId1);
-            EmployeeSchedule tempEmployeeTwo = EmployeeScheduleService.getInstance().getEmployeeScheduleById(tmp.employeeId2, tmp.scheduleId2);
-            /*
-            tempEmployeeOne.setEmployeeid(tmp.employeeId2);
-            tempEmployeeTwo.setEmployeeid(tmp.employeeId1);
+            requests.remove(index);
+            return true;
+        } 
         
-            employeeScheduleRepository.save(tempEmployeeOne);
-            employeeScheduleRepository.save(tempEmployeeTwo); */
-           System.out.println("I IF SATSEN");
-
-        } else {    
-            //Annars läggs den till
-            requests.add(request);
-        }
+        //Annars läggs den till
+        requests.add(request);
+        
+        return false;
     }
     
     

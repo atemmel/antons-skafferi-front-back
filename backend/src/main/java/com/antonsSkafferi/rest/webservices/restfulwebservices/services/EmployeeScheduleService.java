@@ -70,14 +70,31 @@ public class EmployeeScheduleService {
     
     public void switchEmployeeSchedule(String userOne, String userTwo, int scheduleIdOne, int scheduleIdTwo){
         
-        
         EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(userOne, scheduleIdOne);
         EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(userTwo, scheduleIdTwo);
         
-        Request req = new Request(tempEmployeeOne.getEmployeeid(), tempEmployeeTwo.getEmployeeid(), scheduleIdOne, scheduleIdTwo);
-        System.out.println("ADAM HAR GJORT FEL: " + req.employeeId1);
-        //Raden under pajar allt
-        RequestService.getInstance().addRequest(req);
+        if(tempEmployeeOne == null) {
+            System.out.println("Employee ẃith id " + userOne + " and scheduleId " + scheduleIdOne + " does not exist.");
+            return;
+        }
+        
+        if(tempEmployeeTwo == null) {
+            System.out.println("Employee ẃith id " + userTwo + " and scheduleId " + scheduleIdTwo + " does not exist.");
+            return;
+        }
+        
+        int id1 = tempEmployeeOne.getEmployeeid();
+        int id2 = tempEmployeeTwo.getEmployeeid();
+        Request req = new Request(id1, id2, scheduleIdOne, scheduleIdTwo);
+        
+        if(RequestService.getInstance().addRequest(req)) {
+    
+            tempEmployeeOne.setEmployeeid(req.employeeId2);
+            tempEmployeeTwo.setEmployeeid(req.employeeId1);
+        
+            employeeScheduleRepository.save(tempEmployeeOne);
+            employeeScheduleRepository.save(tempEmployeeTwo);   
+        }
     }
     
     public void deleteEmployeeSchedule(int employeeid, int workingscheduleid){
