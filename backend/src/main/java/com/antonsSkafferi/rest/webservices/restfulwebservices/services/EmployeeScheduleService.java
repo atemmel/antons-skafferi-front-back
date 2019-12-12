@@ -68,19 +68,19 @@ public class EmployeeScheduleService {
         
     }
     
-    public void switchEmployeeSchedule(String userOne, String userTwo, int scheduleIdOne, int scheduleIdTwo){
+    public String switchEmployeeSchedule(String userOne, String userTwo, int scheduleIdOne, int scheduleIdTwo){
         
         EmployeeSchedule tempEmployeeOne = employeeScheduleRepository.getEmployeeSchedule(userOne, scheduleIdOne);
         EmployeeSchedule tempEmployeeTwo = employeeScheduleRepository.getEmployeeSchedule(userTwo, scheduleIdTwo);
         
         if(tempEmployeeOne == null) {
             System.out.println("Employee ẃith id " + userOne + " and scheduleId " + scheduleIdOne + " does not exist.");
-            return;
+            return "Employee ẃith id " + userOne + " and scheduleId " + scheduleIdOne + " does not exist.";
         }
         
         if(tempEmployeeTwo == null) {
             System.out.println("Employee ẃith id " + userTwo + " and scheduleId " + scheduleIdTwo + " does not exist.");
-            return;
+            return "Employee ẃith id " + userTwo + " and scheduleId " + scheduleIdTwo + " does not exist.";
         }
         
         int id1 = tempEmployeeOne.getEmployeeid();
@@ -93,8 +93,11 @@ public class EmployeeScheduleService {
             tempEmployeeTwo.setEmployeeid(req.employeeId1);
         
             employeeScheduleRepository.save(tempEmployeeOne);
-            employeeScheduleRepository.save(tempEmployeeTwo);   
+            employeeScheduleRepository.save(tempEmployeeTwo);
+            
+            return "Byte godkändes";
         }
+        return "Byte har förfrågats";
     }
     
     public void deleteEmployeeSchedule(int employeeid, int workingscheduleid){
