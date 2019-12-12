@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface WorkingScheduleRepository extends JpaRepository<WorkingSchedule,Integer> {
         
-    @Query(value = "Select * from workingschedule where date = ?1", nativeQuery = true)
+    @Query(value = "Select * from workingschedule where date = ?1 order by start", nativeQuery = true)
     List<WorkingSchedule> scheduleDateTime(String date);
     
     @Query(value = "SELECT WORKINGSCHEDULEID FROM WORKINGSCHEDULE WHERE DATE = ?1 AND START = ?2 AND END = ?3", nativeQuery = true)
