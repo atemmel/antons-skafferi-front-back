@@ -8,4 +8,4 @@ ng build --prod
 ./copy.sh
 
 cd ../backend
-./start-backend.sh
+./start-backend.sh &
