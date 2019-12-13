@@ -40,5 +40,9 @@ public class TodaysLunchService {
     public void saveOrUpdateTodayslunch(TodaysLunch todaysLunch){
         todaysLunchRepository.save(todaysLunch);
     }
+
+    public void deleteAll() {   //The big yeet
+        todaysLunchRepository.deleteAll();
+    }
     
 }
