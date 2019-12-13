@@ -1,4 +1,6 @@
 #!/bin/sh
+# Kill previous instance
+killall java
 # Build .jar file
 mvn install
 # Run .jar file
