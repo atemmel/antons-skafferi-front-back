@@ -62,9 +62,9 @@ VALUES (1,'Fonsterbord',4,false),
 (6,'Ingång',4,false),
 (7,'Mitten',6,false);
 
-insert into ItemOrder(orderid, amount, note, ready, dinnertableid, itemid)
+/*insert into ItemOrder(orderid, amount, note, ready, dinnertableid, itemid)
 VALUES (1,1,'Utan Ost',1,1,1),
-(2,1,'Med Ost',0,2,1);
+(2,1,'Med Ost',0,2,1);*/
 
 insert into User (username, password, administrator)
 VALUES ('Anton', '123', true),
