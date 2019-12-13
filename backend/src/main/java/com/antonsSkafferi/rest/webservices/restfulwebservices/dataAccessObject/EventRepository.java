@@ -6,6 +6,7 @@
 package com.antonsSkafferi.rest.webservices.restfulwebservices.dataAccessObject;
 
 import com.antonsSkafferi.rest.webservices.restfulwebservices.tables.Event;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,4 +18,7 @@ public interface EventRepository extends JpaRepository<Event,String> {
     
     @Query(value = "Select * from event where eventdate = ?1", nativeQuery = true)
     Event findEvent(String date);
+    
+    @Query(value = "Select * from event order by eventdate ASC", nativeQuery = true)
+    List<Event> getAllEventsOrderd();
 }

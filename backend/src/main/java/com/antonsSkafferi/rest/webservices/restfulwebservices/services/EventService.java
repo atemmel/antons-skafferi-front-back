@@ -37,10 +37,16 @@ public class EventService {
     
     public List<Event> findAll(){
         List<Event> events = new ArrayList<>();
-        eventRepository.findAll().forEach(customer -> events.add(customer));
+        eventRepository.findAll().forEach(event -> events.add(event));
         return events;
     }
 
+    public List<Event> getAllEventsOrderd(){
+        List<Event> events = new ArrayList<>();
+        eventRepository.getAllEventsOrderd().forEach(event -> events.add(event));
+        return events;
+    }
+    
     public void saveOrUpdateEvent(Event event) {
        eventRepository.save(event);
     }
