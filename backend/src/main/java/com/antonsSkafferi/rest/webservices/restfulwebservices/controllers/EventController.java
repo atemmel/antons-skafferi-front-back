@@ -42,6 +42,11 @@ public class EventController {
         return service.findAll();
     }
     
+    @RequestMapping(value = "/events/orderd")
+    private List<Event> getAllEventsOrderd(){
+        return service.getAllEventsOrderd();
+    }
+    
     @RequestMapping(value = "/events/event", params="date")
     private Event getEvent(@RequestParam String date){
         return service.getEvent(date);
