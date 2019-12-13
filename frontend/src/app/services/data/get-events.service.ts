@@ -10,6 +10,6 @@ export class GetEventsService {
   constructor(private http: HttpClient) { }
 
   getEvents() {
-    return this.http.get(AppSettings.BACKEND_URL + "/events");
+    return this.http.get(AppSettings.BACKEND_URL + "/events/orderd");
   }
 }

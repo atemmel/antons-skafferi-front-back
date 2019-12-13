@@ -1,17 +1,62 @@
-.latest-events{ //Div for the event pictures/divs
+/*CSS for the whole section wrapper*/
+#events-section { 
   max-width: none;
   min-width: 100%;
-  min-height: 450px;
   position: relative;
 }
 
-.event-header { //Header for event section
+/*Header for the event section*/
+.event-header {
   text-align: center;
 }
-
-.event-title { //Title for the event header
+.event-header-text {
   margin:auto;
   font-family: dealers;
+}
+
+/*newestEvent card styles*/
+#event-wrapper-1-event {
+  max-height: 450px;
+  min-height: 100%;
+}
+.newestEvent-card-title {
+  text-align: center;
+  color: white;
+  font-family: argon;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+  padding: 0px !important;
+  margin: 0px !important;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.newestEvent-card-text {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.newestEvent-card-bg {
+  border: none;
+}
+.newestEvent-container {
+  min-width: 100%;
+}
+.max-height-450 {
+  padding: 0px !important;
+  margin: 0px !important;
+  max-height: 400px;
+}
+.card-img {
+  width: 100%;
+  height: 35vw;
+  object-fit: cover;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 35vw;
+  object-fit: cover;
 }
 
 .showEventsButton{ //Button to show all events
@@ -21,59 +66,8 @@
   box-shadow: none;
 }
 
-.event-text-background { //Background for the event description
-  text-align: center;
-  background-color: rgba($color: #000000, $alpha: 0.4);
-}
-
-.card-img {
-  max-height: 350px;
-  max-width: 350px;
-}
-
-.card {
-  max-width: 350px;
-}
-
-h2 { //Title of the events in the standard view
-  color: white;
-  font-family: argon;
-}
-
-h3 { //Date of the events in the standard view
-  color: white;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
-  text-align: center;
-}
-
 p {
   text-align: center;
-}
-
-.card-title { //The card title of the many events slider
-  color: black !important;
-}
-
-.card-text { //The card text of the many events slider
-  color: black !important;
-}
-
-#event-left-block { //Left block for when there is 2 events
-  //background-image: url("src/assets/images/Carola_Placeholder_1280x853.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#event-right-block { //Right block for when there is 2 events
-  //background-image: url("src/assets/images/Pizzabagare_678x1024.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-}
-
-#event-solo-block { //Solo block for when there is 1 event
-  //background-image: url("src/assets/images/Carola_Placeholder_1280x853.jpg");
 }
 
 //Placeholder icons for the carousel
@@ -85,25 +79,4 @@ p {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
 }
 
-
-//Button to show the picture gallery for a specific event
-#picture-gallery {
-  float: right;
-}
-
-//EVENTPICTURES ===
-#modal-contents {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-#modal-image-div {
-  width: 25%;
-  height: auto;
-}
-
-#modal-img {
-  object-fit: contain;
-}
 

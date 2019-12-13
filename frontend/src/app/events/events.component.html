@@ -1,53 +1,62 @@
-<section id="eventsSection" *ngIf="eventsLoaded">
+<section id="events-section" *ngIf="eventsLoaded && events != 0 && events != null">
+  <div class="nopadding nomargin header-background event-header" style="position: relative;">
+    <h1 class="nopadding nomargin event-header-text">Event</h1>
+    <button style="position: absolute; bottom: 0; right: 0;" *ngIf="newestEvents.length === 0 && events.length >= 1" class="btn btn-secondary showEventsButton" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
+  </div>
+  
 
-  <div id="event-wrapper-2-event" *ngIf="events != null && newestEvents.length === 2">
-
-    <div class="nopadding nomargin header-background event-header">
-      <h1 class="nopadding nomargin event-title">Event</h1>
-    </div>
-
-    <div class="row nopadding nomargin latest-events">
-
-        <div id="event-left-block" class="col-xs-6 col-lg-6 nomargin nopadding" [style.backgroundImage]="'url('+newestEvents[0].picture+')'">
-          <div class="event-text-background">
-            <h2>{{newestEvents[0].title}}</h2>
-            <h3>{{newestEvents[0].eventdate}}</h3>
+  <div id="event-wrapper-2-event" *ngIf="newestEventsLoaded && newestEvents.length === 2">
+    <div class="container newestEvent-container nomargin nopadding">
+      <div class="row max-height-450">
+        <div class="col-md max-height-450">
+          <div class="card newestEvent-card-bg max-height-450">
+            <img [src]="newestEvents[0].picture" class="card-img max-height-450" alt="...">
+            <div class="card-img-overlay max-height-450">
+              <h2 class="card-title newestEvent-card-title">{{newestEvents[0].title}}</h2>
+              <h3 class="card-text newestEvent-card-text">{{newestEvents[0].eventdate}}</h3>
+            </div>
           </div>
         </div>
-
-        <div id="event-right-block" class="col-xs-6 col-lg-6 nopadding nomargin" [style.backgroundImage]="'url('+newestEvents[1].picture+')'">
-          <div class="event-text-background">
-            <h2>{{newestEvents[1].title}}</h2>
-            <h3>{{newestEvents[1].eventdate}}</h3>
-
+        <div class="col-md max-height-450">
+          <div class="card newestEvent-card-bg max-height-450">
+            <img [src]="newestEvents[1].picture" class="card-img max-height-450" alt="...">
+            <div class="card-img-overlay max-height-450">
+              <h2 class="card-title newestEvent-card-title">{{newestEvents[1].title}}</h2>
+              <h3 class="card-text newestEvent-card-text">{{newestEvents[1].eventdate}}</h3>
+            </div>
+            <button *ngIf="events.length>=1" class="btn btn-secondary showEventsButton" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
           </div>
-          <button *ngIf="events.length>2" class="btn btn-secondary showEventsButton" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
         </div>
-
+      </div>
     </div>
   </div>
-    <div id="event-wrapper-1-event" *ngIf="events != null && newestEvents.length === 1">
 
-        <div class="nopadding nomargin header-background event-header">
-          <h1 class="nopadding nomargin event-title">Event</h1>
+
+
+  <!--Wrapper for 1 new event-->
+  <div id="event-wrapper-1-event" *ngIf="newestEventsLoaded && newestEvents.length === 1">
+    <div class="container newestEvent-container nomargin nopadding">
+      <div class="row max-height-450">
+        <div class="col-md max-height-450">
+          <div class="card newestEvent-card-bg max-height-450">
+            <img [src]="newestEvents[0].picture" class="card-img max-height-450" alt="...">
+            <div class="card-img-overlay max-height-450">
+              <h2 class="card-title newestEvent-card-title">{{newestEvents[0].title}}</h2>
+              <h3 class="card-text newestEvent-card-text">{{newestEvents[0].eventdate}}</h3>
+            </div>
+            <button *ngIf="events.length>=1" class="btn btn-secondary showEventsButton" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
+          </div>
         </div>
-
-          <div class="card bg-dark text-white">
-            <img [src]="newestEvents[0].picture" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h2>{{newestEvents[0].title}}</h2>
-              <h3>{{newestEvents[0].eventdate}}</h3>
-            </div>
-              <button *ngIf="events.length>2" class="btn btn-secondary showEventsButton" data-toggle="collapse" data-target="#allEvents" aria-expanded="false" aria-controls="allEvents">Visa alla event</button>
-            </div>
-
-
-
-
+      </div>
     </div>
+  </div>
+
+
+
+
 
     <!--"Visa alla event" div (lägg till class="collapse" på allEvents-->
-  <div id="allEvents">
+  <div id="allEvents" class="collapse">
     <div id="allEventCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
       <div class="carousel-inner">
         <div class="carousel-item" *ngFor="let event of events let i = index" [ngClass]="{'active' : i == currentIndex}">
@@ -55,47 +64,10 @@
             <div class="row">
               <div class="col-3"></div>
               <div class="card col-6">
-                <img class="card-img-top img-fluid" src="https://placehold.it/1920x1080/8e41f4/fff" alt="Card image cap">
+                <img class="card-img-top img-fluid" [src]="event.picture" alt="Card image cap">
                 <div class="card-body">
                   <h3 class="card-title">{{event.title}}</h3>
                   <p class="card-text">{{event.eventdate}}</p>
-
-                  <!--Button to toggle the modal-->
-                  <button id="picture-gallery" class="btn btn-secondary" data-toggle="modal" data-target="#event-pictures" (click)="getEventPictures(event.eventdate)">Bildgalleri</button>
-                  <!-- Modal for showing all pictures of an event -->
-                  <div class="modal fade" id="event-pictures" tabindex="-1" role="dialog" aria-labelledby="event-pictures-title" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="Modal-title">{{event.title}}   {{event.eventdate}}</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div id="modal-contents" class="modal-body">
-
-                          <div *ngFor="let picture of event.pictures" id="modal-image-div" class="container nomargin nopadding" data-toggle="modal" data-target="#big-event-picture">
-                            <img id="modal-img" class="img-responsive" [src]="picture" width="100%" height="100%">
-                            <div class="modal fade" id="big-event-picture" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                      <button type="button" class="close" aria-label="Close" data-target="#big-event-picture">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div class="col-3"></div>
@@ -103,11 +75,11 @@
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#allEventCarousel" role="button" data-slide="prev">
+      <a *ngIf="events.length > 1" class="carousel-control-prev" href="#allEventCarousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#allEventCarousel" role="button" data-slide="next">
+      <a *ngIf="events.length > 1" class="carousel-control-next" href="#allEventCarousel" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>

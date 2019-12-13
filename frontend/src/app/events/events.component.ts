@@ -12,11 +12,12 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class EventsComponent implements OnInit {
 
   events: Array<Event> = [];
-  newestEvents: Event[];
+  newestEvents: Array<Event> = [];
   currentIndex: number;
   imagePath: string = "../assets/images/lax5.jpg";
   eventsLoaded: Promise<boolean>;
   imagesLoaded: Promise<boolean>;
+  newestEventsLoaded: Promise<boolean>;
 
   constructor(private eventGetter: GetEventsService, private imageGetter: GetImageService, private sanitizer: DomSanitizer) { }
 
@@ -35,39 +36,40 @@ export class EventsComponent implements OnInit {
       const response = await this.imageGetter.getImage(temp.picture).toPromise();
       // console.log(response);
       temp.picture = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + response);
-      console.log(temp.picture);
       tempProm = Promise.resolve(true);
       this.events.push(new Event(temp.title, temp.eventdate, temp.picture));
     }
     this.imagesLoaded = Promise.resolve(true);
+    this.eventsLoaded = Promise.resolve(true);
 
+
+    let today = new Date();
+
+    //today = new Date(today.getFullYear(), today.getMonth(), today.getDay());
     console.log(this.events);
-    /*const jsonString = '[ {"title": "Carola", "date": "7-12-2019"}, {"title": "Lasses orkester", "date": "12-12-2019"}, ' +
-      '{"title": "Tummels trumma", "date": "15-12-2019"}, ' +
-      '{"title": "Antons gitar trio", "date": "19-12-2019"}, ' +
-      '{"title": "Gurras ståbasstämma", "date": "24-12-2019"}]';
-    const jsonObj = JSON.parse(jsonString);
-
-    jsonObj.forEach(val => {
-      const temp: Event = new Event(val.title, val.date, "");
-      this.events.push(temp);
-    });*/
-
-    const today = new Date();
-
     let nextEvent: number = this.events.findIndex(x => {
       const split = x.eventdate.split("-");
-      const tempDate: Date = new Date(+split[2] + '-' + split[1] + '-' + split[0]);
+      const tempDate: Date = new Date(split[0] + '-' + split[1] + '-' + split[2]);
+      tempDate.setHours(today.getHours());
+      tempDate.setMinutes(today.getMinutes());
+      tempDate.setSeconds(today.getSeconds() + 1);
       return tempDate >= today;
     });
-
+    console.log(nextEvent);
     this.currentIndex = nextEvent;
-    if (nextEvent < 0) {
-      nextEvent++;
-    }
 
+    if (nextEvent < 0) {
+      this.currentIndex = 0;
+      return;
+    }
+    let eventLength: number = this.events.length;
+    
+    if (nextEvent === this.events.length -1) {
+      eventLength = 1;
+    }
+    
     if ( this.events != null) {
-    const eventLength: number = this.events.length;
+    
     switch (eventLength) {
       case 0: this.newestEvents = null;
               break;
@@ -76,12 +78,12 @@ export class EventsComponent implements OnInit {
               break;
       default: this.newestEvents =
         [new Event(this.events[nextEvent].title, this.events[nextEvent].eventdate, this.events[nextEvent].picture),
-        new Event(this.events[nextEvent + 1].title, this.events[nextEvent + 1].eventdate, this.events[nextEvent].picture)];
+        new Event(this.events[nextEvent + 1].title, this.events[nextEvent + 1].eventdate, this.events[nextEvent + 1].picture)];
                break;
     }
     }
-    this.eventsLoaded = Promise.resolve(true);
-
+    this.newestEventsLoaded = Promise.resolve(true);
+    
   }
 
   getEventPictures(date: string) {
