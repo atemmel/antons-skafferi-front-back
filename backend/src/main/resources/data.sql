@@ -62,10 +62,6 @@ VALUES (1,'Fonsterbord',4,false),
 (6,'Ingång',4,false),
 (7,'Mitten',6,false);
 
-
-insert into Customer(customerid, firstname, lastname, sizeofcompany, email, bookingtime, bookingdate, phone)
-VALUES (1, 'Allan', 'Takkolander', 4, 'Test@email.com','21:30','2019-02-02', '070-3123431');  
-
 insert into ItemOrder(orderid, amount, note, ready, dinnertableid, itemid)
 VALUES (1,1,'Utan Ost',1,1,1),
 (2,1,'Med Ost',0,2,1);
