@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -39,17 +40,19 @@ public class Employee implements Serializable {
     
     //@Column(name ="username", updatable = false, nullable = false)
     //private String username;
-    @ManyToOne(fetch = FetchType.LAZY /*,optional = false*/)
+    @OneToOne(fetch = FetchType.LAZY /*,optional = false*/)
     @JoinColumn(name = "username", nullable = true)
     private User user;
     
     
+    
+    
     public Employee(){}
     
-    public Employee(String fname, String lname){
+   public Employee(String fname, String lname, User username){
         
         this.fname = fname;
-        //this.username = username;
+        this.user = username;
         this.lname = lname;
         
     }
