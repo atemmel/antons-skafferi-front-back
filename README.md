@@ -96,7 +96,6 @@ Changes a customer in table, you need a customer body
 Example:
 http://localhost:8080/post/customers/table?date=&time=&firstname=&secondname=
 
-
 Path: /customers/delete/customer, Params: id
 Deletes specific customer by id
 Example: http://localhost:8080/customers/delete/customer?id=
@@ -172,11 +171,43 @@ Deletes a employee schedule on employeeid and workscheduleid
 Example: 
 http://localhost:8080/empschedules/delete/employeesechedual?employeeid=
 &workscheduleid=
+
+Path: /empschedules/username, Params: workscheduleid 
+Returns username by workscheduleid
+Example: http://localhost:8080/empschedules/username?workscheduleid=
 ```
 
 ## Event
 
+```
+Path: /events
+Returns a list of all events
+Example: http://localhost:8080/events
+
+Path: /events/orderd
+Returns a list of all evetnts in order by date
+Example: http://localhost:8080/events/orderd
+
+Path: /events/event, Params: date 
+Returns a specific event by date
+Example: http://localhost:8080/events/event?date=
+
+Path: /post/events, Params: event 
+Updates an event
+Example: http://localhost:8080/post/events?event
+
+Path: /upload
+Creates a new event that gets posted
+Example: http://localhost:8080/upload
+```
+
 ## Image
+
+```
+Path: /images
+Gets a image
+Example: http://localhost:8080/images
+```
 
 ## Item Category
 
@@ -227,7 +258,15 @@ Example: http://localhost:8080/items/item?price=
 
 Path: /post/items, Params: item
 Saves a new item
-Example: http://localhost:8080/post/items? 
+Example: http://localhost:8080/post/items?item=
+
+Path: /items/delete/item
+Deletes specific item
+Example: http://localhost:8080/items/delete/item?
+
+Path: /items/delete/all
+Deletes all items
+Example: http://localhost:8080/items/delete/all
 ```
 
 ## Item Order
@@ -252,6 +291,14 @@ Example: http://localhost:8080/orders/unready
 Path: /orders/ready
 Returns all ready orders
 Example: http://localhost:8080/orders/ready
+
+Path: /orders/sorted
+Returns all orders sorted
+Example: http://localhost:8080/orders/sorted
+
+Path: /orders/prepare
+Returns all orders that are to be prepared
+Example: http://localhost:8080/orders/prepare
 
 Path: /post/ready, Params: dinnertable
 Updates all orders to ready for specific dinner table
@@ -280,6 +327,10 @@ Example: http://localhost:8080/lunches
 Path: /post/todayslunch, Params = todayslunch 
 Post a new lunch.
 Example: http://localhost:8080/post/todayslunch?todayslunch=
+
+Path: /lunches/delete/all
+Deletes all lunches
+Example: http://localhost:8080/lunches/delete/all
 ```
 
 ## User
